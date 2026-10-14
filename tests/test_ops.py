@@ -154,7 +154,7 @@ def test_cli_errors_go_to_stderr_with_a_nonzero_exit(project, monkeypatch, capsy
     assert main(["answer", "R-0007", "--answers", '{"q1": {"choice": "a"}}']) == 1
     captured = capsys.readouterr()
     assert captured.out == ""
-    assert captured.err.startswith("wb answer: no item R-0007")
+    assert captured.err.startswith("wbench answer: no item R-0007")
     with pytest.raises(SystemExit) as excinfo:  # malformed JSON is a usage error
         main(["answer", "R-0007", "--answers", "{q1: a}"])
     assert excinfo.value.code == 2
@@ -173,7 +173,7 @@ def test_cli_refuses_owner_only_ops_under_claude_code(project, monkeypatch, caps
     assert main(["answer", "R-0001", "--answers", '{"q1": {"choice": "a"}}']) == 1
     captured = capsys.readouterr()
     assert captured.out == ""
-    assert captured.err.strip() == "wb answer: owner actions come from the workbench page, not the agent's shell"
+    assert captured.err.strip() == "wbench answer: owner actions come from the workbench page, not the agent's shell"
     # refused before it ran: the item is exactly as `ask` left it
     assert default_registry().get("item").call({"id": "R-0001"}, project=project)["status"] == "waiting_owner"
 
@@ -199,7 +199,7 @@ def test_owner_only_ops_run_via_the_cli_without_claude_code_and_via_the_hub_rega
 
 
 class _FakeHub:
-    """A stand-in for `wb serve`: records each request, answers with a canned status and body."""
+    """A stand-in for `wbench serve`: records each request, answers with a canned status and body."""
 
     def __init__(self, status: int = 200, body: dict | None = None):
         self.requests: list[dict] = []
@@ -288,11 +288,11 @@ def test_without_a_running_hub_the_cli_says_how_to_start_it(project):
     o = _sample_registry(needs_hub=True).get("sample")
     with pytest.raises(HubNotRunning) as excinfo:  # no hub.json at all
         execute(o, dict(VALID), str(project.root))
-    assert str(excinfo.value).startswith("hub not running: start it with `wb serve`")
+    assert str(excinfo.value).startswith("hub not running: start it with `wbench serve`")
 
     child = subprocess.Popen(["true"])
     child.wait()  # reaped, so its pid names no process (a zombie would still answer kill(pid, 0))
     write_hub_info(project, port=1, token="tok", pid=child.pid)
     with pytest.raises(HubNotRunning) as excinfo:  # hub.json left behind by a hub that died
         execute(o, dict(VALID), str(project.root))
-    assert str(excinfo.value).startswith("hub not running: start it with `wb serve`")
+    assert str(excinfo.value).startswith("hub not running: start it with `wbench serve`")

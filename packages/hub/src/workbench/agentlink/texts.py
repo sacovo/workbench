@@ -1,16 +1,16 @@
 """The only texts the agent link puts in front of the agent: fixed templates, never item content.
 
     wake pointer, typed into an idle agent by the transport (herdr):
-        Workbench: owner answered R-0042; owner opened R-0043. Run: wb inbox
+        Workbench: owner answered R-0042; owner opened R-0043. Run: wbench inbox
     Stop hook reason, when the end of a turn is held back once:
-        Workbench: unread owner events on R-0042, R-0043. Run: wb inbox
+        Workbench: unread owner events on R-0042, R-0043. Run: wbench inbox
     context from the UserPromptSubmit and PostToolUse hooks:
         Workbench: 2 items have owner events the agent has not read: R-0042 decision "Front
-        limit" (owner answered); R-0043 comment "Edge too thin" (owner opened). Run: wb inbox
+        limit" (owner answered); R-0043 comment "Edge too thin" (owner opened). Run: wbench inbox
 
 The pointer and the reason carry item ids and a verb from a fixed list; the context adds kinds,
 titles and a count. None of them carries a body, an answer, a question or an option. The agent
-pulls the content with `wb inbox`, which records the delivery, so every owner event reaches it
+pulls the content with `wbench inbox`, which records the delivery, so every owner event reaches it
 once, as data with its author (spike S2 found double delivery when hooks injected content and a
 pointer was typed as well).
 """
@@ -23,7 +23,7 @@ if TYPE_CHECKING:
     from workbench.agentlink.waiting import Waiting
 
 POINTER_PREFIX = "Workbench:"  # the hook script recognises a typed pointer by it
-PULL = "Run: wb inbox"
+PULL = "Run: wbench inbox"
 MAX_LISTED = 5  # items named in one text; the rest are counted
 MAX_TITLE = 80  # characters of a title in the context
 

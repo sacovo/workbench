@@ -50,7 +50,7 @@ def _human_status(r: dict) -> str:
 
 @op("status", summary="Project, manifest, build id, hub and review item counts", human=_human_status)
 def status(project: Project) -> dict:
-    """What `wb` sees here: the project and its manifest, the build id, whether a hub runs, and how
+    """What `wbench` sees here: the project and its manifest, the build id, whether a hub runs, and how
     many review items wait on whom."""
     try:
         state = build_state(project.root)

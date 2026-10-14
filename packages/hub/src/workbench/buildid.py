@@ -42,7 +42,7 @@ DIRTY_LEN = 8
 BUILD_ID_RE = re.compile(r"^[0-9a-f]{7,64}(\+[0-9a-f]{8})?$")
 
 # Variables that would point git at another repository, index or object store than the one that
-# contains the project. Git sets some of them inside hooks; a `wb` call from a hook must not follow.
+# contains the project. Git sets some of them inside hooks; a `wbench` call from a hook must not follow.
 _REPO_ENV = (
     "GIT_DIR",
     "GIT_WORK_TREE",

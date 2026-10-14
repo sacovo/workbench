@@ -61,10 +61,10 @@ def build_tools(registry: Registry | None = None) -> list[types.Tool]:
     ops_by_name = {o.name: o for o in registry}
     missing = [n for n in TOOL_NAMES if n not in ops_by_name]
     if missing:
-        raise RuntimeError(f"wb mcp: operation(s) not in the registry: {', '.join(missing)}")
+        raise RuntimeError(f"wbench mcp: operation(s) not in the registry: {', '.join(missing)}")
     unsafe = sorted(n for n in TOOL_NAMES if n in _NEVER or ops_by_name[n].owner_only)
     if unsafe:
-        raise RuntimeError(f"wb mcp: operation(s) must never be exposed as a tool: {', '.join(unsafe)}")
+        raise RuntimeError(f"wbench mcp: operation(s) must never be exposed as a tool: {', '.join(unsafe)}")
     schemas = {t["name"]: t for t in registry.mcp_tools()}
     return [
         types.Tool(name=schemas[n]["name"], description=schemas[n]["description"], input_schema=schemas[n]["inputSchema"])
@@ -81,7 +81,7 @@ async def _call(op_name: str, arguments: dict, directory: str | None) -> types.C
     except WorkbenchError as exc:
         return types.CallToolResult(content=[types.TextContent(type="text", text=str(exc))], is_error=True)
     except Exception as exc:  # noqa: BLE001 - a bug; still a tool error, not a dropped session
-        log.exception("wb mcp: tool %s failed", op_name)
+        log.exception("wbench mcp: tool %s failed", op_name)
         return types.CallToolResult(content=[types.TextContent(type="text", text=f"internal error: {exc}")], is_error=True)
     return types.CallToolResult(content=[types.TextContent(type="text", text=json.dumps(result, ensure_ascii=False))])
 

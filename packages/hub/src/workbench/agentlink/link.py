@@ -7,7 +7,7 @@ handle_hook() answers from memory, on the event loop, without touching herdr or 
     session-start        registers the session: id, herdr pane, cwd, how it started
     user-prompt-submit   context naming the items with unread owner events; none when the prompt
                          is itself a typed pointer
-    post-tool-use        the same context, once per owner event; nothing right after `wb inbox`
+    post-tool-use        the same context, once per owner event; nothing right after `wbench inbox`
     stop                 holds the end of the turn back once, with the fixed reason, when owner
                          events on items that are the agent's move are unread and
                          stop_hook_active is the JSON boolean false; otherwise the turn has
@@ -21,7 +21,7 @@ measurement request becomes the owner's move.
 Records. Wake attempts, owner notices and registrations are kept in memory (snapshot(), GET
 /api/agents) and appended to .workbench/logs/agentlink.jsonl; the sessions and what has been
 pointed at survive a hub restart in .workbench/agentlink.json. Nothing here writes to review/:
-a delivery is recorded only by `wb inbox`.
+a delivery is recorded only by `wbench inbox`.
 
 What the hub provides, AgentLink(project, review_items, transport, token=, poke_review=, turn_ended=):
     project        the Project (for .workbench/)
@@ -29,7 +29,7 @@ What the hub provides, AgentLink(project, review_items, transport, token=, poke_
                    watcher keeps current; called on the event loop, so it must not read files
     transport      make_transport(): herdr, or the null transport when herdr is missing
     token          the hub's token; the routes check it as well as the hub's Guard does
-    poke_review    optional () -> None: refresh that memory now (called right after `wb inbox`)
+    poke_review    optional () -> None: refresh that memory now (called right after `wbench inbox`)
     turn_ended     optional () -> None: a registered session's Stop hook just ended its turn
                    (not held back). The hub rebuilds the shown assembly if its code is stale
                    (Hub._agent_turn_ended); called on the event loop, so it must not block.
@@ -207,7 +207,7 @@ class AgentLink:
             elif event == "post-tool-use":
                 s.turn = "working"
                 if data["pulled"]:
-                    poke = True  # the snapshot is stale until the review watcher sees `wb inbox`'s writes
+                    poke = True  # the snapshot is stale until the review watcher sees `wbench inbox`'s writes
                     self._announce(s, unread)
                 elif unread and any(w.last > s.announced.get(w.id, -1) for w in unread):
                     out = _context_output("PostToolUse", unread)

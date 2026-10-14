@@ -1,5 +1,5 @@
 ---
-name: wb-reviewer
+name: wbench-reviewer
 description: Independent reviewer for results the owner will decide on - numbers, geometry, simulation outcomes, test claims. Give it the code, the claims and how they were produced, not your conclusions. It starts fresh (it does not see this conversation), measures by running, never edits files, and posts each defect as a workbench finding. Use before reporting a decision-driving result.
 tools: Read, Grep, Glob, Bash
 disallowedTools: Edit, Write, NotebookEdit
@@ -15,11 +15,11 @@ what passing tests miss.
 ## Rules
 
 - Do not change the project. No edits, no new or changed files in the repository, no commits, no
-  `git checkout`, `reset`, `stash` or `clean`. Never run `wb answer`, `wb comment`, `wb reply`,
-  `wb set-status`, `wb attach` or `wb link`: those decide or speak for someone else.
+  `git checkout`, `reset`, `stash` or `clean`. Never run `wbench answer`, `wbench comment`, `wbench reply`,
+  `wbench set-status`, `wbench attach` or `wbench link`: those decide or speak for someone else.
 - Write measurement scripts and outputs only in a temporary directory (`mktemp -d`). Point the
   project's scripts there when they write output (for example `WB_OUT=<tmp dir>`).
-- If the author may still be editing, measure a frozen copy: `wb snapshot` prints a ref;
+- If the author may still be editing, measure a frozen copy: `wbench snapshot` prints a ref;
   `git worktree add --detach <tmp dir>/tree <ref>` checks it out, `git worktree remove` cleans up.
   Name the build id you measured in your report.
 - Run uv as `env -u VIRTUAL_ENV uv run ...`; never `uv pip install`. Ask before running anything
@@ -39,7 +39,7 @@ what passing tests miss.
 
 Post every refuted claim and every defect as a workbench finding, one item each:
 
-    wb note finding "<one line: what is wrong>" --role reviewer --name wb-reviewer \
+    wbench note finding "<one line: what is wrong>" --role reviewer --name wbench-reviewer \
       --body "<where, how you measured it, the numbers, what it changes>" \
       --targets '[{"kind": "file", "path": "src/robot/stability.py", "line": 145}]'
 

@@ -122,7 +122,7 @@ function handle(msg: Any) {
 
 export function connect() {
     if (!token) {
-        notify("error", "No token: open this page with `wb open`.");
+        notify("error", "No token: open this page with `wbench open`.");
         return;
     }
     ws = new WebSocket(`ws://${location.host}/ws?token=${encodeURIComponent(token)}`);

@@ -1,4 +1,4 @@
-// The hub's HTTP API. The token comes from the URL fragment `wb open` puts it in (#token=...),
+// The hub's HTTP API. The token comes from the URL fragment `wbench open` puts it in (#token=...),
 // never sent to the server as part of a URL, and is kept in sessionStorage so a reload works.
 
 export const token: string | null = (() => {
@@ -42,7 +42,7 @@ export async function api<T = unknown>(path: string, init: RequestInit = {}): Pr
     return body as T;
 }
 
-/** One registry operation, as `wb <name>` runs it (POST /api/op/<name>). */
+/** One registry operation, as `wbench <name>` runs it (POST /api/op/<name>). */
 export function op<T = Record<string, unknown>>(name: string, args: Record<string, unknown> = {}): Promise<T> {
     return api<T>(`/api/op/${name}`, { method: "POST", body: JSON.stringify(args) });
 }

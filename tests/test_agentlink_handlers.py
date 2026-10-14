@@ -69,7 +69,7 @@ def test_owner_comment_is_pointed_at_without_its_content(project):
     text = context_of(hook(link, "user-prompt-submit"), "UserPromptSubmit")
     assert text.startswith("Workbench: 1 item has owner events")
     assert 'R-0001 comment "TITLE-TOKEN bracket edge too thin" (owner opened)' in text
-    assert text.endswith("Run: wb inbox")
+    assert text.endswith("Run: wbench inbox")
     assert "BODY-TOKEN" not in text
 
 
@@ -107,7 +107,7 @@ def test_the_prompt_hook_repeats_but_a_typed_pointer_gets_no_context(project):
     assert context_of(hook(link, "user-prompt-submit"), "UserPromptSubmit")  # a new turn is reminded
 
 
-def test_wb_inbox_call_is_silent_and_refreshes_the_snapshot(project):
+def test_wbench_inbox_call_is_silent_and_refreshes_the_snapshot(project):
     pokes = []
     run(project, "comment", title="Edge")
     link = make_link(project, poke_review=lambda: pokes.append(1))
@@ -123,7 +123,7 @@ def test_stop_blocks_only_on_the_json_boolean_false(project):
     run(project, "comment", title="Second")
     link = make_link(project)
     out = hook(link, "stop", stop_hook_active=False)
-    assert out == {"decision": "block", "reason": "Workbench: unread owner events on R-0001, R-0002. Run: wb inbox"}
+    assert out == {"decision": "block", "reason": "Workbench: unread owner events on R-0001, R-0002. Run: wbench inbox"}
     assert link.sessions[SID].turn == "continuing"
     for value in (True, "false", "False", 0, None, [], {}):
         assert hook(link, "stop", stop_hook_active=value) is None, value
@@ -190,7 +190,7 @@ def test_texts_carry_ids_and_titles_never_content(project):
     assert [w.id for w in unread] == ["R-0001", "R-0002", "R-0003"]
     assert [w.event for w in unread] == ["answer", "open", "reply"]
     pointer, reason, ctx = wake_pointer(unread), stop_reason(unread), context(unread)
-    assert pointer == "Workbench: owner answered R-0001; owner opened R-0002; owner replied to R-0003. Run: wb inbox"
+    assert pointer == "Workbench: owner answered R-0001; owner opened R-0002; owner replied to R-0003. Run: wbench inbox"
     for text in (pointer, reason):
         assert "TITLE-TOKEN" not in text and not any(t in text for t in secret)
         assert "\n" not in text
@@ -202,10 +202,10 @@ def test_texts_are_bounded(project):
     for i in range(8):
         run(project, "comment", title=f'Title {i} with "quotes"\tand a very long tail ' + "x" * 200)
     unread = waiting(ReviewStore(project).states()[0])
-    assert wake_pointer(unread).endswith("owner opened R-0005 and 3 more. Run: wb inbox")
-    assert stop_reason(unread) == "Workbench: unread owner events on R-0001, R-0002, R-0003, R-0004, R-0005 and 3 more. Run: wb inbox"
+    assert wake_pointer(unread).endswith("owner opened R-0005 and 3 more. Run: wbench inbox")
+    assert stop_reason(unread) == "Workbench: unread owner events on R-0001, R-0002, R-0003, R-0004, R-0005 and 3 more. Run: wbench inbox"
     ctx = context(unread)
-    assert ctx.startswith("Workbench: 8 items have owner events") and "and 3 more. Run: wb inbox" in ctx
+    assert ctx.startswith("Workbench: 8 items have owner events") and "and 3 more. Run: wbench inbox" in ctx
     assert len(ctx) < 1000 and '"quotes"' not in ctx and "\t" not in ctx
     assert clean_title("a\nb\x00c" + "y" * 100).startswith("a b c") and len(clean_title("y" * 200)) == 80
 

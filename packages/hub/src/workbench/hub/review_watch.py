@@ -1,6 +1,6 @@
 """What the page shows of `review/`: item states, saved views and comment pins, pushed on change.
 
-Writers are the hub's own endpoints and any `wb` process (the agent's CLI writes the files
+Writers are the hub's own endpoints and any `wbench` process (the agent's CLI writes the files
 directly), so the hub watches the files rather than its own calls: it polls the names, sizes and
 modification times of `review/`, `review/views/` and `review/assets/*/` twice a second, and reads
 the store again only when that listing changed. A write through the hub also pokes the watcher,

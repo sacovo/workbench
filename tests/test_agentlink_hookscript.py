@@ -208,7 +208,7 @@ def test_recorded_inputs_against_a_running_hub(project, hub):
     assert run_hook("Stop", STOP_ACTIVE, env)[1:] == (0, b"", b"")
     _, rc, out, err = run_hook("Stop", CASES["stop"][1], env)
     assert (rc, err) == (0, b"")
-    assert output_of(out) == {"decision": "block", "reason": "Workbench: unread owner events on R-0001. Run: wb inbox"}
+    assert output_of(out) == {"decision": "block", "reason": "Workbench: unread owner events on R-0001. Run: wbench inbox"}
 
     # what reached the hub: ids, names and flags, never the prompt text or the tool's input or output
     sent = json.dumps([payload for _, payload in hub.requests])
@@ -237,7 +237,7 @@ def test_routes_check_the_token_event_and_body(project, hub):
 def test_the_script_itself_prints_only_well_formed_output_and_strict_stop_blocks(project):
     # A hub that answers every hook with a block, a malformed context or garbage: what the script
     # prints must not depend on the hub getting it right.
-    answers = {"stop": {"decision": "block", "reason": "Workbench: unread owner events on R-0001. Run: wb inbox"}}
+    answers = {"stop": {"decision": "block", "reason": "Workbench: unread owner events on R-0001. Run: wbench inbox"}}
 
     async def any_hook(request):
         event = request.path_params["event"]

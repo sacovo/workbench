@@ -1,4 +1,4 @@
-"""`wb doctor`: a setup and support report, not a gate. A missing tool is reported, not an error."""
+"""`wbench doctor`: a setup and support report, not a gate. A missing tool is reported, not an error."""
 
 from __future__ import annotations
 

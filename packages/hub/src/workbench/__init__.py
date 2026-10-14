@@ -1,3 +1,3 @@
-"""Workbench hub: the `wb` CLI, and later the local app server."""
+"""Workbench hub: the `wbench` CLI, and later the local app server."""
 
 __version__ = "0.0.1"

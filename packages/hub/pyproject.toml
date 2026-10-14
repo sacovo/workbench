@@ -1,7 +1,7 @@
 [project]
 name = "workbench"
 version = "0.0.1"
-description = "Workbench hub: the wb CLI and the local app server with its page"
+description = "Workbench hub: the wbench CLI and the local app server with its page"
 authors = [
     { name = "Sandro Covo", email = "sandro@sandrocovo.ch" }
 ]
@@ -15,7 +15,7 @@ dependencies = [
 ]
 
 [project.scripts]
-wb = "workbench.cli:main"
+wbench = "workbench.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.12.16,<0.13.0"]

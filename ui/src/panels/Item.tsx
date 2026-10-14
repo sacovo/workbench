@@ -7,7 +7,7 @@ import * as viewer from "../viewer/host";
 type Any = any;
 
 function who(by: { role: string; name?: string } | undefined): string {
-    return by ? by.role + (by.name ? ` (${by.name})` : "") : "wb";
+    return by ? by.role + (by.name ? ` (${by.name})` : "") : "wbench";
 }
 
 function targetText(t: Target): string {

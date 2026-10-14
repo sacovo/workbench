@@ -55,7 +55,7 @@ def test_the_workbench_table_is_validated_strictly(tmp_path, table, needle):
 
 def test_state_dir_stays_out_of_git_and_the_build_id(tmp_path, monkeypatch):
     # The project's .gitignore does not list .workbench/; the directory must ignore itself, or
-    # every wb call would change the build id and a snapshot would commit the hub's token.
+    # every wbench call would change the build id and a snapshot would commit the hub's token.
     isolate_git(monkeypatch)
     project = find_project(make_repo(tmp_path / "proj"))
     before = build_id(project.root)

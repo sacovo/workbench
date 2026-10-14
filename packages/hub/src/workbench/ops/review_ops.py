@@ -5,7 +5,7 @@ They run without a hub: each writes the files under the project lock. The hub wi
 functions. Roles are declared by the caller, not authenticated: `answer` and `comment` always
 write as the owner, `ask` and `note` as the agent or a reviewer, and `reply`, `set-status`,
 `attach`, `link` and `view-create` take `--role` (default agent, the CLI's usual caller; the UI
-passes owner). `answer` and `comment` are registered `owner_only=True`, so the `wb` CLI (not the
+passes owner). `answer` and `comment` are registered `owner_only=True`, so the `wbench` CLI (not the
 hub's HTTP path) refuses to run them as a Claude Code agent's shell (workbench.cli.execute).
 """
 
@@ -66,7 +66,7 @@ def _indent(text: str, prefix: str = "    ") -> list[str]:
 
 
 def _event_lines(ev: dict, questions: list[dict]) -> list[str]:
-    who = _who(ev["by"]) if "by" in ev else "wb"
+    who = _who(ev["by"]) if "by" in ev else "wbench"
     etype = ev["event"]
     lines: list[str] = []
     if etype == "open":

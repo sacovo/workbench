@@ -13,7 +13,7 @@ Contract with the hub (workbench.agentlink: AgentLink.handle_hook, routes.py):
     {"session": "<session id>", "pane": "<HERDR_PANE_ID>" | null, "cwd": "<cwd>" | null, ...}
         session-start        + "source", "agent_type", "herdr_socket"
         user-prompt-submit   + "pointer_prompt": the prompt is a typed workbench pointer
-        post-tool-use        + "tool", "pulled": the call ran `wb inbox`
+        post-tool-use        + "tool", "pulled": the call ran `wbench inbox`
         stop                 + "stop_hook_active", as Claude Code sent it
     -> 200 {"output": <JSON object to print> | null}
 
@@ -25,12 +25,12 @@ Rules (spike S2 and its review):
 - Fail open: no project, no hub.json, a dead or slow hub, an error status, a malformed answer or
   any exception: exit 0 and print nothing. One deadline covers connect, send and receive.
 - Nothing for subagents (their hook input carries agent_id): a pointer in a subagent's context
-  could make it run `wb inbox` and take the owner's events away from the main agent.
+  could make it run `wbench inbox` and take the owner's events away from the main agent.
 - Two checks do not depend on the hub: a Stop block is printed only when stop_hook_active is the
   JSON boolean false, and only output of the expected shape is printed.
 - SessionStart writes `unset VIRTUAL_ENV` and `export WB_SESSION=<session id>` to CLAUDE_ENV_FILE
   when Claude Code provides it, hub or no hub: the agent's Bash commands then run uv against the
-  project's own environment, and wb can record which session it serves.
+  project's own environment, and wbench can record which session it serves.
 """
 
 import os
@@ -158,7 +158,7 @@ def post(port, token, path, body):
 
 
 def pulled(inp):
-    """Did this tool call run `wb inbox` (which marks the owner's events delivered)?"""
+    """Did this tool call run `wbench inbox` (which marks the owner's events delivered)?"""
     tool = inp.get("tool_name")
     if isinstance(tool, str) and tool.startswith("mcp__") and "workbench" in tool and tool.endswith("__inbox"):
         return True
@@ -171,9 +171,9 @@ def pulled(inp):
         command = command.replace(ch, " ")
     words = command.split()
     for i, word in enumerate(words):
-        if word == "wb" or word.endswith("/wb"):
+        if word == "wbench" or word.endswith("/wbench"):
             j = i + 1
-            while j < len(words) and words[j].startswith("-"):  # wb's own options: -C DIR, --json
+            while j < len(words) and words[j].startswith("-"):  # wbench's own options: -C DIR, --json
                 j += 2 if words[j] == "-C" else 1
             if j < len(words) and words[j] == "inbox":
                 return True

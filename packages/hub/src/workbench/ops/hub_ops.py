@@ -3,7 +3,7 @@
 `serve` and `open` run in the calling process (they start the hub, or the owner's window). `show`,
 `selection` and `agents` need the hub: the CLI forwards them over HTTP and they run in the hub
 process, where the kernel, the page and the agent link are. The hub's modules are imported inside
-the functions, so that every other `wb` command stays free of the web stack's import time.
+the functions, so that every other `wbench` command stays free of the web stack's import time.
 """
 
 from __future__ import annotations
@@ -96,7 +96,7 @@ def _human_agents(r: dict) -> str:
 def serve(project: Project, port: int = 0, open: bool = False) -> dict:
     """Binds 127.0.0.1 only, writes the port and a fresh token to .workbench/hub.json, starts the
     project's kernel (`uv run --project <root> python -m workbench_kernel serve`) and runs until
-    Ctrl-C or SIGTERM. `wb open` opens the page."""
+    Ctrl-C or SIGTERM. `wbench open` opens the page."""
     from workbench.hub.server import run
 
     return run(project, port=port, open_window_too=open)
@@ -110,7 +110,7 @@ def open_(project: Project) -> dict:
 
     hub, why = running_hub(project)
     if hub is None:
-        raise HubNotRunning(f"hub not running: start it with `wb serve` ({why})")
+        raise HubNotRunning(f"hub not running: start it with `wbench serve` ({why})")
     return open_window(project, hub)
 
 
@@ -154,5 +154,5 @@ def agents(project: Project) -> dict:
 
     hub = running_instance(project)
     if hub.link is None:
-        raise HubNotRunning("this hub has no agent link (only `wb serve` wires one)")
+        raise HubNotRunning("this hub has no agent link (only `wbench serve` wires one)")
     return hub.link.snapshot()

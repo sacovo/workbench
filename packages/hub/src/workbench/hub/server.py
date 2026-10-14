@@ -1,4 +1,4 @@
-"""`wb serve`: the hub in the foreground, on 127.0.0.1, until SIGINT or SIGTERM.
+"""`wbench serve`: the hub in the foreground, on 127.0.0.1, until SIGINT or SIGTERM.
 
 The socket is bound before anything else, so the port (ephemeral by default) is known when
 `.workbench/hub.json` is written with the pid, the port and a fresh random token. The file is
@@ -32,7 +32,7 @@ def _logging() -> None:
     logger = logging.getLogger("workbench")
     if not logger.handlers:
         handler = logging.StreamHandler(sys.stderr)
-        handler.setFormatter(logging.Formatter("%(asctime)s wb serve: %(message)s", "%H:%M:%S"))
+        handler.setFormatter(logging.Formatter("%(asctime)s wbench serve: %(message)s", "%H:%M:%S"))
         logger.addHandler(handler)
         logger.setLevel(logging.INFO)
         logger.propagate = False
@@ -72,7 +72,7 @@ def run(project: Project, port: int = 0, open_window_too: bool = False, kernel_c
 
     async def started() -> None:
         hub.link.start()
-        log.info("%s on %s (pid %s); `wb open` shows the page", project.name, info.url, info.pid)
+        log.info("%s on %s (pid %s); `wbench open` shows the page", project.name, info.url, info.pid)
         if open_window_too:
 
             async def when_listening() -> None:

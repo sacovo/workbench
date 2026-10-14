@@ -2,7 +2,7 @@
   "name": "workbench",
   "displayName": "Workbench",
   "version": "0.0.1",
-  "description": "Links a Claude Code agent to the workbench hub of the project it works in: hooks register the session and point the agent at the owner's answers and comments, a skill explains the wb commands, and wb-reviewer is an independent reviewer subagent.",
+  "description": "Links a Claude Code agent to the workbench hub of the project it works in: hooks register the session and point the agent at the owner's answers and comments, a skill explains the wbench commands, and wbench-reviewer is an independent reviewer subagent.",
   "author": {
     "name": "Sandro Covo"
   }

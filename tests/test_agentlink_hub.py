@@ -98,10 +98,10 @@ def test_hooks_through_the_real_hub_and_its_guard(project, linked):
     ctx = json.loads(out)["hookSpecificOutput"]["additionalContext"]
     assert (rc, err) == (0, b"") and 'R-0001 comment "Edge too thin" (owner opened)' in ctx and "BODY-TOKEN" not in ctx
     assert json.loads(run_hook(*CASES["stop"], env)[2]) == {
-        "decision": "block", "reason": "Workbench: unread owner events on R-0001. Run: wb inbox"}
+        "decision": "block", "reason": "Workbench: unread owner events on R-0001. Run: wbench inbox"}
     assert run_hook("Stop", STOP_ACTIVE, env)[1:] == (0, b"", b"")
 
-    # the agent pulls: `wb inbox` (here through the hub's op route) records the delivery
+    # the agent pulls: `wbench inbox` (here through the hub's op route) records the delivery
     status, inbox = linked.request("POST", "/api/op/inbox", {"session": SID})
     assert status == 200 and [i["id"] for i in inbox["items"]] == ["R-0001"]
     wait_until(lambda: not linked.items()[0]["unread_agent"])

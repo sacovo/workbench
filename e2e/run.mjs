@@ -1,14 +1,14 @@
-// End to end through the real pieces: `wb serve` on a project (its real kernel in the project's
+// End to end through the real pieces: `wbench serve` on a project (its real kernel in the project's
 // environment), our page in headless Chromium on the GPU, picks clicked like a user clicks them,
-// the `wb` CLI as the agent uses it. Each step is timed; results go to <out>/e2e_<target>.json.
+// the `wbench` CLI as the agent uses it. Each step is timed; results go to <out>/e2e_<target>.json.
 //
 //   node e2e/run.mjs --target minimal  --out <dir>
 //   node e2e/run.mjs --target my-robot --out <dir>
 //
 // Checks: the page loads and shows the scene; a face, an edge and a vertex of a known part, clicked
-// with the stock Properties tool, come back from `wb selection` as that part and that kind, with
+// with the stock Properties tool, come back from `wbench selection` as that part and that kind, with
 // geometry that agrees with what the page drew; an `ask` made with the CLI appears in the inbox;
-// answering in the page appends an answer event to the item's file; `wb show` with new arguments
+// answering in the page appends an answer event to the item's file; `wbench show` with new arguments
 // reaches the page as an incremental update; killing the kernel shows the crash banner while the
 // scene stays. Review items it creates are deleted at the end; it refuses to run on a project that
 // already has review/.
@@ -23,7 +23,7 @@ import { childEnv, sleep, startChrome, startProcess, stopAll, stopChild, waitUnt
 
 const run = promisify(execFile);
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const WB = path.resolve(HERE, "../.venv/bin/wb");
+const WB = path.resolve(HERE, "../.venv/bin/wbench");
 const args = Object.fromEntries(process.argv.slice(2).reduce((acc, a, i, all) => (a.startsWith("--") ? [...acc, [a.slice(2), all[i + 1]]] : acc), []));
 
 const TARGETS = {
@@ -78,7 +78,7 @@ async function wb(...argv) {
         const { stdout } = await run(WB, ["-C", T.project, ...argv, "--json"], { env: childEnv(), timeout: 900000, maxBuffer: 64 << 20 });
         return { json: JSON.parse(stdout), ms: Date.now() - t0 };
     } catch (e) {
-        throw new Error(`wb ${argv[0]} failed: ${e.stderr ?? e}`);
+        throw new Error(`wbench ${argv[0]} failed: ${e.stderr ?? e}`);
     }
 }
 
@@ -135,7 +135,7 @@ function segDist2d(p, a, b) {
     return Math.hypot(p[0] - (a[0] + t * d[0]), p[1] - (a[1] + t * d[1]));
 }
 
-/** Click a target with the Properties tool active and return what `wb selection` says. */
+/** Click a target with the Properties tool active and return what `wbench selection` says. */
 async function pickAndSelect(target) {
     const seq0 = await ev("__wb.store().selection?.seq ?? 0");
     const t0 = Date.now();
@@ -349,7 +349,7 @@ try {
         await ev("__wb.isolate(null)");
     }
 
-    await step(`wb show ${T.assembly} ${JSON.stringify(T.update)} is an incremental update`, async () => {
+    await step(`wbench show ${T.assembly} ${JSON.stringify(T.update)} is an incremental update`, async () => {
         const before = await ev("({ applied: __wb.appliedLog.length, received: __wb.received.length, scene: __wb.store().shown.scene })");
         const partLabels = await ev("Object.keys(__wb.viewer.getStates()).map((p) => p.split('/')[2]).filter((x, i, a) => a.indexOf(x) === i)");
         const boxesBefore = await ev(`Object.fromEntries(${JSON.stringify(partLabels)}.map((l) => [l, __wb.partBox(l)]))`);

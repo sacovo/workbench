@@ -105,7 +105,7 @@ export function Banner() {
     if (renderer && /swiftshader|llvmpipe|softpipe/i.test(renderer)) {
         parts.push(
             <div key="g" className="banner error" data-banner="software-gl">
-                Software rendering ({renderer}): the page is not on the GPU. Stale NVIDIA settings cause this; see <code>wb doctor</code>.
+                Software rendering ({renderer}): the page is not on the GPU. Stale NVIDIA settings cause this; see <code>wbench doctor</code>.
             </div>,
         );
     }

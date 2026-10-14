@@ -1,4 +1,4 @@
-"""The `wb` command line, generated from the operation registry (workbench.ops).
+"""The `wbench` command line, generated from the operation registry (workbench.ops).
 
 Every operation is a subcommand. Required text and number arguments are positional, everything
 else is an option. List and object arguments take JSON (`--questions '[...]'`). `--file args.json`
@@ -82,7 +82,7 @@ def _add_param(parser: argparse.ArgumentParser, p: Param) -> None:
 
 
 def build_parser(registry: Registry) -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="wb", description="Workbench: agent-driven mechanical design.")
+    parser = argparse.ArgumentParser(prog="wbench", description="Workbench: agent-driven mechanical design.")
     parser.add_argument("--version", action="version", version=__version__)
     parser.add_argument(
         "-C", dest="_directory", metavar="DIR", help="find the project from DIR instead of the current directory"
@@ -91,7 +91,7 @@ def build_parser(registry: Registry) -> argparse.ArgumentParser:
     for o in registry:
         description = o.summary + (f"\n\n{o.description}" if o.description else "")
         if o.needs_hub:
-            description += "\n\nRuns in the hub (`wb serve`)."
+            description += "\n\nRuns in the hub (`wbench serve`)."
         sp = sub.add_parser(
             o.name, help=o.summary, description=description, formatter_class=argparse.RawDescriptionHelpFormatter
         )
@@ -131,7 +131,7 @@ def _with_session_default(o: Op, arguments: dict) -> dict:
     """`session` falls back to $WB_SESSION (the plugin's SessionStart hook exports it, see
     plugin/hooks/wb_hook.py write_env_file) for any operation that takes one, when the caller gave
     no `session` key at all (an explicit null still counts as given). Used by execute(), so both
-    `wb` and the MCP shim (which calls execute() too) pick it up without naming the session
+    `wbench` and the MCP shim (which calls execute() too) pick it up without naming the session
     themselves on every call."""
     if "session" in arguments or not any(p.name == "session" for p in o.params):
         return arguments
@@ -140,7 +140,7 @@ def _with_session_default(o: Op, arguments: dict) -> dict:
 
 
 def execute(o: Op, arguments: dict, directory: str | None = None) -> dict:
-    """Run one operation as `wb` does: in the hub if it needs one, else here.
+    """Run one operation as `wbench` does: in the hub if it needs one, else here.
 
     `directory` is where the project is looked for (default: the current directory)."""
     if o.owner_only and os.environ.get("CLAUDECODE"):
@@ -163,11 +163,11 @@ def main(argv: list[str] | None = None) -> int:
     try:
         result = execute(o, _arguments(o, args), args._directory)
     except WorkbenchError as exc:
-        print(f"wb {o.name}: {exc}", file=sys.stderr)
+        print(f"wbench {o.name}: {exc}", file=sys.stderr)
         return 1
     except Exception:
         traceback.print_exc()
-        print(f"wb {o.name}: internal error (a bug; traceback above)", file=sys.stderr)
+        print(f"wbench {o.name}: internal error (a bug; traceback above)", file=sys.stderr)
         return 1
     if args.json:
         print(json.dumps(result, indent=2, ensure_ascii=False))

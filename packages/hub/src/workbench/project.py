@@ -1,6 +1,6 @@
 """Find a workbench project and its private state directory.
 
-A project is the first directory, walking up from where `wb` runs, whose `pyproject.toml` has a
+A project is the first directory, walking up from where `wbench` runs, whose `pyproject.toml` has a
 `[tool.workbench]` table. A `pyproject.toml` without the table is passed over (a nested package
 inside a project is not a project of its own):
 
@@ -15,7 +15,7 @@ project root and must stay inside it.
 `<root>/.workbench/` holds what is never committed: `hub.json` (the running hub's pid, port and
 token), the lock that serialises writers of `review/`, `blobs/` and `logs/`. It is created with its
 own `.gitignore` ("*"), so it stays out of `git status`, build ids and snapshots even in a project
-whose `.gitignore` does not list it; otherwise every `wb` call would change the build id and a
+whose `.gitignore` does not list it; otherwise every `wbench` call would change the build id and a
 snapshot would commit the hub's token.
 """
 
@@ -94,7 +94,7 @@ class Project:
         d.mkdir(exist_ok=True)
         ignore = d / ".gitignore"
         if not ignore.exists():
-            atomic_write(ignore, "# Workbench state, written by wb: never committed.\n*\n")
+            atomic_write(ignore, "# Workbench state, written by wbench: never committed.\n*\n")
         return d
 
     def ensure_blobs_dir(self) -> Path:
@@ -214,7 +214,7 @@ class HubInfo:
 
 
 def write_hub_info(project: Project, *, port: int, token: str, pid: int | None = None) -> Path:
-    """Record the hub's pid, port and token (file mode 0600). For `wb serve`."""
+    """Record the hub's pid, port and token (file mode 0600). For `wbench serve`."""
     project.ensure_state_dir()
     data = {"pid": os.getpid() if pid is None else pid, "port": port, "token": token}
     atomic_write(project.hub_json, json.dumps(data) + "\n", mode=0o600)
@@ -355,7 +355,7 @@ def _flock(fd: int, exclusive: bool, timeout: float, project: Project) -> None:
         except BlockingIOError:
             if time.monotonic() >= deadline:
                 raise Busy(
-                    f"{project.lock_path} stayed locked for {timeout:.0f} s: another wb process or the hub "
+                    f"{project.lock_path} stayed locked for {timeout:.0f} s: another wbench process or the hub "
                     "is holding it"
                 ) from None
             time.sleep(LOCK_POLL)

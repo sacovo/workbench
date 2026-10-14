@@ -1,4 +1,4 @@
-"""One registry of operations. The `wb` subcommands, the hub's HTTP endpoints and the MCP tools are
+"""One registry of operations. The `wbench` subcommands, the hub's HTTP endpoints and the MCP tools are
 all generated from it, so they cannot drift (docs/plan.md, design principle 2).
 
 An operation is a function with type-annotated parameters that returns a JSON-serialisable dict:

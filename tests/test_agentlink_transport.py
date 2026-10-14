@@ -186,7 +186,7 @@ def register(link: AgentLink, session: str = SID, pane: str = PANE, prompted: bo
         link.handle_hook("stop", {**base, "stop_hook_active": False})
 
 
-POINTER = "Workbench: owner opened R-0001. Run: wb inbox"
+POINTER = "Workbench: owner opened R-0001. Run: wbench inbox"
 
 
 def test_transport_reads_herdr_and_cross_checks_with_claude(herdr):

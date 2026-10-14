@@ -5,7 +5,7 @@ these functions only look at those states, never at the files, so a hook request
 the disk or the project lock.
 
     unread   an item with owner events after its last delivery (fold: unread_agent). The hooks
-             name these; `wb inbox` returns them and marks them delivered.
+             name these; `wbench inbox` returns them and marks them delivered.
     due      an unread item that is the agent's move (status waiting_agent). Only these hold back
              the end of a turn and wake an idle agent; an owner closing an item as done is
              reported, but nobody is woken for it.

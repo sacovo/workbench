@@ -8,7 +8,7 @@
     {
       "name": "workbench",
       "source": "./",
-      "description": "Workbench agent link: hooks, the wb skill and the wb-reviewer subagent."
+      "description": "Workbench agent link: hooks, the wbench skill and the wbench-reviewer subagent."
     }
   ]
 }

@@ -50,7 +50,7 @@ def open_window(project: Project, hub: HubInfo) -> dict:
     if executable is None:
         raise WorkbenchError(f"{BROWSER} is not on PATH")
     if not os.environ.get("WAYLAND_DISPLAY"):
-        raise WorkbenchError("no Wayland session here (WAYLAND_DISPLAY is not set); run `wb open` from the desktop session")
+        raise WorkbenchError("no Wayland session here (WAYLAND_DISPLAY is not set); run `wbench open` from the desktop session")
     profile = project.ensure_state_dir() / "chromium"
     log = project.ensure_logs_dir() / "chromium.log"
     command = window_command(executable, page_url(hub), str(profile))

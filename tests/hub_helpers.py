@@ -12,7 +12,7 @@ import pytest
 
 from workbench.project import Project, find_project
 
-WB = Path(sys.executable).with_name("wb")  # the console script installed in this environment
+WB = Path(sys.executable).with_name("wbench")  # the console script installed in this environment
 
 PYPROJECT = """\
 [project]

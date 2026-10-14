@@ -1,7 +1,7 @@
-"""Tests for the wb CLI skeleton: version, doctor's shape, and its two warnings.
+"""Tests for the wbench CLI skeleton: version, doctor's shape, and its two warnings.
 
 No app logic exists yet, so these tests are about the CLI contract other code
-(and the owner, reading `wb doctor`) will rely on: the JSON keys stay stable,
+(and the owner, reading `wbench doctor`) will rely on: the JSON keys stay stable,
 missing tools are reported rather than raising, and the two environment
 warnings fire exactly when their variable is set.
 """

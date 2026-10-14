@@ -96,7 +96,7 @@ def running_instance(project: Project) -> Hub:
     with _RUNNING_LOCK:
         hub = _RUNNING.get(project.root)
     if hub is None:
-        raise HubNotRunning("hub not running in this process: start it with `wb serve`")
+        raise HubNotRunning("hub not running in this process: start it with `wbench serve`")
     return hub
 
 
@@ -660,7 +660,7 @@ class Hub:
 
     def _agent_turn_ended(self) -> None:
         """AgentLink.turn_ended: a registered session's Stop hook just ended its turn (it was not
-        held back). Rebuild the shown assembly, like `wb show --rebuild`, if the code changed
+        held back). Rebuild the shown assembly, like `wbench show --rebuild`, if the code changed
         since it was built. Called synchronously on the event loop by the hook's route handler, so
         it only spawns the rebuild and returns; the hook's answer is never delayed by it. At most
         one such rebuild runs at a time (_agent_rebuilding), independent of a manual rebuild."""

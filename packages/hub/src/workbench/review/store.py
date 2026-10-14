@@ -221,7 +221,7 @@ class ReviewStore:
         sources = [Path(p) for p in attach]
         names = [self._check_source(p) for p in sources]
         if sources and fields.get("kind") != "decision":
-            raise InvalidInput("attach at open is for a decision's evidence; use `wb attach` for other items")
+            raise InvalidInput("attach at open is for a decision's evidence; use `wbench attach` for other items")
         if len(set(names)) != len(names):
             raise InvalidInput(f"attach: two files share a name: {names}")
         build = self.stamp()

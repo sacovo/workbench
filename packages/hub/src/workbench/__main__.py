@@ -1,4 +1,4 @@
-"""`python -m workbench ...` runs the same CLI as the `wb` console script.
+"""`python -m workbench ...` runs the same CLI as the `wbench` console script.
 
 For plugin/.mcp.json, which starts the MCP shim with the workbench environment's own interpreter
 directly (no console script on its PATH): `.../.venv/bin/python -m workbench mcp`.

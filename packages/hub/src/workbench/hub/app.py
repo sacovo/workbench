@@ -7,7 +7,7 @@ Every request passes the guard first:
 - `/api/...` needs the token from `.workbench/hub.json` in the header `X-Workbench-Token`, and the
   page's WebSocket `/ws` in its query (`/ws?token=...`, browsers cannot set headers there).
 The page itself and its assets carry no secrets and need no token; the page reads the token from
-the URL fragment `wb open` puts it in.
+the URL fragment `wbench open` puts it in.
 
 Routes:
     POST /api/op/<name>            every registry operation, except serve, open and mcp (they

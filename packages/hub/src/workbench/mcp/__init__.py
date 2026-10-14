@@ -1,4 +1,4 @@
-"""The MCP shim: `wb mcp` runs a stdio MCP server exposing a curated set of the operation
+"""The MCP shim: `wbench mcp` runs a stdio MCP server exposing a curated set of the operation
 registry's ops as tools (docs/plan.md, design principle 2: HTTP routes and MCP tools are
 generated from the same operation registry, so they cannot drift).
 
@@ -6,7 +6,7 @@ generated from the same operation registry, so they cannot drift).
                 the stdio server itself
 
 `plugin/.mcp.json` starts it with the workbench environment's own interpreter; see
-workbench.ops.mcp_ops for the `wb mcp` operation and its project-resolution rule.
+workbench.ops.mcp_ops for the `wbench mcp` operation and its project-resolution rule.
 """
 
 from workbench.mcp.server import TOOL_NAMES, build_server, build_tools, run_stdio

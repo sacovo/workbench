@@ -1,7 +1,7 @@
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
 
-// The built page is committed into the hub package, so `wb serve` needs no Node at runtime.
+// The built page is committed into the hub package, so `wbench serve` needs no Node at runtime.
 const outDir = fileURLToPath(new URL("../packages/hub/src/workbench/hub/static", import.meta.url));
 
 export default defineConfig({

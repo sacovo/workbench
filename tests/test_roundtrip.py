@@ -66,4 +66,4 @@ def test_ask_answer_inbox_round_trip(project, tmp_path):
 
     bad = wb(root, "answer", item, "--answers", '{"q2": {"choice": "maybe"}}')
     assert bad.returncode == 1 and bad.stdout == ""
-    assert bad.stderr.startswith("wb answer: ") and "'maybe' is not an option of q2" in bad.stderr
+    assert bad.stderr.startswith("wbench answer: ") and "'maybe' is not an option of q2" in bad.stderr

@@ -1,5 +1,8 @@
 # Workbench: a desktop app for agent-driven mechanical design
 
+**Note (2026-10-14).** The command is `wbench`, not `wb`: renamed because `wb` is the Weights &
+Biases CLI on this machine. The approved plan below still says `wb`; read it as `wbench`.
+
 ## Context
 
 The robot so far was designed entirely in a terminal. Claude Code wrote build123d parts, generated

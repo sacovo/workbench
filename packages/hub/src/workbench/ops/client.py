@@ -16,7 +16,7 @@ from workbench.project import Project, running_hub
 
 TOKEN_HEADER = "X-Workbench-Token"
 FORWARD_TIMEOUT = 120.0  # s; operations that need the hub may build geometry
-NOT_RUNNING = "hub not running: start it with `wb serve`"
+NOT_RUNNING = "hub not running: start it with `wbench serve`"
 
 _BY_STATUS = {400: InvalidInput, 404: NotFound, 409: Conflict, 503: Busy}
 

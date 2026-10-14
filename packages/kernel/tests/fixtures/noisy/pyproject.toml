@@ -1,0 +1,8 @@
+[project]
+name = "noisy"
+version = "0.0.0"
+description = "Kernel test fixture: a manifest that prints, reads stdin, fails, and moves its root"
+requires-python = ">=3.12"
+
+[tool.workbench]
+manifest = "noisy_manifest"

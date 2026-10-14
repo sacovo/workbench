@@ -18,7 +18,14 @@ build-backend = "uv_build"
 [dependency-groups]
 dev = [
     "pytest>=9.1.1",
+    "workbench-kernel",
 ]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.uv.sources]
+workbench-kernel = { path = "../../packages/kernel", editable = true }
+
+[tool.workbench]
+manifest = "minimal.manifest"

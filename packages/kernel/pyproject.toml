@@ -6,8 +6,17 @@ authors = [
     { name = "Sandro Covo", email = "sandro@sandrocovo.ch" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "build123d>=0.13,<0.14",
+    "ocp-tessellate>=3.6.2,<3.7",
+    "ocp-viewer-core>=1.1.2,<1.2",
+]
 
 [build-system]
 requires = ["uv_build>=0.12.16,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+# Run from a project environment that has the kernel installed, e.g.
+# cd examples/minimal && env -u VIRTUAL_ENV uv run pytest ../../packages/kernel/tests -q
+testpaths = ["tests"]

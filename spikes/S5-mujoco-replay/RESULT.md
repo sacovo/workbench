@@ -285,3 +285,23 @@ The driver starts and always stops the ocp_viewer server (port 3959), the Python
 existed. That check is recorded in the `*_1600x1001` and `*_2560x1440` runs.
 
 Not yet independently reviewed: per the plan, a fresh reviewer re-measures this verdict.
+
+## Independent review (2026-10-14)
+
+A fresh reviewer re-ran claims 1 to 3 on its own port with the spike's unmodified harness, on a
+frozen my-robot copy, with nothing else using the GPU. All five claims confirmed; none refuted.
+Measured by the reviewer: visual scene loads in 268 to 315 ms (815,806 triangles, equal to an
+independent count in the page); a 10 s replay has median and p95 frame interval 16.70 and
+16.80 ms with no frame over 20 ms and the animation clock at 0.99996 of real time; replayed poses
+are within 6.05e-8 m over 420 comparisons; peak tilt is bit-identical with and without the
+recorder; stock tracks accumulate (80 after two loads) and replay 0.478 m off, 5.75e-8 m when the
+page stops and clears first.
+
+Corrections to this note:
+
+- The 8.3 mm lag of a naive after-step stamp was computed as peak body speed times the time step,
+  not measured, although it sits under a "measured" heading. The reviewer measured it at the full
+  physics rate: 8.2567 mm, equal to the computed value for the fall; for the gentler swing,
+  3.0 mm measured against 2.85 mm computed.
+- The loaded-track counts "42, 84, 126, 168" in the corrections section are not backed by any
+  saved result; the saved runs and the reviewer's reproduction show 40 tracks per load.

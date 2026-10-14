@@ -17,6 +17,22 @@ env -u VIRTUAL_ENV uv run wb doctor        # add --json for machine-readable out
 env -u VIRTUAL_ENV uv run pytest -q
 ```
 
+Review items (`docs/plan.md`, "Review items"); run `wb <command> --help` for each one's full
+arguments. `answer` and `comment` write as the owner and come from the workbench page, not this
+shell (the CLI refuses them when it runs as a Claude Code agent):
+
+```
+env -u VIRTUAL_ENV uv run wb ask "Front limit?" --questions '[...]'   # decision for the owner
+env -u VIRTUAL_ENV uv run wb note comment "Edge too close"            # or finding, measurement, change
+env -u VIRTUAL_ENV uv run wb inbox                                    # owner events not yet seen; marks delivered
+env -u VIRTUAL_ENV uv run wb item R-0001 --events                     # one item's state, or its full history
+env -u VIRTUAL_ENV uv run wb reply R-0001 "Applied 75 mm."            # --status hands the move back
+env -u VIRTUAL_ENV uv run wb set-status R-0001 done                   # or dropped, waiting_owner, waiting_agent
+env -u VIRTUAL_ENV uv run wb view-create robot --camera '{...}'       # save a view
+env -u VIRTUAL_ENV uv run wb status                                   # project, build id, hub, item counts
+env -u VIRTUAL_ENV uv run wb snapshot                                 # working tree to refs/wb/snap/<build id>
+```
+
 `examples/minimal` is its own uv project, not a workspace member, so it has its own lockfile and
 environment:
 

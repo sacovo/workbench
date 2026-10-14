@@ -132,6 +132,10 @@ class Op:
     injected: tuple[tuple[str, type], ...]
     human: Callable[[dict], str] | None = None
     description: str = ""
+    # Author role fixed to the owner (answer, comment: see workbench.ops.review_ops): the CLI
+    # refuses to run it as a Claude Code agent's shell (workbench.cli.execute). Never checked on
+    # the hub's HTTP path, which calls Op.call() directly.
+    owner_only: bool = False
 
     @property
     def needs_project(self) -> bool:
@@ -216,6 +220,7 @@ class Registry:
         *,
         summary: str,
         needs_hub: bool = False,
+        owner_only: bool = False,
         args: dict[str, str] | None = None,
         human: Callable[[dict], str] | None = None,
     ) -> Callable[[Callable[..., dict]], Callable[..., dict]]:
@@ -236,6 +241,7 @@ class Registry:
                 injected=injected,
                 human=human,
                 description=inspect.getdoc(fn) or "",
+                owner_only=owner_only,
             )
             return fn
 

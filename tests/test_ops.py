@@ -12,7 +12,7 @@ from typing import Literal, Optional
 import pytest
 
 from hub_helpers import project  # noqa: F401  (fixture)
-from workbench.cli import execute, main
+from workbench.cli import OwnerOnly, execute, main
 from workbench.errors import HubNotRunning, InvalidInput, NotFound
 from workbench.ops import Registry, default_registry
 from workbench.project import Project, write_hub_info
@@ -150,6 +150,7 @@ def test_cli_merges_a_json_arguments_file_under_the_command_line(project, monkey
 
 def test_cli_errors_go_to_stderr_with_a_nonzero_exit(project, monkeypatch, capsys):
     monkeypatch.chdir(project.root)
+    monkeypatch.delenv("CLAUDECODE", raising=False)  # this is about NotFound/usage errors, not owner_only
     assert main(["answer", "R-0007", "--answers", '{"q1": {"choice": "a"}}']) == 1
     captured = capsys.readouterr()
     assert captured.out == ""
@@ -158,6 +159,43 @@ def test_cli_errors_go_to_stderr_with_a_nonzero_exit(project, monkeypatch, capsy
         main(["answer", "R-0007", "--answers", "{q1: a}"])
     assert excinfo.value.code == 2
     assert "not valid JSON" in capsys.readouterr().err
+
+
+def test_cli_refuses_owner_only_ops_under_claude_code(project, monkeypatch, capsys):
+    # answer and comment have their author role fixed to the owner (review_ops.py); Claude Code
+    # sets CLAUDECODE for the commands its agent runs, so the CLI must refuse them under it.
+    monkeypatch.chdir(project.root)
+    questions = [{"id": "q1", "text": "Which?", "options": [{"id": "a", "label": "A"}]}]
+    main(["ask", "Front limit", "--questions", json.dumps(questions)])  # ask is not owner_only
+    capsys.readouterr()
+
+    monkeypatch.setenv("CLAUDECODE", "1")
+    assert main(["answer", "R-0001", "--answers", '{"q1": {"choice": "a"}}']) == 1
+    captured = capsys.readouterr()
+    assert captured.out == ""
+    assert captured.err.strip() == "wb answer: owner actions come from the workbench page, not the agent's shell"
+    # refused before it ran: the item is exactly as `ask` left it
+    assert default_registry().get("item").call({"id": "R-0001"}, project=project)["status"] == "waiting_owner"
+
+    with pytest.raises(OwnerOnly, match="workbench page"):
+        execute(default_registry().get("comment"), {"title": "x"}, str(project.root))
+
+
+def test_owner_only_ops_run_via_the_cli_without_claude_code_and_via_the_hub_regardless(project, monkeypatch):
+    questions = [{"id": "q1", "text": "Which?", "options": [{"id": "a", "label": "A"}]}]
+    default_registry().get("ask").call({"title": "Front limit", "questions": questions}, project=project)
+
+    # Without CLAUDECODE, the CLI path (execute()) still runs an owner_only op normally.
+    monkeypatch.delenv("CLAUDECODE", raising=False)
+    state = execute(default_registry().get("comment"), {"title": "Via the CLI, no CLAUDECODE"}, str(project.root))
+    assert state["opened"]["by"] == {"role": "owner"}
+
+    # The hub's HTTP handler calls Op.call() directly, never execute(): a CLAUDECODE set on the
+    # hub's own process (it may itself have been started from inside Claude Code) must not matter.
+    monkeypatch.setenv("CLAUDECODE", "1")
+    endpoint = next(e for e in default_registry().http_endpoints(project) if e.name == "answer")
+    state = endpoint.call({"id": "R-0001", "answers": {"q1": {"choice": "a"}}})
+    assert state["answers"]["q1"]["choice"] == "a"
 
 
 class _FakeHub:

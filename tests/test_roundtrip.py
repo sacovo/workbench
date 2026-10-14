@@ -4,6 +4,7 @@ agent and (until the UI exists) the owner run it: ask, answer, inbox returns it 
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 
 from hub_helpers import WB, project  # noqa: F401  (project: fixture)
@@ -21,7 +22,11 @@ QUESTIONS = [
 
 
 def wb(cwd, *args: str) -> subprocess.CompletedProcess:
-    return subprocess.run([str(WB), *args], cwd=cwd, capture_output=True, text=True, timeout=60)
+    # This file's own docstring: until the UI exists, this helper stands in for the owner's CLI
+    # calls too (`answer` below), so CLAUDECODE in this test process's environment (set when it
+    # itself runs as a Claude Code agent) must not gate them; see test_ops.py for that gate.
+    env = {k: v for k, v in os.environ.items() if k != "CLAUDECODE"}
+    return subprocess.run([str(WB), *args], cwd=cwd, capture_output=True, text=True, timeout=60, env=env)
 
 
 def ok(result: subprocess.CompletedProcess) -> str:

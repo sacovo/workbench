@@ -12,6 +12,7 @@ import pytest
 from hub_helpers import git, git_quiet, isolate_git, make_repo, project  # noqa: F401  (project: fixture)
 from workbench.buildid import build_id, build_state
 from workbench.errors import GitError
+from workbench.ops import default_registry
 from workbench.snapshot import snapshot
 
 DIRTY = re.compile(r"^[0-9a-f]{7}\+[0-9a-f]{8}$")
@@ -69,6 +70,34 @@ def test_untracked_files_count_unless_ignored(project):
     assert build_id(root) not in (clean, first)
     notes.unlink()
     assert build_id(root) == clean
+
+
+def test_scope_is_the_project_directory_not_the_whole_repository(tmp_path, monkeypatch):
+    # my-robot is the repository root, so this case does not arise there; examples/minimal (a
+    # project nested inside the workbench repository) is the real-world case it covers.
+    isolate_git(monkeypatch)
+    repo = tmp_path / "repo"
+    (repo / "proj" / "src" / "demo").mkdir(parents=True)
+    (repo / "proj" / "pyproject.toml").write_text('[tool.workbench]\nmanifest = "demo.manifest"\n')
+    (repo / "proj" / "src" / "demo" / "__init__.py").write_text("")
+    (repo / "other").mkdir()
+    (repo / "other" / "unrelated.py").write_text("x = 1\n")
+    git(repo, "init", "-q", "-b", "main")
+    git(repo, "config", "user.name", "Test")
+    git(repo, "config", "user.email", "test@example.invalid")
+    git(repo, "add", "-A")
+    git(repo, "commit", "-q", "-m", "initial")
+
+    proj = repo / "proj"
+    clean = build_id(proj)
+
+    (repo / "other" / "unrelated.py").write_text("x = 2\n")  # same repository, outside the project
+    (repo / "other" / "new.py").write_text("y = 1\n")  # untracked, also outside
+    assert build_id(proj) == clean
+
+    (proj / "src" / "demo" / "__init__.py").write_text("changed\n")  # inside the project
+    inside = build_id(proj)
+    assert DIRTY.match(inside) and inside != clean
 
 
 def test_outside_a_repository_or_before_a_commit_is_an_error(tmp_path, monkeypatch):
@@ -179,3 +208,23 @@ def test_snapshot_works_without_a_git_identity(tmp_path, monkeypatch):
     author = git(root, "log", "-1", "--format=%an <%ae>", result["commit"]).strip()
     assert author == "wb snapshot <wb@localhost>"
     assert build_state(root).dirty
+
+
+def test_a_review_write_changes_neither_the_build_id_nor_the_snapshot(project):
+    questions = [{"id": "q1", "text": "Which?", "options": [{"id": "a", "label": "A"}]}]
+    clean = build_id(project.root)
+    before = snapshot(project.root)
+    assert before["created"] is True
+
+    default_registry().get("ask").call({"title": "Front limit", "questions": questions}, project=project)
+    assert (project.root / "review" / "R-0001.yaml").is_file()  # the write really happened
+
+    assert build_id(project.root) == clean  # discussion, not design (docs/plan.md, "Build ids")
+    after = snapshot(project.root)
+    assert after["created"] is False  # same build id: the existing ref is reused, not recreated
+    assert (after["build"], after["ref"], after["commit"], after["tree"]) == (
+        before["build"], before["ref"], before["commit"], before["tree"],
+    )
+
+    in_tree = git_quiet(project.root, "ls-tree", "-r", "--name-only", after["tree"]).splitlines()
+    assert "review/R-0001.yaml" not in in_tree and "review/INDEX.md" not in in_tree

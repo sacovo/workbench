@@ -5,7 +5,8 @@ They run without a hub: each writes the files under the project lock. The hub wi
 functions. Roles are declared by the caller, not authenticated: `answer` and `comment` always
 write as the owner, `ask` and `note` as the agent or a reviewer, and `reply`, `set-status`,
 `attach`, `link` and `view-create` take `--role` (default agent, the CLI's usual caller; the UI
-passes owner).
+passes owner). `answer` and `comment` are registered `owner_only=True`, so the `wb` CLI (not the
+hub's HTTP path) refuses to run them as a Claude Code agent's shell (workbench.cli.execute).
 """
 
 from __future__ import annotations
@@ -280,6 +281,7 @@ def note(
 @op(
     "comment",
     summary="Open a comment as the owner (used by the UI)",
+    owner_only=True,
     human=_human_opened,
     args=_help("title", "body", "targets", "name"),
 )
@@ -348,6 +350,7 @@ def reply(
 @op(
     "answer",
     summary="Answer a decision's questions, all or some, or record approved values (owner)",
+    owner_only=True,
     human=_human_recorded,
     args=_help(
         "id",

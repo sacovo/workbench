@@ -3,13 +3,15 @@
 A reviewer, a what-if run or an old item needs the exact code a build id names, even after the
 working tree moved on. A snapshot stores it without touching anything the owner or the agent works
 with: it builds a tree in a temporary index (`GIT_INDEX_FILE` in a temp dir: read-tree HEAD,
-add -A, write-tree), writes a commit whose parent is HEAD (commit-tree -p HEAD) and points
-`refs/wb/snap/<build id>` at it. The real index, HEAD, the branch and the working tree stay as
-they were; only new objects and the one ref are written.
+add -A scoped the same way as the build id, write-tree), writes a commit whose parent is HEAD
+(commit-tree -p HEAD) and points `refs/wb/snap/<build id>` at it. The real index, HEAD, the branch
+and the working tree stay as they were; only new objects and the one ref are written.
 
-The snapshot holds what the build id hashes: tracked files as they are on disk plus untracked
-files that are not ignored. `refs/wb/snap/<id>^` is always the HEAD the id was taken on, so
-`git diff refs/wb/snap/<id>^ refs/wb/snap/<id>` is the uncommitted change. Restore with
+The snapshot holds what the build id hashes: HEAD's tree, with the working changes of the
+project's own in-scope, non-excluded paths applied on top (`workbench.buildid.project_scope`);
+excluded (`review/`, `.workbench/`) and out-of-scope paths keep HEAD's content. `refs/wb/snap/<id>^`
+is always the HEAD the id was taken on, so `git diff refs/wb/snap/<id>^ refs/wb/snap/<id>` is the
+uncommitted change, restricted to that same scope. Restore with
 `git worktree add --detach <dir> refs/wb/snap/<id>`.
 
 Snapshot commits use a fixed identity ("wb snapshot <wb@localhost>") and are never signed, so they
@@ -22,7 +24,7 @@ import os
 import tempfile
 from pathlib import Path
 
-from workbench.buildid import build_state, git, git_env, repo_root
+from workbench.buildid import build_state, git, git_env, project_scope
 from workbench.errors import Conflict, GitError
 
 SNAP_PREFIX = "refs/wb/snap/"
@@ -36,17 +38,17 @@ ATTEMPTS = 3  # a working tree that changes while we read it gets this many trie
 
 
 def snapshot(path: str | os.PathLike) -> dict:
-    """Snapshot the repository containing `path`; reuse the ref if this state has one already."""
-    top = repo_root(path)
+    """Snapshot the project at `path`; reuse the ref if this state has one already."""
     for _ in range(ATTEMPTS):
-        before = build_state(top)
-        tree = working_tree(top)
-        after = build_state(top)
+        before = build_state(path)
+        tree = working_tree(path)
+        after = build_state(path)
         if before.id == after.id and before.head == after.head:
             break
     else:
         raise Conflict(f"the working tree kept changing during {ATTEMPTS} snapshot attempts; try again")
 
+    top = before.repo
     ref = SNAP_PREFIX + before.id
     existing = _resolve(top, ref)
     if existing is None:
@@ -78,12 +80,15 @@ def snapshot(path: str | os.PathLike) -> dict:
     return _result(before, ref, existing, tree, top, created=False)
 
 
-def working_tree(top: str | os.PathLike) -> str:
-    """The tree object id of the working tree (tracked and untracked, not ignored), via a temp index."""
+def working_tree(path: str | os.PathLike) -> str:
+    """The tree object id of HEAD with the project's own in-scope working changes applied (tracked
+    and untracked, not ignored; excluded and out-of-scope paths keep HEAD's content), via a temp
+    index."""
+    top, pathspec = project_scope(path)
     with tempfile.TemporaryDirectory(prefix="wb-snapshot-") as tmp:
         env = git_env(GIT_INDEX_FILE=str(Path(tmp) / "index"))
         git(["read-tree", "HEAD"], cwd=top, env=env)
-        git(["add", "-A"], cwd=top, env=env)
+        git(["add", "-A", "--", *pathspec], cwd=top, env=env)
         return git(["write-tree"], cwd=top, env=env).decode().strip()
 
 

@@ -2,7 +2,12 @@
 
 A build id is the short HEAD commit ("5367af0") when the working tree matches HEAD, and the short
 commit plus "+" and 8 hex digits of a hash of the dirty state ("5367af0+1c2d3e4f") when it does
-not. The dirty state is:
+not. The commit part is always the repository's HEAD, even when the project is nested inside a
+larger repository. The dirty state is scoped to the project directory (the directory holding the
+`pyproject.toml` with the `[tool.workbench]` table, as a pathspec relative to the git top level;
+see `project_scope`), excluding the project's own `review/` and `.workbench/`: review items are
+discussion and `.workbench/` is private state, neither is design, so writing a comment or an
+answer must not change the id. Within that scope it is:
 
 - the diff of tracked files against HEAD, as git sees it (`git diff HEAD`, renames off): for each
   changed path its new mode and the hash of its new content, or that it was deleted;
@@ -10,11 +15,8 @@ not. The dirty state is:
 
 The hash is over this list, not over patch text, so diff settings (algorithm, context, prefixes)
 cannot change an id. Staging changes nothing: the id describes the working tree. Touching a file
-without changing it does not make the tree dirty.
-
-The id covers the whole repository that contains the project: a project inside a larger repository
-(like examples/minimal) gets a new id from any change in that repository, which is right while
-the kernel or the hub live in it too.
+without changing it does not make the tree dirty. A change elsewhere in the same repository (a
+sibling project, or the hub and kernel source above it) does not change it either.
 
 Read only. `git diff` refreshes and rewrites the index as a side effect when it meets files whose
 timestamps changed, even with GIT_OPTIONAL_LOCKS=0 (measured with git 2.55), so it runs here on a
@@ -94,6 +96,27 @@ def repo_root(path: str | os.PathLike) -> Path:
     return Path(os.fsdecode(out.rstrip(b"\n")))
 
 
+# A project's own review items and private state are discussion, not design (module docstring):
+# excluded from the dirty hash and from snapshots. Matches workbench.review.store.REVIEW_DIR and
+# workbench.project.STATE_DIR; kept as literals here rather than imported, since review.store
+# already imports this module and project.py is lower-level than either.
+_EXCLUDED_FROM_SCOPE = ("review", ".workbench")
+
+
+def project_scope(project_root: str | os.PathLike) -> tuple[Path, list[str]]:
+    """The repository top level, and the pathspec that limits a dirty-state `git diff`, `git
+    ls-files` or `git add` to `project_root`'s own files: everything under it except
+    `_EXCLUDED_FROM_SCOPE`. `project_root` is `top` itself or a directory inside it."""
+    top = repo_root(project_root)
+    rel = Path(project_root).resolve().relative_to(top).as_posix()
+
+    def _child(name: str) -> str:
+        return name if rel == "." else f"{rel}/{name}"
+
+    pathspec = [f":(literal){rel}"] + [f":(exclude,literal){_child(name)}" for name in _EXCLUDED_FROM_SCOPE]
+    return top, pathspec
+
+
 def head_commit(top: str | os.PathLike) -> str:
     try:
         return git(["rev-parse", "--verify", "--quiet", "HEAD^{commit}"], cwd=top).decode().strip()
@@ -102,10 +125,11 @@ def head_commit(top: str | os.PathLike) -> str:
 
 
 def build_state(path: str | os.PathLike) -> BuildState:
-    top = repo_root(path)
+    """The build state of the project at `path` (its own files only; see the module docstring)."""
+    top, pathspec = project_scope(path)
     head = head_commit(top)
     short = git(["rev-parse", f"--short={SHORT_LEN}", head], cwd=top).decode().strip()
-    records, changed, untracked = _dirty_records(top)
+    records, changed, untracked = _dirty_records(top, pathspec)
     if not records:
         return BuildState(id=short, repo=top, head=head, short=short, changed=0, untracked=0)
     h = hashlib.sha256()
@@ -122,12 +146,14 @@ def build_state(path: str | os.PathLike) -> BuildState:
 
 
 def build_id(path: str | os.PathLike) -> str:
-    """The build id of the repository containing `path`. Raises GitError outside a repository."""
+    """The build id of the project at `path` (see the module docstring). Raises GitError outside a
+    git repository or before its first commit."""
     return build_state(path).id
 
 
-def _dirty_records(top: Path) -> tuple[list[tuple[bytes, bytes, bytes, bytes]], int, int]:
-    """(kind, path, mode, content digest) for each tracked change and each untracked file."""
+def _dirty_records(top: Path, pathspec: list[str]) -> tuple[list[tuple[bytes, bytes, bytes, bytes]], int, int]:
+    """(kind, path, mode, content digest) for each tracked change and each untracked file inside
+    `pathspec` (from `project_scope`)."""
     index = Path(os.fsdecode(git(["rev-parse", "--git-path", "index"], cwd=top).rstrip(b"\n")))
     if not index.is_absolute():
         index = top / index
@@ -139,11 +165,11 @@ def _dirty_records(top: Path) -> tuple[list[tuple[bytes, bytes, bytes, bytes]], 
             pass  # no index yet: git reads a missing index as empty, here as there
         env = git_env(GIT_INDEX_FILE=str(scratch_index))
         raw = git(
-            ["diff", "HEAD", "--raw", "-z", "--no-renames", "--no-ext-diff", "--no-textconv"],
+            ["diff", "HEAD", "--raw", "-z", "--no-renames", "--no-ext-diff", "--no-textconv", "--", *pathspec],
             cwd=top,
             env=env,
         )
-        others = git(["ls-files", "--others", "--exclude-standard", "-z"], cwd=top, env=env)
+        others = git(["ls-files", "--others", "--exclude-standard", "-z", "--", *pathspec], cwd=top, env=env)
 
     top_b = os.fsencode(top)
     records = []

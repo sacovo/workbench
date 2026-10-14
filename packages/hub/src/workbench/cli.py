@@ -8,13 +8,17 @@ human-readable; `--json` prints the raw result. Errors go to stderr, prefixed wi
 and the exit code is 1 (2 for a malformed command line).
 
 Operations registered with needs_hub=True are forwarded to the running hub over HTTP (address and
-token from .workbench/hub.json); all others run here, in this process.
+token from .workbench/hub.json); all others run here, in this process. Operations registered with
+owner_only=True (answer, comment: their author role is fixed to the owner) are refused here when
+CLAUDECODE is set, so a Claude Code agent's shell cannot run them; a real owner action comes from
+the workbench page, which calls the same operation directly, never through this module.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import traceback
 from pathlib import Path
@@ -28,6 +32,15 @@ from workbench.project import find_project
 
 POSITIONAL_TYPES = ("str", "int", "float", "literal")
 JSON_TYPES = ("dict", "list[str]", "list[dict]")
+
+
+class OwnerOnly(WorkbenchError):
+    """An operation whose author role is fixed to the owner (registered `owner_only=True`),
+    refused here when running as a Claude Code agent's shell. Never raised on the hub's HTTP
+    path: the UI, acting for the owner, calls the same operation directly, not through this
+    module's `execute`."""
+
+    http_status = 403
 
 
 def _json_value(text: str):
@@ -118,6 +131,8 @@ def execute(o: Op, arguments: dict, directory: str | None = None) -> dict:
     """Run one operation as `wb` does: in the hub if it needs one, else here.
 
     `directory` is where the project is looked for (default: the current directory)."""
+    if o.owner_only and os.environ.get("CLAUDECODE"):
+        raise OwnerOnly("owner actions come from the workbench page, not the agent's shell")
     if o.needs_hub:
         o.bind(arguments)  # reject bad arguments here, before the round trip
         return forward(find_project(directory), o.name, arguments)

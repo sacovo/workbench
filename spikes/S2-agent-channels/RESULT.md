@@ -244,3 +244,22 @@ Notification, shared client), `settings.json`, `driver.py`, `herdr_watch.py`, `b
 - `claude-debug.log`.
 - `recorded/`: the live hook inputs.
 - `bench.json`, `check.json`.
+
+## Independent review (2026-10-14)
+
+A fresh reviewer re-measured claims 1, 2 and 4 live with a new haiku agent (3 turns), re-ran the
+overhead benchmark through the shell for every hook and scenario, and checked claim 3 against the
+hub log, driver log, transcript and Claude Code's debug log. All five claims confirmed; none
+refuted. Measured by the reviewer: hub up or down, worst p95 41 ms direct and 37 ms through the
+shell; hub down, worst single run 45 ms through the shell (bound 50 ms).
+
+Defects and caveats it found, to carry into Phase 1:
+
+- `summarize.py` gates only the combined p95 under 150 ms; the 50 ms hub-down bound is computed
+  but not part of the pass. A real test must gate both.
+- The original benchmark ran only one of 21 cells through the shell, the way Claude Code runs
+  hooks. The reviewer ran all of them; the verdict stands.
+- With the hub hung and the machine loaded, p95 reached 150 ms and single runs 246 ms. The real
+  hub must never block a hook request, and hooks should use a shorter total timeout.
+- `hooks/stop.py` reads `stop_hook_active` with `bool()`, which would treat the string "false" as
+  true. Claude Code sends a JSON boolean, so it did not matter here; parse strictly in Phase 1.

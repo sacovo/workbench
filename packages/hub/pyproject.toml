@@ -1,0 +1,16 @@
+[project]
+name = "workbench"
+version = "0.0.1"
+description = "Workbench hub: the wb CLI, and later the local app server"
+authors = [
+    { name = "Sandro Covo", email = "sandro@sandrocovo.ch" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+wb = "workbench.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.16,<0.13.0"]
+build-backend = "uv_build"

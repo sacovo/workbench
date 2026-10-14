@@ -1,0 +1,13 @@
+[project]
+name = "workbench-kernel"
+version = "0.0.1"
+description = "Workbench kernel: runs inside a project's own environment to build its CAD and simulation"
+authors = [
+    { name = "Sandro Covo", email = "sandro@sandrocovo.ch" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.12.16,<0.13.0"]
+build-backend = "uv_build"

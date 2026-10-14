@@ -1,0 +1,50 @@
+{
+  "description": "Workbench agent link: register the session with the project's hub and point the agent at owner events it has not read (wb_hook.py; fails open when no hub runs).",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 -I -S \"${CLAUDE_PLUGIN_ROOT}/hooks/wb_hook.py\" session-start",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 -I -S \"${CLAUDE_PLUGIN_ROOT}/hooks/wb_hook.py\" user-prompt-submit",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 -I -S \"${CLAUDE_PLUGIN_ROOT}/hooks/wb_hook.py\" post-tool-use",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 -I -S \"${CLAUDE_PLUGIN_ROOT}/hooks/wb_hook.py\" stop",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

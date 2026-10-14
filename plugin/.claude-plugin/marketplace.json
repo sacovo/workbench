@@ -1,0 +1,14 @@
+{
+  "name": "workbench",
+  "owner": {
+    "name": "Sandro Covo"
+  },
+  "description": "The workbench plugin, loaded in place from this directory (a directory marketplace whose root is the plugin itself).",
+  "plugins": [
+    {
+      "name": "workbench",
+      "source": "./",
+      "description": "Workbench agent link: hooks, the wb skill and the wb-reviewer subagent."
+    }
+  ]
+}

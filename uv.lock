@@ -12,7 +12,6 @@ members = [
 dev = [
     { name = "pytest", specifier = ">=9.1.1" },
     { name = "workbench", editable = "packages/hub" },
-    { name = "workbench-kernel", editable = "packages/kernel" },
 ]
 
 [[package]]

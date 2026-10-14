@@ -1,19 +1,18 @@
 [tool.uv.workspace]
 members = ["packages/*"]
 # examples/minimal is its own uv project (not a workspace member): it mirrors my-robot
-# at toy scale, with its own lockfile and environment, so the hub and kernel packages
-# never pull in build123d or mujoco.
+# at toy scale, with its own lockfile and environment. The kernel depends on build123d and
+# runs inside a project's environment, so it is installed and tested there
+# (examples/minimal, my-robot), not in this root environment, which holds only the hub.
 exclude = ["examples/minimal"]
 
 [tool.uv.sources]
 workbench = { workspace = true }
-workbench-kernel = { workspace = true }
 
 [dependency-groups]
 dev = [
     "pytest>=9.1.1",
     "workbench",
-    "workbench-kernel",
 ]
 
 [tool.pytest.ini_options]

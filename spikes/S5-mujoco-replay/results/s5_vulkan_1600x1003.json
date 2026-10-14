@@ -1,0 +1,61 @@
+{
+ "init": {
+  "robot_file": "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/src/robot/__init__.py",
+  "import_s": 1.620595394168049,
+  "spec_and_compile_s": 1.0607764511369169,
+  "nbody": 21,
+  "ngeom": 134,
+  "port": 3959
+ },
+ "runs": {
+  "swing": 364,
+  "trip_above": 195,
+  "trip_below": 242
+ },
+ "window": [
+  1600,
+  1003
+ ],
+ "sections": [
+  "clear"
+ ],
+ "gl": "vulkan",
+ "flags": [
+  "--use-angle=vulkan",
+  "--enable-features=Vulkan",
+  "--ignore-gpu-blocklist"
+ ],
+ "viewerAccess": {
+  "capturedByPatch": true,
+  "neededSplashRerender": false,
+  "queryObjects": {
+   "instances": 1,
+   "sameAsPatch": true
+  }
+ },
+ "chrome": "Chrome/153.0.8010.36",
+ "glInfo": {
+  "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+  "renderer": "ANGLE (AMD, Vulkan 1.4.354 (AMD Radeon AI PRO R9700 (RADV GFX1201) (0x00007551)), radv)",
+  "canvas": [
+   1580,
+   856
+  ],
+  "dpr": 1
+ },
+ "clear": {
+  "stock": {
+   "tracksLoaded": 80,
+   "clipDuration": 3.2249999999999535,
+   "max_pos_err_m": 0.4784434043337192,
+   "max_angle_err_rad": 2.9626101904363518
+  },
+  "page_clear": {
+   "tracksLoaded": 40,
+   "clipDuration": 3.2249999999999535,
+   "max_pos_err_m": 5.746271480866483e-8,
+   "max_angle_err_rad": 1.1542389828584842e-7
+  }
+ },
+ "console": []
+}

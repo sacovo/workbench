@@ -1,0 +1,27 @@
+[server] Info: OCP Viewer runs at http://127.0.0.1:3959
+2026-10-14T08:09:07.571Z host: {"robot_file":"/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/src/robot/__init__.py","import_s":1.620595394168049,"spec_and_compile_s":1.0607764511369169,"nbody":21,"ngeom":134,"port":3959} runs {"swing":364,"trip_above":195,"trip_below":242}
+2026-10-14T08:09:07.572Z == vulkan 1600x1003
+[server] Info: Browser as viewer client registered
+2026-10-14T08:09:09.695Z   viewer access: {"capturedByPatch":true,"neededSplashRerender":false,"queryObjects":{"instances":1,"sameAsPatch":true}}
+2026-10-14T08:09:09.699Z   GL: ANGLE (AMD, Vulkan 1.4.354 (AMD Radeon AI PRO R9700 (RADV GFX1201) (0x00007551)), radv) canvas 1580,856
+2026-10-14T08:09:10.340Z   show clear-show-stock: total 631 ms (python build 194 config 16 send 32; page recv 92 handle 317 gpu 4 raf 3) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T08:09:10.598Z   second recording after the first, stock: 80 tracks loaded, max pos err 4.78e-1 m
+[host] CameraKeepWarning: reset_camera is set to KEEP. If shown objects are not visible use the 'resize' and a 'view' button
+2026-10-14T08:09:11.113Z   show clear-show-page_clear: total 506 ms (python build 87 config 11 send 23; page recv 84 handle 318 gpu 4 raf 0) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T08:09:11.318Z   second recording after the first, page_clear: 40 tracks loaded, max pos err 5.75e-8 m
+[server] connection handler failed
+[server] Traceback (most recent call last):
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/websockets/sync/server.py", line 781, in sock_handler
+[server]     handler(connection)
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/ocp_viewer/server/__init__.py", line 94, in <lambda>
+[server]     lambda ws: handle(viewer, ws),
+[server]                ^^^^^^^^^^^^^^^^^^
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/ocp_viewer/server/sockets.py", line 57, in handle
+[server]     for raw in ws:
+[server]                ^^
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/websockets/sync/connection.py", line 247, in __iter__
+[server]     yield self.recv()
+[server]           ^^^^^^^^^^^
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/websockets/sync/connection.py", line 342, in recv
+[server]     raise self.protocol.close_exc from self.recv_exc
+[server] websockets.exceptions.ConnectionClosedError: no close frame received or sent

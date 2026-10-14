@@ -1,0 +1,629 @@
+{
+ "init": {
+  "robot_file": "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/src/robot/__init__.py",
+  "import_s": 1.8207790390588343,
+  "spec_and_compile_s": 0.8300581281073391,
+  "nbody": 21,
+  "ngeom": 134,
+  "port": 3959
+ },
+ "runs": {
+  "swing": 364,
+  "trip_above": 195,
+  "trip_below": 242
+ },
+ "window": [
+  2560,
+  1440
+ ],
+ "sections": [
+  "load",
+  "play"
+ ],
+ "gl": "egl",
+ "flags": [
+  "--use-gl=angle",
+  "--use-angle=gl-egl",
+  "--ignore-gpu-blocklist"
+ ],
+ "viewerAccess": {
+  "capturedByPatch": true,
+  "neededSplashRerender": false,
+  "queryObjects": {
+   "instances": 1,
+   "sameAsPatch": true
+  }
+ },
+ "chrome": "Chrome/153.0.8010.36",
+ "glInfo": {
+  "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+  "renderer": "ANGLE (AMD, AMD Radeon AI PRO R9700 (radeonsi gfx1201 ACO), OpenGL ES 3.2)",
+  "canvas": [
+   2540,
+   1293
+  ],
+  "dpr": 1
+ },
+ "load": {
+  "rows": [
+   {
+    "tag": "load-0-visual-direct",
+    "which": "visual",
+    "primitives": "direct",
+    "python": {
+     "build_s": 0.08232023613527417,
+     "config_s": 0.0088470708578825,
+     "dumps_s": 0.0021611424162983894,
+     "wire_bytes": 10703388,
+     "send_ms": 24.593994140625
+    },
+    "page": {
+     "recv_after_send_start_ms": 60.585205078125,
+     "handle_ms": 330.300048828125,
+     "viewer_render_ms": 270.5,
+     "gpu_ms": 1.900146484375,
+     "raf_after_gpu_ms": 5
+    },
+    "total_ms": 491.123046875,
+    "from_send_ms": 397.785400390625,
+    "counts": {
+     "frontMeshes": 74,
+     "frontTriangles": 815806,
+     "groups": 96
+    },
+    "stats": {
+     "which": "visual",
+     "primitives": "direct",
+     "bodies": 21,
+     "leaves": 74,
+     "instances": 43,
+     "instances_by_kind": {
+      "direct": 29,
+      "brep": 0,
+      "mesh": 14
+     },
+     "tessellation_s_by_kind": {
+      "direct": 0.01943726558238268,
+      "brep": 0,
+      "mesh": 0.0011087260209023952
+     },
+     "unique_vertices": 165976,
+     "unique_triangles": 330918,
+     "drawn_triangles": 815806,
+     "timings": {
+      "tessellate_s": 0.03504996793344617,
+      "tree_s": 0.027245712000876665,
+      "encode_s": 0.019669160712510347,
+      "total_s": 0.08196677127853036
+     },
+     "bb_mm": {
+      "xmin": -600,
+      "xmax": 600,
+      "ymin": -600,
+      "ymax": 600,
+      "zmin": 0,
+      "zmax": 857.4
+     }
+    }
+   },
+   {
+    "tag": "load-1-visual-direct",
+    "which": "visual",
+    "primitives": "direct",
+    "python": {
+     "build_s": 0.0801603039726615,
+     "config_s": 0.011631642002612352,
+     "dumps_s": 0.0015556029975414276,
+     "wire_bytes": 10703388,
+     "send_ms": 26.398193359375
+    },
+    "page": {
+     "recv_after_send_start_ms": 68.289794921875,
+     "handle_ms": 249.60009765625,
+     "viewer_render_ms": 208.10009765625,
+     "gpu_ms": 1.7998046875,
+     "raf_after_gpu_ms": 0.5
+    },
+    "total_ms": 413.54638671875,
+    "from_send_ms": 320.189697265625,
+    "counts": {
+     "frontMeshes": 74,
+     "frontTriangles": 815806,
+     "groups": 96
+    },
+    "stats": {
+     "which": "visual",
+     "primitives": "direct",
+     "bodies": 21,
+     "leaves": 74,
+     "instances": 43,
+     "instances_by_kind": {
+      "direct": 29,
+      "brep": 0,
+      "mesh": 14
+     },
+     "tessellation_s_by_kind": {
+      "direct": 0.019299835432320833,
+      "brep": 0,
+      "mesh": 0.0010708863846957684
+     },
+     "unique_vertices": 165976,
+     "unique_triangles": 330918,
+     "drawn_triangles": 815806,
+     "timings": {
+      "tessellate_s": 0.03459953982383013,
+      "tree_s": 0.02635370008647442,
+      "encode_s": 0.018935088999569416,
+      "total_s": 0.0798896187916398
+     },
+     "bb_mm": {
+      "xmin": -600,
+      "xmax": 600,
+      "ymin": -600,
+      "ymax": 600,
+      "zmin": 0,
+      "zmax": 857.4
+     }
+    }
+   },
+   {
+    "tag": "load-2-visual-direct",
+    "which": "visual",
+    "primitives": "direct",
+    "python": {
+     "build_s": 0.08203768078237772,
+     "config_s": 0.011979797389358282,
+     "dumps_s": 0.001401220913976431,
+     "wire_bytes": 10703387,
+     "send_ms": 30.9013671875
+    },
+    "page": {
+     "recv_after_send_start_ms": 96.028076171875,
+     "handle_ms": 285.400146484375,
+     "viewer_render_ms": 237.800048828125,
+     "gpu_ms": 1.39990234375,
+     "raf_after_gpu_ms": 0.5
+    },
+    "total_ms": 478.756103515625,
+    "from_send_ms": 383.328125,
+    "counts": {
+     "frontMeshes": 74,
+     "frontTriangles": 815806,
+     "groups": 96
+    },
+    "stats": {
+     "which": "visual",
+     "primitives": "direct",
+     "bodies": 21,
+     "leaves": 74,
+     "instances": 43,
+     "instances_by_kind": {
+      "direct": 29,
+      "brep": 0,
+      "mesh": 14
+     },
+     "tessellation_s_by_kind": {
+      "direct": 0.01981301326304674,
+      "brep": 0,
+      "mesh": 0.0010783546604216099
+     },
+     "unique_vertices": 165976,
+     "unique_triangles": 330918,
+     "drawn_triangles": 815806,
+     "timings": {
+      "tessellate_s": 0.034988857340067625,
+      "tree_s": 0.027794139925390482,
+      "encode_s": 0.018983140122145414,
+      "total_s": 0.08176795719191432
+     },
+     "bb_mm": {
+      "xmin": -600,
+      "xmax": 600,
+      "ymin": -600,
+      "ymax": 600,
+      "zmin": 0,
+      "zmax": 857.4
+     }
+    }
+   },
+   {
+    "tag": "load-3-visual-brep",
+    "which": "visual",
+    "primitives": "brep",
+    "python": {
+     "build_s": 0.07508040918037295,
+     "config_s": 0.008758048992604017,
+     "dumps_s": 0.001585514284670353,
+     "wire_bytes": 10895048,
+     "send_ms": 17.8505859375
+    },
+    "page": {
+     "recv_after_send_start_ms": 42.187255859375,
+     "handle_ms": 275.10009765625,
+     "viewer_render_ms": 229.60009765625,
+     "gpu_ms": 1.89990234375,
+     "raf_after_gpu_ms": 0.7001953125
+    },
+    "total_ms": 405.319580078125,
+    "from_send_ms": 319.887451171875,
+    "counts": {
+     "frontMeshes": 74,
+     "frontTriangles": 829610,
+     "groups": 96
+    },
+    "stats": {
+     "which": "visual",
+     "primitives": "brep",
+     "bodies": 21,
+     "leaves": 74,
+     "instances": 43,
+     "instances_by_kind": {
+      "direct": 0,
+      "brep": 29,
+      "mesh": 14
+     },
+     "tessellation_s_by_kind": {
+      "direct": 0,
+      "brep": 0.013051990885287523,
+      "mesh": 0.0011382680386304855
+     },
+     "unique_vertices": 168920,
+     "unique_triangles": 336570,
+     "drawn_triangles": 829610,
+     "timings": {
+      "tessellate_s": 0.028685372788459063,
+      "tree_s": 0.026781925931572914,
+      "encode_s": 0.019417766947299242,
+      "total_s": 0.07488671597093344
+     },
+     "bb_mm": {
+      "xmin": -600,
+      "xmax": 600,
+      "ymin": -600,
+      "ymax": 600,
+      "zmin": 0,
+      "zmax": 857.4
+     }
+    }
+   },
+   {
+    "tag": "load-4-collision-direct",
+    "which": "collision",
+    "primitives": "direct",
+    "python": {
+     "build_s": 0.03546468401327729,
+     "config_s": 0.009183745365589857,
+     "dumps_s": 0.00037234602496027946,
+     "wire_bytes": 648172,
+     "send_ms": 3.0419921875
+    },
+    "page": {
+     "recv_after_send_start_ms": 5.198486328125,
+     "handle_ms": 174.10009765625,
+     "viewer_render_ms": 143.2001953125,
+     "gpu_ms": 1.199951171875,
+     "raf_after_gpu_ms": 0.5
+    },
+    "total_ms": 226.030517578125,
+    "from_send_ms": 180.99853515625,
+    "counts": {
+     "frontMeshes": 76,
+     "frontTriangles": 58906,
+     "groups": 94
+    },
+    "stats": {
+     "which": "collision",
+     "primitives": "direct",
+     "bodies": 17,
+     "leaves": 76,
+     "instances": 36,
+     "instances_by_kind": {
+      "direct": 33,
+      "brep": 0,
+      "mesh": 3
+     },
+     "tessellation_s_by_kind": {
+      "direct": 0.022431119345128536,
+      "brep": 0,
+      "mesh": 0.00013864226639270782
+     },
+     "unique_vertices": 9257,
+     "unique_triangles": 16940,
+     "drawn_triangles": 58906,
+     "timings": {
+      "tessellate_s": 0.027116170153021812,
+      "tree_s": 0.004689140245318413,
+      "encode_s": 0.0035006208345294,
+      "total_s": 0.03530704090371728
+     },
+     "bb_mm": {
+      "xmin": -600,
+      "xmax": 600,
+      "ymin": -600,
+      "ymax": 600,
+      "zmin": 0,
+      "zmax": 857.4
+     }
+    }
+   },
+   {
+    "tag": "load-5-collision-brep",
+    "which": "collision",
+    "primitives": "brep",
+    "python": {
+     "build_s": 0.05178887490183115,
+     "config_s": 0.007342298049479723,
+     "dumps_s": 0.0006014793179929256,
+     "wire_bytes": 869261,
+     "send_ms": 2.076171875
+    },
+    "page": {
+     "recv_after_send_start_ms": 4.94873046875,
+     "handle_ms": 153.5,
+     "viewer_render_ms": 130.39990234375,
+     "gpu_ms": 1.10009765625,
+     "raf_after_gpu_ms": 0.60009765625
+    },
+    "total_ms": 219.8896484375,
+    "from_send_ms": 160.14892578125,
+    "counts": {
+     "frontMeshes": 76,
+     "frontTriangles": 101658,
+     "groups": 94
+    },
+    "stats": {
+     "which": "collision",
+     "primitives": "brep",
+     "bodies": 17,
+     "leaves": 76,
+     "instances": 36,
+     "instances_by_kind": {
+      "direct": 0,
+      "brep": 33,
+      "mesh": 3
+     },
+     "tessellation_s_by_kind": {
+      "direct": 0,
+      "brep": 0.033304319716989994,
+      "mesh": 0.00020299293100833893
+     },
+     "unique_vertices": 12635,
+     "unique_triangles": 23462,
+     "drawn_triangles": 101658,
+     "timings": {
+      "tessellate_s": 0.04361548414453864,
+      "tree_s": 0.0052380370907485485,
+      "encode_s": 0.002779910806566477,
+      "total_s": 0.051635072100907564
+     },
+     "bb_mm": {
+      "xmin": -600,
+      "xmax": 600,
+      "ymin": -600,
+      "ymax": 600,
+      "zmin": 0,
+      "zmax": 857.4
+     }
+    }
+   }
+  ],
+  "pass_under_5s": true,
+  "worst_visual_total_ms": 491.123046875
+ },
+ "play": {
+  "visual_swing": {
+   "run": "swing",
+   "which": "visual",
+   "how": "ui button",
+   "running": true,
+   "anim": {
+    "tracks": 40,
+    "bodies": 20,
+    "keyframes": 364,
+    "duration_s": 6.0399999999998935,
+    "build_tracks_s": 0.04263571975752711,
+    "wire_bytes": 1334112,
+    "t_send_start_wall_ms": 1791964997735.1802,
+    "t_send_end_wall_ms": 1791964997742.1162
+   },
+   "animRecv": {
+    "handle_ms": 14.89990234375,
+    "recv_after_send_ms": 15.419921875
+   },
+   "info": {
+    "tracks": 40,
+    "clipTracks": 40,
+    "duration": 6.0399999999998935,
+    "clipDuration": 6.0399999999998935,
+    "keyframes": 364,
+    "timesType": "Float32Array",
+    "valuesType": "Float32Array",
+    "names": [
+     "|sim|chassis.position",
+     "|sim|chassis.quaternion",
+     "|sim|carriage.position",
+     "|sim|carriage.quaternion",
+     "|sim|left_base.position",
+     "|sim|left_base.quaternion"
+    ],
+    "mode": "animation",
+    "running": false
+   },
+   "frames": 600,
+   "elapsedMs": 10007.8,
+   "interval": {
+    "n": 595,
+    "mean": 16.665882352941153,
+    "median": 16.69999999999891,
+    "p95": 16.700000000000728,
+    "p99": 16.80000000000109,
+    "max": 16.80000000000109,
+    "min": 16.5
+   },
+   "fps": 60.002823662290076,
+   "over25ms": 0,
+   "over50ms": 0,
+   "updateCpu": {
+    "n": 601,
+    "mean": 2.6222961833592064,
+    "median": 2.299999713897705,
+    "p95": 4.899999618530273,
+    "p99": 6.900000095367432,
+    "max": 13,
+    "min": 1.1999998092651367
+   },
+   "render": {
+    "calls": 8,
+    "triangles": 923,
+    "lines": 0
+   },
+   "clockRate": 0.9980466597977907,
+   "smooth": true
+  },
+  "collision_swing": {
+   "run": "swing",
+   "which": "collision",
+   "how": "ui button",
+   "running": true,
+   "anim": {
+    "tracks": 32,
+    "bodies": 16,
+    "keyframes": 364,
+    "duration_s": 6.0399999999998935,
+    "build_tracks_s": 0.015173973981291056,
+    "wire_bytes": 1067522,
+    "t_send_start_wall_ms": 1791965008527.0554,
+    "t_send_end_wall_ms": 1791965008532.0554
+   },
+   "animRecv": {
+    "handle_ms": 16.300048828125,
+    "recv_after_send_ms": 8.8447265625
+   },
+   "info": {
+    "tracks": 32,
+    "clipTracks": 32,
+    "duration": 6.0399999999998935,
+    "clipDuration": 6.0399999999998935,
+    "keyframes": 364,
+    "timesType": "Float32Array",
+    "valuesType": "Float32Array",
+    "names": [
+     "|sim|chassis.position",
+     "|sim|chassis.quaternion",
+     "|sim|carriage.position",
+     "|sim|carriage.quaternion",
+     "|sim|left_shoulder.position",
+     "|sim|left_shoulder.quaternion"
+    ],
+    "mode": "animation",
+    "running": false
+   },
+   "frames": 600,
+   "elapsedMs": 10000,
+   "interval": {
+    "n": 595,
+    "mean": 16.666050420168066,
+    "median": 16.69999999999891,
+    "p95": 16.700000000000728,
+    "p99": 16.799999999999272,
+    "max": 16.80000000000291,
+    "min": 16.5
+   },
+   "fps": 60.0022185694261,
+   "over25ms": 0,
+   "over50ms": 0,
+   "updateCpu": {
+    "n": 601,
+    "mean": 3.584193010695167,
+    "median": 3.1999998092651367,
+    "p95": 6.300000190734863,
+    "p99": 10.099999904632568,
+    "max": 20.199999809265137,
+    "min": 1.4000000953674316
+   },
+   "render": {
+    "calls": 8,
+    "triangles": 923,
+    "lines": 0
+   },
+   "clockRate": 0.9996093319576476,
+   "smooth": true
+  },
+  "visual_trip_above": {
+   "run": "trip_above",
+   "which": "visual",
+   "how": "ui button",
+   "running": true,
+   "anim": {
+    "tracks": 40,
+    "bodies": 20,
+    "keyframes": 195,
+    "duration_s": 3.2249999999999535,
+    "build_tracks_s": 0.01887029828503728,
+    "wire_bytes": 712849,
+    "t_send_start_wall_ms": 1791965019475.721,
+    "t_send_end_wall_ms": 1791965019482.6113
+   },
+   "animRecv": {
+    "handle_ms": 18.89990234375,
+    "recv_after_send_ms": 9.17919921875
+   },
+   "info": {
+    "tracks": 40,
+    "clipTracks": 40,
+    "duration": 3.2249999999999535,
+    "clipDuration": 3.2249999999999535,
+    "keyframes": 195,
+    "timesType": "Float32Array",
+    "valuesType": "Float32Array",
+    "names": [
+     "|sim|chassis.position",
+     "|sim|chassis.quaternion",
+     "|sim|carriage.position",
+     "|sim|carriage.quaternion",
+     "|sim|left_base.position",
+     "|sim|left_base.quaternion"
+    ],
+    "mode": "animation",
+    "running": false
+   },
+   "frames": 600,
+   "elapsedMs": 10000.599999999999,
+   "interval": {
+    "n": 595,
+    "mean": 16.66588235294117,
+    "median": 16.69999999999709,
+    "p95": 16.700000000004366,
+    "p99": 16.80000000000291,
+    "max": 16.80000000000291,
+    "min": 16.5
+   },
+   "fps": 60.00282366229001,
+   "over25ms": 0,
+   "over50ms": 0,
+   "updateCpu": {
+    "n": 601,
+    "mean": 2.649417628067702,
+    "median": 2.4000000953674316,
+    "p95": 4.299999713897705,
+    "p99": 6.900000095367432,
+    "max": 13.400000095367432,
+    "min": 0.9000000953674316
+   },
+   "render": {
+    "calls": 8,
+    "triangles": 923,
+    "lines": 0
+   },
+   "clockRate": 1.000170291188396,
+   "smooth": true
+  },
+  "criteria": {
+   "medianMs": 17.5,
+   "p95Ms": 20,
+   "maxMs": 50,
+   "clockRateTol": 0.02
+  }
+ },
+ "console": []
+}

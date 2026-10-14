@@ -1,0 +1,34 @@
+[server] Info: OCP Viewer runs at http://127.0.0.1:3959
+2026-10-14T08:07:29.233Z host: {"robot_file":"/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/src/robot/__init__.py","import_s":2.2603760506026447,"spec_and_compile_s":1.3254765942692757,"nbody":21,"ngeom":134,"port":3959} runs {"swing":364,"trip_above":195,"trip_below":242}
+2026-10-14T08:07:29.234Z == vulkan 1600x1002
+[server] Info: Browser as viewer client registered
+2026-10-14T08:07:31.299Z   viewer access: {"capturedByPatch":true,"neededSplashRerender":false,"queryObjects":{"instances":1,"sameAsPatch":true}}
+2026-10-14T08:07:31.301Z   GL: ANGLE (AMD, Vulkan 1.4.354 (AMD Radeon AI PRO R9700 (RADV GFX1201) (0x00007551)), radv) canvas 1580,855
+2026-10-14T08:07:32.047Z   show slider-show-direct: total 729 ms (python build 226 config 11 send 32; page recv 95 handle 384 gpu 5 raf 2) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T08:07:33.229Z   slider direct: shown median 8.1 ms p95 14.0 max 14.0; pose err by update 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 m
+[host] CameraKeepWarning: reset_camera is set to KEEP. If shown objects are not visible use the 'resize' and a 'view' button
+2026-10-14T08:07:33.739Z   show slider-show-direct_held: total 498 ms (python build 81 config 11 send 21; page recv 79 handle 322 gpu 3 raf 1) wire 10.70 MB, 74 meshes 815806 tris
+[host] DeprecationWarning: connect() must be used as a context manager: with connect(...) as websocket: ...; alternatively, use websocket = connect(..., legacy=True) to connect directly
+2026-10-14T08:07:34.891Z   slider direct_held: shown median 6.7 ms p95 18.9 max 18.9; pose err by update 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 m
+2026-10-14T08:07:35.364Z   show slider-show-animation: total 461 ms (python build 83 config 9 send 27; page recv 76 handle 288 gpu 2 raf 1) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T08:07:35.644Z   slider animation: shown median 24.4 ms p95 28.1 max 28.1; pose err by update 1.5e-8 3.7e-1 1.3e-1 5.1e-1 m
+2026-10-14T08:07:36.087Z   show slider-show-direct_then_animation: total 421 ms (python build 69 config 8 send 29; page recv 64 handle 275 gpu 2 raf 1) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T08:07:36.270Z   slider direct_then_animation: shown median 23.6 ms p95 29.6 max 29.6; pose err by update 0.0e+0 3.7e-1 1.8e-1 m
+2026-10-14T08:07:36.680Z   show slider-show-reshow: total 395 ms (python build 83 config 11 send 25; page recv 70 handle 225 gpu 3 raf 1) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T08:07:37.808Z   slider reshow: shown median 318.0 ms p95 369.2 max 369.2; pose err by update 0.0e+0 0.0e+0 0.0e+0 m
+[server] connection handler failed
+[server] Traceback (most recent call last):
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/websockets/sync/server.py", line 781, in sock_handler
+[server]     handler(connection)
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/ocp_viewer/server/__init__.py", line 94, in <lambda>
+[server]     lambda ws: handle(viewer, ws),
+[server]                ^^^^^^^^^^^^^^^^^^
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/ocp_viewer/server/sockets.py", line 57, in handle
+[server]     for raw in ws:
+[server]                ^^
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/websockets/sync/connection.py", line 247, in __iter__
+[server]     yield self.recv()
+[server]           ^^^^^^^^^^^
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/websockets/sync/connection.py", line 342, in recv
+[server]     raise self.protocol.close_exc from self.recv_exc
+[server] websockets.exceptions.ConnectionClosedError: no close frame received or sent

@@ -1,0 +1,216 @@
+{
+ "init": {
+  "robot_file": "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/src/robot/__init__.py",
+  "import_s": 1.6177568100392818,
+  "spec_and_compile_s": 0.8408874836750329,
+  "nbody": 21,
+  "ngeom": 134,
+  "port": 0
+ },
+ "poses": {
+  "cached": true,
+  "names": [
+   "stretched",
+   "tucked",
+   "up",
+   "sideways",
+   "opposite",
+   "corner"
+  ],
+  "values": {
+   "stretched": [
+    0.0,
+    1.4544410833333334,
+    -1.4083333333333332,
+    0.0,
+    0.0
+   ],
+   "tucked": {
+    "left": [
+     -1.5707963267948966,
+     -0.8726646499999999,
+     0.28166666666666673,
+     -1.658063,
+     0.0
+    ],
+    "right": [
+     1.5707963267948966,
+     -0.8726646499999999,
+     0.28166666666666673,
+     -1.658063,
+     0.0
+    ]
+   },
+   "up": [
+    0.0,
+    -0.5817764333333333,
+    -0.845,
+    -0.27634383333333346,
+    0.0
+   ],
+   "sideways": {
+    "left": [
+     -1.91986,
+     1.4544410833333334,
+     -1.4083333333333332,
+     0.0,
+     0.0
+    ],
+    "right": [
+     -1.2799066666666667,
+     1.4544410833333334,
+     -1.4083333333333332,
+     0.0,
+     0.0
+    ]
+   },
+   "opposite": {
+    "left": [
+     1.2799066666666667,
+     1.4544410833333334,
+     -1.4083333333333332,
+     0.0,
+     0.0
+    ],
+    "right": [
+     1.91986,
+     1.4544410833333334,
+     -1.4083333333333332,
+     0.0,
+     0.0
+    ]
+   },
+   "corner": {
+    "left": [
+     -1.0471975511965976,
+     1.4544410833333334,
+     -1.4083333333333332,
+     0.0,
+     0.0
+    ],
+    "right": [
+     -0.9599310885968811,
+     1.4544410833333334,
+     -1.4083333333333332,
+     0.0,
+     0.0
+    ]
+   }
+  }
+ },
+ "record": {
+  "top_lift_m": 0.6,
+  "swing": {
+   "recipe": "stability.arm_swing(model, poses['up'], poses['stretched'], lift=0.6, joint_speed=RULES.arm_speed_limit=1.0)",
+   "returned_peak_tilt_deg": 0.030919001962465345,
+   "unrecorded_peak_tilt_deg": 0.030919001962465345,
+   "bit_identical_to_unrecorded": true,
+   "wall_s_unrecorded": 0.22204634081572294,
+   "wall_s_recorded": 0.2301660468801856,
+   "foreign_steps": 0,
+   "fk_consistency": {
+    "max_xpos_err_m": 0.0,
+    "max_xquat_err": 0.0,
+    "peak_body_speed_m_s": 0.5698901121696147,
+    "naive_one_step_stamp_error_m": 0.0028494505608480736
+   },
+   "samples": 364,
+   "t_first": 0.0,
+   "t_last": 6.0399999999998935,
+   "end_time": 6.0399999999998935,
+   "steps": 1208,
+   "raw_bytes": {
+    "times": 2912,
+    "xpos": 183456,
+    "xquat": 244608,
+    "qpos": 58240
+   },
+   "raw_total_bytes": 489216,
+   "npz_bytes": 258622,
+   "peak_tilt_from_recording_deg": 0.02914377719036852,
+   "final_tilt_from_recording_deg": 0.01623296909491023,
+   "mean_sample_interval_s": 0.01663911845729998,
+   "sample_intervals_s": [
+    0.005,
+    0.015,
+    0.02
+   ]
+  },
+  "trip_limit": {
+   "pose": "stretched",
+   "direction_deg": 0.0,
+   "limit_m_s": 0.53125,
+   "bracket_m_s": 0.0078125,
+   "bisection_wall_s": 0.39366459380835295
+  },
+  "trip_above": {
+   "recipe": "stability.falls_when_tripping(model, poses['stretched'], lift=0.6, speed=0.5390625, direction_deg=0.0)",
+   "speed_m_s": 0.5390625,
+   "returned_falls": true,
+   "unrecorded_falls": true,
+   "wall_s_recorded": 0.06570453383028507,
+   "fk_consistency": {
+    "max_xpos_err_m": 0.0,
+    "max_xquat_err": 0.0,
+    "peak_body_speed_m_s": 1.651346439153095,
+    "naive_one_step_stamp_error_m": 0.008256732195765474
+   },
+   "samples": 195,
+   "t_first": 0.0,
+   "t_last": 3.2249999999999535,
+   "end_time": 3.2249999999999535,
+   "steps": 645,
+   "raw_bytes": {
+    "times": 1560,
+    "xpos": 98280,
+    "xquat": 131040,
+    "qpos": 31200
+   },
+   "raw_total_bytes": 262080,
+   "npz_bytes": 160608,
+   "peak_tilt_from_recording_deg": 40.003631720486034,
+   "final_tilt_from_recording_deg": 40.003631720486034,
+   "mean_sample_interval_s": 0.016623711340205946,
+   "sample_intervals_s": [
+    0.005,
+    0.015,
+    0.02
+   ]
+  },
+  "trip_below": {
+   "recipe": "stability.falls_when_tripping(model, poses['stretched'], lift=0.6, speed=0.53125, direction_deg=0.0)",
+   "speed_m_s": 0.53125,
+   "returned_falls": false,
+   "unrecorded_falls": false,
+   "wall_s_recorded": 0.08625271497294307,
+   "fk_consistency": {
+    "max_xpos_err_m": 0.0,
+    "max_xquat_err": 0.0,
+    "peak_body_speed_m_s": 0.6650500899256372,
+    "naive_one_step_stamp_error_m": 0.003325250449628186
+   },
+   "samples": 242,
+   "t_first": 0.0,
+   "t_last": 4.004999999999937,
+   "end_time": 4.004999999999937,
+   "steps": 801,
+   "raw_bytes": {
+    "times": 1936,
+    "xpos": 121968,
+    "xquat": 162624,
+    "qpos": 38720
+   },
+   "raw_total_bytes": 325248,
+   "npz_bytes": 202445,
+   "peak_tilt_from_recording_deg": 9.849488871266598,
+   "final_tilt_from_recording_deg": 0.016232971138053887,
+   "mean_sample_interval_s": 0.016618257261410526,
+   "sample_intervals_s": [
+    0.005,
+    0.015,
+    0.02
+   ]
+  }
+ },
+ "wall_s": 3.7208346342667937
+}

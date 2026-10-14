@@ -1,0 +1,392 @@
+{
+ "robot_file": "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/src/robot/__init__.py",
+ "model": {
+  "nbody": 21,
+  "ngeom": 134,
+  "nmesh": 36,
+  "nmeshvert": 347128,
+  "nmeshface": 696328,
+  "timestep": 0.005
+ },
+ "robot_import_s": 2.3149399370886385,
+ "robot_spec_s": 1.0100062959827483,
+ "compile_s": 0.3435594430193305,
+ "variants": [
+  {
+   "which": "visual",
+   "primitives": "direct",
+   "repeat": 0,
+   "build_s": 0.0978399240411818,
+   "orjson_dumps_s": 0.005425570998340845,
+   "wire_bytes": 10698289,
+   "stats": {
+    "which": "visual",
+    "primitives": "direct",
+    "bodies": 21,
+    "leaves": 74,
+    "instances": 43,
+    "instances_by_kind": {
+     "direct": 29,
+     "brep": 0,
+     "mesh": 14
+    },
+    "tessellation_s_by_kind": {
+     "direct": 0.019216128159314394,
+     "brep": 0.0,
+     "mesh": 0.001284486148506403
+    },
+    "unique_vertices": 165976,
+    "unique_triangles": 330918,
+    "drawn_triangles": 815806,
+    "timings": {
+     "tessellate_s": 0.03665815107524395,
+     "tree_s": 0.026554131880402565,
+     "encode_s": 0.03433599695563316,
+     "total_s": 0.09755078004673123
+    },
+    "bb_mm": {
+     "xmin": -600.0,
+     "xmax": 600.0,
+     "ymin": -600.0,
+     "ymax": 600.0,
+     "zmin": 0.0,
+     "zmax": 857.4
+    }
+   },
+   "world_check": {
+    "leaves_checked": 74,
+    "max_position_error_m": 1.1102230246251565e-16,
+    "max_rotation_matrix_error": 2.220446049250313e-16
+   }
+  },
+  {
+   "which": "visual",
+   "primitives": "direct",
+   "repeat": 1,
+   "build_s": 0.08018354419618845,
+   "orjson_dumps_s": 0.005498762242496014,
+   "wire_bytes": 10698289,
+   "stats": {
+    "which": "visual",
+    "primitives": "direct",
+    "bodies": 21,
+    "leaves": 74,
+    "instances": 43,
+    "instances_by_kind": {
+     "direct": 29,
+     "brep": 0,
+     "mesh": 14
+    },
+    "tessellation_s_by_kind": {
+     "direct": 0.01831264002248645,
+     "brep": 0.0,
+     "mesh": 0.0011019674129784107
+    },
+    "unique_vertices": 165976,
+    "unique_triangles": 330918,
+    "drawn_triangles": 815806,
+    "timings": {
+     "tessellate_s": 0.03349852515384555,
+     "tree_s": 0.02638784982264042,
+     "encode_s": 0.019765562377870083,
+     "total_s": 0.07965422701090574
+    },
+    "bb_mm": {
+     "xmin": -600.0,
+     "xmax": 600.0,
+     "ymin": -600.0,
+     "ymax": 600.0,
+     "zmin": 0.0,
+     "zmax": 857.4
+    }
+   },
+   "world_check": {
+    "leaves_checked": 74,
+    "max_position_error_m": 1.1102230246251565e-16,
+    "max_rotation_matrix_error": 2.220446049250313e-16
+   }
+  },
+  {
+   "which": "visual",
+   "primitives": "brep",
+   "repeat": 0,
+   "build_s": 0.21871106885373592,
+   "orjson_dumps_s": 0.003321169875562191,
+   "wire_bytes": 10889951,
+   "stats": {
+    "which": "visual",
+    "primitives": "brep",
+    "bodies": 21,
+    "leaves": 74,
+    "instances": 43,
+    "instances_by_kind": {
+     "direct": 0,
+     "brep": 29,
+     "mesh": 14
+    },
+    "tessellation_s_by_kind": {
+     "direct": 0.0,
+     "brep": 0.1553835179656744,
+     "mesh": 0.0012584798969328403
+    },
+    "unique_vertices": 168920,
+    "unique_triangles": 336570,
+    "drawn_triangles": 829610,
+    "timings": {
+     "tessellate_s": 0.17161176400259137,
+     "tree_s": 0.027189872227609158,
+     "encode_s": 0.0194935267791152,
+     "total_s": 0.2182966130785644
+    },
+    "bb_mm": {
+     "xmin": -600.0,
+     "xmax": 600.0,
+     "ymin": -600.0,
+     "ymax": 600.0,
+     "zmin": 0.0,
+     "zmax": 857.4
+    }
+   },
+   "world_check": {
+    "leaves_checked": 74,
+    "max_position_error_m": 1.1102230246251565e-16,
+    "max_rotation_matrix_error": 2.220446049250313e-16
+   }
+  },
+  {
+   "which": "visual",
+   "primitives": "brep",
+   "repeat": 1,
+   "build_s": 0.07618735497817397,
+   "orjson_dumps_s": 0.0033475500531494617,
+   "wire_bytes": 10889951,
+   "stats": {
+    "which": "visual",
+    "primitives": "brep",
+    "bodies": 21,
+    "leaves": 74,
+    "instances": 43,
+    "instances_by_kind": {
+     "direct": 0,
+     "brep": 29,
+     "mesh": 14
+    },
+    "tessellation_s_by_kind": {
+     "direct": 0.0,
+     "brep": 0.013391389511525631,
+     "mesh": 0.0011184047907590866
+    },
+    "unique_vertices": 168920,
+    "unique_triangles": 336570,
+    "drawn_triangles": 829610,
+    "timings": {
+     "tessellate_s": 0.02927234210073948,
+     "tree_s": 0.027090930845588446,
+     "encode_s": 0.019396965857595205,
+     "total_s": 0.07576186908409
+    },
+    "bb_mm": {
+     "xmin": -600.0,
+     "xmax": 600.0,
+     "ymin": -600.0,
+     "ymax": 600.0,
+     "zmin": 0.0,
+     "zmax": 857.4
+    }
+   },
+   "world_check": {
+    "leaves_checked": 74,
+    "max_position_error_m": 1.1102230246251565e-16,
+    "max_rotation_matrix_error": 2.220446049250313e-16
+   }
+  },
+  {
+   "which": "collision",
+   "primitives": "direct",
+   "repeat": 0,
+   "build_s": 0.03380395891144872,
+   "orjson_dumps_s": 0.0008840430527925491,
+   "wire_bytes": 643070,
+   "stats": {
+    "which": "collision",
+    "primitives": "direct",
+    "bodies": 17,
+    "leaves": 76,
+    "instances": 36,
+    "instances_by_kind": {
+     "direct": 33,
+     "brep": 0,
+     "mesh": 3
+    },
+    "tessellation_s_by_kind": {
+     "direct": 0.021101757884025574,
+     "brep": 0.0,
+     "mesh": 0.00013337237760424614
+    },
+    "unique_vertices": 9257,
+    "unique_triangles": 16940,
+    "drawn_triangles": 58906,
+    "timings": {
+     "tessellate_s": 0.025321933906525373,
+     "tree_s": 0.004687328822910786,
+     "encode_s": 0.0035766931250691414,
+     "total_s": 0.033587215933948755
+    },
+    "bb_mm": {
+     "xmin": -600.0,
+     "xmax": 600.0,
+     "ymin": -600.0,
+     "ymax": 600.0,
+     "zmin": 0.0,
+     "zmax": 857.4
+    }
+   },
+   "world_check": {
+    "leaves_checked": 76,
+    "max_position_error_m": 1.1102230246251565e-16,
+    "max_rotation_matrix_error": 2.220446049250313e-16
+   }
+  },
+  {
+   "which": "collision",
+   "primitives": "direct",
+   "repeat": 1,
+   "build_s": 0.03173711756244302,
+   "orjson_dumps_s": 0.00038166623562574387,
+   "wire_bytes": 643070,
+   "stats": {
+    "which": "collision",
+    "primitives": "direct",
+    "bodies": 17,
+    "leaves": 76,
+    "instances": 36,
+    "instances_by_kind": {
+     "direct": 33,
+     "brep": 0,
+     "mesh": 3
+    },
+    "tessellation_s_by_kind": {
+     "direct": 0.019837443251162767,
+     "brep": 0.0,
+     "mesh": 0.00011151190847158432
+    },
+    "unique_vertices": 9257,
+    "unique_triangles": 16940,
+    "drawn_triangles": 58906,
+    "timings": {
+     "tessellate_s": 0.02343089459463954,
+     "tree_s": 0.005038504954427481,
+     "encode_s": 0.002883593086153269,
+     "total_s": 0.03135469276458025
+    },
+    "bb_mm": {
+     "xmin": -600.0,
+     "xmax": 600.0,
+     "ymin": -600.0,
+     "ymax": 600.0,
+     "zmin": 0.0,
+     "zmax": 857.4
+    }
+   },
+   "world_check": {
+    "leaves_checked": 76,
+    "max_position_error_m": 1.1102230246251565e-16,
+    "max_rotation_matrix_error": 2.220446049250313e-16
+   }
+  },
+  {
+   "which": "collision",
+   "primitives": "brep",
+   "repeat": 0,
+   "build_s": 0.1416502520442009,
+   "orjson_dumps_s": 0.0004012156277894974,
+   "wire_bytes": 864112,
+   "stats": {
+    "which": "collision",
+    "primitives": "brep",
+    "bodies": 17,
+    "leaves": 76,
+    "instances": 36,
+    "instances_by_kind": {
+     "direct": 0,
+     "brep": 33,
+     "mesh": 3
+    },
+    "tessellation_s_by_kind": {
+     "direct": 0.0,
+     "brep": 0.1270272140391171,
+     "mesh": 0.00018763262778520584
+    },
+    "unique_vertices": 12635,
+    "unique_triangles": 23462,
+    "drawn_triangles": 101658,
+    "timings": {
+     "tessellate_s": 0.13167063519358635,
+     "tree_s": 0.005860376171767712,
+     "encode_s": 0.003922897856682539,
+     "total_s": 0.1414551790803671
+    },
+    "bb_mm": {
+     "xmin": -600.0,
+     "xmax": 600.0,
+     "ymin": -600.0,
+     "ymax": 600.0,
+     "zmin": 0.0,
+     "zmax": 857.4
+    }
+   },
+   "world_check": {
+    "leaves_checked": 76,
+    "max_position_error_m": 1.1102230246251565e-16,
+    "max_rotation_matrix_error": 2.220446049250313e-16
+   }
+  },
+  {
+   "which": "collision",
+   "primitives": "brep",
+   "repeat": 1,
+   "build_s": 0.0366508811712265,
+   "orjson_dumps_s": 0.0003244653344154358,
+   "wire_bytes": 864112,
+   "stats": {
+    "which": "collision",
+    "primitives": "brep",
+    "bodies": 17,
+    "leaves": 76,
+    "instances": 36,
+    "instances_by_kind": {
+     "direct": 0,
+     "brep": 33,
+     "mesh": 3
+    },
+    "tessellation_s_by_kind": {
+     "direct": 0.0,
+     "brep": 0.023033900652080774,
+     "mesh": 0.00013772305101156235
+    },
+    "unique_vertices": 12635,
+    "unique_triangles": 23462,
+    "drawn_triangles": 101658,
+    "timings": {
+     "tessellate_s": 0.027529506012797356,
+     "tree_s": 0.005832917056977749,
+     "encode_s": 0.003128455951809883,
+     "total_s": 0.03649184899404645
+    },
+    "bb_mm": {
+     "xmin": -600.0,
+     "xmax": 600.0,
+     "ymin": -600.0,
+     "ymax": 600.0,
+     "zmin": 0.0,
+     "zmax": 857.4
+    }
+   },
+   "world_check": {
+    "leaves_checked": 76,
+    "max_position_error_m": 1.1102230246251565e-16,
+    "max_rotation_matrix_error": 2.220446049250313e-16
+   }
+  }
+ ]
+}

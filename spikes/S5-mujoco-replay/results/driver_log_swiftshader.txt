@@ -1,0 +1,48 @@
+[server] Info: OCP Viewer runs at http://127.0.0.1:3959
+2026-10-14T07:44:41.511Z host: {"robot_file":"/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/src/robot/__init__.py","import_s":1.5737482900731266,"spec_and_compile_s":0.8626698846928775,"nbody":21,"ngeom":134,"port":3959} runs {"swing":364,"trip_above":195,"trip_below":242}
+2026-10-14T07:44:41.512Z == swiftshader
+[server] Info: Browser as viewer client registered
+2026-10-14T07:44:43.352Z   GL: ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver) canvas 1580,853
+2026-10-14T07:44:45.636Z   show load-0-visual-direct: total 2270 ms (python build 154 config 9 send 25; page recv 60 handle 213 gpu 1828 raf 3) wire 10.70 MB, 74 meshes 815806 tris
+[host] CameraKeepWarning: reset_camera is set to KEEP. If shown objects are not visible use the 'resize' and a 'view' button
+2026-10-14T07:44:48.467Z   show load-1-visual-direct: total 2416 ms (python build 60 config 6 send 24; page recv 54 handle 197 gpu 2096 raf 1) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:44:51.002Z   show load-2-visual-direct: total 2522 ms (python build 72 config 22 send 26; page recv 95 handle 249 gpu 2083 raf 1) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:44:53.639Z   show load-3-visual-brep: total 2625 ms (python build 235 config 12 send 34; page recv 85 handle 185 gpu 2106 raf 1) wire 10.90 MB, 74 meshes 829610 tris
+2026-10-14T07:44:54.445Z   show load-4-collision-direct: total 779 ms (python build 30 config 13 send 3; page recv 5 handle 318 gpu 411 raf 1) wire 0.65 MB, 76 meshes 58906 tris
+2026-10-14T07:44:55.340Z   show load-5-collision-brep: total 771 ms (python build 86 config 6 send 2; page recv 4 handle 113 gpu 560 raf 1) wire 0.87 MB, 76 meshes 101658 tris
+2026-10-14T07:44:57.761Z   show play-show-visual-swing: total 2399 ms (python build 77 config 6 send 28; page recv 48 handle 174 gpu 2091 raf 1) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:45:08.701Z   play visual/swing (ui button, running=true): 34 frames in 10.0 s, median 283.3 p95 566.6 max 833.3 ms, fps 3.5, clock 0.999, update cpu median 4.3 ms -> smooth false
+2026-10-14T07:45:10.943Z   show play-show-collision-swing: total 781 ms (python build 29 config 8 send 2; page recv 8 handle 321 gpu 413 raf 1) wire 0.65 MB, 76 meshes 58906 tris
+2026-10-14T07:45:21.467Z   play collision/swing (ui button, running=true): 217 frames in 10.0 s, median 50.0 p95 50.1 max 100.0 ms, fps 21.6, clock 0.999, update cpu median 4.4 ms -> smooth false
+2026-10-14T07:45:24.201Z   show play-show-visual-trip_above: total 2438 ms (python build 67 config 6 send 31; page recv 63 handle 200 gpu 2098 raf 1) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:45:35.249Z   play visual/trip_above (ui button, running=true): 35 frames in 10.1 s, median 283.3 p95 766.7 max 833.3 ms, fps 3.5, clock 1.000, update cpu median 4.1 ms -> smooth false
+2026-10-14T07:45:39.055Z   show poses-show-swing: total 2507 ms (python build 75 config 8 send 38; page recv 121 handle 255 gpu 2044 raf 2) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:45:39.708Z   poses swing: 20 times x 21 bodies, max pos err 6.05e-8 m, max angle err 9.88e-8 rad -> pass true
+2026-10-14T07:45:47.926Z   show poses-show-trip_above: total 2424 ms (python build 61 config 6 send 32; page recv 66 handle 198 gpu 2091 raf 1) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:45:48.591Z   poses trip_above: 20 times x 21 bodies, max pos err 5.75e-8 m, max angle err 1.15e-7 rad -> pass true
+2026-10-14T07:45:56.868Z   show poses-show-trip_below: total 2398 ms (python build 61 config 7 send 26; page recv 61 handle 187 gpu 2080 raf 1) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:45:57.522Z   poses trip_below: 20 times x 21 bodies, max pos err 3.05e-8 m, max angle err 1.15e-7 rad -> pass true
+2026-10-14T07:46:05.865Z   show pick-show: total 2420 ms (python build 59 config 6 send 25; page recv 60 handle 201 gpu 2090 raf 2) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:46:31.889Z   picks: 11/12 resolved to the raycast leaf and mapped to geom/body; python status lastPick {"path":"/sim/chassis","name":"column"} matches: true
+2026-10-14T07:46:34.958Z   show slider-show: total 2660 ms (python build 71 config 7 send 26; page recv 63 handle 2245 gpu 272 raf 2) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:46:41.563Z   slider direct: shown median 281.5 ms p95 558.7 max 558.7; pose err by update 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 m
+[host] DeprecationWarning: connect() must be used as a context manager: with connect(...) as websocket: ...; alternatively, use websocket = connect(..., legacy=True) to connect directly
+2026-10-14T07:46:47.920Z   slider direct_held: shown median 282.3 ms p95 292.4 max 292.4; pose err by update 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 m
+2026-10-14T07:46:49.766Z   slider animation: shown median 569.5 ms p95 606.0 max 606.0; pose err by update 1.8e-1 1.1e-1 2.2e-1 m
+2026-10-14T07:46:58.804Z   slider reshow: shown median 2984.2 ms p95 3016.3 max 3016.3; pose err by update 0.0e+0 0.0e+0 0.0e+0 m
+[server] connection handler failed
+[server] Traceback (most recent call last):
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/websockets/sync/server.py", line 781, in sock_handler
+[server]     handler(connection)
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/ocp_viewer/server/__init__.py", line 94, in <lambda>
+[server]     lambda ws: handle(viewer, ws),
+[server]                ^^^^^^^^^^^^^^^^^^
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/ocp_viewer/server/sockets.py", line 57, in handle
+[server]     for raw in ws:
+[server]                ^^
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/websockets/sync/connection.py", line 247, in __iter__
+[server]     yield self.recv()
+[server]           ^^^^^^^^^^^
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/websockets/sync/connection.py", line 342, in recv
+[server]     raise self.protocol.close_exc from self.recv_exc
+[server] websockets.exceptions.ConnectionClosedError: no close frame received or sent

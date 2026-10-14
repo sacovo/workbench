@@ -1,0 +1,142 @@
+[server] Info: OCP Viewer runs at http://127.0.0.1:3959
+2026-10-14T07:50:19.909Z host: {"robot_file":"/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/src/robot/__init__.py","import_s":1.6000135224312544,"spec_and_compile_s":0.841845846734941,"nbody":21,"ngeom":134,"port":3959} runs {"swing":364,"trip_above":195,"trip_below":242}
+2026-10-14T07:50:19.909Z == vulkan
+[server] Info: Browser as viewer client registered
+2026-10-14T07:50:21.286Z   GL: ANGLE (AMD, Vulkan 1.4.354 (AMD Radeon AI PRO R9700 (RADV GFX1201) (0x00007551)), radv) canvas 1580,853
+2026-10-14T07:50:21.705Z   show poses-show-swing: total 410 ms (python build 155 config 9 send 23; page recv 52 handle 183 gpu 4 raf 2) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:50:21.839Z   poses swing (message): 20 times x 21 bodies, max pos err 6.05e-8 m, max angle err 9.88e-8 rad -> pass true; 1480 leaf poses vs geom_xpos: max 6.13e-8 m, rotmat 6.92e-8
+[host] CameraKeepWarning: reset_camera is set to KEEP. If shown objects are not visible use the 'resize' and a 'view' button
+2026-10-14T07:50:22.280Z   show poses-show-trip_above: total 279 ms (python build 59 config 6 send 17; page recv 38 handle 170 gpu 4 raf 0) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:50:22.407Z   poses trip_above (message): 20 times x 21 bodies, max pos err 5.75e-8 m, max angle err 1.15e-7 rad -> pass true; 1480 leaf poses vs geom_xpos: max 5.75e-8 m, rotmat 7.63e-8
+2026-10-14T07:50:22.837Z   show poses-show-trip_below: total 269 ms (python build 59 config 6 send 19; page recv 42 handle 155 gpu 4 raf 0) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:50:22.961Z   poses trip_below (message): 20 times x 21 bodies, max pos err 3.05e-8 m, max angle err 1.15e-7 rad -> pass true; 1480 leaf poses vs geom_xpos: max 3.16e-8 m, rotmat 8.06e-8
+2026-10-14T07:50:23.392Z   show poses-show-swing_helper: total 273 ms (python build 59 config 6 send 15; page recv 37 handle 164 gpu 4 raf 0) wire 10.70 MB, 74 meshes 815806 tris
+[host] Note: The paths for animation are only valid for the specific `show` statement
+[host] (so do not change the objects between `show` and creating the Animation).
+[host] Available paths:
+[host] - /sim
+[host] - /sim/world
+[host] - /sim/chassis
+[host] - /sim/carriage
+[host] - /sim/left_base
+[host] - /sim/left_shoulder
+[host] - /sim/left_upper_arm
+[host] - /sim/left_lower_arm
+[host] - /sim/left_wrist
+[host] - /sim/left_gripper
+[host] - /sim/left_camera_mount
+[host] - /sim/left_moving_jaw_so101_v1
+[host] - /sim/left_payload
+[host] - /sim/right_base
+[host] - /sim/right_shoulder
+[host] - /sim/right_upper_arm
+[host] - /sim/right_lower_arm
+[host] - /sim/right_wrist
+[host] - /sim/right_gripper
+[host] - /sim/right_camera_mount
+[host] - /sim/right_moving_jaw_so101_v1
+[host] - /sim/right_payload
+[host] - /sim/world/floor
+[host] - /sim/chassis/lower_plate
+[host] - /sim/chassis/upper_deck
+[host] - /sim/chassis/front_left_wheel
+[host] - /sim/chassis/front_left_drive
+[host] - /sim/chassis/front_right_wheel
+[host] - /sim/chassis/front_right_drive
+[host] - /sim/chassis/rear_wheel
+[host] - /sim/chassis/rear_drive
+[host] - /sim/chassis/misc
+[host] - /sim/chassis/battery
+[host] - /sim/chassis/battery_tray
+[host] - /sim/chassis/housing
+[host] - /sim/chassis/compute
+[host] - /sim/chassis/electronics_plate
+[host] - /sim/chassis/lidar
+[host] - /sim/chassis/deck_solid
+[host] - /sim/chassis/imu
+[host] - /sim/chassis/column
+[host] - /sim/chassis/rail
+[host] - /sim/chassis/touch_display
+[host] - /sim/chassis/hitch_receiver
+[host] - /sim/carriage/carriage_back
+[host] - /sim/carriage/carriage_shelf
+[host] - /sim/carriage/rear_beam
+[host] - /sim/carriage/front_beam
+[host] - /sim/carriage/upper_rail_block
+[host] - /sim/carriage/lower_rail_block
+[host] - /sim/carriage/camera_mast
+[host] - /sim/carriage/camera
+[host] - /sim/carriage/plate_electronics
+[host] - /sim/carriage/arm_platform
+[host] - /sim/left_base/g32_left_base_motor_holder_so101_v1
+[host] - /sim/left_base/g33_left_base_so101_v2
+[host] - /sim/left_base/g34_left_sts3215_03a_v1
+[host] - /sim/left_base/g35_left_waveshare_mounting_plate_so101_v2
+[host] - /sim/left_shoulder/g36_left_sts3215_03a_v1
+[host] - /sim/left_shoulder/g38_left_motor_holder_so101_base_v1
+[host] - /sim/left_shoulder/g40_left_rotation_pitch_so101_v1
+[host] - /sim/left_upper_arm/g41_left_sts3215_03a_v1
+[host] - /sim/left_upper_arm/g43_left_upper_arm_so101_v1
+[host] - /sim/left_lower_arm/g45_left_under_arm_so101_v1
+[host] - /sim/left_lower_arm/g47_left_motor_holder_so101_wrist_v1
+[host] - /sim/left_lower_arm/g49_left_sts3215_03a_v1
+[host] - /sim/left_wrist/g50_left_sts3215_03a_no_horn_v1
+[host] - /sim/left_wrist/g52_left_wrist_roll_pitch_so101_v2
+[host] - /sim/left_gripper/g54_left_sts3215_03a_v1
+[host] - /sim/left_gripper/g55_left_wrist_roll_follower_so101_v1
+[host] - /sim/left_camera_mount/g68_left_wrist_roll_follower_so101_camera_mount
+[host] - /sim/left_camera_mount/left_wrist_camera_pcb
+[host] - /sim/left_camera_mount/left_wrist_camera_lens
+[host] - /sim/left_moving_jaw_so101_v1/g73_left_moving_jaw_so101_v1
+[host] - /sim/left_payload/g82_sphere
+[host] - /sim/right_base/g83_right_base_motor_holder_so101_v1
+[host] - /sim/right_base/g84_right_base_so101_v2
+[host] - /sim/right_base/g85_right_sts3215_03a_v1
+[host] - /sim/right_base/g86_right_waveshare_mounting_plate_so101_v2
+[host] - /sim/right_shoulder/g87_right_sts3215_03a_v1
+[host] - /sim/right_shoulder/g89_right_motor_holder_so101_base_v1
+[host] - /sim/right_shoulder/g91_right_rotation_pitch_so101_v1
+[host] - /sim/right_upper_arm/g92_right_sts3215_03a_v1
+[host] - /sim/right_upper_arm/g94_right_upper_arm_so101_v1
+[host] - /sim/right_lower_arm/g96_right_under_arm_so101_v1
+[host] - /sim/right_lower_arm/g98_right_motor_holder_so101_wrist_v1
+[host] - /sim/right_lower_arm/g100_right_sts3215_03a_v1
+[host] - /sim/right_wrist/g101_right_sts3215_03a_no_horn_v1
+[host] - /sim/right_wrist/g103_right_wrist_roll_pitch_so101_v2
+[host] - /sim/right_gripper/g105_right_sts3215_03a_v1
+[host] - /sim/right_gripper/g106_right_wrist_roll_follower_so101_v1
+[host] - /sim/right_camera_mount/g119_right_wrist_roll_follower_so101_camera_mount
+[host] - /sim/right_camera_mount/right_wrist_camera_pcb
+[host] - /sim/right_camera_mount/right_wrist_camera_lens
+[host] - /sim/right_moving_jaw_so101_v1/g124_right_moving_jaw_so101_v1
+[host] - /sim/right_payload/g133_sphere
+2026-10-14T07:50:23.618Z   poses swing_helper (helper): 20 times x 21 bodies, max pos err 6.05e-8 m, max angle err 9.88e-8 rad -> pass true; 1480 leaf poses vs geom_xpos: max 6.13e-8 m, rotmat 6.92e-8
+2026-10-14T07:50:23.879Z   show pick-show: total 255 ms (python build 59 config 7 send 16; page recv 37 handle 145 gpu 4 raf 0) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:50:27.169Z   picks: 11/12 resolved to the raycast leaf and mapped to geom/body; python status lastPick {"path":"/sim/chassis","name":"column"} matches: true
+2026-10-14T07:50:27.594Z   show slider-show-direct: total 288 ms (python build 61 config 6 send 16; page recv 40 handle 177 gpu 1 raf 2) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:50:28.756Z   slider direct: shown median 5.9 ms p95 10.4 max 10.4; pose err by update 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 m
+2026-10-14T07:50:29.059Z   show slider-show-direct_held: total 290 ms (python build 59 config 6 send 17; page recv 40 handle 182 gpu 1 raf 2) wire 10.70 MB, 74 meshes 815806 tris
+[host] DeprecationWarning: connect() must be used as a context manager: with connect(...) as websocket: ...; alternatively, use websocket = connect(..., legacy=True) to connect directly
+2026-10-14T07:50:30.128Z   slider direct_held: shown median 5.0 ms p95 6.0 max 6.0; pose err by update 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 0.0e+0 m
+2026-10-14T07:50:30.425Z   show slider-show-animation: total 290 ms (python build 60 config 6 send 22; page recv 45 handle 174 gpu 1 raf 1) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:50:30.671Z   slider animation: shown median 22.6 ms p95 23.2 max 23.2; pose err by update 1.5e-8 3.7e-1 1.3e-1 5.1e-1 m
+2026-10-14T07:50:30.985Z   show slider-show-direct_then_animation: total 304 ms (python build 60 config 6 send 19; page recv 49 handle 186 gpu 1 raf 1) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:50:31.168Z   slider direct_then_animation: shown median 13.0 ms p95 23.2 max 23.2; pose err by update 0.0e+0 3.7e-1 1.8e-1 m
+2026-10-14T07:50:31.451Z   show slider-show-reshow: total 274 ms (python build 60 config 6 send 20; page recv 43 handle 162 gpu 1 raf 1) wire 10.70 MB, 74 meshes 815806 tris
+2026-10-14T07:50:32.190Z   slider reshow: shown median 201.0 ms p95 223.9 max 223.9; pose err by update 0.0e+0 0.0e+0 0.0e+0 m
+[server] connection handler failed
+[server] Traceback (most recent call last):
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/websockets/sync/server.py", line 781, in sock_handler
+[server]     handler(connection)
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/ocp_viewer/server/__init__.py", line 94, in <lambda>
+[server]     lambda ws: handle(viewer, ws),
+[server]                ^^^^^^^^^^^^^^^^^^
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/ocp_viewer/server/sockets.py", line 57, in handle
+[server]     for raw in ws:
+[server]                ^^
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/websockets/sync/connection.py", line 247, in __iter__
+[server]     yield self.recv()
+[server]           ^^^^^^^^^^^
+[server]   File "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap-s5/.venv/lib/python3.12/site-packages/websockets/sync/connection.py", line 342, in recv
+[server]     raise self.protocol.close_exc from self.recv_exc
+[server] websockets.exceptions.ConnectionClosedError: no close frame received or sent

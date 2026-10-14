@@ -1,0 +1,505 @@
+{"i": 0, "ts": 1791960088.0658176, "kind": "hub_started", "port": 47630}
+{"i": 1, "ts": 1791960088.071529, "kind": "inbox_pull", "delivered": []}
+{"i": 2, "ts": 1791960088.088856, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 3, "ts": 1791960088.1085699, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 4, "ts": 1791960088.1279738, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 5, "ts": 1791960088.1464643, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 6, "ts": 1791960088.1652112, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 7, "ts": 1791960088.183823, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 8, "ts": 1791960088.2025423, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 9, "ts": 1791960088.221638, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 10, "ts": 1791960088.2401538, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 11, "ts": 1791960088.2587655, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 12, "ts": 1791960088.2780933, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 13, "ts": 1791960088.298357, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 14, "ts": 1791960088.3177729, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 15, "ts": 1791960088.3366508, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 16, "ts": 1791960088.3553529, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 17, "ts": 1791960088.3740737, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 18, "ts": 1791960088.39282, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 19, "ts": 1791960088.411557, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 20, "ts": 1791960088.4301302, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 21, "ts": 1791960088.4487507, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 22, "ts": 1791960088.467649, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 23, "ts": 1791960088.4862618, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 24, "ts": 1791960088.5048554, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 25, "ts": 1791960088.5234437, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 26, "ts": 1791960088.5421565, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 27, "ts": 1791960088.5608869, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 28, "ts": 1791960088.58033, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 29, "ts": 1791960088.59945, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 30, "ts": 1791960088.61819, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 31, "ts": 1791960088.636711, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 32, "ts": 1791960088.655351, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 33, "ts": 1791960088.6741242, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 34, "ts": 1791960088.6927183, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 35, "ts": 1791960088.7110891, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 36, "ts": 1791960088.729445, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 37, "ts": 1791960088.748151, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 38, "ts": 1791960088.7666733, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 39, "ts": 1791960088.7853045, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 40, "ts": 1791960088.803753, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 41, "ts": 1791960088.8221512, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 42, "ts": 1791960088.8252084, "kind": "inbox_pull", "delivered": []}
+{"i": 43, "ts": 1791960088.8258011, "kind": "item_added", "item": "R-0001", "seq": 1, "via": "api", "text": "bench item 0"}
+{"i": 44, "ts": 1791960088.8417556, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0001"]}
+{"i": 45, "ts": 1791960088.8447578, "kind": "item_added", "item": "R-0002", "seq": 2, "via": "api", "text": "bench item 1"}
+{"i": 46, "ts": 1791960088.860839, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0002"]}
+{"i": 47, "ts": 1791960088.8639853, "kind": "item_added", "item": "R-0003", "seq": 3, "via": "api", "text": "bench item 2"}
+{"i": 48, "ts": 1791960088.8803573, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0003"]}
+{"i": 49, "ts": 1791960088.883383, "kind": "item_added", "item": "R-0004", "seq": 4, "via": "api", "text": "bench item 3"}
+{"i": 50, "ts": 1791960088.899521, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0004"]}
+{"i": 51, "ts": 1791960088.9024925, "kind": "item_added", "item": "R-0005", "seq": 5, "via": "api", "text": "bench item 4"}
+{"i": 52, "ts": 1791960088.918718, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0005"]}
+{"i": 53, "ts": 1791960088.9219093, "kind": "item_added", "item": "R-0006", "seq": 6, "via": "api", "text": "bench item 5"}
+{"i": 54, "ts": 1791960088.9380975, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0006"]}
+{"i": 55, "ts": 1791960088.9412487, "kind": "item_added", "item": "R-0007", "seq": 7, "via": "api", "text": "bench item 6"}
+{"i": 56, "ts": 1791960088.9576077, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0007"]}
+{"i": 57, "ts": 1791960088.9607413, "kind": "item_added", "item": "R-0008", "seq": 8, "via": "api", "text": "bench item 7"}
+{"i": 58, "ts": 1791960088.9768202, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0008"]}
+{"i": 59, "ts": 1791960088.9798484, "kind": "item_added", "item": "R-0009", "seq": 9, "via": "api", "text": "bench item 8"}
+{"i": 60, "ts": 1791960088.996112, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0009"]}
+{"i": 61, "ts": 1791960088.999224, "kind": "item_added", "item": "R-0010", "seq": 10, "via": "api", "text": "bench item 9"}
+{"i": 62, "ts": 1791960089.0153353, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0010"]}
+{"i": 63, "ts": 1791960089.0183127, "kind": "item_added", "item": "R-0011", "seq": 11, "via": "api", "text": "bench item 10"}
+{"i": 64, "ts": 1791960089.034456, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0011"]}
+{"i": 65, "ts": 1791960089.0374749, "kind": "item_added", "item": "R-0012", "seq": 12, "via": "api", "text": "bench item 11"}
+{"i": 66, "ts": 1791960089.0533652, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0012"]}
+{"i": 67, "ts": 1791960089.0563853, "kind": "item_added", "item": "R-0013", "seq": 13, "via": "api", "text": "bench item 12"}
+{"i": 68, "ts": 1791960089.072435, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0013"]}
+{"i": 69, "ts": 1791960089.0754642, "kind": "item_added", "item": "R-0014", "seq": 14, "via": "api", "text": "bench item 13"}
+{"i": 70, "ts": 1791960089.0914009, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0014"]}
+{"i": 71, "ts": 1791960089.094448, "kind": "item_added", "item": "R-0015", "seq": 15, "via": "api", "text": "bench item 14"}
+{"i": 72, "ts": 1791960089.1132395, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0015"]}
+{"i": 73, "ts": 1791960089.1185932, "kind": "item_added", "item": "R-0016", "seq": 16, "via": "api", "text": "bench item 15"}
+{"i": 74, "ts": 1791960089.1362317, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0016"]}
+{"i": 75, "ts": 1791960089.139901, "kind": "item_added", "item": "R-0017", "seq": 17, "via": "api", "text": "bench item 16"}
+{"i": 76, "ts": 1791960089.1571884, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0017"]}
+{"i": 77, "ts": 1791960089.160534, "kind": "item_added", "item": "R-0018", "seq": 18, "via": "api", "text": "bench item 17"}
+{"i": 78, "ts": 1791960089.1782436, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0018"]}
+{"i": 79, "ts": 1791960089.1814506, "kind": "item_added", "item": "R-0019", "seq": 19, "via": "api", "text": "bench item 18"}
+{"i": 80, "ts": 1791960089.1980116, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0019"]}
+{"i": 81, "ts": 1791960089.201302, "kind": "item_added", "item": "R-0020", "seq": 20, "via": "api", "text": "bench item 19"}
+{"i": 82, "ts": 1791960089.2177484, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0020"]}
+{"i": 83, "ts": 1791960089.2207904, "kind": "item_added", "item": "R-0021", "seq": 21, "via": "api", "text": "bench item 20"}
+{"i": 84, "ts": 1791960089.2375975, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0021"]}
+{"i": 85, "ts": 1791960089.240757, "kind": "item_added", "item": "R-0022", "seq": 22, "via": "api", "text": "bench item 21"}
+{"i": 86, "ts": 1791960089.257531, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0022"]}
+{"i": 87, "ts": 1791960089.260645, "kind": "item_added", "item": "R-0023", "seq": 23, "via": "api", "text": "bench item 22"}
+{"i": 88, "ts": 1791960089.2767801, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0023"]}
+{"i": 89, "ts": 1791960089.2799368, "kind": "item_added", "item": "R-0024", "seq": 24, "via": "api", "text": "bench item 23"}
+{"i": 90, "ts": 1791960089.2962735, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0024"]}
+{"i": 91, "ts": 1791960089.299413, "kind": "item_added", "item": "R-0025", "seq": 25, "via": "api", "text": "bench item 24"}
+{"i": 92, "ts": 1791960089.3156767, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0025"]}
+{"i": 93, "ts": 1791960089.3186579, "kind": "item_added", "item": "R-0026", "seq": 26, "via": "api", "text": "bench item 25"}
+{"i": 94, "ts": 1791960089.3347282, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0026"]}
+{"i": 95, "ts": 1791960089.3377428, "kind": "item_added", "item": "R-0027", "seq": 27, "via": "api", "text": "bench item 26"}
+{"i": 96, "ts": 1791960089.353719, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0027"]}
+{"i": 97, "ts": 1791960089.3568032, "kind": "item_added", "item": "R-0028", "seq": 28, "via": "api", "text": "bench item 27"}
+{"i": 98, "ts": 1791960089.3728197, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0028"]}
+{"i": 99, "ts": 1791960089.3758068, "kind": "item_added", "item": "R-0029", "seq": 29, "via": "api", "text": "bench item 28"}
+{"i": 100, "ts": 1791960089.3917723, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0029"]}
+{"i": 101, "ts": 1791960089.3947732, "kind": "item_added", "item": "R-0030", "seq": 30, "via": "api", "text": "bench item 29"}
+{"i": 102, "ts": 1791960089.410952, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0030"]}
+{"i": 103, "ts": 1791960089.4140663, "kind": "item_added", "item": "R-0031", "seq": 31, "via": "api", "text": "bench item 30"}
+{"i": 104, "ts": 1791960089.430142, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0031"]}
+{"i": 105, "ts": 1791960089.4330974, "kind": "item_added", "item": "R-0032", "seq": 32, "via": "api", "text": "bench item 31"}
+{"i": 106, "ts": 1791960089.449047, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0032"]}
+{"i": 107, "ts": 1791960089.4520242, "kind": "item_added", "item": "R-0033", "seq": 33, "via": "api", "text": "bench item 32"}
+{"i": 108, "ts": 1791960089.4679825, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0033"]}
+{"i": 109, "ts": 1791960089.4709833, "kind": "item_added", "item": "R-0034", "seq": 34, "via": "api", "text": "bench item 33"}
+{"i": 110, "ts": 1791960089.4870148, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0034"]}
+{"i": 111, "ts": 1791960089.4902267, "kind": "item_added", "item": "R-0035", "seq": 35, "via": "api", "text": "bench item 34"}
+{"i": 112, "ts": 1791960089.5067716, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0035"]}
+{"i": 113, "ts": 1791960089.5103495, "kind": "item_added", "item": "R-0036", "seq": 36, "via": "api", "text": "bench item 35"}
+{"i": 114, "ts": 1791960089.5277727, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0036"]}
+{"i": 115, "ts": 1791960089.531332, "kind": "item_added", "item": "R-0037", "seq": 37, "via": "api", "text": "bench item 36"}
+{"i": 116, "ts": 1791960089.5482478, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0037"]}
+{"i": 117, "ts": 1791960089.551544, "kind": "item_added", "item": "R-0038", "seq": 38, "via": "api", "text": "bench item 37"}
+{"i": 118, "ts": 1791960089.5685058, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0038"]}
+{"i": 119, "ts": 1791960089.571915, "kind": "item_added", "item": "R-0039", "seq": 39, "via": "api", "text": "bench item 38"}
+{"i": 120, "ts": 1791960089.5884733, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0039"]}
+{"i": 121, "ts": 1791960089.591576, "kind": "item_added", "item": "R-0040", "seq": 40, "via": "api", "text": "bench item 39"}
+{"i": 122, "ts": 1791960089.6080604, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0040"]}
+{"i": 123, "ts": 1791960089.6118956, "kind": "inbox_pull", "delivered": []}
+{"i": 124, "ts": 1791960090.120718, "kind": "inbox_pull", "delivered": []}
+{"i": 125, "ts": 1791960094.9485624, "kind": "inbox_pull", "delivered": []}
+{"i": 126, "ts": 1791960094.9668248, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 127, "ts": 1791960094.9873755, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 128, "ts": 1791960095.0082066, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 129, "ts": 1791960095.0288482, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 130, "ts": 1791960095.0494955, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 131, "ts": 1791960095.0700388, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 132, "ts": 1791960095.0921416, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 133, "ts": 1791960095.1139486, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 134, "ts": 1791960095.1348066, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 135, "ts": 1791960095.1558986, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 136, "ts": 1791960095.1771152, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 137, "ts": 1791960095.1984098, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 138, "ts": 1791960095.2191572, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 139, "ts": 1791960095.240367, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 140, "ts": 1791960095.262232, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 141, "ts": 1791960095.2840323, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 142, "ts": 1791960095.3048189, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 143, "ts": 1791960095.3260462, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 144, "ts": 1791960095.3469503, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 145, "ts": 1791960095.369545, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 146, "ts": 1791960095.3921432, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 147, "ts": 1791960095.4136965, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 148, "ts": 1791960095.4350224, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 149, "ts": 1791960095.4561288, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 150, "ts": 1791960095.4760146, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 151, "ts": 1791960095.4960694, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 152, "ts": 1791960095.5160515, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 153, "ts": 1791960095.5373852, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 154, "ts": 1791960095.5575414, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 155, "ts": 1791960095.5787451, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 156, "ts": 1791960095.59944, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 157, "ts": 1791960095.6205423, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 158, "ts": 1791960095.6412492, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 159, "ts": 1791960095.6629922, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 160, "ts": 1791960095.6851883, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 161, "ts": 1791960095.7075603, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 162, "ts": 1791960095.7307832, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 163, "ts": 1791960095.7542412, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 164, "ts": 1791960095.7756977, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 165, "ts": 1791960095.7962916, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 166, "ts": 1791960095.7996266, "kind": "inbox_pull", "delivered": []}
+{"i": 167, "ts": 1791960095.8169148, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 168, "ts": 1791960095.8381324, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 169, "ts": 1791960095.858822, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 170, "ts": 1791960095.8784015, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 171, "ts": 1791960095.897491, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 172, "ts": 1791960095.9164343, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 173, "ts": 1791960095.9359412, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 174, "ts": 1791960095.956667, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 175, "ts": 1791960095.976678, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 176, "ts": 1791960095.9967074, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 177, "ts": 1791960096.01648, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 178, "ts": 1791960096.0353627, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 179, "ts": 1791960096.0540318, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 180, "ts": 1791960096.0729654, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 181, "ts": 1791960096.0923462, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 182, "ts": 1791960096.1114326, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 183, "ts": 1791960096.1309025, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 184, "ts": 1791960096.1503482, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 185, "ts": 1791960096.1698594, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 186, "ts": 1791960096.1895125, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 187, "ts": 1791960096.2090096, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 188, "ts": 1791960096.2281199, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 189, "ts": 1791960096.2478635, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 190, "ts": 1791960096.2676091, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 191, "ts": 1791960096.2878351, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 192, "ts": 1791960096.307388, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 193, "ts": 1791960096.3262768, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 194, "ts": 1791960096.3462126, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 195, "ts": 1791960096.3660328, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 196, "ts": 1791960096.3857133, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 197, "ts": 1791960096.4075727, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 198, "ts": 1791960096.429806, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 199, "ts": 1791960096.4504664, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 200, "ts": 1791960096.4724274, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 201, "ts": 1791960096.4935265, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 202, "ts": 1791960096.513948, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 203, "ts": 1791960096.5337985, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 204, "ts": 1791960096.5536196, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 205, "ts": 1791960096.5738623, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 206, "ts": 1791960096.593422, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 207, "ts": 1791960096.5967865, "kind": "inbox_pull", "delivered": []}
+{"i": 208, "ts": 1791960096.5973265, "kind": "item_added", "item": "R-0041", "seq": 41, "via": "api", "text": "bench item 0"}
+{"i": 209, "ts": 1791960096.6146054, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0041"]}
+{"i": 210, "ts": 1791960096.6181338, "kind": "item_added", "item": "R-0042", "seq": 42, "via": "api", "text": "bench item 1"}
+{"i": 211, "ts": 1791960096.6348283, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0042"]}
+{"i": 212, "ts": 1791960096.6379788, "kind": "item_added", "item": "R-0043", "seq": 43, "via": "api", "text": "bench item 2"}
+{"i": 213, "ts": 1791960096.654653, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0043"]}
+{"i": 214, "ts": 1791960096.6579127, "kind": "item_added", "item": "R-0044", "seq": 44, "via": "api", "text": "bench item 3"}
+{"i": 215, "ts": 1791960096.6749578, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0044"]}
+{"i": 216, "ts": 1791960096.6782386, "kind": "item_added", "item": "R-0045", "seq": 45, "via": "api", "text": "bench item 4"}
+{"i": 217, "ts": 1791960096.6950948, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0045"]}
+{"i": 218, "ts": 1791960096.6982677, "kind": "item_added", "item": "R-0046", "seq": 46, "via": "api", "text": "bench item 5"}
+{"i": 219, "ts": 1791960096.714743, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0046"]}
+{"i": 220, "ts": 1791960096.7177882, "kind": "item_added", "item": "R-0047", "seq": 47, "via": "api", "text": "bench item 6"}
+{"i": 221, "ts": 1791960096.7340107, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0047"]}
+{"i": 222, "ts": 1791960096.7370145, "kind": "item_added", "item": "R-0048", "seq": 48, "via": "api", "text": "bench item 7"}
+{"i": 223, "ts": 1791960096.753473, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0048"]}
+{"i": 224, "ts": 1791960096.7574267, "kind": "item_added", "item": "R-0049", "seq": 49, "via": "api", "text": "bench item 8"}
+{"i": 225, "ts": 1791960096.775605, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0049"]}
+{"i": 226, "ts": 1791960096.7789652, "kind": "item_added", "item": "R-0050", "seq": 50, "via": "api", "text": "bench item 9"}
+{"i": 227, "ts": 1791960096.795627, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0050"]}
+{"i": 228, "ts": 1791960096.7986622, "kind": "item_added", "item": "R-0051", "seq": 51, "via": "api", "text": "bench item 10"}
+{"i": 229, "ts": 1791960096.814992, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0051"]}
+{"i": 230, "ts": 1791960096.818076, "kind": "item_added", "item": "R-0052", "seq": 52, "via": "api", "text": "bench item 11"}
+{"i": 231, "ts": 1791960096.8349476, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0052"]}
+{"i": 232, "ts": 1791960096.8380742, "kind": "item_added", "item": "R-0053", "seq": 53, "via": "api", "text": "bench item 12"}
+{"i": 233, "ts": 1791960096.8549573, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0053"]}
+{"i": 234, "ts": 1791960096.8582163, "kind": "item_added", "item": "R-0054", "seq": 54, "via": "api", "text": "bench item 13"}
+{"i": 235, "ts": 1791960096.8749166, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0054"]}
+{"i": 236, "ts": 1791960096.8781867, "kind": "item_added", "item": "R-0055", "seq": 55, "via": "api", "text": "bench item 14"}
+{"i": 237, "ts": 1791960096.8953028, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0055"]}
+{"i": 238, "ts": 1791960096.8990645, "kind": "item_added", "item": "R-0056", "seq": 56, "via": "api", "text": "bench item 15"}
+{"i": 239, "ts": 1791960096.9160025, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0056"]}
+{"i": 240, "ts": 1791960096.9198916, "kind": "item_added", "item": "R-0057", "seq": 57, "via": "api", "text": "bench item 16"}
+{"i": 241, "ts": 1791960096.937381, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0057"]}
+{"i": 242, "ts": 1791960096.9408352, "kind": "item_added", "item": "R-0058", "seq": 58, "via": "api", "text": "bench item 17"}
+{"i": 243, "ts": 1791960096.9591794, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0058"]}
+{"i": 244, "ts": 1791960096.9630036, "kind": "item_added", "item": "R-0059", "seq": 59, "via": "api", "text": "bench item 18"}
+{"i": 245, "ts": 1791960096.981997, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0059"]}
+{"i": 246, "ts": 1791960096.9856663, "kind": "item_added", "item": "R-0060", "seq": 60, "via": "api", "text": "bench item 19"}
+{"i": 247, "ts": 1791960097.0043154, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0060"]}
+{"i": 248, "ts": 1791960097.0080516, "kind": "item_added", "item": "R-0061", "seq": 61, "via": "api", "text": "bench item 20"}
+{"i": 249, "ts": 1791960097.0255256, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0061"]}
+{"i": 250, "ts": 1791960097.0287604, "kind": "item_added", "item": "R-0062", "seq": 62, "via": "api", "text": "bench item 21"}
+{"i": 251, "ts": 1791960097.045471, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0062"]}
+{"i": 252, "ts": 1791960097.0486844, "kind": "item_added", "item": "R-0063", "seq": 63, "via": "api", "text": "bench item 22"}
+{"i": 253, "ts": 1791960097.0657282, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0063"]}
+{"i": 254, "ts": 1791960097.0689719, "kind": "item_added", "item": "R-0064", "seq": 64, "via": "api", "text": "bench item 23"}
+{"i": 255, "ts": 1791960097.0858152, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0064"]}
+{"i": 256, "ts": 1791960097.0891514, "kind": "item_added", "item": "R-0065", "seq": 65, "via": "api", "text": "bench item 24"}
+{"i": 257, "ts": 1791960097.1066587, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0065"]}
+{"i": 258, "ts": 1791960097.1099727, "kind": "item_added", "item": "R-0066", "seq": 66, "via": "api", "text": "bench item 25"}
+{"i": 259, "ts": 1791960097.1264315, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0066"]}
+{"i": 260, "ts": 1791960097.1297855, "kind": "item_added", "item": "R-0067", "seq": 67, "via": "api", "text": "bench item 26"}
+{"i": 261, "ts": 1791960097.1467545, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0067"]}
+{"i": 262, "ts": 1791960097.1502333, "kind": "item_added", "item": "R-0068", "seq": 68, "via": "api", "text": "bench item 27"}
+{"i": 263, "ts": 1791960097.1671503, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0068"]}
+{"i": 264, "ts": 1791960097.1703308, "kind": "item_added", "item": "R-0069", "seq": 69, "via": "api", "text": "bench item 28"}
+{"i": 265, "ts": 1791960097.187735, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0069"]}
+{"i": 266, "ts": 1791960097.1913435, "kind": "item_added", "item": "R-0070", "seq": 70, "via": "api", "text": "bench item 29"}
+{"i": 267, "ts": 1791960097.2083917, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0070"]}
+{"i": 268, "ts": 1791960097.2116544, "kind": "item_added", "item": "R-0071", "seq": 71, "via": "api", "text": "bench item 30"}
+{"i": 269, "ts": 1791960097.228131, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0071"]}
+{"i": 270, "ts": 1791960097.2313116, "kind": "item_added", "item": "R-0072", "seq": 72, "via": "api", "text": "bench item 31"}
+{"i": 271, "ts": 1791960097.2492013, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0072"]}
+{"i": 272, "ts": 1791960097.2526023, "kind": "item_added", "item": "R-0073", "seq": 73, "via": "api", "text": "bench item 32"}
+{"i": 273, "ts": 1791960097.270732, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0073"]}
+{"i": 274, "ts": 1791960097.274043, "kind": "item_added", "item": "R-0074", "seq": 74, "via": "api", "text": "bench item 33"}
+{"i": 275, "ts": 1791960097.2917693, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0074"]}
+{"i": 276, "ts": 1791960097.2953472, "kind": "item_added", "item": "R-0075", "seq": 75, "via": "api", "text": "bench item 34"}
+{"i": 277, "ts": 1791960097.3122084, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0075"]}
+{"i": 278, "ts": 1791960097.3155828, "kind": "item_added", "item": "R-0076", "seq": 76, "via": "api", "text": "bench item 35"}
+{"i": 279, "ts": 1791960097.3322215, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0076"]}
+{"i": 280, "ts": 1791960097.335687, "kind": "item_added", "item": "R-0077", "seq": 77, "via": "api", "text": "bench item 36"}
+{"i": 281, "ts": 1791960097.352798, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0077"]}
+{"i": 282, "ts": 1791960097.356056, "kind": "item_added", "item": "R-0078", "seq": 78, "via": "api", "text": "bench item 37"}
+{"i": 283, "ts": 1791960097.3735468, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0078"]}
+{"i": 284, "ts": 1791960097.3770382, "kind": "item_added", "item": "R-0079", "seq": 79, "via": "api", "text": "bench item 38"}
+{"i": 285, "ts": 1791960097.3945177, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0079"]}
+{"i": 286, "ts": 1791960097.3981311, "kind": "item_added", "item": "R-0080", "seq": 80, "via": "api", "text": "bench item 39"}
+{"i": 287, "ts": 1791960097.4153562, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0080"]}
+{"i": 288, "ts": 1791960097.4186192, "kind": "inbox_pull", "delivered": []}
+{"i": 289, "ts": 1791960097.9488616, "kind": "inbox_pull", "delivered": []}
+{"i": 290, "ts": 1791960102.8019276, "kind": "inbox_pull", "delivered": []}
+{"i": 291, "ts": 1791960102.819328, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 292, "ts": 1791960102.8448143, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 293, "ts": 1791960102.8654616, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 294, "ts": 1791960102.8883467, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 295, "ts": 1791960102.910383, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 296, "ts": 1791960102.930257, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 297, "ts": 1791960102.9501572, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 298, "ts": 1791960102.9694347, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 299, "ts": 1791960102.9887116, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 300, "ts": 1791960103.0087447, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 301, "ts": 1791960103.0298355, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 302, "ts": 1791960103.0495486, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 303, "ts": 1791960103.0690057, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 304, "ts": 1791960103.08838, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 305, "ts": 1791960103.109123, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 306, "ts": 1791960103.1299324, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 307, "ts": 1791960103.1503062, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 308, "ts": 1791960103.1709492, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 309, "ts": 1791960103.1925137, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 310, "ts": 1791960103.2141118, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 311, "ts": 1791960103.2340174, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 312, "ts": 1791960103.2539365, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 313, "ts": 1791960103.27384, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 314, "ts": 1791960103.2935743, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 315, "ts": 1791960103.3136523, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 316, "ts": 1791960103.3336744, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 317, "ts": 1791960103.3547232, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 318, "ts": 1791960103.374812, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 319, "ts": 1791960103.3945305, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 320, "ts": 1791960103.414604, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 321, "ts": 1791960103.4344156, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 322, "ts": 1791960103.4545972, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 323, "ts": 1791960103.4756212, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 324, "ts": 1791960103.4958937, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 325, "ts": 1791960103.5163376, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 326, "ts": 1791960103.536966, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 327, "ts": 1791960103.557176, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 328, "ts": 1791960103.5772104, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 329, "ts": 1791960103.5971305, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 330, "ts": 1791960103.616244, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 331, "ts": 1791960103.619363, "kind": "inbox_pull", "delivered": []}
+{"i": 332, "ts": 1791960103.6198797, "kind": "item_added", "item": "R-0081", "seq": 81, "via": "api", "text": "bench item"}
+{"i": 333, "ts": 1791960103.6370254, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 334, "ts": 1791960103.6567876, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 335, "ts": 1791960103.676781, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 336, "ts": 1791960103.696267, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 337, "ts": 1791960103.7157295, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 338, "ts": 1791960103.7354891, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 339, "ts": 1791960103.7552853, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 340, "ts": 1791960103.7760952, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 341, "ts": 1791960103.79675, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 342, "ts": 1791960103.81656, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 343, "ts": 1791960103.8361206, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 344, "ts": 1791960103.8557832, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 345, "ts": 1791960103.8752367, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 346, "ts": 1791960103.8949025, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 347, "ts": 1791960103.9150617, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 348, "ts": 1791960103.9358404, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 349, "ts": 1791960103.9581444, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 350, "ts": 1791960103.9780242, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 351, "ts": 1791960103.997602, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 352, "ts": 1791960104.0172045, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 353, "ts": 1791960104.0369291, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 354, "ts": 1791960104.056929, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 355, "ts": 1791960104.0768452, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 356, "ts": 1791960104.0962315, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 357, "ts": 1791960104.115821, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 358, "ts": 1791960104.1362603, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 359, "ts": 1791960104.156487, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 360, "ts": 1791960104.1760304, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 361, "ts": 1791960104.196189, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 362, "ts": 1791960104.2161393, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 363, "ts": 1791960104.235471, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 364, "ts": 1791960104.2544599, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 365, "ts": 1791960104.274237, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 366, "ts": 1791960104.2938614, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 367, "ts": 1791960104.3130937, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 368, "ts": 1791960104.3324494, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 369, "ts": 1791960104.3518543, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 370, "ts": 1791960104.3712282, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 371, "ts": 1791960104.3908644, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 372, "ts": 1791960104.410537, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0081"]}
+{"i": 373, "ts": 1791960104.4145463, "kind": "inbox_pull", "delivered": ["R-0081"]}
+{"i": 374, "ts": 1791960104.9739907, "kind": "inbox_pull", "delivered": []}
+{"i": 375, "ts": 1791960109.8110707, "kind": "inbox_pull", "delivered": []}
+{"i": 376, "ts": 1791960109.8283155, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 377, "ts": 1791960109.8472333, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 378, "ts": 1791960109.865915, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 379, "ts": 1791960109.8849046, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 380, "ts": 1791960109.9051938, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 381, "ts": 1791960109.9234376, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 382, "ts": 1791960109.9421403, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 383, "ts": 1791960109.961221, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 384, "ts": 1791960109.9802918, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 385, "ts": 1791960109.9993703, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 386, "ts": 1791960110.018453, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 387, "ts": 1791960110.0375178, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 388, "ts": 1791960110.056517, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 389, "ts": 1791960110.0770638, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 390, "ts": 1791960110.0977104, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 391, "ts": 1791960110.1182754, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 392, "ts": 1791960110.1377032, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 393, "ts": 1791960110.1572704, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 394, "ts": 1791960110.1769621, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 395, "ts": 1791960110.1960735, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 396, "ts": 1791960110.2154045, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 397, "ts": 1791960110.234694, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 398, "ts": 1791960110.2542207, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 399, "ts": 1791960110.2739751, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 400, "ts": 1791960110.293704, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 401, "ts": 1791960110.3131337, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 402, "ts": 1791960110.3319905, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 403, "ts": 1791960110.3510702, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 404, "ts": 1791960110.3701274, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 405, "ts": 1791960110.3892126, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 406, "ts": 1791960110.4089456, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 407, "ts": 1791960110.4281554, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 408, "ts": 1791960110.4475784, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 409, "ts": 1791960110.4667916, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 410, "ts": 1791960110.4859786, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 411, "ts": 1791960110.5053675, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 412, "ts": 1791960110.5250404, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 413, "ts": 1791960110.544418, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 414, "ts": 1791960110.5630846, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 415, "ts": 1791960110.5818915, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 416, "ts": 1791960110.5851705, "kind": "inbox_pull", "delivered": []}
+{"i": 417, "ts": 1791960110.5857055, "kind": "item_added", "item": "R-0082", "seq": 82, "via": "api", "text": "bench item"}
+{"i": 418, "ts": 1791960110.6024976, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 419, "ts": 1791960110.6215234, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 420, "ts": 1791960110.6421013, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 421, "ts": 1791960110.662215, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 422, "ts": 1791960110.6816554, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 423, "ts": 1791960110.7010946, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 424, "ts": 1791960110.7206357, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 425, "ts": 1791960110.7395015, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 426, "ts": 1791960110.758103, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 427, "ts": 1791960110.776951, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 428, "ts": 1791960110.7959664, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 429, "ts": 1791960110.815445, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 430, "ts": 1791960110.8344707, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 431, "ts": 1791960110.8535914, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 432, "ts": 1791960110.8727229, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 433, "ts": 1791960110.8912604, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 434, "ts": 1791960110.9102921, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 435, "ts": 1791960110.9294672, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 436, "ts": 1791960110.948114, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 437, "ts": 1791960110.966801, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 438, "ts": 1791960110.985774, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 439, "ts": 1791960111.0045528, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 440, "ts": 1791960111.0231643, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 441, "ts": 1791960111.0428395, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 442, "ts": 1791960111.062683, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 443, "ts": 1791960111.081537, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 444, "ts": 1791960111.1003351, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 445, "ts": 1791960111.119955, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 446, "ts": 1791960111.1390116, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 447, "ts": 1791960111.1577687, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 448, "ts": 1791960111.1763444, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 449, "ts": 1791960111.19543, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 450, "ts": 1791960111.2144022, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 451, "ts": 1791960111.2330961, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 452, "ts": 1791960111.2517645, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 453, "ts": 1791960111.2703977, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 454, "ts": 1791960111.2889888, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 455, "ts": 1791960111.3080623, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 456, "ts": 1791960111.3268075, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 457, "ts": 1791960111.3456514, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0082"]}
+{"i": 458, "ts": 1791960111.3486743, "kind": "inbox_pull", "delivered": ["R-0082"]}
+{"i": 459, "ts": 1791960111.8571265, "kind": "inbox_pull", "delivered": []}
+{"i": 460, "ts": 1791960116.6920736, "kind": "inbox_pull", "delivered": []}
+{"i": 461, "ts": 1791960116.7098665, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 462, "ts": 1791960116.7290983, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 463, "ts": 1791960116.748172, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 464, "ts": 1791960116.768419, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 465, "ts": 1791960116.7876952, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 466, "ts": 1791960116.8071918, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 467, "ts": 1791960116.8261876, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 468, "ts": 1791960116.8455124, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 469, "ts": 1791960116.8657174, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 470, "ts": 1791960116.8855884, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 471, "ts": 1791960116.9045954, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 472, "ts": 1791960116.9235835, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 473, "ts": 1791960116.942592, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 474, "ts": 1791960116.9625468, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 475, "ts": 1791960116.9822752, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 476, "ts": 1791960117.001692, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 477, "ts": 1791960117.020489, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 478, "ts": 1791960117.0397136, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 479, "ts": 1791960117.0584486, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 480, "ts": 1791960117.077717, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 481, "ts": 1791960117.0969615, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 482, "ts": 1791960117.1159728, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 483, "ts": 1791960117.1354365, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 484, "ts": 1791960117.154331, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 485, "ts": 1791960117.1730824, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 486, "ts": 1791960117.1928887, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 487, "ts": 1791960117.2121441, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 488, "ts": 1791960117.2314048, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 489, "ts": 1791960117.2505088, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 490, "ts": 1791960117.2690487, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 491, "ts": 1791960117.2880638, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 492, "ts": 1791960117.3070774, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 493, "ts": 1791960117.3258996, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 494, "ts": 1791960117.3448098, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 495, "ts": 1791960117.364579, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 496, "ts": 1791960117.3838897, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 497, "ts": 1791960117.4027376, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 498, "ts": 1791960117.4217134, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 499, "ts": 1791960117.4407504, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 500, "ts": 1791960117.459629, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 501, "ts": 1791960117.46286, "kind": "inbox_pull", "delivered": []}
+{"i": 502, "ts": 1791960117.9767222, "kind": "inbox_pull", "delivered": []}
+{"i": 503, "ts": 1791960122.8059018, "kind": "inbox_pull", "delivered": []}
+{"i": 504, "ts": 1791960123.407357, "kind": "hub_stopped"}

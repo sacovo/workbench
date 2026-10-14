@@ -1,0 +1,541 @@
+{
+ "spike": "S2 agent channels",
+ "run_date": "2026-10-14T06:36:35.860192+00:00",
+ "versions": {
+  "claude_code": "2.1.283",
+  "herdr": "0.9.0",
+  "model": "claude-haiku-4-5-20251001",
+  "hook_python": "Python 3.14.7"
+ },
+ "agent": {
+  "name": "s2probe",
+  "pane": "wC:p4",
+  "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+  "engine_turns": 7,
+  "session_cost_usd_reported_by_claude_code": "0.1110",
+  "launch": "herdr agent start s2probe --kind claude --pane wC:p4 -- --model haiku --settings settings.json --strict-mcp-config --debug-file run/claude-debug.log"
+ },
+ "criteria": [
+  {
+   "id": "mid_turn_context_after_next_tool_call",
+   "pass": true,
+   "basis": "measured",
+   "evidence": {
+    "item_added_s_after_tool_start": 1.258,
+    "tool_result_s_after_item": 7.049,
+    "delivered_by": "PostToolUse",
+    "user_prompt_submit_calls_in_turn": 1,
+    "token_in_final_reply": true
+   }
+  },
+  {
+   "id": "stop_hook_blocks_once",
+   "pass": true,
+   "basis": "measured",
+   "evidence": {
+    "stops": [
+     {
+      "stop_hook_active": false,
+      "unread": [
+       "R-0003"
+      ]
+     },
+     {
+      "stop_hook_active": true,
+      "unread": [
+       "R-0004"
+      ]
+     }
+    ],
+    "transcript_hook_blocking_error_attachments": 1,
+    "transcript_stop_hook_feedback_entries": 1,
+    "transcript_stop_hook_summaries": 2,
+    "inbox_pulls": 1,
+    "unread_after_turn": [
+     "R-0004"
+    ],
+    "status_after": "done"
+   }
+  },
+  {
+   "id": "idle_agent_is_woken",
+   "pass": true,
+   "basis": "measured",
+   "evidence": {
+    "asyncRewake": {
+     "poller": "wake",
+     "herdr_working_ms_after_item_agent_get_50ms": 261,
+     "herdr_working_ms_after_item_push": 275,
+     "transcript_turn_start_ms_after_item": 19,
+     "prompts_typed_in_window": 0,
+     "pass_original_criterion": false,
+     "criterion_note": "Original rule required zero UserPromptSubmit calls; measured: the rewake turn fires UserPromptSubmit, so the rule was wrong. Corrected rule: poller woke, herdr saw working, driver typed nothing in the window, the turn's user entry is a <task-notification>, agent pulled."
+    },
+    "herdr_prompt": {
+     "rc": 0,
+     "wait_s": 4.206,
+     "before": "done",
+     "after": "done",
+     "state_change_seq": [
+      1393,
+      1395
+     ]
+    }
+   }
+  },
+  {
+   "id": "nothing_sent_to_blocked_agent",
+   "pass": true,
+   "basis": "measured",
+   "evidence": {
+    "herdr_status": "blocked",
+    "refused_rc": 1,
+    "refused_stderr": "{\"error\":{\"code\":\"agent_blocked\",\"message\":\"agent s2probe is blocked and requires interactive input\"},\"id\":\"cli:agent:prompt\"}",
+    "refused_in_s": 0.001,
+    "hook_calls_after_refusal": [],
+    "typed_text_in_transcript": 0,
+    "screen_diff": "only the animated status glyph on the pending tool line",
+    "cleared_with": "one Esc",
+    "status_after_esc": "done"
+   }
+  },
+  {
+   "id": "hook_overhead_p95_under_150ms",
+   "pass": true,
+   "basis": "measured",
+   "limit_ms": 150,
+   "evidence": {
+    "worst_p95_ms_hub_up_or_down": 22.5,
+    "worst_p95_ms_hub_hung": 122.35,
+    "worst_max_ms_hub_down": 16.94,
+    "hub_down_limit_ms": 50,
+    "hub_down_pass": true
+   }
+  }
+ ],
+ "questions": {
+  "q1_user_prompt_submit": {
+   "token": "WB-1DBEA6",
+   "pass": true,
+   "transcript_kinds": [
+    [
+     "attachment:hook_additional_context"
+    ],
+    [
+     "text"
+    ]
+   ]
+  },
+  "q2_post_tool_use": {
+   "token": "WB-45F263",
+   "pass": true,
+   "t_tool_use": 1791959858.216,
+   "t_item_added": 1791959859.4742212,
+   "t_tool_result": 1791959866.523
+  },
+  "q3_stop": {
+   "pass": true,
+   "stops": 2
+  },
+  "q4a_async_rewake": {
+   "pass": true,
+   "poller": {
+    "i": 25,
+    "ts": 1791959912.5099902,
+    "kind": "poller_returned",
+    "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+    "token": "404940",
+    "action": "wake",
+    "items": [
+     "R-0005"
+    ]
+   },
+   "user_prompt_submit_fired_on_rewake": true,
+   "stop_hook_active_on_rewake_turn_stop": [
+    true
+   ]
+  },
+  "q4b_herdr_prompt": {
+   "pass": true,
+   "typed": "Owner answered R-0006. Run: curl -s http://127.0.0.1:47617/inbox"
+  },
+  "q5_blocked": {
+   "pass": true,
+   "notification_hook_fired": false,
+   "stop_hook_after_esc": false,
+   "item_left_unread_until_next_prompt": "R-0007"
+  }
+ },
+ "observation": {
+  "turn_start_latency_ms": [
+   {
+    "hook_ts": 1791959843.0523489,
+    "push_working_ms": 87,
+    "poll_working_ms": 218
+   },
+   {
+    "hook_ts": 1791959855.318886,
+    "push_working_ms": 146,
+    "poll_working_ms": 161
+   },
+   {
+    "hook_ts": 1791959887.065279,
+    "push_working_ms": 165,
+    "poll_working_ms": 223
+   },
+   {
+    "hook_ts": 1791959912.5513675,
+    "push_working_ms": 234,
+    "poll_working_ms": 348
+   },
+   {
+    "hook_ts": 1791959957.1284893,
+    "push_working_ms": 251,
+    "poll_working_ms": 392
+   },
+   {
+    "hook_ts": 1791959977.829713,
+    "push_working_ms": 93,
+    "poll_working_ms": 100
+   },
+   {
+    "hook_ts": 1791960043.9431186,
+    "push_working_ms": 220,
+    "poll_working_ms": 216
+   }
+  ],
+  "turn_end_latency_ms": [
+   {
+    "stop_ts": 1791959845.9183483,
+    "stop_hook_active": false,
+    "push_done_ms": 228,
+    "poll_done_ms": 353
+   },
+   {
+    "stop_ts": 1791959868.7503436,
+    "stop_hook_active": false,
+    "push_done_ms": 343,
+    "poll_done_ms": 330
+   },
+   {
+    "stop_ts": 1791959892.6201506,
+    "stop_hook_active": true,
+    "push_done_ms": 322,
+    "poll_done_ms": 271
+   },
+   {
+    "stop_ts": 1791959916.527414,
+    "stop_hook_active": true,
+    "push_done_ms": 166,
+    "poll_done_ms": 174
+   },
+   {
+    "stop_ts": 1791959960.6442854,
+    "stop_hook_active": false,
+    "push_done_ms": 342,
+    "poll_done_ms": 478
+   },
+   {
+    "stop_ts": 1791960045.0788562,
+    "stop_hook_active": false,
+    "push_done_ms": 286,
+    "poll_done_ms": 281
+   }
+  ],
+  "turn_start_push_ms": {
+   "n": 7,
+   "min": 87,
+   "median": 165,
+   "max": 251
+  },
+  "turn_end_push_ms": {
+   "n": 6,
+   "min": 166,
+   "median": 304.0,
+   "max": 343
+  },
+  "turn_start_poll_ms": {
+   "n": 7,
+   "min": 100,
+   "median": 218,
+   "max": 392
+  },
+  "turn_end_poll_ms": {
+   "n": 6,
+   "min": 174,
+   "median": 305.5,
+   "max": 478
+  },
+  "blocked": {
+   "permission_request_ts": 1791959979.46,
+   "push_blocked_ms": 266,
+   "poll_blocked_ms": 270,
+   "claude_agents_waiting_seen": true
+  },
+  "esc_to_done": {
+   "push_done_ms": 112,
+   "poll_done_ms": 213
+  },
+  "herdr_agent_fields": [
+   "agent",
+   "agent_session",
+   "agent_status",
+   "cwd",
+   "focused",
+   "foreground_cwd",
+   "interactive_ready",
+   "name",
+   "pane_id",
+   "revision",
+   "state_change_seq",
+   "tab_id",
+   "terminal_id",
+   "terminal_title",
+   "terminal_title_stripped",
+   "workspace_id"
+  ],
+  "claude_agents_json": [
+   {
+    "pid": 398975,
+    "cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+    "kind": "interactive",
+    "startedAt": 1791959822571,
+    "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3",
+    "name": "minimal-22",
+    "status": "idle"
+   }
+  ],
+  "claude_agents_statuses_seen": [
+   "busy",
+   "idle",
+   "waiting"
+  ]
+ },
+ "overhead": {
+  "meta": {
+   "n_per_cell": 40,
+   "python": "Python 3.14.7",
+   "command": "/usr/bin/python3 -I -S <script>",
+   "shell": "/bin/zsh",
+   "connect_timeout_s": 0.05,
+   "request_timeout_s": 0.1,
+   "ts": 1791960123.4389045
+  },
+  "rows": [
+   {
+    "hook": "UserPromptSubmit",
+    "scenario": "up_empty",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 18.57,
+    "p95_ms": 19.82,
+    "max_ms": 19.85,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "UserPromptSubmit",
+    "scenario": "up_item",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 18.67,
+    "p95_ms": 20.21,
+    "max_ms": 23.24,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "UserPromptSubmit",
+    "scenario": "down",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 12.54,
+    "p95_ms": 12.93,
+    "max_ms": 13.28,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "UserPromptSubmit",
+    "scenario": "hung",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 120.44,
+    "p95_ms": 121.43,
+    "max_ms": 121.98,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "UserPromptSubmit",
+    "scenario": "up_empty_via_shell",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 20.9,
+    "p95_ms": 22.5,
+    "max_ms": 23.56,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "PostToolUse",
+    "scenario": "up_empty",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 19.62,
+    "p95_ms": 21.34,
+    "max_ms": 22.64,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "PostToolUse",
+    "scenario": "up_item",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 19.63,
+    "p95_ms": 21.35,
+    "max_ms": 21.73,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "PostToolUse",
+    "scenario": "down",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 12.96,
+    "p95_ms": 13.91,
+    "max_ms": 14.02,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "PostToolUse",
+    "scenario": "hung",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 120.99,
+    "p95_ms": 122.35,
+    "max_ms": 122.8,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "Stop-active0",
+    "scenario": "up_empty",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 19.96,
+    "p95_ms": 22.23,
+    "max_ms": 25.39,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "Stop-active0",
+    "scenario": "up_item",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 19.55,
+    "p95_ms": 20.81,
+    "max_ms": 22.08,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "Stop-active0",
+    "scenario": "down",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 13.62,
+    "p95_ms": 14.94,
+    "max_ms": 16.94,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "Stop-active0",
+    "scenario": "hung",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 120.69,
+    "p95_ms": 121.67,
+    "max_ms": 124.3,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "Stop-active1",
+    "scenario": "up_empty",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 19.08,
+    "p95_ms": 20.26,
+    "max_ms": 20.77,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "Stop-active1",
+    "scenario": "up_item",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 18.87,
+    "p95_ms": 19.76,
+    "max_ms": 20.27,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "Stop-active1",
+    "scenario": "down",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 12.5,
+    "p95_ms": 13.01,
+    "max_ms": 13.28,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "Stop-active1",
+    "scenario": "hung",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 120.52,
+    "p95_ms": 121.97,
+    "max_ms": 125.19,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "Notification",
+    "scenario": "up_empty",
+    "input": "synthetic",
+    "n": 40,
+    "p50_ms": 19.06,
+    "p95_ms": 20.05,
+    "max_ms": 20.35,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "Notification",
+    "scenario": "down",
+    "input": "synthetic",
+    "n": 40,
+    "p50_ms": 12.67,
+    "p95_ms": 13.13,
+    "max_ms": 13.23,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "Notification",
+    "scenario": "hung",
+    "input": "synthetic",
+    "n": 40,
+    "p50_ms": 120.49,
+    "p95_ms": 122.13,
+    "max_ms": 123.11,
+    "n_unexpected": 0
+   },
+   {
+    "hook": "Stop-rewake",
+    "scenario": "down",
+    "input": "recorded",
+    "n": 40,
+    "p50_ms": 12.65,
+    "p95_ms": 13.51,
+    "max_ms": 14.01,
+    "n_unexpected": 0
+   }
+  ]
+ },
+ "offline_checks": {
+  "n": 19,
+  "failed": 0
+ }
+}

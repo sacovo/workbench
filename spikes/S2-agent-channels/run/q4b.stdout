@@ -1,0 +1,180 @@
+{
+ "token": "WB-A9372A",
+ "item": "R-0006",
+ "typed": "Owner answered R-0006. Run: curl -s http://127.0.0.1:47617/inbox",
+ "herdr_before": {
+  "agent": "claude",
+  "agent_session": {
+   "agent": "claude",
+   "kind": "id",
+   "source": "herdr:claude",
+   "value": "d685955c-98bf-407a-b841-432d8eaf96c3"
+  },
+  "agent_status": "done",
+  "cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+  "focused": false,
+  "foreground_cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+  "interactive_ready": true,
+  "name": "s2probe",
+  "pane_id": "wC:p4",
+  "revision": 4,
+  "state_change_seq": 1393,
+  "tab_id": "wC:t3",
+  "terminal_id": "term_65dc7274fc3833b",
+  "terminal_title": "\u2733 Workbench note request",
+  "terminal_title_stripped": "Workbench note request",
+  "workspace_id": "wC"
+ },
+ "prompt": {
+  "ts_start": 1791959956.7996576,
+  "ts_end": 1791959961.0053105,
+  "dur_s": 4.206,
+  "argv": [
+   "herdr",
+   "agent",
+   "prompt",
+   "s2probe",
+   "Owner answered R-0006. Run: curl -s http://127.0.0.1:47617/inbox",
+   "--wait",
+   "--timeout",
+   "120000"
+  ],
+  "rc": 0,
+  "stdout": "{\"id\":\"cli:agent:prompt\",\"result\":{\"agent\":{\"agent\":\"claude\",\"agent_session\":{\"agent\":\"claude\",\"kind\":\"id\",\"source\":\"herdr:claude\",\"value\":\"d685955c-98bf-407a-b841-432d8eaf96c3\"},\"agent_status\":\"done\",\"cwd\":\"/home/sandro/work/privat/workbench/examples/minimal\",\"focused\":false,\"foreground_cwd\":\"/home/sandro/work/privat/workbench/examples/minimal\",\"interactive_ready\":true,\"name\":\"s2probe\",\"pane_id\":\"wC:p4\",\"revision\":4,\"state_change_seq\":1395,\"tab_id\":\"wC:t3\",\"terminal_id\":\"term_65dc7274fc3833b\",\"terminal_title\":\"\u2733 Workbench note request\",\"terminal_title_stripped\":\"Workbench note request\",\"workspace_id\":\"wC\"},\"type\":\"agent_prompted\"}}\n",
+  "stderr": "",
+  "note": "prompt"
+ },
+ "herdr_after_immediate": {
+  "agent": "claude",
+  "agent_session": {
+   "agent": "claude",
+   "kind": "id",
+   "source": "herdr:claude",
+   "value": "d685955c-98bf-407a-b841-432d8eaf96c3"
+  },
+  "agent_status": "done",
+  "cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+  "focused": false,
+  "foreground_cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+  "interactive_ready": true,
+  "name": "s2probe",
+  "pane_id": "wC:p4",
+  "revision": 4,
+  "state_change_seq": 1395,
+  "tab_id": "wC:t3",
+  "terminal_id": "term_65dc7274fc3833b",
+  "terminal_title": "\u2733 Workbench note request",
+  "terminal_title_stripped": "Workbench note request",
+  "workspace_id": "wC"
+ },
+ "herdr_after": {
+  "agent": "claude",
+  "agent_session": {
+   "agent": "claude",
+   "kind": "id",
+   "source": "herdr:claude",
+   "value": "d685955c-98bf-407a-b841-432d8eaf96c3"
+  },
+  "agent_status": "done",
+  "cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+  "focused": false,
+  "foreground_cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+  "interactive_ready": true,
+  "name": "s2probe",
+  "pane_id": "wC:p4",
+  "revision": 4,
+  "state_change_seq": 1395,
+  "tab_id": "wC:t3",
+  "terminal_id": "term_65dc7274fc3833b",
+  "terminal_title": "\u2733 Workbench note request",
+  "terminal_title_stripped": "Workbench note request",
+  "workspace_id": "wC"
+ },
+ "hub_events": [
+  {
+   "i": 33,
+   "ts": 1791959956.7980096,
+   "kind": "item_added",
+   "item": "R-0006",
+   "seq": 6,
+   "via": "api",
+   "text": "Owner answered: go ahead, token WB-A9372A."
+  },
+  {
+   "i": 34,
+   "ts": 1791959957.1284893,
+   "kind": "hook_call",
+   "hook": "UserPromptSubmit",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "tool": null,
+   "delivered": [
+    "R-0006"
+   ]
+  },
+  {
+   "i": 35,
+   "ts": 1791959958.757898,
+   "kind": "inbox_pull",
+   "delivered": []
+  },
+  {
+   "i": 36,
+   "ts": 1791959958.7835698,
+   "kind": "hook_call",
+   "hook": "PostToolUse",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "tool": "Bash",
+   "delivered": []
+  },
+  {
+   "i": 37,
+   "ts": 1791959960.6442854,
+   "kind": "hook_call",
+   "hook": "Stop",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "stop_hook_active": false,
+   "unread": []
+  },
+  {
+   "i": 38,
+   "ts": 1791959960.6458845,
+   "kind": "poller_registered",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "token": "409542",
+   "reg_seq": 6
+  },
+  {
+   "i": 39,
+   "ts": 1791959960.6459033,
+   "kind": "poller_returned",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "token": "409542",
+   "action": "disabled"
+  }
+ ],
+ "token_lines": [
+  {
+   "type": "attachment",
+   "role": null,
+   "kinds": [
+    "attachment:hook_additional_context"
+   ],
+   "ts": "2026-10-14T06:39:17.131Z",
+   "uuid": "3927cb07-abdc-4d28-abf6-3d7da30d2fb8",
+   "isMeta": null,
+   "text": "{\"type\": \"hook_additional_context\", \"content\": [\"Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\\n- R-0006 from owner: Owner answered: go ahead, token WB-A9372A.\"], \"hookName\": \"UserPromptSubmit\", \"toolUseID\": \"hook-8cc9ca86-a092-4d12-befa-36ef194996fe\", \"hookEvent\": \"UserPromptSubmit\"}"
+  },
+  {
+   "type": "assistant",
+   "role": "assistant",
+   "kinds": [
+    "text"
+   ],
+   "ts": "2026-10-14T06:39:20.588Z",
+   "uuid": "f974beee-0f0e-4a77-9418-78b4ad0fa5e6",
+   "isMeta": null,
+   "text": "Owner answered: go ahead, token WB-A9372A."
+  }
+ ],
+ "pass": true
+}

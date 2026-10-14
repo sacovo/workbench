@@ -1,0 +1,59 @@
+{"ts": 1791959804.4518774, "src": "watch", "started": true, "pane": "wC:p4"}
+{"ts": 1791959804.4537582, "src": "poll", "call_s": 0.0016, "error": "{\"error\":{\"code\":\"agent_not_found\",\"message\":\"agent target wC:p4 not found\"},\"id\":\"cli:agent:get\"}\n", "rc": 1}
+{"ts": 1791959804.4595714, "src": "push", "msg": {"id": "s2-watch", "result": {"type": "subscription_started"}}}
+{"ts": 1791959804.5908093, "src": "claude_agents", "call_s": 0.139, "entries": []}
+{"ts": 1791959810.0561569, "src": "poll", "call_s": 0.0017, "status": "unknown", "seq": 0, "revision": 2, "session": null}
+{"ts": 1791959813.5770051, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "blocked", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791959813.6575856, "src": "poll", "call_s": 0.0016, "status": "blocked", "seq": 1384, "revision": 2, "session": null}
+{"ts": 1791959822.3953257, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "idle", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791959822.4611278, "src": "poll", "call_s": 0.0016, "status": "idle", "seq": 1385, "revision": 2, "session": null}
+{"ts": 1791959822.5990484, "src": "claude_agents", "call_s": 0.145, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22"}]}
+{"ts": 1791959823.592485, "src": "claude_agents", "call_s": 0.139, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "idle"}]}
+{"ts": 1791959843.139075, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "working", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791959843.2698603, "src": "poll", "call_s": 0.0016, "status": "working", "seq": 1386, "revision": 3, "session": "d685955c-98bf-407a-b841-432d8eaf96c3"}
+{"ts": 1791959843.5997577, "src": "claude_agents", "call_s": 0.144, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "busy"}]}
+{"ts": 1791959846.1458776, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "done", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791959846.2712793, "src": "poll", "call_s": 0.0019, "status": "done", "seq": 1387, "revision": 4, "session": "d685955c-98bf-407a-b841-432d8eaf96c3"}
+{"ts": 1791959846.5968776, "src": "claude_agents", "call_s": 0.141, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "idle"}]}
+{"ts": 1791959855.4653645, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "working", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791959855.4795117, "src": "poll", "call_s": 0.0063, "status": "working", "seq": 1388, "revision": 4, "session": "d685955c-98bf-407a-b841-432d8eaf96c3"}
+{"ts": 1791959855.6014426, "src": "claude_agents", "call_s": 0.145, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "busy"}]}
+{"ts": 1791959869.080668, "src": "poll", "call_s": 0.0016, "status": "done", "seq": 1389, "revision": 4, "session": "d685955c-98bf-407a-b841-432d8eaf96c3"}
+{"ts": 1791959869.0933728, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "done", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791959869.5998468, "src": "claude_agents", "call_s": 0.142, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "idle"}]}
+{"ts": 1791959887.2303948, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "working", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791959887.2887478, "src": "poll", "call_s": 0.0017, "status": "working", "seq": 1390, "revision": 4, "session": "d685955c-98bf-407a-b841-432d8eaf96c3"}
+{"ts": 1791959887.6023355, "src": "claude_agents", "call_s": 0.143, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "busy"}]}
+{"ts": 1791959892.8910308, "src": "poll", "call_s": 0.0016, "status": "done", "seq": 1391, "revision": 4, "session": "d685955c-98bf-407a-b841-432d8eaf96c3"}
+{"ts": 1791959892.9425728, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "done", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791959893.6034553, "src": "claude_agents", "call_s": 0.143, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "idle"}]}
+{"ts": 1791959912.6123254, "src": "claude_agents", "call_s": 0.151, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "busy"}]}
+{"ts": 1791959912.7850094, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "working", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791959912.8997688, "src": "poll", "call_s": 0.0015, "status": "working", "seq": 1392, "revision": 4, "session": "d685955c-98bf-407a-b841-432d8eaf96c3"}
+{"ts": 1791959916.6102254, "src": "claude_agents", "call_s": 0.148, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "idle"}]}
+{"ts": 1791959916.6936266, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "done", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791959916.7015762, "src": "poll", "call_s": 0.0015, "status": "done", "seq": 1393, "revision": 4, "session": "d685955c-98bf-407a-b841-432d8eaf96c3"}
+{"ts": 1791959957.3794105, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "working", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791959957.5207124, "src": "poll", "call_s": 0.0017, "status": "working", "seq": 1394, "revision": 4, "session": "d685955c-98bf-407a-b841-432d8eaf96c3"}
+{"ts": 1791959957.6063538, "src": "claude_agents", "call_s": 0.141, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "busy"}]}
+{"ts": 1791959960.9866402, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "done", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791959961.1223516, "src": "poll", "call_s": 0.0017, "status": "done", "seq": 1395, "revision": 4, "session": "d685955c-98bf-407a-b841-432d8eaf96c3"}
+{"ts": 1791959961.607908, "src": "claude_agents", "call_s": 0.142, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "idle"}]}
+{"ts": 1791959977.9226806, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "working", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791959977.9300575, "src": "poll", "call_s": 0.002, "status": "working", "seq": 1396, "revision": 4, "session": "d685955c-98bf-407a-b841-432d8eaf96c3"}
+{"ts": 1791959978.6143892, "src": "claude_agents", "call_s": 0.147, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "busy"}]}
+{"ts": 1791959979.6078885, "src": "claude_agents", "call_s": 0.14, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "waiting", "waitingFor": "permission prompt"}]}
+{"ts": 1791959979.7261388, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "blocked", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791959979.7301545, "src": "poll", "call_s": 0.0013, "status": "blocked", "seq": 1397, "revision": 4, "session": "d685955c-98bf-407a-b841-432d8eaf96c3"}
+{"ts": 1791959981.8305562, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "done", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791959981.9313626, "src": "poll", "call_s": 0.0015, "status": "done", "seq": 1398, "revision": 4, "session": "d685955c-98bf-407a-b841-432d8eaf96c3"}
+{"ts": 1791959982.6084712, "src": "claude_agents", "call_s": 0.141, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "idle"}]}
+{"ts": 1791960044.1592083, "src": "poll", "call_s": 0.0016, "status": "working", "seq": 1399, "revision": 4, "session": "d685955c-98bf-407a-b841-432d8eaf96c3"}
+{"ts": 1791960044.1629941, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "working", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791960044.6174557, "src": "claude_agents", "call_s": 0.144, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "busy"}]}
+{"ts": 1791960045.35965, "src": "poll", "call_s": 0.0015, "status": "done", "seq": 1400, "revision": 4, "session": "d685955c-98bf-407a-b841-432d8eaf96c3"}
+{"ts": 1791960045.365295, "src": "push", "msg": {"data": {"agent": "claude", "agent_status": "done", "pane_id": "wC:p4", "workspace_id": "wC"}, "event": "pane.agent_status_changed"}}
+{"ts": 1791960045.620135, "src": "claude_agents", "call_s": 0.147, "entries": [{"pid": 398975, "cwd": "/home/sandro/work/privat/workbench/examples/minimal", "kind": "interactive", "startedAt": 1791959822571, "sessionId": "d685955c-98bf-407a-b841-432d8eaf96c3", "name": "minimal-22", "status": "idle"}]}
+{"ts": 1791960055.304891, "src": "poll", "call_s": 0.3425, "error": "{\"error\":{\"code\":\"agent_not_found\",\"message\":\"agent target wC:p4 not found\"},\"id\":\"cli:agent:get\"}\n", "rc": 1}
+{"ts": 1791960055.6221406, "src": "claude_agents", "call_s": 0.148, "entries": []}
+{"ts": 1791960076.6440444, "src": "watch", "stopped": true}

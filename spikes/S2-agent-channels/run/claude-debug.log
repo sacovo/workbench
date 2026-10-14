@@ -1,0 +1,683 @@
+2026-10-14T06:36:50.001Z [DEBUG] MDM settings load completed in 1ms
+2026-10-14T06:36:50.027Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /etc/claude-code/managed-settings.json
+2026-10-14T06:36:50.028Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /home/sandro/work/privat/workbench/examples/minimal/.claude/settings.json
+2026-10-14T06:36:50.028Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /home/sandro/work/privat/workbench/examples/minimal/.claude/settings.local.json
+2026-10-14T06:36:50.029Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /home/sandro/work/privat/workbench/.claude/settings.local.json
+2026-10-14T06:36:50.029Z [DEBUG] CA certs: Config fallback - globalEnv keys: , settingsEnv keys: none
+2026-10-14T06:36:50.031Z [DEBUG] [init] configureGlobalMTLS starting
+2026-10-14T06:36:50.031Z [DEBUG] [init] configureGlobalMTLS complete
+2026-10-14T06:36:50.031Z [DEBUG] [init] configureGlobalAgents starting
+2026-10-14T06:36:50.031Z [DEBUG] CA certs: stores=bundled,system, extraCertsPath=undefined
+2026-10-14T06:36:50.031Z [DEBUG] CA certs: Loaded 121 bundled root certificates
+2026-10-14T06:36:50.036Z [DEBUG] CA certs: Loaded 121 system CA certificates
+2026-10-14T06:36:50.036Z [DEBUG] mTLS: Creating HTTPS agent with custom certificates
+2026-10-14T06:36:50.036Z [DEBUG] [init] configureGlobalAgents complete
+2026-10-14T06:36:50.038Z [DEBUG] Git remote URL: null
+2026-10-14T06:36:50.038Z [DEBUG] No git remote URL found
+2026-10-14T06:36:50.039Z [DEBUG] Error log sink initialized
+2026-10-14T06:36:50.049Z [DEBUG] [ToolSearch:optimistic] mode=tst, ENABLE_TOOL_SEARCH=undefined, result=true
+2026-10-14T06:36:50.050Z [DEBUG] Applying permission update: Adding 1 allow rule(s) to destination 'userSettings': ["Bash(agy --dangerously-skip-permissions:*)"]
+2026-10-14T06:36:50.051Z [DEBUG] Applying permission update: Adding 2 allow rule(s) to destination 'flagSettings': ["Bash(curl -s http://127.0.0.1:47617/inbox)","Bash(sleep 8)"]
+2026-10-14T06:36:50.053Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-10-14T06:36:50.054Z [DEBUG] [STARTUP] Running setup()...
+2026-10-14T06:36:50.063Z [DEBUG] Loading skills from: managed=/etc/claude-code/.claude/skills, user=/home/sandro/.claude/skills, project=[]
+2026-10-14T06:36:50.096Z [DEBUG] Loaded 4 installed plugins from /home/sandro/.claude/plugins/installed_plugins.json
+2026-10-14T06:36:50.097Z [DEBUG] [skills] skipping reserved dir name 'synced' under /home/sandro/.claude/skills: 'synced' is the sync-owned root
+2026-10-14T06:36:50.097Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/agents: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/agents'
+2026-10-14T06:36:50.097Z [DEBUG] Failed to stat directory /home/sandro/.claude/agents: ENOENT: no such file or directory, stat '/home/sandro/.claude/agents'
+2026-10-14T06:36:50.098Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/commands: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/commands'
+2026-10-14T06:36:50.098Z [DEBUG] Failed to stat directory /home/sandro/.claude/commands: ENOENT: no such file or directory, stat '/home/sandro/.claude/commands'
+2026-10-14T06:36:50.100Z [DEBUG] [plugins] skipping skills-dir entry 'synced': the sync-owned root name is never adopted as a plugin
+2026-10-14T06:36:50.121Z [DEBUG] Loaded 18 unique skills (18 unconditional, 0 conditional, managed: 0, user: 6, project: 0, additional: 0, legacy commands: 0)
+2026-10-14T06:36:50.130Z [INFO] [uds-messaging] Listening: /run/user/1000/cc-socks/398975.sock
+2026-10-14T06:36:50.130Z [INFO] [uds-messaging] Inject messages (auth line optional here): { echo '{"type":"auth","token":"[REDACTED]"$CLAUDE_CODE_MESSAGING_TOKEN"'"}'; echo '{"type":"user","message":{"role":"user","content":"hello"}}'; } | socat - UNIX-CONNECT:/run/user/1000/cc-socks/398975.sock
+2026-10-14T06:36:50.131Z [INFO] [uds-messaging] Connect when the data is ready (e.g. out=$(cmd); printf '%s\n' "$out" | nc -N -U "$CLAUDE_CODE_MESSAGING_SOCKET" — or the socat form above): a connection that sends no complete line within 30000 ms is closed
+2026-10-14T06:36:50.132Z [DEBUG] Error log sink initialized
+2026-10-14T06:36:50.138Z [DEBUG] [STARTUP] setup() completed in 84ms
+2026-10-14T06:36:50.141Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-10-14T06:36:50.145Z [DEBUG] Loaded inline plugin from path: engineering
+2026-10-14T06:36:50.145Z [DEBUG] Loaded 1 directory-loaded plugins
+2026-10-14T06:36:50.146Z [DEBUG] Found 6 plugins (6 enabled, 0 disabled)
+2026-10-14T06:36:50.146Z [DEBUG] getPluginSkills: Processing 6 enabled plugins
+2026-10-14T06:36:50.146Z [DEBUG] Checking plugin frontend-design: skillsPath=exists, skillsPaths=0 paths
+2026-10-14T06:36:50.146Z [DEBUG] Attempting to load skills from plugin frontend-design default skillsPath: /home/sandro/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/skills
+2026-10-14T06:36:50.147Z [DEBUG] Checking plugin asana: skillsPath=none, skillsPaths=0 paths
+2026-10-14T06:36:50.147Z [DEBUG] Checking plugin rust-analyzer-lsp: skillsPath=none, skillsPaths=0 paths
+2026-10-14T06:36:50.147Z [DEBUG] Checking plugin engineering: skillsPath=exists, skillsPaths=0 paths
+2026-10-14T06:36:50.147Z [DEBUG] Attempting to load skills from plugin engineering default skillsPath: /home/sandro/.claude/plugins/synced/6ee73dbb-3ae6-4d88-a816-f0871e7762b3_f01d26cf-62fb-4777-b13f-0b376e3f6847/engineering/skills
+2026-10-14T06:36:50.147Z [DEBUG] Checking plugin agents-md: skillsPath=none, skillsPaths=0 paths
+2026-10-14T06:36:50.147Z [DEBUG] Checking plugin telemetry: skillsPath=none, skillsPaths=0 paths
+2026-10-14T06:36:50.147Z [DEBUG] Total plugin workflows loaded: 0
+2026-10-14T06:36:50.147Z [DEBUG] installed plugins' hooks modules not loaded: rollout flag (tengu_plugin_hooks_modules) is off, from GrowthBook (the disk cache of an earlier session); built-in plugins load regardless
+2026-10-14T06:36:50.147Z [DEBUG] hooks modules not loaded until workspace trust is accepted: agents-md, telemetry
+2026-10-14T06:36:50.147Z [DEBUG] Total plugin commands loaded: 0
+2026-10-14T06:36:50.148Z [DEBUG] Total plugin agents loaded: 0
+2026-10-14T06:36:50.148Z [DEBUG] Registered 0 hooks from 6 plugins
+2026-10-14T06:36:50.159Z [DEBUG] Loaded 1 skills from plugin frontend-design default directory
+2026-10-14T06:36:50.160Z [DEBUG] Loaded 10 skills from plugin engineering default directory
+2026-10-14T06:36:50.160Z [DEBUG] Total plugin skills loaded: 11 (0 duplicate/user-owned entries skipped)
+2026-10-14T06:36:50.160Z [DEBUG] getSkills returning: 18 skill dir commands, 11 plugin skills, 40 bundled skills, 0 builtin plugin skills
+2026-10-14T06:36:50.164Z [DEBUG] Artifact gates frozen: capabilities=true comments=true db=true files=true types=true type_catalog=true read_page_data=false room=false verify=false delete=true preview=false preview_browser=unread open=true endpoints=false pin=true flag_source=disk gb_fresh=false
+2026-10-14T06:36:50.169Z [DEBUG] [STARTUP] Commands and agents loaded in 28ms
+2026-10-14T06:36:50.173Z [DEBUG] [plugins-scope] send: token carries user:plugins
+2026-10-14T06:36:50.179Z [DEBUG] [plugins-scope] send: token carries user:plugins
+2026-10-14T06:36:50.477Z [DEBUG] [servedCatalog] fetch (org) ok: 12 rows
+2026-10-14T06:36:50.479Z [DEBUG] [servedCatalog] primary: using served rows (12 rows via stale cache: waited 304ms for refresh → refreshed (fetch:ok) over the org route, fetched 0s ago); the served list replaces the compiled picker for this session
+2026-10-14T06:36:50.483Z [DEBUG] nonBlockingStdout: active
+2026-10-14T06:36:50.484Z [DEBUG] [STARTUP] Running showSetupScreens()...
+2026-10-14T06:36:50.488Z [DEBUG] [keybindings] KeybindingSetup initialized with 212 bindings, 0 warnings
+2026-10-14T06:36:50.499Z [DEBUG] [keybindings] Watching for changes to /home/sandro/.claude/keybindings.json
+2026-10-14T06:36:50.501Z [DEBUG] XTVERSION: terminal identified as "libghostty"
+2026-10-14T06:36:50.501Z [DEBUG] Terminal capabilities: extendedKeys=yes (env: terminal=kitty); synchronizedOutput=yes (probe: DECRPM 2026 status=2); kittyKeyboard=yes (probe: CSI ? u flags=5); kittyGraphics=no (probe: graphics reply OK, terminal libghostty); mousePixels=yes (probe: DECRPM 1016 status=2, cell 8x16px); terminal said: CSI ? u flags=5
+2026-10-14T06:36:50.501Z [DEBUG] DECSTBM: enabled (TMUX=unset ZELLIJ=unset TERM_PROGRAM=unset TERM=xterm-256color)
+2026-10-14T06:37:02.160Z [DEBUG] clearPluginCache: invalidating loadAllPlugins cache (post-trust: re-discover project @skills-dir plugins)
+2026-10-14T06:37:02.182Z [DEBUG] [plugins] skipping skills-dir entry 'synced': the sync-owned root name is never adopted as a plugin
+2026-10-14T06:37:02.187Z [DEBUG] Loaded inline plugin from path: engineering
+2026-10-14T06:37:02.187Z [DEBUG] Loaded 1 directory-loaded plugins
+2026-10-14T06:37:02.192Z [DEBUG] Found 6 plugins (6 enabled, 0 disabled)
+2026-10-14T06:37:02.192Z [DEBUG] installed plugins' hooks modules not loaded: rollout flag (tengu_plugin_hooks_modules) is off, from GrowthBook (the disk cache of an earlier session); built-in plugins load regardless
+2026-10-14T06:37:02.192Z [DEBUG] sec-default@builtin not seated: installed plugins' hooks modules are off in this process
+2026-10-14T06:37:02.195Z [DEBUG] plugin agents-md: no pluginConfigs["agents-md@builtin"].options in user, --settings or managed settings (project settings are not read); every option is its default
+2026-10-14T06:37:02.195Z [WARN] plugin telemetry: options requested but its manifest declares no userConfig; every option reads as absent
+2026-10-14T06:37:02.197Z [DEBUG] hooks module agents-md@builtin loaded (native, environment 1, tier builtin); events: session.start,prompt.context,agent.spawn,tool.call
+2026-10-14T06:37:02.197Z [DEBUG] hooks module telemetry@builtin loaded (native, environment 2, tier builtin); events: telemetry.*,session.start,session.end,engine.create
+2026-10-14T06:37:02.199Z [DEBUG] hooks module telemetry@builtin engine.create settled in 1.2ms (native hop, next() included)
+2026-10-14T06:37:02.200Z [DEBUG] engine.create: $.telemetry (telemetry: log, mark); $ built for agents-md,telemetry
+2026-10-14T06:37:02.200Z [DEBUG] plugin.register: agents-md (builtin, agents-md@builtin), judged by core alone: admitted
+2026-10-14T06:37:02.200Z [DEBUG] plugin.register: telemetry (builtin, telemetry@builtin), judged by core alone: admitted
+2026-10-14T06:37:02.202Z [DEBUG] Registered 0 hooks from 6 plugins
+2026-10-14T06:37:02.202Z [DEBUG] Preserving file permissions: 100600
+2026-10-14T06:37:02.203Z [DEBUG] Writing to temp file: /home/sandro/.claude.json.tmp.398975.3804e4ec80bf
+2026-10-14T06:37:02.204Z [DEBUG] Applied original permissions to temp file
+2026-10-14T06:37:02.206Z [DEBUG] Cleared mTLS configuration cache
+2026-10-14T06:37:02.206Z [DEBUG] Cleared proxy agent cache
+2026-10-14T06:37:02.206Z [DEBUG] mTLS: Creating HTTPS agent with custom certificates
+2026-10-14T06:37:02.207Z [DEBUG] Grove: Using fresh cached config
+2026-10-14T06:37:02.213Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-10-14T06:37:02.213Z [DEBUG] [3P telemetry] isTelemetryEnabled=false (CLAUDE_CODE_ENABLE_TELEMETRY=undefined)
+2026-10-14T06:37:02.214Z [DEBUG] [keybindings] KeybindingSetup initialized with 212 bindings, 0 warnings
+2026-10-14T06:37:02.215Z [DEBUG] Git remote URL: null
+2026-10-14T06:37:02.215Z [DEBUG] No git remote URL found
+2026-10-14T06:37:02.215Z [DEBUG] Not in a GitHub repository, skipping path mapping update
+2026-10-14T06:37:02.220Z [DEBUG] XTVERSION: terminal identified as "libghostty"
+2026-10-14T06:37:02.221Z [DEBUG] Terminal capabilities: extendedKeys=yes (env: terminal=kitty); synchronizedOutput=yes (probe: DECRPM 2026 status=2); kittyKeyboard=yes (probe: CSI ? u flags=5); kittyGraphics=no (probe: graphics reply OK, terminal libghostty); mousePixels=yes (probe: DECRPM 1016 status=2, cell 8x16px); terminal said: CSI ? u not asked
+2026-10-14T06:37:02.221Z [DEBUG] DECSTBM: enabled (TMUX=unset ZELLIJ=unset TERM_PROGRAM=unset TERM=xterm-256color)
+2026-10-14T06:37:02.221Z [DEBUG] Temp file written successfully, size: 182288 bytes
+2026-10-14T06:37:02.221Z [DEBUG] Renaming /home/sandro/.claude.json.tmp.398975.3804e4ec80bf to /home/sandro/.claude.json
+2026-10-14T06:37:02.221Z [DEBUG] File /home/sandro/.claude.json written atomically
+2026-10-14T06:37:02.526Z [DEBUG] [STARTUP] showSetupScreens() completed in 12042ms
+2026-10-14T06:37:02.526Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-10-14T06:37:02.526Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-10-14T06:37:02.526Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-10-14T06:37:02.526Z [DEBUG] Starting background startup prefetches
+2026-10-14T06:37:02.527Z [DEBUG] [Bootstrap] Fetching
+2026-10-14T06:37:02.528Z [DEBUG] Passes: Using fresh cached eligibility data
+2026-10-14T06:37:02.530Z [DEBUG] [STARTUP] MCP configs resolved in 1ms (awaited at +12477ms)
+2026-10-14T06:37:02.531Z [WARN] [3P telemetry] Event dropped (no event logger initialized): managed_settings_resolved
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all allow rules for destination 'userSettings' with 0 rule(s): []
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all deny rules for destination 'userSettings' with 0 rule(s): []
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all ask rules for destination 'userSettings' with 0 rule(s): []
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all allow rules for destination 'projectSettings' with 0 rule(s): []
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all deny rules for destination 'projectSettings' with 0 rule(s): []
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all ask rules for destination 'projectSettings' with 0 rule(s): []
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all allow rules for destination 'localSettings' with 0 rule(s): []
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all deny rules for destination 'localSettings' with 0 rule(s): []
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all ask rules for destination 'localSettings' with 0 rule(s): []
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all allow rules for destination 'flagSettings' with 0 rule(s): []
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all deny rules for destination 'flagSettings' with 0 rule(s): []
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all ask rules for destination 'flagSettings' with 0 rule(s): []
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all allow rules for destination 'policySettings' with 0 rule(s): []
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all deny rules for destination 'policySettings' with 0 rule(s): []
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all ask rules for destination 'policySettings' with 0 rule(s): []
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all allow rules for destination 'userSettings' with 1 rule(s): ["Bash(agy --dangerously-skip-permissions:*)"]
+2026-10-14T06:37:02.533Z [DEBUG] Replacing all allow rules for destination 'flagSettings' with 2 rule(s): ["Bash(curl -s http://127.0.0.1:47617/inbox)","Bash(sleep 8)"]
+2026-10-14T06:37:02.540Z [DEBUG] All plugins already exist, skipping migration
+2026-10-14T06:37:02.541Z [DEBUG] Initialized versioned plugins system with 4 plugins
+2026-10-14T06:37:02.564Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=1e6de533-94c7-47f5-baf5-b47cb20c14e3 source=quota_check
+2026-10-14T06:37:02.565Z [DEBUG] Loaded 1 LSP server(s) from plugin: rust-analyzer-lsp
+2026-10-14T06:37:02.565Z [DEBUG] Total LSP servers loaded: 1
+2026-10-14T06:37:02.565Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 1 server(s)
+2026-10-14T06:37:02.566Z [DEBUG] LSP manager initialized with 1 servers
+2026-10-14T06:37:02.566Z [DEBUG] LSP server manager initialized successfully
+2026-10-14T06:37:02.566Z [DEBUG] Registered notification handler for plugin:rust-analyzer-lsp:rust-analyzer.textDocument/publishDiagnostics (connection not ready)
+2026-10-14T06:37:02.566Z [DEBUG] Registered diagnostics handler for plugin:rust-analyzer-lsp:rust-analyzer
+2026-10-14T06:37:02.566Z [DEBUG] LSP notification handlers registered successfully for all 1 server(s)
+2026-10-14T06:37:02.574Z [DEBUG] [sessionRegistry] sweep permitted (domain linux:c6f36564a95c488b968d69b79530cee5:pid:[4026531836])
+2026-10-14T06:37:02.597Z [DEBUG] Git remote URL: null
+2026-10-14T06:37:02.597Z [DEBUG] No git remote URL found
+2026-10-14T06:37:02.597Z [DEBUG] Keeping /home/sandro/.claude/plugins/cache/claude-plugins-official/frontend-design: it still holds a directory, a symlink, a versioned archive or an entry of unknown type
+2026-10-14T06:37:02.598Z [DEBUG] Preserving file permissions: 100600
+2026-10-14T06:37:02.598Z [DEBUG] Writing to temp file: /home/sandro/.claude.json.tmp.398975.cbb3e851ad4e
+2026-10-14T06:37:02.602Z [DEBUG] Keeping /home/sandro/.claude/plugins/cache/claude-plugins-official/asana: it still holds a directory, a symlink, a versioned archive or an entry of unknown type
+2026-10-14T06:37:02.602Z [DEBUG] Applied original permissions to temp file
+2026-10-14T06:37:02.603Z [DEBUG] Keeping /home/sandro/.claude/plugins/cache/claude-plugins-official/rust-analyzer-lsp: it still holds a directory, a symlink, a versioned archive or an entry of unknown type
+2026-10-14T06:37:02.603Z [DEBUG] Keeping /home/sandro/.claude/plugins/cache/claude-plugins-official: it still holds a directory, a symlink, a versioned archive or an entry of unknown type
+2026-10-14T06:37:02.603Z [DEBUG] Keeping /home/sandro/.claude/plugins/cache/impeccable/impeccable: it still holds a directory, a symlink, a versioned archive or an entry of unknown type
+2026-10-14T06:37:02.603Z [DEBUG] Keeping /home/sandro/.claude/plugins/cache/impeccable: it still holds a directory, a symlink, a versioned archive or an entry of unknown type
+2026-10-14T06:37:02.606Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-10-14T06:37:02.608Z [DEBUG] Ripgrep first use test: PASSED (mode=embedded, path=/opt/claude-code/bin/claude)
+2026-10-14T06:37:02.619Z [DEBUG] Temp file written successfully, size: 182288 bytes
+2026-10-14T06:37:02.619Z [DEBUG] Renaming /home/sandro/.claude.json.tmp.398975.cbb3e851ad4e to /home/sandro/.claude.json
+2026-10-14T06:37:02.620Z [DEBUG] File /home/sandro/.claude.json written atomically
+2026-10-14T06:37:02.622Z [DEBUG] Preserving file permissions: 100600
+2026-10-14T06:37:02.622Z [DEBUG] Writing to temp file: /home/sandro/.claude.json.tmp.398975.94af6ab6d6cd
+2026-10-14T06:37:02.622Z [DEBUG] Applied original permissions to temp file
+2026-10-14T06:37:02.632Z [DEBUG] Temp file written successfully, size: 182461 bytes
+2026-10-14T06:37:02.632Z [DEBUG] Renaming /home/sandro/.claude.json.tmp.398975.94af6ab6d6cd to /home/sandro/.claude.json
+2026-10-14T06:37:02.633Z [DEBUG] File /home/sandro/.claude.json written atomically
+2026-10-14T06:37:02.659Z [DEBUG] [keybindings] KeybindingSetup initialized with 212 bindings, 0 warnings
+2026-10-14T06:37:02.683Z [DEBUG] [engine] send set_max_thinking_tokens max=null
+2026-10-14T06:37:02.683Z [DEBUG] [engine] send set_model model=claude-haiku-4-5-20251001
+2026-10-14T06:37:02.686Z [DEBUG] prompt.edit: unhooked; the composer relays nothing
+2026-10-14T06:37:02.691Z [DEBUG] mcp runtime arm: v2 (source: growthbook)
+2026-10-14T06:37:02.705Z [DEBUG] performStartupChecks called
+2026-10-14T06:37:02.708Z [DEBUG] [jobStateNameSync] watch skipped: Error: ENOENT: no such file or directory, watch '/home/sandro/.claude/jobs/d685955c'
+2026-10-14T06:37:02.709Z [DEBUG] [REPL:mount] REPL mounted, disabled=false
+2026-10-14T06:37:02.710Z [DEBUG] Official marketplace auto-install skipped: already_installed
+2026-10-14T06:37:02.711Z [DEBUG] [ScheduledTasks] scheduler start() — enabled=false, hasTasks=false
+2026-10-14T06:37:02.712Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /home/sandro/work/privat/workbench/examples/minimal/.claude/settings.json
+2026-10-14T06:37:02.712Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /home/sandro/work/privat/workbench/.claude/settings.local.json
+2026-10-14T06:37:02.712Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /home/sandro/work/privat/workbench/examples/minimal/.claude/settings.local.json
+2026-10-14T06:37:02.712Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /etc/claude-code/managed-settings.json
+2026-10-14T06:37:02.733Z [DEBUG] Total plugin workflows loaded: 0
+2026-10-14T06:37:02.739Z [DEBUG] Starting background plugin installations
+2026-10-14T06:37:02.739Z [DEBUG] session.start: raised (surface terminal, interactive)
+2026-10-14T06:37:02.743Z [DEBUG] [servedCatalog] shadow compare logged (fetch=cache_fresh, rows=12, source=served)
+2026-10-14T06:37:02.743Z [DEBUG] [servedCatalog] primary: served list replaces the compiled picker; every compiled row is served
+2026-10-14T06:37:02.743Z [DEBUG] getSkills returning: 18 skill dir commands, 11 plugin skills, 40 bundled skills, 0 builtin plugin skills
+2026-10-14T06:37:02.744Z [DEBUG] [auto-mode] verifyAutoModeGateAccess: enabledState=enabled disabledBySettings=false model=claude-haiku-4-5-20251001 modelSupported=false disableFastModeBreakerFires=false carouselAvailable=false canEnterAuto=false
+2026-10-14T06:37:02.744Z [WARN] auto mode disabled: model claude-haiku-4-5-20251001 does not support auto mode
+2026-10-14T06:37:02.744Z [DEBUG] performBackgroundPluginInstallations called
+2026-10-14T06:37:02.745Z [DEBUG] hooks module telemetry@builtin (native): telemetry.log nested in agents-md#0
+2026-10-14T06:37:02.746Z [DEBUG] [auto-mode] kickOutOfAutoIfNeeded applying: ctx.mode=auto ctx.prePlanMode=undefined reason=model
+2026-10-14T06:37:02.746Z [DEBUG] Applying permission update: Setting mode to 'default'
+2026-10-14T06:37:02.752Z [DEBUG] [event-loop-stall] detector started (interval=200ms, threshold=500ms)
+2026-10-14T06:37:02.753Z [DEBUG] $.telemetry.log (agents-md -> telemetry) answered in 7.8ms
+2026-10-14T06:37:02.755Z [DEBUG] hooks module telemetry@builtin session.start settled in 14.8ms (native link, next() included)
+2026-10-14T06:37:02.762Z [DEBUG] hooks module telemetry@builtin telemetry.log settled in 17.3ms (native link, next() included)
+2026-10-14T06:37:02.762Z [DEBUG] hooks module agents-md@builtin session.start settled in 22.8ms (native link, next() included)
+2026-10-14T06:37:02.763Z [INFO] Bridge URL: wss://bridge.claudeusercontent.com
+2026-10-14T06:37:02.764Z [DEBUG] MCP server "claude-in-chrome": In-process Chrome MCP server started
+2026-10-14T06:37:02.765Z [DEBUG] MCP server "claude-in-chrome": Starting connection with timeout of 30000ms
+2026-10-14T06:37:02.770Z [DEBUG] MCP server "claude-in-chrome": Successfully connected (transport: stdio) in 26ms
+2026-10-14T06:37:02.770Z [DEBUG] MCP server "claude-in-chrome": Connection established with capabilities: {"hasTools":true,"hasPrompts":false,"hasResources":false,"hasResourceSubscribe":false,"serverVersion":{"name":"Claude in Chrome","version":"1.0.0"},"protocolEra":"legacy","negotiatedProtocolVersion":"2025-11-25"}
+2026-10-14T06:37:02.770Z [DEBUG] [MCP] Server "claude-in-chrome" connected with subscribe=false
+2026-10-14T06:37:02.778Z [DEBUG] MCP server "claude-in-chrome": Channel notifications skipped: server did not declare claude/channel capability
+2026-10-14T06:37:02.787Z [DEBUG] [Claude in Chrome] Found chrome profiles: Default
+2026-10-14T06:37:02.787Z [DEBUG] [sessionRegistry] sweep permitted (domain linux:c6f36564a95c488b968d69b79530cee5:pid:[4026531836])
+2026-10-14T06:37:02.791Z [DEBUG] [Claude in Chrome] Extension fcoeoabgfenejglbffodgkkbkcdhcgfn found in chrome Default
+2026-10-14T06:37:02.812Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/skills: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/skills'
+2026-10-14T06:37:02.817Z [DEBUG] "Loaded 1 CLAUDE.md/rules files:\n  [Project] /home/sandro/work/privat/workbench/CLAUDE.md (2623 chars)"
+2026-10-14T06:37:02.823Z [DEBUG] hooks module telemetry@builtin (native): telemetry.log nested in agents-md#1
+2026-10-14T06:37:02.823Z [DEBUG] hooks module telemetry@builtin (native): telemetry.mark nested in agents-md#1
+2026-10-14T06:37:02.823Z [DEBUG] $.telemetry.log (agents-md -> telemetry) answered in 0.4ms
+2026-10-14T06:37:02.824Z [DEBUG] $.telemetry.mark (agents-md -> telemetry) answered in 0.2ms
+2026-10-14T06:37:02.824Z [DEBUG] hooks module agents-md@builtin prompt.context settled in 1.6ms (native link, next() included)
+2026-10-14T06:37:02.824Z [DEBUG] hooks module telemetry@builtin telemetry.log settled in 0.6ms (native link, next() included)
+2026-10-14T06:37:02.824Z [DEBUG] hooks module telemetry@builtin telemetry.mark settled in 0.4ms (native link, next() included)
+2026-10-14T06:37:02.838Z [DEBUG] [engine] send seed_read_state path=/home/sandro/work/privat/workbench/CLAUDE.md
+2026-10-14T06:37:02.838Z [DEBUG] Watching for changes in skill/command directories: /home/sandro/.claude/skills, /home/sandro/.claude/skills/synced...
+2026-10-14T06:37:02.850Z [DEBUG] [FileIndex] getProjectFiles called, respectGitignore=true
+2026-10-14T06:37:02.850Z [DEBUG] [FileIndex] getFilesUsingGit called
+2026-10-14T06:37:02.853Z [DEBUG] XTVERSION: terminal identified as "libghostty"
+2026-10-14T06:37:02.863Z [DEBUG] Artifact input schema built: assets=true copy_from=true assets_source=disk
+2026-10-14T06:37:02.881Z [DEBUG] Preserving file permissions: 100600
+2026-10-14T06:37:02.881Z [DEBUG] Writing to temp file: /home/sandro/.claude.json.tmp.398975.ea3ba03d59e8
+2026-10-14T06:37:02.883Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/output-styles: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/output-styles'
+2026-10-14T06:37:02.883Z [DEBUG] Failed to stat directory /home/sandro/.claude/output-styles: ENOENT: no such file or directory, stat '/home/sandro/.claude/output-styles'
+2026-10-14T06:37:02.883Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/workflows: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/workflows'
+2026-10-14T06:37:02.883Z [DEBUG] Failed to stat directory /home/sandro/.claude/workflows: ENOENT: no such file or directory, stat '/home/sandro/.claude/workflows'
+2026-10-14T06:37:02.884Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/routines: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/routines'
+2026-10-14T06:37:02.884Z [DEBUG] Failed to stat directory /home/sandro/.claude/routines: ENOENT: no such file or directory, stat '/home/sandro/.claude/routines'
+2026-10-14T06:37:02.884Z [DEBUG] Org fast mode: enabled
+2026-10-14T06:37:02.886Z [DEBUG] [Bootstrap] Fetch ok
+2026-10-14T06:37:02.886Z [DEBUG] [Bootstrap] Cache updated, persisting to disk
+2026-10-14T06:37:02.887Z [DEBUG] Loaded plugins - Enabled: 6, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2026-10-14T06:37:02.890Z [DEBUG] $.process.run (telemetry): sh with 2 args in /home/sandro/work/privat/workbench/examples/minimal (pid 399950)
+2026-10-14T06:37:02.891Z [DEBUG] Watching /home/sandro/work/privat/workbench/examples/minimal for /home/sandro/work/privat/workbench/examples/minimal/.claude to appear
+2026-10-14T06:37:02.891Z [DEBUG] Watching /home/sandro/work/privat/workbench for /home/sandro/work/privat/workbench/.claude to appear
+2026-10-14T06:37:02.892Z [DEBUG] Watching for changes in setting files /home/sandro/.claude/settings.json...
+2026-10-14T06:37:02.892Z [DEBUG] Applied original permissions to temp file
+2026-10-14T06:37:02.901Z [DEBUG] Temp file written successfully, size: 182461 bytes
+2026-10-14T06:37:02.901Z [DEBUG] Renaming /home/sandro/.claude.json.tmp.398975.ea3ba03d59e8 to /home/sandro/.claude.json
+2026-10-14T06:37:02.911Z [DEBUG] [FileIndex] git ls-files (tracked) took 61ms
+2026-10-14T06:37:02.911Z [DEBUG] Terminal capabilities: extendedKeys=yes (env: terminal=kitty); synchronizedOutput=yes (probe: DECRPM 2026 status=2); kittyKeyboard=yes (probe: CSI ? u flags=5); kittyGraphics=no (probe: graphics reply OK, terminal libghostty); mousePixels=yes (probe: DECRPM 1016 status=2, cell 8x16px); terminal said: CSI ? u not asked
+2026-10-14T06:37:02.911Z [DEBUG] DECSTBM: enabled (TMUX=unset ZELLIJ=unset TERM_PROGRAM=unset TERM=xterm-256color)
+2026-10-14T06:37:02.913Z [DEBUG] $.process.run (telemetry): sh exited 0 in 24ms, 53 + 0 chars
+2026-10-14T06:37:02.916Z [DEBUG] File /home/sandro/.claude.json written atomically
+2026-10-14T06:37:02.917Z [DEBUG] [FileIndex] git ls-files: 32 tracked files in 67ms
+2026-10-14T06:37:02.918Z [DEBUG] [FileIndex] using git ls-files result (32 files)
+2026-10-14T06:37:02.918Z [ERROR] $.fs.read (telemetry): /sys/hypervisor/uuid failed: ENOENT: no such file or directory, open '/sys/hypervisor/uuid'
+2026-10-14T06:37:02.922Z [DEBUG] [FileIndex] background untracked fetch: 25 files
+2026-10-14T06:37:02.923Z [DEBUG] [FileIndex] rebuilt index with 32 tracked + 25 untracked files
+2026-10-14T06:37:02.925Z [DEBUG] Preserving file permissions: 100600
+2026-10-14T06:37:02.925Z [DEBUG] Writing to temp file: /home/sandro/.claude.json.tmp.398975.3a633f62148b
+2026-10-14T06:37:02.926Z [DEBUG] Applied original permissions to temp file
+2026-10-14T06:37:02.928Z [DEBUG] Detected pacman installation: /opt/claude-code/bin/claude ist in claude-code 2.1.283-1 enthalten
+2026-10-14T06:37:02.928Z [DEBUG] AutoUpdaterWrapper: Installation type: package-manager
+2026-10-14T06:37:02.937Z [DEBUG] Temp file written successfully, size: 182534 bytes
+2026-10-14T06:37:02.937Z [DEBUG] Renaming /home/sandro/.claude.json.tmp.398975.3a633f62148b to /home/sandro/.claude.json
+2026-10-14T06:37:02.938Z [DEBUG] File /home/sandro/.claude.json written atomically
+2026-10-14T06:37:02.941Z [DEBUG] Preserving file permissions: 100600
+2026-10-14T06:37:02.941Z [DEBUG] Writing to temp file: /home/sandro/.claude.json.tmp.398975.36a64265e794
+2026-10-14T06:37:02.941Z [DEBUG] Applied original permissions to temp file
+2026-10-14T06:37:02.944Z [DEBUG] [FileIndex] cache refresh completed in 94ms
+2026-10-14T06:37:02.946Z [DEBUG] Temp file written successfully, size: 182573 bytes
+2026-10-14T06:37:02.946Z [DEBUG] Renaming /home/sandro/.claude.json.tmp.398975.36a64265e794 to /home/sandro/.claude.json
+2026-10-14T06:37:02.946Z [DEBUG] File /home/sandro/.claude.json written atomically
+2026-10-14T06:37:02.949Z [DEBUG] Preserving file permissions: 100600
+2026-10-14T06:37:02.949Z [DEBUG] Writing to temp file: /home/sandro/.claude.json.tmp.398975.db16461b5f75
+2026-10-14T06:37:02.949Z [DEBUG] Applied original permissions to temp file
+2026-10-14T06:37:02.954Z [DEBUG] Temp file written successfully, size: 182922 bytes
+2026-10-14T06:37:02.954Z [DEBUG] Renaming /home/sandro/.claude.json.tmp.398975.db16461b5f75 to /home/sandro/.claude.json
+2026-10-14T06:37:02.954Z [DEBUG] File /home/sandro/.claude.json written atomically
+2026-10-14T06:37:03.221Z [DEBUG] [fs.watch probe] verdict: delivers
+2026-10-14T06:37:07.752Z [DEBUG] $.http.fetch (telemetry): POST https://api.anthropic.com/api/event_logging/v2/batch
+2026-10-14T06:37:08.021Z [DEBUG] $.http.fetch (telemetry): 200 in 269ms, 39 chars
+2026-10-14T06:37:08.022Z [DEBUG] [telemetry] $.ui.log (to debug): telemetry: sent 3 row(s)
+2026-10-14T06:37:12.712Z [DEBUG] Preserving file permissions: 100600
+2026-10-14T06:37:12.712Z [DEBUG] Writing to temp file: /home/sandro/.claude.json.tmp.398975.c81523af5041
+2026-10-14T06:37:12.712Z [DEBUG] Applied original permissions to temp file
+2026-10-14T06:37:12.729Z [DEBUG] Temp file written successfully, size: 182749 bytes
+2026-10-14T06:37:12.729Z [DEBUG] Renaming /home/sandro/.claude.json.tmp.398975.c81523af5041 to /home/sandro/.claude.json
+2026-10-14T06:37:12.729Z [DEBUG] File /home/sandro/.claude.json written atomically
+2026-10-14T06:37:12.730Z [DEBUG] fullscreen boot canary: healthy
+2026-10-14T06:37:23.016Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-10-14T06:37:23.023Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-10-14T06:37:23.023Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-10-14T06:37:23.023Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-10-14T06:37:23.024Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-10-14T06:37:23.025Z [DEBUG] Total plugin output styles loaded: 0
+2026-10-14T06:37:23.026Z [DEBUG] Sending 46 skills via attachment (initial)
+2026-10-14T06:37:23.026Z [WARN] Skill listing over budget: 46 skills, 21045 chars > 8000 budget — descriptions will be truncated. Run /skills to disable some, or raise skillListingBudgetFraction in settings.
+2026-10-14T06:37:23.052Z [DEBUG] Hooks: Checking first line for async: {"hookSpecificOutput": {"hookEventName": "UserPromptSubmit", "additionalContext": "Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\n- R-0001 from owner: Owner note: the release token is WB-1DBEA6."}}
+2026-10-14T06:37:23.052Z [DEBUG] Hooks: Parsed initial response: {"hookSpecificOutput":{"hookEventName":"UserPromptSubmit","additionalContext":"Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\n- R-0001 from owner: Owner note: the release token is WB-1DBEA6."}}
+2026-10-14T06:37:23.052Z [DEBUG] Hooks: Initial response is not async, continuing normal processing
+2026-10-14T06:37:23.058Z [DEBUG] Successfully parsed and validated hook JSON output
+2026-10-14T06:37:23.058Z [DEBUG] "Hook UserPromptSubmit (UserPromptSubmit) success:\n{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\\n- R-0001 from owner: Owner note: the release token is WB-1DBEA6.\"}}"
+2026-10-14T06:37:23.058Z [DEBUG] Hook UserPromptSubmit (/usr/bin/python3 -I -S /home/sandro/work/privat/workbench/spikes/S2-agent-channels/hooks/user_prompt_submit.py) provided additionalContext (149 chars)
+2026-10-14T06:37:23.060Z [DEBUG] FileHistory: Added snapshot for 211b5a86-674e-48a6-9f87-20ceab90573b, tracking 0 files
+2026-10-14T06:37:23.065Z [DEBUG] act_dont_rederive_arm_active source=growthbook
+2026-10-14T06:37:23.068Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.496; cc_entrypoint=cli; cch=00000;
+2026-10-14T06:37:23.070Z [DEBUG] intro_frame_arm_active source=growthbook
+2026-10-14T06:37:23.073Z [DEBUG] [engine] yield system/init (first)
+2026-10-14T06:37:23.073Z [DEBUG] [engine] turn 1 start
+2026-10-14T06:37:23.088Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:37:23.089Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prompt_id=b03cfd2a-1375-4e4a-95bd-d14ffaf09741; cc_turn_origin=human;
+2026-10-14T06:37:23.094Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:37:23.094Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:37:23.095Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:37:23.095Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:37:23.096Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=7501a113-4f3c-4731-9f75-c1f94876b9c2 source=generate_session_title
+2026-10-14T06:37:23.096Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=cf68746a-faa4-4370-80af-2c2112a8acf2 source=repl_main_thread
+2026-10-14T06:37:23.825Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:37:23.825Z [DEBUG] [API:timing] first byte after 731ms
+2026-10-14T06:37:24.387Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:37:24.387Z [DEBUG] [API:timing] first byte after 1293ms
+2026-10-14T06:37:25.900Z [DEBUG] Hooks: Config-based async hook, backgrounding process async_hook_401520
+2026-10-14T06:37:25.921Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-10-14T06:37:25.925Z [DEBUG] [engine] turn 1 end (turns=1 usage in=917 out=146 cost=$0.0256 api=3681ms stop=end_turn resultLen=43)
+2026-10-14T06:37:25.935Z [DEBUG] [sessionRegistry] sweep permitted (domain linux:c6f36564a95c488b968d69b79530cee5:pid:[4026531836])
+2026-10-14T06:37:25.957Z [DEBUG] Preserving file permissions: 100600
+2026-10-14T06:37:25.957Z [DEBUG] Writing to temp file: /home/sandro/.claude.json.tmp.398975.d7fd4eec3521
+2026-10-14T06:37:25.958Z [DEBUG] Applied original permissions to temp file
+2026-10-14T06:37:25.975Z [DEBUG] Temp file written successfully, size: 182749 bytes
+2026-10-14T06:37:25.975Z [DEBUG] Renaming /home/sandro/.claude.json.tmp.398975.d7fd4eec3521 to /home/sandro/.claude.json
+2026-10-14T06:37:25.975Z [DEBUG] File /home/sandro/.claude.json written atomically
+2026-10-14T06:37:35.297Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-10-14T06:37:35.297Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-10-14T06:37:35.297Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-10-14T06:37:35.297Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-10-14T06:37:35.315Z [DEBUG] High write ratio: blit=0, write=1017 (100.0% writes), screen=83x60
+2026-10-14T06:37:35.322Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-10-14T06:37:35.323Z [DEBUG] FileHistory: Making snapshot for message 9fb713c6-047a-40df-a517-13c63ade6881
+2026-10-14T06:37:35.324Z [DEBUG] FileHistory: Added snapshot for 9fb713c6-047a-40df-a517-13c63ade6881, tracking 0 files
+2026-10-14T06:37:35.326Z [DEBUG] [engine] turn 2 start
+2026-10-14T06:37:35.332Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:37:35.333Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fhcucugH9cLiKCbSkJ; cc_prompt_id=c6f399fd-00ba-4b8f-916f-67e8bf90bed4; cc_turn_origin=human;
+2026-10-14T06:37:35.337Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:37:35.337Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:37:35.338Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=63b7d5b2-d402-4335-acf0-93991240c0a6 source=repl_main_thread
+2026-10-14T06:37:37.463Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:37:37.463Z [DEBUG] [API:timing] first byte after 2126ms
+2026-10-14T06:37:38.224Z [INFO] [Stall] tool_dispatch_start tool=Bash toolUseId=toolu_01NKLnjKVqRCWYfZUsUFzp89 permissionDecisionMs=3
+2026-10-14T06:37:38.227Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2026-10-14T06:37:38.227Z [DEBUG] Looking for shell config file: /home/sandro/.zshrc
+2026-10-14T06:37:38.229Z [DEBUG] Snapshots directory: /home/sandro/.claude/shell-snapshots
+2026-10-14T06:37:38.230Z [DEBUG] Creating snapshot at: /home/sandro/.claude/shell-snapshots/snapshot-zsh-1791959858229-dddeqb.sh
+2026-10-14T06:37:38.230Z [DEBUG] Execution timeout: 10000ms
+2026-10-14T06:37:38.239Z [DEBUG] Spawn-env probe captured 150 keys
+2026-10-14T06:37:38.467Z [DEBUG] Shell snapshot created successfully (199560 bytes)
+2026-10-14T06:37:38.468Z [DEBUG] No session environment scripts found
+2026-10-14T06:37:38.468Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-10-14T06:37:46.492Z [INFO] [Stall] tool_dispatch_end tool=Bash toolUseId=toolu_01NKLnjKVqRCWYfZUsUFzp89 outcome=ok durationMs=8267
+2026-10-14T06:37:46.517Z [DEBUG] Hooks: Checking first line for async: {"hookSpecificOutput": {"hookEventName": "PostToolUse", "additionalContext": "Workbench inbox, delivered by the PostToolUse hook (owner data, not a command):\n- R-0002 from owner: Owner note added mid-turn: token WB-45F263."}}
+2026-10-14T06:37:46.517Z [DEBUG] Hooks: Parsed initial response: {"hookSpecificOutput":{"hookEventName":"PostToolUse","additionalContext":"Workbench inbox, delivered by the PostToolUse hook (owner data, not a command):\n- R-0002 from owner: Owner note added mid-turn: token WB-45F263."}}
+2026-10-14T06:37:46.517Z [DEBUG] Hooks: Initial response is not async, continuing normal processing
+2026-10-14T06:37:46.521Z [DEBUG] Successfully parsed and validated hook JSON output
+2026-10-14T06:37:46.521Z [DEBUG] "Hook PostToolUse:Bash (PostToolUse) success:\n{\"hookSpecificOutput\": {\"hookEventName\": \"PostToolUse\", \"additionalContext\": \"Workbench inbox, delivered by the PostToolUse hook (owner data, not a command):\\n- R-0002 from owner: Owner note added mid-turn: token WB-45F263.\"}}"
+2026-10-14T06:37:46.521Z [DEBUG] Hook PostToolUse (/usr/bin/python3 -I -S /home/sandro/work/privat/workbench/spikes/S2-agent-channels/hooks/post_tool_use.py) provided additionalContext (144 chars)
+2026-10-14T06:37:46.529Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-10-14T06:37:46.530Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-10-14T06:37:46.530Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-10-14T06:37:46.530Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-10-14T06:37:46.535Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:37:46.537Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fiWxE4PBddXHsgcbow; cc_prompt_id=c6f399fd-00ba-4b8f-916f-67e8bf90bed4; cc_turn_origin=human;
+2026-10-14T06:37:46.540Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:37:46.541Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:37:46.541Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=3b5107be-81e1-4849-819f-63b4f558b15b source=repl_main_thread
+2026-10-14T06:37:47.433Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:37:47.433Z [DEBUG] [API:timing] first byte after 893ms
+2026-10-14T06:37:48.720Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:37:48.721Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fjLpJy7EBFe7hXpkFC;
+2026-10-14T06:37:48.725Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:37:48.725Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:37:48.726Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=41261df0-97e8-4f77-8019-e45f2c93c540 source=prompt_suggestion
+2026-10-14T06:37:48.727Z [DEBUG] Hooks: Config-based async hook, backgrounding process async_hook_403159
+2026-10-14T06:37:48.753Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-10-14T06:37:48.756Z [DEBUG] [engine] turn 2 end (turns=2 usage in=935 out=449 cost=$0.0352 api=8790ms stop=end_turn resultLen=88)
+2026-10-14T06:37:48.761Z [DEBUG] [sessionRegistry] sweep permitted (domain linux:c6f36564a95c488b968d69b79530cee5:pid:[4026531836])
+2026-10-14T06:37:48.773Z [DEBUG] Preserving file permissions: 100600
+2026-10-14T06:37:48.773Z [DEBUG] Writing to temp file: /home/sandro/.claude.json.tmp.398975.e613fb576f84
+2026-10-14T06:37:48.774Z [DEBUG] Applied original permissions to temp file
+2026-10-14T06:37:48.790Z [DEBUG] Temp file written successfully, size: 182749 bytes
+2026-10-14T06:37:48.790Z [DEBUG] Renaming /home/sandro/.claude.json.tmp.398975.e613fb576f84 to /home/sandro/.claude.json
+2026-10-14T06:37:48.791Z [DEBUG] File /home/sandro/.claude.json written atomically
+2026-10-14T06:37:49.649Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:37:49.649Z [DEBUG] [API:timing] first byte after 925ms
+2026-10-14T06:37:53.395Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-10-14T06:37:53.409Z [DEBUG] Forked agent [prompt_suggestion] finished: 1 messages, types=[assistant], totalUsage: input=350 output=339 cacheRead=35998 cacheCreate=175
+2026-10-14T06:38:07.043Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-10-14T06:38:07.043Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-10-14T06:38:07.043Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-10-14T06:38:07.043Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-10-14T06:38:07.069Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-10-14T06:38:07.070Z [DEBUG] FileHistory: Making snapshot for message f9168138-a7e2-4407-9f88-d7e04cf4d058
+2026-10-14T06:38:07.071Z [DEBUG] FileHistory: Added snapshot for f9168138-a7e2-4407-9f88-d7e04cf4d058, tracking 0 files
+2026-10-14T06:38:07.072Z [DEBUG] [engine] turn 3 start
+2026-10-14T06:38:07.077Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:38:07.078Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fjLpJy7EBFe7hXpkFC; cc_prompt_id=9c320659-8fc9-43b3-84f8-8a056d049943; cc_turn_origin=human;
+2026-10-14T06:38:07.082Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:38:07.082Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:38:07.083Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=b8bff406-0d1a-404b-a650-c5fdd1dea283 source=repl_main_thread
+2026-10-14T06:38:07.965Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:38:07.965Z [DEBUG] [API:timing] first byte after 884ms
+2026-10-14T06:38:08.214Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:38:08.216Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fkreTDatEgsvnAvxKG;
+2026-10-14T06:38:08.219Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:38:08.219Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:38:08.220Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=c4b548f7-5470-4f6d-a1d0-e429748dbab1 source=prompt_suggestion
+2026-10-14T06:38:08.222Z [DEBUG] Hooks: Config-based async hook, backgrounding process async_hook_404674
+2026-10-14T06:38:08.240Z [DEBUG] Hooks: Checking first line for async: {"decision": "block", "reason": "Workbench: owner item R-0003 is unread. Run exactly: curl -s http://127.0.0.1:47617/inbox and repeat each item text verbatim."}
+2026-10-14T06:38:08.240Z [DEBUG] Hooks: Parsed initial response: {"decision":"block","reason":"Workbench: owner item R-0003 is unread. Run exactly: curl -s http://127.0.0.1:47617/inbox and repeat each item text verbatim."}
+2026-10-14T06:38:08.240Z [DEBUG] Hooks: Initial response is not async, continuing normal processing
+2026-10-14T06:38:08.243Z [DEBUG] Successfully parsed and validated hook JSON output
+2026-10-14T06:38:08.243Z [DEBUG] "Hook Stop (Stop) success:\n{\"decision\": \"block\", \"reason\": \"Workbench: owner item R-0003 is unread. Run exactly: curl -s http://127.0.0.1:47617/inbox and repeat each item text verbatim.\"}"
+2026-10-14T06:38:08.244Z [DEBUG] Hook Stop (/usr/bin/python3 -I -S /home/sandro/work/privat/workbench/spikes/S2-agent-channels/hooks/stop.py) returned permissionDecision: deny (reason: Workbench: owner item R-0003 is unread. Run exactly: curl -s http://127.0.0.1:47617/inbox and repeat each item text verbatim.)
+2026-10-14T06:38:08.251Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:38:08.252Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fkreTDatEgsvnAvxKG; cc_prompt_id=9c320659-8fc9-43b3-84f8-8a056d049943; cc_turn_origin=human;
+2026-10-14T06:38:08.256Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:38:08.256Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:38:08.256Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=740846e9-e4f3-4c5e-aec4-e6c7be42cc8a source=repl_main_thread
+2026-10-14T06:38:09.217Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:38:09.217Z [DEBUG] [API:timing] first byte after 998ms
+2026-10-14T06:38:09.229Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:38:09.229Z [DEBUG] [API:timing] first byte after 974ms
+2026-10-14T06:38:10.165Z [INFO] [Stall] tool_dispatch_start tool=Bash toolUseId=toolu_01K5aGn7P6NGtkxskyTCWZM2 permissionDecisionMs=3
+2026-10-14T06:38:10.174Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-10-14T06:38:10.205Z [INFO] [Stall] tool_dispatch_end tool=Bash toolUseId=toolu_01K5aGn7P6NGtkxskyTCWZM2 outcome=ok durationMs=40
+2026-10-14T06:38:10.230Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-10-14T06:38:10.237Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-10-14T06:38:10.237Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-10-14T06:38:10.237Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-10-14T06:38:10.237Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-10-14T06:38:10.242Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:38:10.243Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fkwnmpV6YrqUDvpcwb; cc_prompt_id=9c320659-8fc9-43b3-84f8-8a056d049943; cc_turn_origin=human;
+2026-10-14T06:38:10.247Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:38:10.247Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:38:10.247Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=26093a88-7f9b-44cf-95d2-9f729e650e08 source=repl_main_thread
+2026-10-14T06:38:12.009Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:38:12.009Z [DEBUG] [API:timing] first byte after 1763ms
+2026-10-14T06:38:12.588Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:38:12.589Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fm77bcUvrGnGFRGvu7;
+2026-10-14T06:38:12.593Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:38:12.593Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:38:12.594Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=a51039ed-2b8d-46c3-87c0-524a21b03754 source=prompt_suggestion
+2026-10-14T06:38:12.596Z [DEBUG] Hooks: Config-based async hook, backgrounding process async_hook_404940
+2026-10-14T06:38:12.623Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-10-14T06:38:12.626Z [DEBUG] [engine] turn 3 end (turns=3 usage in=1313 out=1048 cost=$0.0544 api=18862ms stop=end_turn resultLen=34)
+2026-10-14T06:38:12.630Z [DEBUG] [sessionRegistry] sweep permitted (domain linux:c6f36564a95c488b968d69b79530cee5:pid:[4026531836])
+2026-10-14T06:38:12.645Z [DEBUG] Preserving file permissions: 100600
+2026-10-14T06:38:12.645Z [DEBUG] Writing to temp file: /home/sandro/.claude.json.tmp.398975.d0a40fbc94d5
+2026-10-14T06:38:12.645Z [DEBUG] Applied original permissions to temp file
+2026-10-14T06:38:12.662Z [DEBUG] Temp file written successfully, size: 182749 bytes
+2026-10-14T06:38:12.662Z [DEBUG] Renaming /home/sandro/.claude.json.tmp.398975.d0a40fbc94d5 to /home/sandro/.claude.json
+2026-10-14T06:38:12.662Z [DEBUG] File /home/sandro/.claude.json written atomically
+2026-10-14T06:38:13.563Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:38:13.563Z [DEBUG] [API:timing] first byte after 971ms
+2026-10-14T06:38:18.549Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-10-14T06:38:18.563Z [DEBUG] Forked agent [prompt_suggestion] finished: 1 messages, types=[assistant], totalUsage: input=350 output=472 cacheRead=36659 cacheCreate=85
+2026-10-14T06:38:18.850Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-10-14T06:38:18.865Z [DEBUG] Forked agent [prompt_suggestion] finished: 1 messages, types=[assistant], totalUsage: input=350 output=975 cacheRead=36212 cacheCreate=44
+2026-10-14T06:38:32.514Z [DEBUG] "Hook Stop (Stop) error:\nOwner answered R-0005. Run: curl -s http://127.0.0.1:47617/inbox"
+2026-10-14T06:38:32.537Z [DEBUG] Preserving file permissions: 100600
+2026-10-14T06:38:32.537Z [DEBUG] Writing to temp file: /home/sandro/.claude.json.tmp.398975.8c0300978b91
+2026-10-14T06:38:32.538Z [DEBUG] Applied original permissions to temp file
+2026-10-14T06:38:32.551Z [DEBUG] Hooks: Checking first line for async: {"hookSpecificOutput": {"hookEventName": "UserPromptSubmit", "additionalContext": "Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\n- R-0004 from owner: Late owner note WB-3CA1F6.\n- R-0005 from owner: Owner answered: approved, token WB-9983E7."}}
+2026-10-14T06:38:32.551Z [DEBUG] Hooks: Parsed initial response: {"hookSpecificOutput":{"hookEventName":"UserPromptSubmit","additionalContext":"Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\n- R-0004 from owner: Late owner note WB-3CA1F6.\n- R-0005 from owner: Owner answered: approved, token WB-9983E7."}}
+2026-10-14T06:38:32.551Z [DEBUG] Hooks: Initial response is not async, continuing normal processing
+2026-10-14T06:38:32.555Z [DEBUG] Successfully parsed and validated hook JSON output
+2026-10-14T06:38:32.555Z [DEBUG] "Hook UserPromptSubmit (UserPromptSubmit) success:\n{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\\n- R-0004 from owner: Late owner note WB-3CA1F6.\\n- R-0005 from owner: Owner answered: approved, token WB-9983E7.\"}}"
+2026-10-14T06:38:32.555Z [DEBUG] Hook UserPromptSubmit (/usr/bin/python3 -I -S /home/sandro/work/privat/workbench/spikes/S2-agent-channels/hooks/user_prompt_submit.py) provided additionalContext (196 chars)
+2026-10-14T06:38:32.558Z [DEBUG] [engine] turn 4 start
+2026-10-14T06:38:32.563Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:38:32.564Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fm77bcUvrGnGFRGvu7; cc_prompt_id=adc9c2bb-a0b3-481e-a309-102c2ab897da; cc_turn_origin=task_notification;
+2026-10-14T06:38:32.568Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:38:32.568Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:38:32.569Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=bf34419c-fd8f-40a8-98b2-b9cc3dc7c68f source=repl_main_thread
+2026-10-14T06:38:32.569Z [DEBUG] Temp file written successfully, size: 182749 bytes
+2026-10-14T06:38:32.569Z [DEBUG] Renaming /home/sandro/.claude.json.tmp.398975.8c0300978b91 to /home/sandro/.claude.json
+2026-10-14T06:38:32.575Z [DEBUG] File /home/sandro/.claude.json written atomically
+2026-10-14T06:38:33.485Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:38:33.485Z [DEBUG] [API:timing] first byte after 917ms
+2026-10-14T06:38:34.663Z [INFO] [Stall] tool_dispatch_start tool=Bash toolUseId=toolu_01MHjnP22AEj5BDrqBMYGbGN permissionDecisionMs=2
+2026-10-14T06:38:34.671Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-10-14T06:38:34.696Z [INFO] [Stall] tool_dispatch_end tool=Bash toolUseId=toolu_01MHjnP22AEj5BDrqBMYGbGN outcome=ok durationMs=33
+2026-10-14T06:38:34.722Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-10-14T06:38:34.729Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-10-14T06:38:34.729Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-10-14T06:38:34.729Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-10-14T06:38:34.729Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-10-14T06:38:34.734Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:38:34.736Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fnjfZqAWbY9UGhgowd; cc_prompt_id=adc9c2bb-a0b3-481e-a309-102c2ab897da; cc_turn_origin=task_notification;
+2026-10-14T06:38:34.740Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:38:34.740Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:38:34.741Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=135626dc-5f1f-4134-ba6d-2d89bee155f4 source=repl_main_thread
+2026-10-14T06:38:35.654Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:38:35.654Z [DEBUG] [API:timing] first byte after 914ms
+2026-10-14T06:38:36.501Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:38:36.502Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fntyQbjAqzs93uYttR;
+2026-10-14T06:38:36.506Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:38:36.506Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:38:36.507Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=14ea06c6-0d78-44fd-ae15-050ae0c5acc0 source=prompt_suggestion
+2026-10-14T06:38:36.509Z [DEBUG] Hooks: Config-based async hook, backgrounding process async_hook_406692
+2026-10-14T06:38:36.530Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-10-14T06:38:36.533Z [DEBUG] [engine] turn 4 end (turns=2 usage in=2031 out=2851 cost=$0.0801 api=39346ms stop=end_turn resultLen=70)
+2026-10-14T06:38:37.453Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:38:37.453Z [DEBUG] [API:timing] first byte after 947ms
+2026-10-14T06:38:40.682Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-10-14T06:38:40.691Z [DEBUG] Forked agent [prompt_suggestion] finished: 1 messages, types=[assistant], totalUsage: input=350 output=309 cacheRead=37306 cacheCreate=130
+2026-10-14T06:39:12.922Z [DEBUG] [skills] idle — switching poll interval to 30000ms
+2026-10-14T06:39:16.809Z [DEBUG] High write ratio: blit=0, write=1518 (100.0% writes), screen=83x60
+2026-10-14T06:39:17.107Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-10-14T06:39:17.107Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-10-14T06:39:17.107Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-10-14T06:39:17.107Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-10-14T06:39:17.124Z [DEBUG] High write ratio: blit=0, write=1770 (100.0% writes), screen=83x60
+2026-10-14T06:39:17.128Z [DEBUG] Hooks: Checking first line for async: {"hookSpecificOutput": {"hookEventName": "UserPromptSubmit", "additionalContext": "Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\n- R-0006 from owner: Owner answered: go ahead, token WB-A9372A."}}
+2026-10-14T06:39:17.128Z [DEBUG] Hooks: Parsed initial response: {"hookSpecificOutput":{"hookEventName":"UserPromptSubmit","additionalContext":"Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\n- R-0006 from owner: Owner answered: go ahead, token WB-A9372A."}}
+2026-10-14T06:39:17.128Z [DEBUG] Hooks: Initial response is not async, continuing normal processing
+2026-10-14T06:39:17.131Z [DEBUG] Successfully parsed and validated hook JSON output
+2026-10-14T06:39:17.131Z [DEBUG] "Hook UserPromptSubmit (UserPromptSubmit) success:\n{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\\n- R-0006 from owner: Owner answered: go ahead, token WB-A9372A.\"}}"
+2026-10-14T06:39:17.131Z [DEBUG] Hook UserPromptSubmit (/usr/bin/python3 -I -S /home/sandro/work/privat/workbench/spikes/S2-agent-channels/hooks/user_prompt_submit.py) provided additionalContext (148 chars)
+2026-10-14T06:39:17.132Z [DEBUG] FileHistory: Making snapshot for message 20f79761-764c-4914-b2bb-0cc32b3a4d81
+2026-10-14T06:39:17.134Z [DEBUG] FileHistory: Added snapshot for 20f79761-764c-4914-b2bb-0cc32b3a4d81, tracking 0 files
+2026-10-14T06:39:17.134Z [DEBUG] [engine] turn 5 start
+2026-10-14T06:39:17.139Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:39:17.140Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fntyQbjAqzs93uYttR; cc_prompt_id=52bb85b3-0f75-4c1e-a3cb-9b79939fba35; cc_turn_origin=human;
+2026-10-14T06:39:17.144Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:39:17.144Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:39:17.144Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=7d89ac35-53e8-4a88-8db2-3c20d595a5bb source=repl_main_thread
+2026-10-14T06:39:18.184Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:39:18.184Z [DEBUG] [API:timing] first byte after 1040ms
+2026-10-14T06:39:18.723Z [INFO] [Stall] tool_dispatch_start tool=Bash toolUseId=toolu_016iVv622ZueU73h3iykFj8N permissionDecisionMs=1
+2026-10-14T06:39:18.732Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-10-14T06:39:18.761Z [INFO] [Stall] tool_dispatch_end tool=Bash toolUseId=toolu_016iVv622ZueU73h3iykFj8N outcome=ok durationMs=38
+2026-10-14T06:39:18.787Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-10-14T06:39:18.794Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-10-14T06:39:18.794Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-10-14T06:39:18.794Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-10-14T06:39:18.794Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-10-14T06:39:18.799Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:39:18.800Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fr2E3zU9JSrtq5hbc1; cc_prompt_id=52bb85b3-0f75-4c1e-a3cb-9b79939fba35; cc_turn_origin=human;
+2026-10-14T06:39:18.804Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:39:18.804Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:39:18.804Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=5df5f477-cd32-4b65-8e4f-2b3be0ec2df7 source=repl_main_thread
+2026-10-14T06:39:20.125Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:39:20.125Z [DEBUG] [API:timing] first byte after 1322ms
+2026-10-14T06:39:20.619Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:39:20.620Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fr9Mg8QXmcQGstbPcM;
+2026-10-14T06:39:20.624Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:39:20.624Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:39:20.624Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=75bf28be-a6f3-4668-8849-e091369b4c53 source=prompt_suggestion
+2026-10-14T06:39:20.626Z [DEBUG] Hooks: Config-based async hook, backgrounding process async_hook_409542
+2026-10-14T06:39:20.647Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-10-14T06:39:20.650Z [DEBUG] [engine] turn 5 end (turns=2 usage in=2399 out=3362 cost=$0.0952 api=46935ms stop=end_turn resultLen=42)
+2026-10-14T06:39:20.654Z [DEBUG] [sessionRegistry] sweep permitted (domain linux:c6f36564a95c488b968d69b79530cee5:pid:[4026531836])
+2026-10-14T06:39:20.667Z [DEBUG] Preserving file permissions: 100600
+2026-10-14T06:39:20.667Z [DEBUG] Writing to temp file: /home/sandro/.claude.json.tmp.398975.98fe2afac3ce
+2026-10-14T06:39:20.667Z [DEBUG] Applied original permissions to temp file
+2026-10-14T06:39:20.684Z [DEBUG] Temp file written successfully, size: 182824 bytes
+2026-10-14T06:39:20.684Z [DEBUG] Renaming /home/sandro/.claude.json.tmp.398975.98fe2afac3ce to /home/sandro/.claude.json
+2026-10-14T06:39:20.684Z [DEBUG] File /home/sandro/.claude.json written atomically
+2026-10-14T06:39:21.653Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:39:21.653Z [DEBUG] [API:timing] first byte after 1029ms
+2026-10-14T06:39:22.922Z [DEBUG] [skills] active — switching poll interval to 2000ms
+2026-10-14T06:39:23.223Z [DEBUG] Loading skills from: managed=/etc/claude-code/.claude/skills, user=/home/sandro/.claude/skills, project=[]
+2026-10-14T06:39:23.224Z [DEBUG] [skills] skipping reserved dir name 'synced' under /home/sandro/.claude/skills: 'synced' is the sync-owned root
+2026-10-14T06:39:23.224Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/commands: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/commands'
+2026-10-14T06:39:23.224Z [DEBUG] Failed to stat directory /home/sandro/.claude/commands: ENOENT: no such file or directory, stat '/home/sandro/.claude/commands'
+2026-10-14T06:39:23.228Z [DEBUG] Loaded 18 unique skills (18 unconditional, 0 conditional, managed: 0, user: 6, project: 0, additional: 0, legacy commands: 0)
+2026-10-14T06:39:25.989Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-10-14T06:39:25.997Z [DEBUG] Forked agent [prompt_suggestion] finished: 1 messages, types=[assistant], totalUsage: input=350 output=443 cacheRead=37738 cacheCreate=85
+2026-10-14T06:39:37.808Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-10-14T06:39:37.808Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-10-14T06:39:37.808Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-10-14T06:39:37.808Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-10-14T06:39:37.832Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-10-14T06:39:37.833Z [DEBUG] FileHistory: Making snapshot for message 782ba3e9-918a-4030-baa2-6f1d9cd89b57
+2026-10-14T06:39:37.835Z [DEBUG] FileHistory: Added snapshot for 782ba3e9-918a-4030-baa2-6f1d9cd89b57, tracking 0 files
+2026-10-14T06:39:37.835Z [DEBUG] [engine] turn 6 start
+2026-10-14T06:39:37.840Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:39:37.841Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fr9Mg8QXmcQGstbPcM; cc_prompt_id=b63fe6e5-9518-4fd4-a22b-a93bb9b302f4; cc_turn_origin=human;
+2026-10-14T06:39:37.845Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:39:37.845Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:39:37.845Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=1852add1-531f-404f-810f-2eee53f70c20 source=repl_main_thread
+2026-10-14T06:39:38.763Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:39:38.763Z [DEBUG] [API:timing] first byte after 918ms
+2026-10-14T06:39:39.460Z [DEBUG] "Permission suggestions for Bash: [\n  {\n    \"type\": \"addRules\",\n    \"rules\": [\n      {\n        \"toolName\": \"Bash\",\n        \"ruleContent\": \"python3 -c 'print(6*7)'\"\n      }\n    ],\n    \"behavior\": \"allow\",\n    \"destination\": \"localSettings\"\n  }\n]"
+2026-10-14T06:39:39.460Z [DEBUG] executePermissionRequestHooks called for tool: Bash
+2026-10-14T06:39:39.468Z [DEBUG] [auto-mode] canCycleToAuto=false: ctx.isAutoModeAvailable=false isAutoModeGateEnabled=false reason=model
+2026-10-14T06:39:39.477Z [DEBUG] High write ratio: blit=0, write=2012 (100.0% writes), screen=83x60
+2026-10-14T06:39:41.722Z [DEBUG] Aborting: tool=Bash isAbort=undefined hasFeedback=false isSubagent=false
+2026-10-14T06:39:41.722Z [DEBUG] Bash tool permission denied
+2026-10-14T06:39:41.725Z [DEBUG] [engine] turn 6 end (turns=3 usage in=2759 out=3928 cost=$0.1064 api=53947ms stop=tool_use resultLen=0)
+2026-10-14T06:39:41.726Z [DEBUG] [engine] turn ended in error: [ede_diagnostic] result_type=user last_content_type=n/a stop_reason=tool_use
+2026-10-14T06:39:41.730Z [DEBUG] [sessionRegistry] sweep permitted (domain linux:c6f36564a95c488b968d69b79530cee5:pid:[4026531836])
+2026-10-14T06:39:41.731Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/skills: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/skills'
+2026-10-14T06:39:41.731Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/agents: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/agents'
+2026-10-14T06:39:41.731Z [DEBUG] Failed to stat directory /home/sandro/.claude/agents: ENOENT: no such file or directory, stat '/home/sandro/.claude/agents'
+2026-10-14T06:39:41.744Z [DEBUG] prompt.edit: unhooked; the composer relays nothing
+2026-10-14T06:39:41.750Z [DEBUG] High write ratio: blit=0, write=1974 (100.0% writes), screen=83x60
+2026-10-14T06:39:41.751Z [DEBUG] AutoUpdaterWrapper: Installation type: package-manager
+2026-10-14T06:39:41.751Z [DEBUG] [FileIndex] getProjectFiles called, respectGitignore=true
+2026-10-14T06:39:41.751Z [DEBUG] [FileIndex] getFilesUsingGit called
+2026-10-14T06:39:41.755Z [DEBUG] [FileIndex] git ls-files (tracked) took 4ms
+2026-10-14T06:39:41.755Z [DEBUG] [FileIndex] skipped path normalization — raw git paths unchanged
+2026-10-14T06:39:41.755Z [DEBUG] [FileIndex] git ls-files: 32 tracked files in 4ms
+2026-10-14T06:39:41.756Z [DEBUG] [FileIndex] using git ls-files result (32 files)
+2026-10-14T06:39:41.756Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/commands: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/commands'
+2026-10-14T06:39:41.757Z [DEBUG] Failed to stat directory /home/sandro/.claude/commands: ENOENT: no such file or directory, stat '/home/sandro/.claude/commands'
+2026-10-14T06:39:41.757Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/output-styles: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/output-styles'
+2026-10-14T06:39:41.757Z [DEBUG] Failed to stat directory /home/sandro/.claude/output-styles: ENOENT: no such file or directory, stat '/home/sandro/.claude/output-styles'
+2026-10-14T06:39:41.757Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/workflows: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/workflows'
+2026-10-14T06:39:41.757Z [DEBUG] Failed to stat directory /home/sandro/.claude/workflows: ENOENT: no such file or directory, stat '/home/sandro/.claude/workflows'
+2026-10-14T06:39:41.757Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/routines: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/routines'
+2026-10-14T06:39:41.757Z [DEBUG] Failed to stat directory /home/sandro/.claude/routines: ENOENT: no such file or directory, stat '/home/sandro/.claude/routines'
+2026-10-14T06:39:41.758Z [DEBUG] [FileIndex] background untracked fetch: 45 files
+2026-10-14T06:39:41.759Z [DEBUG] [FileIndex] rebuilt index with 32 tracked + 45 untracked files
+2026-10-14T06:39:41.763Z [DEBUG] [FileIndex] skipped index rebuild — tracked paths unchanged
+2026-10-14T06:39:41.763Z [DEBUG] [FileIndex] cache refresh completed in 12ms
+2026-10-14T06:40:42.923Z [DEBUG] [skills] idle — switching poll interval to 30000ms
+2026-10-14T06:40:43.920Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-10-14T06:40:43.921Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-10-14T06:40:43.921Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-10-14T06:40:43.921Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-10-14T06:40:43.943Z [DEBUG] Hooks: Checking first line for async: {"hookSpecificOutput": {"hookEventName": "UserPromptSubmit", "additionalContext": "Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\n- R-0007 from owner: Owner answered while blocked: token WB-6D0D05."}}
+2026-10-14T06:40:43.943Z [DEBUG] Hooks: Parsed initial response: {"hookSpecificOutput":{"hookEventName":"UserPromptSubmit","additionalContext":"Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\n- R-0007 from owner: Owner answered while blocked: token WB-6D0D05."}}
+2026-10-14T06:40:43.943Z [DEBUG] Hooks: Initial response is not async, continuing normal processing
+2026-10-14T06:40:43.946Z [DEBUG] Successfully parsed and validated hook JSON output
+2026-10-14T06:40:43.946Z [DEBUG] "Hook UserPromptSubmit (UserPromptSubmit) success:\n{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\\n- R-0007 from owner: Owner answered while blocked: token WB-6D0D05.\"}}"
+2026-10-14T06:40:43.946Z [DEBUG] Hook UserPromptSubmit (/usr/bin/python3 -I -S /home/sandro/work/privat/workbench/spikes/S2-agent-channels/hooks/user_prompt_submit.py) provided additionalContext (152 chars)
+2026-10-14T06:40:43.947Z [DEBUG] FileHistory: Making snapshot for message db1cf442-a720-48fe-b598-4f95f9f2ef65
+2026-10-14T06:40:43.948Z [DEBUG] FileHistory: Added snapshot for db1cf442-a720-48fe-b598-4f95f9f2ef65, tracking 0 files
+2026-10-14T06:40:43.949Z [DEBUG] [engine] turn 7 start
+2026-10-14T06:40:43.954Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:40:43.956Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fsYj8sp1yD61p1dXNZ; cc_prompt_id=5fc516a2-6cce-4348-b4ac-cdae9ba3f250; cc_turn_origin=human;
+2026-10-14T06:40:43.960Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:40:43.960Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:40:43.960Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=206c5ad6-74f9-43d0-92a7-b838dc7be395 source=repl_main_thread
+2026-10-14T06:40:44.864Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:40:44.864Z [DEBUG] [API:timing] first byte after 905ms
+2026-10-14T06:40:45.047Z [DEBUG] Dynamic tool loading: 0/45 deferred tools included
+2026-10-14T06:40:45.049Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.283.d3a; cc_entrypoint=cli; cch=00000; cc_prev_req=req_011Cg1fxRRzAETMmnD465JSG;
+2026-10-14T06:40:45.052Z [DEBUG] [API:timing] dispatching to firstParty model=claude-haiku-4-5-20251001
+2026-10-14T06:40:45.052Z [DEBUG] [dispatch] sent anthropic-dispatch-id=v2d
+2026-10-14T06:40:45.053Z [DEBUG] [API REQUEST] /v1/messages x-client-request-id=110b17d8-672d-4e57-ab11-72e3bb5f425e source=prompt_suggestion
+2026-10-14T06:40:45.055Z [DEBUG] Hooks: Config-based async hook, backgrounding process async_hook_415056
+2026-10-14T06:40:45.082Z [DEBUG] Hook output does not start with {, treating as plain text
+2026-10-14T06:40:45.085Z [DEBUG] [engine] turn 7 end (turns=1 usage in=2769 out=3959 cost=$0.1110 api=55030ms stop=end_turn resultLen=2)
+2026-10-14T06:40:45.089Z [DEBUG] [sessionRegistry] sweep permitted (domain linux:c6f36564a95c488b968d69b79530cee5:pid:[4026531836])
+2026-10-14T06:40:46.038Z [DEBUG] Stream started - received first chunk
+2026-10-14T06:40:46.038Z [DEBUG] [API:timing] first byte after 987ms
+2026-10-14T06:40:49.387Z [DEBUG] Forked agent [prompt_suggestion] received message: type=assistant
+2026-10-14T06:40:49.406Z [DEBUG] Forked agent [prompt_suggestion] finished: 1 messages, types=[assistant], totalUsage: input=350 output=374 cacheRead=38298 cacheCreate=38
+2026-10-14T06:40:52.923Z [DEBUG] [skills] active — switching poll interval to 2000ms
+2026-10-14T06:40:53.224Z [DEBUG] Loading skills from: managed=/etc/claude-code/.claude/skills, user=/home/sandro/.claude/skills, project=[]
+2026-10-14T06:40:53.225Z [DEBUG] [skills] skipping reserved dir name 'synced' under /home/sandro/.claude/skills: 'synced' is the sync-owned root
+2026-10-14T06:40:53.225Z [DEBUG] Failed to stat directory /etc/claude-code/.claude/commands: ENOENT: no such file or directory, stat '/etc/claude-code/.claude/commands'
+2026-10-14T06:40:53.225Z [DEBUG] Failed to stat directory /home/sandro/.claude/commands: ENOENT: no such file or directory, stat '/home/sandro/.claude/commands'
+2026-10-14T06:40:53.229Z [DEBUG] Loaded 18 unique skills (18 unconditional, 0 conditional, managed: 0, user: 6, project: 0, additional: 0, legacy commands: 0)
+2026-10-14T06:40:54.791Z [DEBUG] nonBlockingStdout: uninstalling (Error: EIO: i/o error, write)
+2026-10-14T06:40:54.793Z [DEBUG] [uds-messaging] Shutting down
+2026-10-14T06:40:54.795Z [DEBUG] [closeSessionTabGroup] bridge not connected, skipping
+2026-10-14T06:40:54.795Z [DEBUG] LSP server manager shut down successfully
+2026-10-14T06:40:54.799Z [DEBUG] High write ratio: blit=0, write=2093 (100.0% writes), screen=83x60
+2026-10-14T06:40:54.800Z [DEBUG] Cleaned up session snapshot: /home/sandro/.claude/shell-snapshots/snapshot-zsh-1791959858229-dddeqb.sh
+2026-10-14T06:40:54.922Z [DEBUG] hooks module telemetry@builtin session.end settled in 0.4ms (native link, next() included)
+2026-10-14T06:40:55.236Z [WARN] [stderr] [?25h
+2026-10-14T06:40:55.240Z [DEBUG] Preserving file permissions: 100600
+2026-10-14T06:40:55.240Z [DEBUG] Writing to temp file: /home/sandro/.claude.json.tmp.398975.acc4a18346fe
+2026-10-14T06:40:55.241Z [DEBUG] Applied original permissions to temp file
+2026-10-14T06:40:55.256Z [DEBUG] Temp file written successfully, size: 183773 bytes
+2026-10-14T06:40:55.256Z [DEBUG] Renaming /home/sandro/.claude.json.tmp.398975.acc4a18346fe to /home/sandro/.claude.json
+2026-10-14T06:40:55.256Z [DEBUG] File /home/sandro/.claude.json written atomically
+2026-10-14T06:40:55.258Z [DEBUG] Preserving file permissions: 100600
+2026-10-14T06:40:55.258Z [DEBUG] Writing to temp file: /home/sandro/.claude.json.tmp.398975.7e6f40b5f54c
+2026-10-14T06:40:55.258Z [DEBUG] Applied original permissions to temp file
+2026-10-14T06:40:55.269Z [DEBUG] Temp file written successfully, size: 184801 bytes
+2026-10-14T06:40:55.269Z [DEBUG] Renaming /home/sandro/.claude.json.tmp.398975.7e6f40b5f54c to /home/sandro/.claude.json
+2026-10-14T06:40:55.269Z [DEBUG] File /home/sandro/.claude.json written atomically
+2026-10-14T06:40:55.271Z [DEBUG] High write ratio: blit=0, write=2093 (100.0% writes), screen=83x60
+2026-10-14T06:40:55.271Z [ERROR] restoreTerminalModes write failed: Error: EIO: i/o error, write
+2026-10-14T06:40:55.273Z [DEBUG] [REPL:unmount] REPL unmounting

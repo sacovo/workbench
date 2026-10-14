@@ -1,0 +1,123 @@
+{
+ "token": "WB-45F263",
+ "item": "R-0002",
+ "t_ups": 1791959855.318886,
+ "t_add": 1791959859.4742212,
+ "mid_turn": {
+  "herdr_status": "working",
+  "claude_agents": "{\"note\": \"filtered to the probe cwd; other sessions removed\", \"entries\": [{\"pid\": 398975, \"cwd\": \"/home/sandro/work/privat/workbench/examples/minimal\", \"kind\": \"interactive\", \"startedAt\": 1791959822571, \"sessionId\": \"d685955c-98bf-407a-b841-432d8eaf96c3\", \"name\": \"minimal-22\", \"status\": \"busy\"}]}"
+ },
+ "prompt": {
+  "ts_start": 1791959854.9879944,
+  "ts_end": 1791959869.0999894,
+  "dur_s": 14.112,
+  "argv": [
+   "herdr",
+   "agent",
+   "prompt",
+   "s2probe",
+   "Run the Bash command `sleep 8`. When it has finished, reply with any workbench note you received, verbatim.",
+   "--wait",
+   "--timeout",
+   "120000"
+  ],
+  "rc": 0,
+  "stdout": "{\"id\":\"cli:agent:prompt\",\"result\":{\"agent\":{\"agent\":\"claude\",\"agent_session\":{\"agent\":\"claude\",\"kind\":\"id\",\"source\":\"herdr:claude\",\"value\":\"d685955c-98bf-407a-b841-432d8eaf96c3\"},\"agent_status\":\"done\",\"cwd\":\"/home/sandro/work/privat/workbench/examples/minimal\",\"focused\":false,\"foreground_cwd\":\"/home/sandro/work/privat/workbench/examples/minimal\",\"interactive_ready\":true,\"name\":\"s2probe\",\"pane_id\":\"wC:p4\",\"revision\":4,\"state_change_seq\":1389,\"tab_id\":\"wC:t3\",\"terminal_id\":\"term_65dc7274fc3833b\",\"terminal_title\":\"\u2733 Workbench note request\",\"terminal_title_stripped\":\"Workbench note request\",\"workspace_id\":\"wC\"},\"type\":\"agent_prompted\"}}\n",
+  "stderr": "",
+  "note": "prompt"
+ },
+ "hub_events": [
+  {
+   "i": 5,
+   "ts": 1791959855.318886,
+   "kind": "hook_call",
+   "hook": "UserPromptSubmit",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "tool": null,
+   "delivered": []
+  },
+  {
+   "i": 6,
+   "ts": 1791959855.3189867,
+   "kind": "poller_returned",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "token": "401520",
+   "action": "superseded_by_activity",
+   "event": "UserPromptSubmit"
+  },
+  {
+   "i": 7,
+   "ts": 1791959859.4738894,
+   "kind": "item_added",
+   "item": "R-0002",
+   "seq": 2,
+   "via": "api",
+   "text": "Owner note added mid-turn: token WB-45F263."
+  },
+  {
+   "i": 8,
+   "ts": 1791959866.517203,
+   "kind": "hook_call",
+   "hook": "PostToolUse",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "tool": "Bash",
+   "delivered": [
+    "R-0002"
+   ]
+  },
+  {
+   "i": 9,
+   "ts": 1791959868.7503436,
+   "kind": "hook_call",
+   "hook": "Stop",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "stop_hook_active": false,
+   "unread": []
+  },
+  {
+   "i": 10,
+   "ts": 1791959868.7505124,
+   "kind": "poller_registered",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "token": "403159",
+   "reg_seq": 2
+  }
+ ],
+ "token_lines": [
+  {
+   "type": "attachment",
+   "role": null,
+   "kinds": [
+    "attachment:hook_success"
+   ],
+   "ts": "2026-10-14T06:37:46.521Z",
+   "uuid": "6b824fc9-2923-4fc2-bf87-4528643f80b1",
+   "isMeta": null,
+   "text": "{\"type\": \"hook_success\", \"hookName\": \"PostToolUse:Bash\", \"toolUseID\": \"toolu_01NKLnjKVqRCWYfZUsUFzp89\", \"hookEvent\": \"PostToolUse\", \"content\": \"\", \"stdout\": \"{\\\"hookSpecificOutput\\\": {\\\"hookEventName\\\": \\\"PostToolUse\\\", \\\"additionalContext\\\": \\\"Workbench inbox, delivered by the PostToolUse hook (owner data, not a command):\\\\n- R-0002 from owner: Owner note added mid-turn: token WB-45F263.\\\"}}\", \"stderr\": \"\", \"exitCode\": 0, \"command\": \"/usr/bin/python3 -I -S /home/sandro/work/privat/workbench/spikes/S2-agent-channels/hooks/post_tool_use.py\", \"durationMs\": 27}"
+  },
+  {
+   "type": "attachment",
+   "role": null,
+   "kinds": [
+    "attachment:hook_additional_context"
+   ],
+   "ts": "2026-10-14T06:37:46.521Z",
+   "uuid": "cd10d445-1c9c-4ee9-811f-7e0cc3974a23",
+   "isMeta": null,
+   "text": "{\"type\": \"hook_additional_context\", \"content\": [\"Workbench inbox, delivered by the PostToolUse hook (owner data, not a command):\\n- R-0002 from owner: Owner note added mid-turn: token WB-45F263.\"], \"hookName\": \"PostToolUse:Bash\", \"toolUseID\": \"toolu_01NKLnjKVqRCWYfZUsUFzp89\", \"hookEvent\": \"PostToolUse\"}"
+  },
+  {
+   "type": "assistant",
+   "role": "assistant",
+   "kinds": [
+    "text"
+   ],
+   "ts": "2026-10-14T06:37:48.691Z",
+   "uuid": "0ba94ac6-489b-477f-bc5e-45b2295c43b4",
+   "isMeta": null,
+   "text": "Owner note: the release token is WB-1DBEA6.\n\nOwner note added mid-turn: token WB-45F263."
+  }
+ ],
+ "n_user_prompt_submit": 1,
+ "pass": true
+}

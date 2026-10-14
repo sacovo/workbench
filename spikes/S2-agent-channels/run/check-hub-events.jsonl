@@ -1,0 +1,27 @@
+{"i": 0, "ts": 1791959658.5415552, "kind": "hub_started", "port": 47630}
+{"i": 1, "ts": 1791959658.567392, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "bench", "tool": null, "delivered": []}
+{"i": 2, "ts": 1791959658.5707612, "kind": "item_added", "item": "R-0001", "seq": 1, "via": "api", "text": "token WB-check1"}
+{"i": 3, "ts": 1791959658.5873873, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "bench", "tool": null, "delivered": ["R-0001"]}
+{"i": 4, "ts": 1791959658.6065772, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "bench", "tool": null, "delivered": []}
+{"i": 5, "ts": 1791959658.6096435, "kind": "item_added", "item": "R-0002", "seq": 2, "via": "api", "text": "token WB-check2"}
+{"i": 6, "ts": 1791959658.6260633, "kind": "hook_call", "hook": "PostToolUse", "session": "bench", "tool": "Bash", "delivered": ["R-0002"]}
+{"i": 7, "ts": 1791959658.6291604, "kind": "item_added", "item": "R-0003", "seq": 3, "via": "api", "text": "token WB-check3"}
+{"i": 8, "ts": 1791959658.6466024, "kind": "hook_call", "hook": "Stop", "session": "bench", "stop_hook_active": false, "unread": ["R-0003"]}
+{"i": 9, "ts": 1791959658.6658728, "kind": "hook_call", "hook": "Stop", "session": "bench", "stop_hook_active": true, "unread": ["R-0003"]}
+{"i": 10, "ts": 1791959658.6688962, "kind": "inbox_pull", "delivered": ["R-0003"]}
+{"i": 11, "ts": 1791959658.6854157, "kind": "hook_call", "hook": "Stop", "session": "bench", "stop_hook_active": false, "unread": []}
+{"i": 12, "ts": 1791959658.7044475, "kind": "hook_call", "hook": "Notification", "session": "bench", "notification_type": "permission_prompt"}
+{"i": 13, "ts": 1791959658.7237244, "kind": "poller_registered", "session": "s-wake", "token": "392240", "reg_seq": 3}
+{"i": 14, "ts": 1791959659.1089683, "kind": "item_added", "item": "R-0004", "seq": 4, "via": "api", "text": "answer WB-check4"}
+{"i": 15, "ts": 1791959659.1090844, "kind": "poller_returned", "session": "s-wake", "token": "392240", "action": "wake", "items": ["R-0004"]}
+{"i": 16, "ts": 1791959659.133721, "kind": "poller_registered", "session": "s-act", "token": "392246", "reg_seq": 4}
+{"i": 17, "ts": 1791959659.5347013, "kind": "hook_call", "hook": "PostToolUse", "session": "s-act", "tool": "Bash", "delivered": ["R-0004"]}
+{"i": 18, "ts": 1791959659.5348048, "kind": "poller_returned", "session": "s-act", "token": "392246", "action": "superseded_by_activity", "event": "PostToolUse"}
+{"i": 19, "ts": 1791959659.538165, "kind": "item_added", "item": "R-0005", "seq": 5, "via": "api", "text": "answer WB-check5"}
+{"i": 20, "ts": 1791959659.5397682, "kind": "inbox_pull", "delivered": ["R-0005"]}
+{"i": 21, "ts": 1791959659.5567489, "kind": "poller_registered", "session": "s-sup", "token": "392252", "reg_seq": 5}
+{"i": 22, "ts": 1791959659.9573538, "kind": "poller_registered", "session": "s-sup", "token": "392299", "reg_seq": 5}
+{"i": 23, "ts": 1791959659.9574134, "kind": "poller_returned", "session": "s-sup", "token": "392252", "action": "superseded"}
+{"i": 24, "ts": 1791959659.9726434, "kind": "config", "rewake": false}
+{"i": 25, "ts": 1791959659.9727309, "kind": "poller_returned", "session": "s-sup", "token": "392299", "action": "disabled"}
+{"i": 26, "ts": 1791959660.1728737, "kind": "hub_stopped"}

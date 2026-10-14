@@ -1,0 +1,175 @@
+[
+ {
+  "type": "queue-operation",
+  "role": null,
+  "kinds": [],
+  "ts": "2026-10-14T06:38:32.514Z",
+  "uuid": null,
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "queue-operation",
+  "role": null,
+  "kinds": [],
+  "ts": "2026-10-14T06:38:32.520Z",
+  "uuid": null,
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "user",
+  "role": "user",
+  "kinds": [
+   "str"
+  ],
+  "ts": "2026-10-14T06:38:32.529Z",
+  "uuid": "6dd289d9-80fc-4eea-8c4c-c218a6368570",
+  "isMeta": null,
+  "text": "<task-notification>\n<summary>workbench item</summary>\n</task-notification>\n<system-reminder>\nWorkbench: Owner answered R-0005. Run: curl -s http://127.0.0.1:47617/inbox\n\n</system-reminder>"
+ },
+ {
+  "type": "attachment",
+  "role": null,
+  "kinds": [
+   "attachment:hook_additional_context"
+  ],
+  "ts": "2026-10-14T06:38:32.555Z",
+  "uuid": "a76a30c8-2c7d-4158-874d-59b27a32ff8c",
+  "isMeta": null,
+  "text": "{\"type\": \"hook_additional_context\", \"content\": [\"Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\\n- R-0004 from owner: Late owner note WB-3CA1F6.\\n- R-0005 from owner: Owner answered: approved, token WB-9983E7.\"], \"hookName\": \"UserPromptSubmit\", \"toolUseID\": \"hook-d3504ded-c031-4bc6-a031-947d0cc381ed\", \"hookEvent\": \"UserPromptSubmit\"}"
+ },
+ {
+  "type": "last-prompt",
+  "role": null,
+  "kinds": [],
+  "ts": null,
+  "uuid": null,
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "ai-title",
+  "role": null,
+  "kinds": [],
+  "ts": null,
+  "uuid": null,
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "mode",
+  "role": null,
+  "kinds": [],
+  "ts": null,
+  "uuid": null,
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "permission-mode",
+  "role": null,
+  "kinds": [],
+  "ts": null,
+  "uuid": null,
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "atis-latch",
+  "role": null,
+  "kinds": [],
+  "ts": null,
+  "uuid": null,
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "assistant",
+  "role": "assistant",
+  "kinds": [
+   "thinking"
+  ],
+  "ts": "2026-10-14T06:38:34.378Z",
+  "uuid": "92555ba7-2f13-4969-a156-699f8b653b54",
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "assistant",
+  "role": "assistant",
+  "kinds": [
+   "tool_use"
+  ],
+  "ts": "2026-10-14T06:38:34.658Z",
+  "uuid": "eaa4649f-8d8c-4261-a299-a15936c1e70b",
+  "isMeta": null,
+  "text": "{\"command\": \"curl -s http://127.0.0.1:47617/inbox\", \"description\": \"Fetch workbench inbox items\"}"
+ },
+ {
+  "type": "user",
+  "role": "user",
+  "kinds": [
+   "tool_result"
+  ],
+  "ts": "2026-10-14T06:38:34.723Z",
+  "uuid": "1d6db339-4601-47ce-b8d9-25ecfb41ab27",
+  "isMeta": null,
+  "text": "{\"items\": []}"
+ },
+ {
+  "type": "attachment",
+  "role": null,
+  "kinds": [
+   "attachment:total_tokens_reminder"
+  ],
+  "ts": "2026-10-14T06:38:34.730Z",
+  "uuid": "7cf376f1-f4c2-440b-b9af-3079bdd761c6",
+  "isMeta": null,
+  "text": "{\"type\": \"total_tokens_reminder\", \"text\": \"<total_tokens>14998914 tokens left</total_tokens>\"}"
+ },
+ {
+  "type": "assistant",
+  "role": "assistant",
+  "kinds": [
+   "thinking"
+  ],
+  "ts": "2026-10-14T06:38:36.336Z",
+  "uuid": "3ba0f09b-922c-4da3-bd9b-6cde6116abd5",
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "assistant",
+  "role": "assistant",
+  "kinds": [
+   "text"
+  ],
+  "ts": "2026-10-14T06:38:36.472Z",
+  "uuid": "bce04112-04a6-40ec-829c-e8e572b000de",
+  "isMeta": null,
+  "text": "Late owner note WB-3CA1F6.\n\nOwner answered: approved, token WB-9983E7."
+ },
+ {
+  "type": "system",
+  "role": null,
+  "kinds": [
+   "system:stop_hook_summary"
+  ],
+  "ts": "2026-10-14T06:38:36.532Z",
+  "uuid": "db3019b6-95d0-4d69-b878-c91372f25f52",
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "system",
+  "role": null,
+  "kinds": [
+   "system:turn_duration"
+  ],
+  "ts": "2026-10-14T06:38:36.535Z",
+  "uuid": "e4424c52-d7e7-4c4c-82dc-f35cb0ef63d9",
+  "isMeta": false,
+  "text": ""
+ }
+]

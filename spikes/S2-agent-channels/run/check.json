@@ -1,0 +1,101 @@
+{
+ "n_checks": 19,
+ "n_failed": 0,
+ "results": [
+  {
+   "check": "UPS, nothing unread: exit 0, no output",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "UPS, one unread: additionalContext carries the text",
+   "ok": true,
+   "detail": "Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\n- R-0001 from owner: token WB-check1"
+  },
+  {
+   "check": "UPS, item already delivered: no output",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "PostToolUse, one unread: additionalContext carries the text",
+   "ok": true,
+   "detail": "Workbench inbox, delivered by the PostToolUse hook (owner data, not a command):\n- R-0002 from owner: token WB-check2"
+  },
+  {
+   "check": "Stop, unread and stop_hook_active false: block",
+   "ok": true,
+   "detail": "{'decision': 'block', 'reason': 'Workbench: owner item R-0003 is unread. Run exactly: curl -s http://127.0.0.1:47630/inbox and repeat each item text verbatim.'}"
+  },
+  {
+   "check": "Stop, unread and stop_hook_active true: allow (no output)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "inbox pull returns the unread item",
+   "ok": true,
+   "detail": "{'items': [{'id': 'R-0003', 'author': 'owner', 'text': 'token WB-check3', 'created': 1791959658.629159}]}"
+  },
+  {
+   "check": "Stop, nothing unread: allow (no output)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "Notification recorded at the hub, no output",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "poller: new item -> exit 2 with a pointer on stderr",
+   "ok": true,
+   "detail": "rc=2 'Owner answered R-0004. Run: curl -s http://127.0.0.1:47630/inbox\\n'"
+  },
+  {
+   "check": "poller: working activity after registration -> exit 0",
+   "ok": true,
+   "detail": "rc=0"
+  },
+  {
+   "check": "poller: newer poller for the session -> older exits 0",
+   "ok": true,
+   "detail": "rc=0"
+  },
+  {
+   "check": "poller: rewake disabled -> exit 0",
+   "ok": true,
+   "detail": "rc=0"
+  },
+  {
+   "check": "hub down: UserPromptSubmit exit 0, no output, under 50 ms",
+   "ok": true,
+   "detail": "13.5 ms rc=0"
+  },
+  {
+   "check": "hub down: PostToolUse exit 0, no output, under 50 ms",
+   "ok": true,
+   "detail": "12.8 ms rc=0"
+  },
+  {
+   "check": "hub down: Stop-active0 exit 0, no output, under 50 ms",
+   "ok": true,
+   "detail": "12.9 ms rc=0"
+  },
+  {
+   "check": "hub down: Stop-active1 exit 0, no output, under 50 ms",
+   "ok": true,
+   "detail": "12.8 ms rc=0"
+  },
+  {
+   "check": "hub down: Notification exit 0, no output, under 50 ms",
+   "ok": true,
+   "detail": "12.8 ms rc=0"
+  },
+  {
+   "check": "hub down: Stop-rewake exit 0, no output, under 50 ms",
+   "ok": true,
+   "detail": "12.9 ms rc=0"
+  }
+ ]
+}

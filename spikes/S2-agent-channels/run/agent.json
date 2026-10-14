@@ -1,0 +1,26 @@
+{
+ "pane_id": "wC:p4",
+ "created": 1791959799.6785092,
+ "split": {
+  "id": "cli:pane:split",
+  "result": {
+   "pane": {
+    "agent_status": "unknown",
+    "cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+    "focused": false,
+    "foreground_cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+    "pane_id": "wC:p4",
+    "revision": 0,
+    "scroll": {
+     "max_offset_from_bottom": 0,
+     "offset_from_bottom": 0,
+     "viewport_rows": 85
+    },
+    "tab_id": "wC:t3",
+    "terminal_id": "term_65dc7274fc3833b",
+    "workspace_id": "wC"
+   },
+   "type": "pane_info"
+  }
+ }
+}

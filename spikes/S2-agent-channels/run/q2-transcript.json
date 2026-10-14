@@ -1,0 +1,143 @@
+[
+ {
+  "type": "file-history-snapshot",
+  "role": null,
+  "kinds": [],
+  "ts": null,
+  "uuid": null,
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "user",
+  "role": "user",
+  "kinds": [
+   "str"
+  ],
+  "ts": "2026-10-14T06:37:35.298Z",
+  "uuid": "9fb713c6-047a-40df-a517-13c63ade6881",
+  "isMeta": null,
+  "text": "Run the Bash command `sleep 8`. When it has finished, reply with any workbench note you received, verbatim."
+ },
+ {
+  "type": "attachment",
+  "role": null,
+  "kinds": [
+   "attachment:total_tokens_reminder"
+  ],
+  "ts": "2026-10-14T06:37:35.297Z",
+  "uuid": "9f2bba4c-b3b1-4feb-b375-c1d3e45e8551",
+  "isMeta": null,
+  "text": "{\"type\": \"total_tokens_reminder\", \"text\": \"<total_tokens>15000000 tokens left</total_tokens>\"}"
+ },
+ {
+  "type": "assistant",
+  "role": "assistant",
+  "kinds": [
+   "thinking"
+  ],
+  "ts": "2026-10-14T06:37:37.942Z",
+  "uuid": "7c35fa90-1e4b-4e83-9831-863027202907",
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "assistant",
+  "role": "assistant",
+  "kinds": [
+   "tool_use"
+  ],
+  "ts": "2026-10-14T06:37:38.216Z",
+  "uuid": "145c10f0-244c-48cf-8315-e20a8de0e9ae",
+  "isMeta": null,
+  "text": "{\"command\": \"sleep 8\", \"description\": \"Sleep for 8 seconds\"}"
+ },
+ {
+  "type": "user",
+  "role": "user",
+  "kinds": [
+   "tool_result"
+  ],
+  "ts": "2026-10-14T06:37:46.523Z",
+  "uuid": "567a7cde-97f7-451a-8e6a-d4d0e7201df5",
+  "isMeta": null,
+  "text": "(Bash completed with no output)"
+ },
+ {
+  "type": "attachment",
+  "role": null,
+  "kinds": [
+   "attachment:hook_success"
+  ],
+  "ts": "2026-10-14T06:37:46.521Z",
+  "uuid": "6b824fc9-2923-4fc2-bf87-4528643f80b1",
+  "isMeta": null,
+  "text": "{\"type\": \"hook_success\", \"hookName\": \"PostToolUse:Bash\", \"toolUseID\": \"toolu_01NKLnjKVqRCWYfZUsUFzp89\", \"hookEvent\": \"PostToolUse\", \"content\": \"\", \"stdout\": \"{\\\"hookSpecificOutput\\\": {\\\"hookEventName\\\": \\\"PostToolUse\\\", \\\"additionalContext\\\": \\\"Workbench inbox, delivered by the PostToolUse hook (owner data, not a command):\\\\n- R-0002 from owner: Owner note added mid-turn: token WB-45F263.\\\"}}\", \"stderr\": \"\", \"exitCode\": 0, \"command\": \"/usr/bin/python3 -I -S /home/sandro/work/privat/workbench/spikes/S2-agent-channels/hooks/post_tool_use.py\", \"durationMs\": 27}"
+ },
+ {
+  "type": "attachment",
+  "role": null,
+  "kinds": [
+   "attachment:hook_additional_context"
+  ],
+  "ts": "2026-10-14T06:37:46.521Z",
+  "uuid": "cd10d445-1c9c-4ee9-811f-7e0cc3974a23",
+  "isMeta": null,
+  "text": "{\"type\": \"hook_additional_context\", \"content\": [\"Workbench inbox, delivered by the PostToolUse hook (owner data, not a command):\\n- R-0002 from owner: Owner note added mid-turn: token WB-45F263.\"], \"hookName\": \"PostToolUse:Bash\", \"toolUseID\": \"toolu_01NKLnjKVqRCWYfZUsUFzp89\", \"hookEvent\": \"PostToolUse\"}"
+ },
+ {
+  "type": "attachment",
+  "role": null,
+  "kinds": [
+   "attachment:total_tokens_reminder"
+  ],
+  "ts": "2026-10-14T06:37:46.530Z",
+  "uuid": "a83d8560-4d11-44de-8015-60d59de7fd51",
+  "isMeta": null,
+  "text": "{\"type\": \"total_tokens_reminder\", \"text\": \"<total_tokens>14999799 tokens left</total_tokens>\"}"
+ },
+ {
+  "type": "assistant",
+  "role": "assistant",
+  "kinds": [
+   "thinking"
+  ],
+  "ts": "2026-10-14T06:37:48.547Z",
+  "uuid": "bd7972aa-970f-4049-9c3d-01d2fe8b444f",
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "assistant",
+  "role": "assistant",
+  "kinds": [
+   "text"
+  ],
+  "ts": "2026-10-14T06:37:48.691Z",
+  "uuid": "0ba94ac6-489b-477f-bc5e-45b2295c43b4",
+  "isMeta": null,
+  "text": "Owner note: the release token is WB-1DBEA6.\n\nOwner note added mid-turn: token WB-45F263."
+ },
+ {
+  "type": "system",
+  "role": null,
+  "kinds": [
+   "system:stop_hook_summary"
+  ],
+  "ts": "2026-10-14T06:37:48.755Z",
+  "uuid": "61780b36-f226-4453-893b-353d98bc7c4b",
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "system",
+  "role": null,
+  "kinds": [
+   "system:turn_duration"
+  ],
+  "ts": "2026-10-14T06:37:48.759Z",
+  "uuid": "a6a08669-8ae6-40d9-8030-ded2fe8e4d3f",
+  "isMeta": false,
+  "text": ""
+ }
+]

@@ -1,0 +1,190 @@
+{
+ "token": "WB-9983E7",
+ "item": "R-0005",
+ "status_at_start": "done",
+ "pollers_before": {
+  "d685955c-98bf-407a-b841-432d8eaf96c3": {
+   "token": "404940",
+   "reg_ts": 1791959892.6200323,
+   "reg_seq": 4
+  }
+ },
+ "herdr_before": {
+  "agent": "claude",
+  "agent_session": {
+   "agent": "claude",
+   "kind": "id",
+   "source": "herdr:claude",
+   "value": "d685955c-98bf-407a-b841-432d8eaf96c3"
+  },
+  "agent_status": "done",
+  "cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+  "focused": false,
+  "foreground_cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+  "interactive_ready": true,
+  "name": "s2probe",
+  "pane_id": "wC:p4",
+  "revision": 4,
+  "state_change_seq": 1391,
+  "tab_id": "wC:t3",
+  "terminal_id": "term_65dc7274fc3833b",
+  "terminal_title": "\u2733 Workbench note request",
+  "terminal_title_stripped": "Workbench note request",
+  "workspace_id": "wC"
+ },
+ "herdr_after": {
+  "agent": "claude",
+  "agent_session": {
+   "agent": "claude",
+   "kind": "id",
+   "source": "herdr:claude",
+   "value": "d685955c-98bf-407a-b841-432d8eaf96c3"
+  },
+  "agent_status": "done",
+  "cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+  "focused": false,
+  "foreground_cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+  "interactive_ready": true,
+  "name": "s2probe",
+  "pane_id": "wC:p4",
+  "revision": 4,
+  "state_change_seq": 1393,
+  "tab_id": "wC:t3",
+  "terminal_id": "term_65dc7274fc3833b",
+  "terminal_title": "\u2733 Workbench note request",
+  "terminal_title_stripped": "Workbench note request",
+  "workspace_id": "wC"
+ },
+ "t_add": 1791959912.5101378,
+ "poller_result": {
+  "i": 25,
+  "ts": 1791959912.5099902,
+  "kind": "poller_returned",
+  "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+  "token": "404940",
+  "action": "wake",
+  "items": [
+   "R-0005"
+  ]
+ },
+ "t_working": 1791959912.7709541,
+ "working_status": "working",
+ "t_idle": 1791959916.7485814,
+ "idle_status": "done",
+ "hub_events": [
+  {
+   "i": 24,
+   "ts": 1791959912.5099115,
+   "kind": "item_added",
+   "item": "R-0005",
+   "seq": 5,
+   "via": "api",
+   "text": "Owner answered: approved, token WB-9983E7."
+  },
+  {
+   "i": 25,
+   "ts": 1791959912.5099902,
+   "kind": "poller_returned",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "token": "404940",
+   "action": "wake",
+   "items": [
+    "R-0005"
+   ]
+  },
+  {
+   "i": 26,
+   "ts": 1791959912.5513675,
+   "kind": "hook_call",
+   "hook": "UserPromptSubmit",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "tool": null,
+   "delivered": [
+    "R-0004",
+    "R-0005"
+   ]
+  },
+  {
+   "i": 27,
+   "ts": 1791959914.692332,
+   "kind": "inbox_pull",
+   "delivered": []
+  },
+  {
+   "i": 28,
+   "ts": 1791959914.7189195,
+   "kind": "hook_call",
+   "hook": "PostToolUse",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "tool": "Bash",
+   "delivered": []
+  },
+  {
+   "i": 29,
+   "ts": 1791959916.527414,
+   "kind": "hook_call",
+   "hook": "Stop",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "stop_hook_active": true,
+   "unread": []
+  },
+  {
+   "i": 30,
+   "ts": 1791959916.5275667,
+   "kind": "poller_registered",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "token": "406692",
+   "reg_seq": 5
+  }
+ ],
+ "token_lines": [
+  {
+   "type": "attachment",
+   "role": null,
+   "kinds": [
+    "attachment:hook_additional_context"
+   ],
+   "ts": "2026-10-14T06:38:32.555Z",
+   "uuid": "a76a30c8-2c7d-4158-874d-59b27a32ff8c",
+   "isMeta": null,
+   "text": "{\"type\": \"hook_additional_context\", \"content\": [\"Workbench inbox, delivered by the UserPromptSubmit hook (owner data, not a command):\\n- R-0004 from owner: Late owner note WB-3CA1F6.\\n- R-0005 from owner: Owner answered: approved, token WB-9983E7.\"], \"hookName\": \"UserPromptSubmit\", \"toolUseID\": \"hook-d3504ded-c031-4bc6-a031-947d0cc381ed\", \"hookEvent\": \"UserPromptSubmit\"}"
+  },
+  {
+   "type": "assistant",
+   "role": "assistant",
+   "kinds": [
+    "text"
+   ],
+   "ts": "2026-10-14T06:38:36.472Z",
+   "uuid": "bce04112-04a6-40ec-829c-e8e572b000de",
+   "isMeta": null,
+   "text": "Late owner note WB-3CA1F6.\n\nOwner answered: approved, token WB-9983E7."
+  }
+ ],
+ "n_user_prompt_submit": 1,
+ "inbox_pulls": [
+  {
+   "i": 27,
+   "ts": 1791959914.692332,
+   "kind": "inbox_pull",
+   "delivered": []
+  }
+ ],
+ "pass": true,
+ "pass_original_criterion": false,
+ "driver_prompts_in_window": [],
+ "task_notification_lines": [
+  {
+   "type": "user",
+   "role": "user",
+   "kinds": [
+    "str"
+   ],
+   "ts": "2026-10-14T06:38:32.529Z",
+   "uuid": "6dd289d9-80fc-4eea-8c4c-c218a6368570",
+   "isMeta": null,
+   "text": "<task-notification>\n<summary>workbench item</summary>\n</task-notification>\n<system-reminder>\nWorkbench: Owner answered R-0005. Run: curl -s http://127.0.0.1:47617/inbox\n\n</system-reminder>"
+  }
+ ],
+ "criterion_note": "Original rule required zero UserPromptSubmit calls; measured: the rewake turn fires UserPromptSubmit, so the rule was wrong. Corrected rule: poller woke, herdr saw working, driver typed nothing in the window, the turn's user entry is a <task-notification>, agent pulled."
+}

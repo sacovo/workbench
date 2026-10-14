@@ -1,0 +1,47 @@
+{"i": 0, "ts": 1791959795.8601923, "kind": "hub_started", "port": 47617}
+{"i": 1, "ts": 1791959842.7068722, "kind": "item_added", "item": "R-0001", "seq": 1, "via": "api", "text": "Owner note: the release token is WB-1DBEA6."}
+{"i": 2, "ts": 1791959843.0523489, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0001"]}
+{"i": 3, "ts": 1791959845.9183483, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 4, "ts": 1791959845.918512, "kind": "poller_registered", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "token": "401520", "reg_seq": 1}
+{"i": 5, "ts": 1791959855.318886, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 6, "ts": 1791959855.3189867, "kind": "poller_returned", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "token": "401520", "action": "superseded_by_activity", "event": "UserPromptSubmit"}
+{"i": 7, "ts": 1791959859.4738894, "kind": "item_added", "item": "R-0002", "seq": 2, "via": "api", "text": "Owner note added mid-turn: token WB-45F263."}
+{"i": 8, "ts": 1791959866.517203, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": ["R-0002"]}
+{"i": 9, "ts": 1791959868.7503436, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 10, "ts": 1791959868.7505124, "kind": "poller_registered", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "token": "403159", "reg_seq": 2}
+{"i": 11, "ts": 1791959886.7320504, "kind": "armed", "on": "UserPromptSubmit", "text": "Owner answer: use token WB-A69E69."}
+{"i": 12, "ts": 1791959886.7326252, "kind": "armed", "on": "PostToolUse", "text": "Late owner note WB-3CA1F6."}
+{"i": 13, "ts": 1791959887.065279, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 14, "ts": 1791959887.0653386, "kind": "item_added", "item": "R-0003", "seq": 3, "via": "armed:UserPromptSubmit", "text": "Owner answer: use token WB-A69E69."}
+{"i": 15, "ts": 1791959887.065432, "kind": "poller_returned", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "token": "403159", "action": "superseded_by_activity", "event": "UserPromptSubmit"}
+{"i": 16, "ts": 1791959888.2400715, "kind": "poller_registered", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "token": "404674", "reg_seq": 3}
+{"i": 17, "ts": 1791959888.240199, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": ["R-0003"]}
+{"i": 18, "ts": 1791959890.2008607, "kind": "inbox_pull", "delivered": ["R-0003"]}
+{"i": 19, "ts": 1791959890.2272425, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 20, "ts": 1791959890.2272918, "kind": "item_added", "item": "R-0004", "seq": 4, "via": "armed:PostToolUse", "text": "Late owner note WB-3CA1F6."}
+{"i": 21, "ts": 1791959890.2273734, "kind": "poller_returned", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "token": "404674", "action": "superseded_by_activity", "event": "PostToolUse"}
+{"i": 22, "ts": 1791959892.6200342, "kind": "poller_registered", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "token": "404940", "reg_seq": 4}
+{"i": 23, "ts": 1791959892.6201506, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": ["R-0004"]}
+{"i": 24, "ts": 1791959912.5099115, "kind": "item_added", "item": "R-0005", "seq": 5, "via": "api", "text": "Owner answered: approved, token WB-9983E7."}
+{"i": 25, "ts": 1791959912.5099902, "kind": "poller_returned", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "token": "404940", "action": "wake", "items": ["R-0005"]}
+{"i": 26, "ts": 1791959912.5513675, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0004", "R-0005"]}
+{"i": 27, "ts": 1791959914.692332, "kind": "inbox_pull", "delivered": []}
+{"i": 28, "ts": 1791959914.7189195, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 29, "ts": 1791959916.527414, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": true, "unread": []}
+{"i": 30, "ts": 1791959916.5275667, "kind": "poller_registered", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "token": "406692", "reg_seq": 5}
+{"i": 31, "ts": 1791959954.792852, "kind": "config", "rewake": false}
+{"i": 32, "ts": 1791959954.792957, "kind": "poller_returned", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "token": "406692", "action": "disabled"}
+{"i": 33, "ts": 1791959956.7980096, "kind": "item_added", "item": "R-0006", "seq": 6, "via": "api", "text": "Owner answered: go ahead, token WB-A9372A."}
+{"i": 34, "ts": 1791959957.1284893, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0006"]}
+{"i": 35, "ts": 1791959958.757898, "kind": "inbox_pull", "delivered": []}
+{"i": 36, "ts": 1791959958.7835698, "kind": "hook_call", "hook": "PostToolUse", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": "Bash", "delivered": []}
+{"i": 37, "ts": 1791959960.6442854, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 38, "ts": 1791959960.6458845, "kind": "poller_registered", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "token": "409542", "reg_seq": 6}
+{"i": 39, "ts": 1791959960.6459033, "kind": "poller_returned", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "token": "409542", "action": "disabled"}
+{"i": 40, "ts": 1791959977.829713, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": []}
+{"i": 41, "ts": 1791959979.7084203, "kind": "item_added", "item": "R-0007", "seq": 7, "via": "api", "text": "Owner answered while blocked: token WB-6D0D05."}
+{"i": 42, "ts": 1791960043.6095567, "kind": "config", "rewake": true}
+{"i": 43, "ts": 1791960043.9431186, "kind": "hook_call", "hook": "UserPromptSubmit", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "tool": null, "delivered": ["R-0007"]}
+{"i": 44, "ts": 1791960045.0788562, "kind": "hook_call", "hook": "Stop", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "stop_hook_active": false, "unread": []}
+{"i": 45, "ts": 1791960045.0790255, "kind": "poller_registered", "session": "d685955c-98bf-407a-b841-432d8eaf96c3", "token": "415056", "reg_seq": 7}
+{"i": 46, "ts": 1791960076.782684, "kind": "hub_stopped"}

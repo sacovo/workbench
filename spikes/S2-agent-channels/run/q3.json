@@ -1,0 +1,203 @@
+{
+ "tok_a": "WB-A69E69",
+ "tok_b": "WB-3CA1F6",
+ "prompt": {
+  "ts_start": 1791959886.7345264,
+  "ts_end": 1791959892.9453545,
+  "dur_s": 6.211,
+  "argv": [
+   "herdr",
+   "agent",
+   "prompt",
+   "s2probe",
+   "Reply with just the word OK.",
+   "--wait",
+   "--timeout",
+   "120000"
+  ],
+  "rc": 0,
+  "stdout": "{\"id\":\"cli:agent:prompt\",\"result\":{\"agent\":{\"agent\":\"claude\",\"agent_session\":{\"agent\":\"claude\",\"kind\":\"id\",\"source\":\"herdr:claude\",\"value\":\"d685955c-98bf-407a-b841-432d8eaf96c3\"},\"agent_status\":\"done\",\"cwd\":\"/home/sandro/work/privat/workbench/examples/minimal\",\"focused\":false,\"foreground_cwd\":\"/home/sandro/work/privat/workbench/examples/minimal\",\"interactive_ready\":true,\"name\":\"s2probe\",\"pane_id\":\"wC:p4\",\"revision\":4,\"state_change_seq\":1391,\"tab_id\":\"wC:t3\",\"terminal_id\":\"term_65dc7274fc3833b\",\"terminal_title\":\"\u2733 Workbench note request\",\"terminal_title_stripped\":\"Workbench note request\",\"workspace_id\":\"wC\"},\"type\":\"agent_prompted\"}}\n",
+  "stderr": "",
+  "note": "prompt"
+ },
+ "hub_events": [
+  {
+   "i": 11,
+   "ts": 1791959886.7320504,
+   "kind": "armed",
+   "on": "UserPromptSubmit",
+   "text": "Owner answer: use token WB-A69E69."
+  },
+  {
+   "i": 12,
+   "ts": 1791959886.7326252,
+   "kind": "armed",
+   "on": "PostToolUse",
+   "text": "Late owner note WB-3CA1F6."
+  },
+  {
+   "i": 13,
+   "ts": 1791959887.065279,
+   "kind": "hook_call",
+   "hook": "UserPromptSubmit",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "tool": null,
+   "delivered": []
+  },
+  {
+   "i": 14,
+   "ts": 1791959887.0653386,
+   "kind": "item_added",
+   "item": "R-0003",
+   "seq": 3,
+   "via": "armed:UserPromptSubmit",
+   "text": "Owner answer: use token WB-A69E69."
+  },
+  {
+   "i": 15,
+   "ts": 1791959887.065432,
+   "kind": "poller_returned",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "token": "403159",
+   "action": "superseded_by_activity",
+   "event": "UserPromptSubmit"
+  },
+  {
+   "i": 16,
+   "ts": 1791959888.2400715,
+   "kind": "poller_registered",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "token": "404674",
+   "reg_seq": 3
+  },
+  {
+   "i": 17,
+   "ts": 1791959888.240199,
+   "kind": "hook_call",
+   "hook": "Stop",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "stop_hook_active": false,
+   "unread": [
+    "R-0003"
+   ]
+  },
+  {
+   "i": 18,
+   "ts": 1791959890.2008607,
+   "kind": "inbox_pull",
+   "delivered": [
+    "R-0003"
+   ]
+  },
+  {
+   "i": 19,
+   "ts": 1791959890.2272425,
+   "kind": "hook_call",
+   "hook": "PostToolUse",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "tool": "Bash",
+   "delivered": []
+  },
+  {
+   "i": 20,
+   "ts": 1791959890.2272918,
+   "kind": "item_added",
+   "item": "R-0004",
+   "seq": 4,
+   "via": "armed:PostToolUse",
+   "text": "Late owner note WB-3CA1F6."
+  },
+  {
+   "i": 21,
+   "ts": 1791959890.2273734,
+   "kind": "poller_returned",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "token": "404674",
+   "action": "superseded_by_activity",
+   "event": "PostToolUse"
+  },
+  {
+   "i": 22,
+   "ts": 1791959892.6200342,
+   "kind": "poller_registered",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "token": "404940",
+   "reg_seq": 4
+  },
+  {
+   "i": 23,
+   "ts": 1791959892.6201506,
+   "kind": "hook_call",
+   "hook": "Stop",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "stop_hook_active": true,
+   "unread": [
+    "R-0004"
+   ]
+  }
+ ],
+ "stops": [
+  {
+   "i": 17,
+   "ts": 1791959888.240199,
+   "kind": "hook_call",
+   "hook": "Stop",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "stop_hook_active": false,
+   "unread": [
+    "R-0003"
+   ]
+  },
+  {
+   "i": 23,
+   "ts": 1791959892.6201506,
+   "kind": "hook_call",
+   "hook": "Stop",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "stop_hook_active": true,
+   "unread": [
+    "R-0004"
+   ]
+  }
+ ],
+ "inbox_pulls": [
+  {
+   "i": 18,
+   "ts": 1791959890.2008607,
+   "kind": "inbox_pull",
+   "delivered": [
+    "R-0003"
+   ]
+  }
+ ],
+ "tok_b_unread_after": [
+  "R-0004"
+ ],
+ "status_after": "done",
+ "token_a_lines": [
+  {
+   "type": "user",
+   "role": "user",
+   "kinds": [
+    "tool_result"
+   ],
+   "ts": "2026-10-14T06:38:10.231Z",
+   "uuid": "e44ece6e-07e7-4a2a-9031-05dbd161c995",
+   "isMeta": null,
+   "text": "{\"items\": [{\"id\": \"R-0003\", \"author\": \"owner\", \"text\": \"Owner answer: use token WB-A69E69.\", \"created\": 1791959887.0653362}]}"
+  },
+  {
+   "type": "assistant",
+   "role": "assistant",
+   "kinds": [
+    "text"
+   ],
+   "ts": "2026-10-14T06:38:12.563Z",
+   "uuid": "8f0430ee-1855-473f-8f9e-9933c4917371",
+   "isMeta": null,
+   "text": "Owner answer: use token WB-A69E69."
+  }
+ ],
+ "token_b_lines": [],
+ "pass": true
+}

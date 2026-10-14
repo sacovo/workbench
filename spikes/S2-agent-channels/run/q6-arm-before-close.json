@@ -1,0 +1,59 @@
+{
+ "prompt": {
+  "ts_start": 1791960043.6123846,
+  "ts_end": 1791960045.3162165,
+  "dur_s": 1.704,
+  "argv": [
+   "herdr",
+   "agent",
+   "prompt",
+   "s2probe",
+   "Reply with just the word OK.",
+   "--wait",
+   "--timeout",
+   "120000"
+  ],
+  "rc": 0,
+  "stdout": "{\"id\":\"cli:agent:prompt\",\"result\":{\"agent\":{\"agent\":\"claude\",\"agent_session\":{\"agent\":\"claude\",\"kind\":\"id\",\"source\":\"herdr:claude\",\"value\":\"d685955c-98bf-407a-b841-432d8eaf96c3\"},\"agent_status\":\"done\",\"cwd\":\"/home/sandro/work/privat/workbench/examples/minimal\",\"focused\":false,\"foreground_cwd\":\"/home/sandro/work/privat/workbench/examples/minimal\",\"interactive_ready\":true,\"name\":\"s2probe\",\"pane_id\":\"wC:p4\",\"revision\":4,\"state_change_seq\":1400,\"tab_id\":\"wC:t3\",\"terminal_id\":\"term_65dc7274fc3833b\",\"terminal_title\":\"\u2733 Workbench note request\",\"terminal_title_stripped\":\"Workbench note request\",\"workspace_id\":\"wC\"},\"type\":\"agent_prompted\"}}\n",
+  "stderr": "",
+  "note": "prompt"
+ },
+ "hub_events": [
+  {
+   "i": 43,
+   "ts": 1791960043.9431186,
+   "kind": "hook_call",
+   "hook": "UserPromptSubmit",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "tool": null,
+   "delivered": [
+    "R-0007"
+   ]
+  },
+  {
+   "i": 44,
+   "ts": 1791960045.0788562,
+   "kind": "hook_call",
+   "hook": "Stop",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "stop_hook_active": false,
+   "unread": []
+  },
+  {
+   "i": 45,
+   "ts": 1791960045.0790255,
+   "kind": "poller_registered",
+   "session": "d685955c-98bf-407a-b841-432d8eaf96c3",
+   "token": "415056",
+   "reg_seq": 7
+  }
+ ],
+ "pollers": {
+  "d685955c-98bf-407a-b841-432d8eaf96c3": {
+   "token": "415056",
+   "reg_ts": 1791960045.0790231,
+   "reg_seq": 7
+  }
+ },
+ "ts": 1791960046.8177147
+}

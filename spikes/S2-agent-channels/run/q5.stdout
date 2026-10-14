@@ -1,0 +1,80 @@
+0 {"id":"cli:agent:send-keys","result":{"type":"ok"}}
+ 
+{
+ "token": "WB-6D0D05",
+ "item": "R-0007",
+ "first_prompt": {
+  "ts_start": 1791959977.5006359,
+  "ts_end": 1791959979.7045035,
+  "dur_s": 2.204,
+  "argv": [
+   "herdr",
+   "agent",
+   "prompt",
+   "s2probe",
+   "Run this exact Bash command: python3 -c 'print(6*7)'",
+   "--wait",
+   "--timeout",
+   "60000"
+  ],
+  "rc": 0,
+  "stdout": "{\"id\":\"cli:agent:prompt\",\"result\":{\"agent\":{\"agent\":\"claude\",\"agent_session\":{\"agent\":\"claude\",\"kind\":\"id\",\"source\":\"herdr:claude\",\"value\":\"d685955c-98bf-407a-b841-432d8eaf96c3\"},\"agent_status\":\"blocked\",\"cwd\":\"/home/sandro/work/privat/workbench/examples/minimal\",\"focused\":false,\"foreground_cwd\":\"/home/sandro/work/privat/workbench/examples/minimal\",\"interactive_ready\":true,\"name\":\"s2probe\",\"pane_id\":\"wC:p4\",\"revision\":4,\"state_change_seq\":1397,\"tab_id\":\"wC:t3\",\"terminal_id\":\"term_65dc7274fc3833b\",\"terminal_title\":\"\u2733 Workbench note request\",\"terminal_title_stripped\":\"Workbench note request\",\"workspace_id\":\"wC\"},\"type\":\"agent_prompted\"}}\n",
+  "stderr": "",
+  "note": "prompt"
+ },
+ "herdr_blocked": {
+  "agent": "claude",
+  "agent_session": {
+   "agent": "claude",
+   "kind": "id",
+   "source": "herdr:claude",
+   "value": "d685955c-98bf-407a-b841-432d8eaf96c3"
+  },
+  "agent_status": "blocked",
+  "cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+  "focused": false,
+  "foreground_cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+  "interactive_ready": true,
+  "name": "s2probe",
+  "pane_id": "wC:p4",
+  "revision": 4,
+  "state_change_seq": 1397,
+  "tab_id": "wC:t3",
+  "terminal_id": "term_65dc7274fc3833b",
+  "terminal_title": "\u2733 Workbench note request",
+  "terminal_title_stripped": "Workbench note request",
+  "workspace_id": "wC"
+ },
+ "refused_prompt": {
+  "ts_start": 1791959979.7106318,
+  "ts_end": 1791959979.7117794,
+  "dur_s": 0.001,
+  "argv": [
+   "herdr",
+   "agent",
+   "prompt",
+   "s2probe",
+   "Owner answered R-0007. Run: curl -s http://127.0.0.1:47617/inbox"
+  ],
+  "rc": 1,
+  "stdout": "",
+  "stderr": "{\"error\":{\"code\":\"agent_blocked\",\"message\":\"agent s2probe is blocked and requires interactive input\"},\"id\":\"cli:agent:prompt\"}\n",
+  "note": "prompt to blocked agent"
+ },
+ "screen_equal_before_after_refused": false,
+ "screen_before": "\u25cf Owner note: the release token is WB-1DBEA6.\n\n  Owner note added mid-turn: token WB-45F263.\n\n\u273b Crunched for 13s \u00b7 done 8:37\n\n\u276f Reply with just the word OK.\n\n\u25cf OK\n\n\u25cf Ran 2 stop hooks\n  \u23bf \u00a0Stop hook error: Workbench: owner item R-0003\n  is unread. Run exactly: curl -s\n  http://127.0.0.1:47617/inbox and repeat each item\n  text verbatim.\n\n  Ran 1 shell command\n\n\u25cf Owner answer: use token WB-A69E69.\n\n\u273b Cooked for 5s \u00b7 done 8:38\n\n\u25cf workbench item\n\n  Ran 1 shell command\n\n\u25cf Late owner note WB-3CA1F6.\n\n  Owner answered: approved, token WB-9983E7.\n\n\u273b Crunched for 4s \u00b7 done 8:38\n\n\u276f Owner answered R-0006. Run: curl -s\n  http://127.0.0.1:47617/inbox\n\n  Ran 1 shell command\n\n\u25cf Owner answered: go ahead, token WB-A9372A.\n\n\u273b Worked for 3s \u00b7 done 8:39\n\n\u276f Run this exact Bash command: python3 -c 'print(6*7)'\n\n  Calculate 6 times 7\n  \u23bf  $ python3 -c 'print(6*7)'\n\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n Bash command\n\n   python3 -c 'print(6*7)'\n   Calculate 6 times 7\n\n This command requires approval\n\n Do you want to proceed?\n \u276f 1. Yes\n   2. Yes, and don\u2019t ask again for: python3 *\n   3. No\n\n Esc to cancel \u00b7 Tab to amend\n",
+ "screen_after": "\u25cf Owner note: the release token is WB-1DBEA6.\n\n  Owner note added mid-turn: token WB-45F263.\n\n\u273b Crunched for 13s \u00b7 done 8:37\n\n\u276f Reply with just the word OK.\n\n\u25cf OK\n\n\u25cf Ran 2 stop hooks\n  \u23bf \u00a0Stop hook error: Workbench: owner item R-0003\n  is unread. Run exactly: curl -s\n  http://127.0.0.1:47617/inbox and repeat each item\n  text verbatim.\n\n  Ran 1 shell command\n\n\u25cf Owner answer: use token WB-A69E69.\n\n\u273b Cooked for 5s \u00b7 done 8:38\n\n\u25cf workbench item\n\n  Ran 1 shell command\n\n\u25cf Late owner note WB-3CA1F6.\n\n  Owner answered: approved, token WB-9983E7.\n\n\u273b Crunched for 4s \u00b7 done 8:38\n\n\u276f Owner answered R-0006. Run: curl -s\n  http://127.0.0.1:47617/inbox\n\n  Ran 1 shell command\n\n\u25cf Owner answered: go ahead, token WB-A9372A.\n\n\u273b Worked for 3s \u00b7 done 8:39\n\n\u276f Run this exact Bash command: python3 -c 'print(6*7)'\n\n\u25cf Calculate 6 times 7\n  \u23bf  $ python3 -c 'print(6*7)'\n\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n Bash command\n\n   python3 -c 'print(6*7)'\n   Calculate 6 times 7\n\n This command requires approval\n\n Do you want to proceed?\n \u276f 1. Yes\n   2. Yes, and don\u2019t ask again for: python3 *\n   3. No\n\n Esc to cancel \u00b7 Tab to amend\n",
+ "herdr_after_refused": {
+  "agent": "claude",
+  "agent_session": {
+   "agent": "claude",
+   "kind": "id",
+   "source": "herdr:claude",
+   "value": "d685955c-98bf-407a-b841-432d8eaf96c3"
+  },
+  "agent_status": "blocked",
+  "cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+  "focused": false,
+  "foreground_cwd": "/home/sandro/work/privat/workbench/examples/minimal",
+  "interactive_ready": true,
+

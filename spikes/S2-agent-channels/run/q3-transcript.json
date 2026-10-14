@@ -1,0 +1,176 @@
+[
+ {
+  "type": "file-history-snapshot",
+  "role": null,
+  "kinds": [],
+  "ts": null,
+  "uuid": null,
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "user",
+  "role": "user",
+  "kinds": [
+   "str"
+  ],
+  "ts": "2026-10-14T06:38:07.044Z",
+  "uuid": "f9168138-a7e2-4407-9f88-d7e04cf4d058",
+  "isMeta": null,
+  "text": "Reply with just the word OK."
+ },
+ {
+  "type": "attachment",
+  "role": null,
+  "kinds": [
+   "attachment:total_tokens_reminder"
+  ],
+  "ts": "2026-10-14T06:38:07.043Z",
+  "uuid": "9ad2a9ed-e43e-4d5c-bf1a-53a17ca7d18b",
+  "isMeta": null,
+  "text": "{\"type\": \"total_tokens_reminder\", \"text\": \"<total_tokens>15000000 tokens left</total_tokens>\"}"
+ },
+ {
+  "type": "assistant",
+  "role": "assistant",
+  "kinds": [
+   "thinking"
+  ],
+  "ts": "2026-10-14T06:38:08.193Z",
+  "uuid": "e1da2ac0-2087-4bd9-9c62-c4d6d16d0e51",
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "assistant",
+  "role": "assistant",
+  "kinds": [
+   "text"
+  ],
+  "ts": "2026-10-14T06:38:08.195Z",
+  "uuid": "b47d0e6d-76f1-44c3-be09-aec34924046c",
+  "isMeta": null,
+  "text": "OK"
+ },
+ {
+  "type": "user",
+  "role": "user",
+  "kinds": [
+   "str"
+  ],
+  "ts": "2026-10-14T06:38:08.243Z",
+  "uuid": "276dfae0-c763-45e7-b404-8d7d234b1e0f",
+  "isMeta": true,
+  "text": "Stop hook feedback:\nWorkbench: owner item R-0003 is unread. Run exactly: curl -s http://127.0.0.1:47617/inbox and repeat each item text verbatim."
+ },
+ {
+  "type": "attachment",
+  "role": null,
+  "kinds": [
+   "attachment:hook_blocking_error"
+  ],
+  "ts": "2026-10-14T06:38:08.243Z",
+  "uuid": "07048fc6-c040-43e1-a80a-aaff2d06062c",
+  "isMeta": null,
+  "text": "{\"type\": \"hook_blocking_error\", \"hookName\": \"Stop\", \"toolUseID\": \"621bb134-c76e-4287-8dc5-ffb4fdd8073c\", \"hookEvent\": \"Stop\", \"blockingError\": {\"blockingError\": \"Workbench: owner item R-0003 is unread. Run exactly: curl -s http://127.0.0.1:47617/inbox and repeat each item text verbatim.\", \"command\": \"/usr/bin/python3 -I -S /home/sandro/work/privat/workbench/spikes/S2-agent-channels/hooks/stop.py\"}}"
+ },
+ {
+  "type": "system",
+  "role": null,
+  "kinds": [
+   "system:stop_hook_summary"
+  ],
+  "ts": "2026-10-14T06:38:08.245Z",
+  "uuid": "e2eb3729-8a3c-4c14-9c6a-c6e3e91f63d7",
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "assistant",
+  "role": "assistant",
+  "kinds": [
+   "thinking"
+  ],
+  "ts": "2026-10-14T06:38:09.812Z",
+  "uuid": "9ddacee4-0fc9-4174-933f-ebf5df3c4e19",
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "assistant",
+  "role": "assistant",
+  "kinds": [
+   "tool_use"
+  ],
+  "ts": "2026-10-14T06:38:10.157Z",
+  "uuid": "5fab2c67-7c88-403c-b876-0866465aeaf3",
+  "isMeta": null,
+  "text": "{\"command\": \"curl -s http://127.0.0.1:47617/inbox\", \"description\": \"Fetch workbench inbox items\"}"
+ },
+ {
+  "type": "user",
+  "role": "user",
+  "kinds": [
+   "tool_result"
+  ],
+  "ts": "2026-10-14T06:38:10.231Z",
+  "uuid": "e44ece6e-07e7-4a2a-9031-05dbd161c995",
+  "isMeta": null,
+  "text": "{\"items\": [{\"id\": \"R-0003\", \"author\": \"owner\", \"text\": \"Owner answer: use token WB-A69E69.\", \"created\": 1791959887.0653362}]}"
+ },
+ {
+  "type": "attachment",
+  "role": null,
+  "kinds": [
+   "attachment:total_tokens_reminder"
+  ],
+  "ts": "2026-10-14T06:38:10.237Z",
+  "uuid": "29c7c0aa-24d2-49fc-9bff-c224f179e5d0",
+  "isMeta": null,
+  "text": "{\"type\": \"total_tokens_reminder\", \"text\": \"<total_tokens>14999606 tokens left</total_tokens>\"}"
+ },
+ {
+  "type": "assistant",
+  "role": "assistant",
+  "kinds": [
+   "thinking"
+  ],
+  "ts": "2026-10-14T06:38:12.527Z",
+  "uuid": "90b7936c-140c-4422-8558-ff70c01ccdfd",
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "assistant",
+  "role": "assistant",
+  "kinds": [
+   "text"
+  ],
+  "ts": "2026-10-14T06:38:12.563Z",
+  "uuid": "8f0430ee-1855-473f-8f9e-9933c4917371",
+  "isMeta": null,
+  "text": "Owner answer: use token WB-A69E69."
+ },
+ {
+  "type": "system",
+  "role": null,
+  "kinds": [
+   "system:stop_hook_summary"
+  ],
+  "ts": "2026-10-14T06:38:12.624Z",
+  "uuid": "97959bc9-b7b7-42c3-ae73-b0029aafda01",
+  "isMeta": null,
+  "text": ""
+ },
+ {
+  "type": "system",
+  "role": null,
+  "kinds": [
+   "system:turn_duration"
+  ],
+  "ts": "2026-10-14T06:38:12.628Z",
+  "uuid": "80af7b34-54b8-4a0d-84fd-882ff72d604d",
+  "isMeta": false,
+  "text": ""
+ }
+]

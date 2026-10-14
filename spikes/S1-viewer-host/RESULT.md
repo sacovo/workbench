@@ -367,3 +367,22 @@ node driver/summarize.mjs                                  # the numbers above, 
 The robot snapshot lives in the session scratchpad (`robot-snap`, from
 `git archive 936dffa`). `pyproject.toml` points at it, so the scratchpad must exist (or be recreated
 the same way) for `uv sync` to work.
+
+## Independent review (2026-10-14)
+
+A fresh reviewer re-ran the full suite with the spike's unmodified host and drivers (copied only
+to redirect output) on the AMD GPU (ANGLE Vulkan, RADV). All four claims confirmed; none refuted.
+Measured by the reviewer: 20 of 20 picks pass, worst projection error 0.467 px, point on face
+within 7.1e-15 mm, page and independent Python projection agree to 2.3e-12 px; pin centroid
+0.013 to 0.064 px from its projection in three orbits, 0 overlay pixels when occluded against
+375/186/603 with the depth test off; 60.0 fps with interval p95 16.7 to 16.8 ms and 0 of 290
+frames over 25 ms at both sizes, forced-sync frame cost median 4.0 to 4.1 ms; a lift move sends
+1,153 bytes and places parts exactly where a full re-show does.
+
+Notes from the review:
+
+- `check_pick()`'s `IsSame` test is redundant with the id match in every path exercised, so it
+  adds no independent evidence; the point-on-face and projection checks are the real ones.
+- All picked faces were easy (large, facing the camera, away from edges); edges and vertices
+  were never picked. Phase 1 should test those.
+- Not measured: a visible window (`run_visible.sh`), the SwiftShader floor, the cylinder suite.

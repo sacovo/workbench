@@ -1,9 +1,9 @@
-"""Operations about the hub and the page: `serve`, `open`, `show` and `selection`.
+"""Operations about the hub and the page: `serve`, `open`, `show`, `selection` and `agents`.
 
-`serve` and `open` run in the calling process (they start the hub, or the owner's window). `show`
-and `selection` need the hub: the CLI forwards them over HTTP and they run in the hub process,
-where the kernel and the page are. The hub's modules are imported inside the functions, so that
-every other `wb` command stays free of the web stack's import time.
+`serve` and `open` run in the calling process (they start the hub, or the owner's window). `show`,
+`selection` and `agents` need the hub: the CLI forwards them over HTTP and they run in the hub
+process, where the kernel, the page and the agent link are. The hub's modules are imported inside
+the functions, so that every other `wb` command stays free of the web stack's import time.
 """
 
 from __future__ import annotations
@@ -67,6 +67,26 @@ def _human_selection(r: dict) -> str:
     return "\n".join(lines)
 
 
+def _human_agents(r: dict) -> str:
+    checked = f", agents checked {r['agents_checked_at']}" if r["agents_checked_at"] else ", agents not checked yet"
+    lines = [f"transport: {r['transport']}{checked}"]
+    if r["sessions"]:
+        for s in r["sessions"]:
+            agent = s.get("agent")
+            where = s["pane"] or "no pane"
+            status = agent["status"] if agent else "no agent seen there"
+            lines.append(f"  {s['session']} ({where}, {status}): turn {s['turn']}, {s['turns']} prompt(s), last seen {s['last_seen']}")
+    else:
+        lines.append("  no sessions registered")
+    if r["waiting"]:
+        lines.append("waiting for the agent:")
+        for w in r["waiting"]:
+            lines.append(f"  {w['id']} {w['kind']} \"{w['title']}\" ({w['status']})" + ("" if w["due"] else " [not due]"))
+    else:
+        lines.append("waiting for the agent: none")
+    return "\n".join(lines)
+
+
 @op(
     "serve",
     summary="Run the hub for this project in the foreground: the page, its API and the kernel",
@@ -123,3 +143,16 @@ def selection(project: Project) -> dict:
 
     hub = running_instance(project)
     return hub.call(hub.get_selection(), timeout=PICK_TIMEOUT + 10)
+
+
+@op("agents", summary="Agent sessions, herdr state and what waits for them", needs_hub=True, human=_human_agents)
+def agents(project: Project) -> dict:
+    """The same information as GET /api/agents: every Claude Code session the agent link knows of
+    from its hooks, herdr's state for it at the last look, what waits for the agent, and the
+    link's latest wake attempts and owner notices. From memory only; never touches herdr or disk."""
+    from workbench.hub.hub import running_instance
+
+    hub = running_instance(project)
+    if hub.link is None:
+        raise HubNotRunning("this hub has no agent link (only `wb serve` wires one)")
+    return hub.link.snapshot()

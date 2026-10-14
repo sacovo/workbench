@@ -10,7 +10,8 @@ handle_hook() answers from memory, on the event loop, without touching herdr or 
     post-tool-use        the same context, once per owner event; nothing right after `wb inbox`
     stop                 holds the end of the turn back once, with the fixed reason, when owner
                          events on items that are the agent's move are unread and
-                         stop_hook_active is the JSON boolean false
+                         stop_hook_active is the JSON boolean false; otherwise the turn has
+                         ended, and turn_ended() (below) is called for a registered session
 
 Wake. tick() runs on the link's own thread, once a second and right after hooks and review
 changes. It applies the wake policy (policy.py) through the transport, and tells the owner through
@@ -22,13 +23,16 @@ Records. Wake attempts, owner notices and registrations are kept in memory (snap
 pointed at survive a hub restart in .workbench/agentlink.json. Nothing here writes to review/:
 a delivery is recorded only by `wb inbox`.
 
-What the hub provides, AgentLink(project, review_items, transport, token=, poke_review=):
+What the hub provides, AgentLink(project, review_items, transport, token=, poke_review=, turn_ended=):
     project        the Project (for .workbench/)
     review_items   () -> the folded state of every item from the hub's memory, which its review
                    watcher keeps current; called on the event loop, so it must not read files
     transport      make_transport(): herdr, or the null transport when herdr is missing
     token          the hub's token; the routes check it as well as the hub's Guard does
     poke_review    optional () -> None: refresh that memory now (called right after `wb inbox`)
+    turn_ended     optional () -> None: a registered session's Stop hook just ended its turn
+                   (not held back). The hub rebuilds the shown assembly if its code is stale
+                   (Hub._agent_turn_ended); called on the event loop, so it must not block.
 It calls start() once the hub runs, stop() when it stops (blocks up to 2 s; run it off the loop),
 and review_changed() whenever its review snapshot changes.
 """
@@ -139,6 +143,7 @@ class AgentLink:
         *,
         token: str | None = None,
         poke_review: Callable[[], None] | None = None,
+        turn_ended: Callable[[], None] | None = None,
         clock: Callable[[], float] = time.time,
         persist: bool = True,
     ):
@@ -147,6 +152,7 @@ class AgentLink:
         self.transport: AgentTransport = transport if transport is not None else NullTransport()
         self.token = token
         self._poke_review = poke_review
+        self.turn_ended = turn_ended
         self.clock = clock
         self.persist = persist
         self._lock = threading.RLock()
@@ -181,7 +187,7 @@ class AgentLink:
         data = check_payload(event, payload)
         now = self.clock()
         items = self._items()
-        poke = kick = False
+        poke = kick = ended = False
         out = None
         with self._lock:
             s = self._register(data, event, now)
@@ -217,10 +223,13 @@ class AgentLink:
                     s.turn = "ended"
                     self._poll_at = now + POLL_SOON
                     self._burst_until = now + BURST
-                    kick = True
+                    kick = ended = True
         if poke and self._poke_review is not None:
             with suppress(Exception):
                 self._poke_review()
+        if ended and self.turn_ended is not None:
+            with suppress(Exception):
+                self.turn_ended()
         if kick:
             self.kick()
         return out

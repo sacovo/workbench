@@ -256,6 +256,34 @@ def test_needs_hub_operations_are_forwarded_with_the_token(project):
         hub.close()
 
 
+def test_session_defaults_from_wb_session_for_a_forwarded_operation_too(project, monkeypatch):
+    # cli.execute() fills in the WB_SESSION default before deciding local vs. forwarded, so a
+    # needs_hub operation that takes `session` gets it exactly like a local one (test_cli.py
+    # covers the local, end-to-end case with the real `ask` operation).
+    registry = Registry()
+
+    @registry.op("needs-session", summary="s", needs_hub=True)
+    def needs_session(project: Project, session: Optional[str] = None) -> dict:
+        return {"session": session}
+
+    o = registry.get("needs-session")
+    hub = _FakeHub()
+    try:
+        write_hub_info(project, port=hub.port, token="tok-123")
+        monkeypatch.setenv("WB_SESSION", "sess-env")
+        execute(o, {}, str(project.root))
+        assert hub.requests[-1]["body"] == {"session": "sess-env"}
+
+        execute(o, {"session": "explicit"}, str(project.root))
+        assert hub.requests[-1]["body"] == {"session": "explicit"}
+
+        monkeypatch.delenv("WB_SESSION")
+        execute(o, {}, str(project.root))
+        assert hub.requests[-1]["body"] == {}
+    finally:
+        hub.close()
+
+
 def test_without_a_running_hub_the_cli_says_how_to_start_it(project):
     o = _sample_registry(needs_hub=True).get("sample")
     with pytest.raises(HubNotRunning) as excinfo:  # no hub.json at all

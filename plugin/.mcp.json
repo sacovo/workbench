@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "workbench": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/../.venv/bin/python",
+      "args": ["-m", "workbench", "mcp"],
+      "env": {
+        "VIRTUAL_ENV": "",
+        "CLAUDE_PROJECT_DIR": "${CLAUDE_PROJECT_DIR}"
+      }
+    }
+  }
+}

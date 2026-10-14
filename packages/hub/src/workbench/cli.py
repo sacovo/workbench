@@ -127,12 +127,25 @@ def _arguments(o: Op, args: argparse.Namespace) -> dict:
     return merged
 
 
+def _with_session_default(o: Op, arguments: dict) -> dict:
+    """`session` falls back to $WB_SESSION (the plugin's SessionStart hook exports it, see
+    plugin/hooks/wb_hook.py write_env_file) for any operation that takes one, when the caller gave
+    no `session` key at all (an explicit null still counts as given). Used by execute(), so both
+    `wb` and the MCP shim (which calls execute() too) pick it up without naming the session
+    themselves on every call."""
+    if "session" in arguments or not any(p.name == "session" for p in o.params):
+        return arguments
+    session = os.environ.get("WB_SESSION")
+    return {**arguments, "session": session} if session else arguments
+
+
 def execute(o: Op, arguments: dict, directory: str | None = None) -> dict:
     """Run one operation as `wb` does: in the hub if it needs one, else here.
 
     `directory` is where the project is looked for (default: the current directory)."""
     if o.owner_only and os.environ.get("CLAUDECODE"):
         raise OwnerOnly("owner actions come from the workbench page, not the agent's shell")
+    arguments = _with_session_default(o, arguments)
     if o.needs_hub:
         o.bind(arguments)  # reject bad arguments here, before the round trip
         return forward(find_project(directory), o.name, arguments)

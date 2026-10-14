@@ -7,6 +7,7 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "mcp>=2.3.0",
     "pyyaml>=6.0.3",
     "starlette>=1.8.0",
     "uvicorn>=0.54.0",

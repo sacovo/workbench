@@ -17,6 +17,8 @@ import sys
 
 import uvicorn
 
+from workbench.agentlink import AgentLink, make_transport
+from workbench.agentlink.routes import routes as agentlink_routes
 from workbench.errors import Conflict, WorkbenchError
 from workbench.hub.app import create_app
 from workbench.hub.hub import Hub
@@ -57,10 +59,19 @@ def run(project: Project, port: int = 0, open_window_too: bool = False, kernel_c
     port = sock.getsockname()[1]
     token = secrets.token_urlsafe(32)
     hub = Hub(project, token, port, kernel_command=kernel_command)
+    hub.link = AgentLink(
+        project,
+        lambda: hub.review.get("items", []),
+        make_transport(),
+        token=token,
+        poke_review=hub.poke_review,
+        turn_ended=hub._agent_turn_ended,
+    )
     info = HubInfo(pid=os.getpid(), port=port, token=token)
     server: uvicorn.Server | None = None
 
     async def started() -> None:
+        hub.link.start()
         log.info("%s on %s (pid %s); `wb open` shows the page", project.name, info.url, info.pid)
         if open_window_too:
 
@@ -76,10 +87,11 @@ def run(project: Project, port: int = 0, open_window_too: bool = False, kernel_c
             hub.spawn(when_listening(), name="open-window")
 
     async def stopped() -> None:
+        hub.link.stop()
         _forget(project, info)
         log.info("stopped")
 
-    app = create_app(hub, on_started=started, on_stopped=stopped)
+    app = create_app(hub, extra_routes=agentlink_routes(hub.link), on_started=started, on_stopped=stopped)
     config = uvicorn.Config(
         app,
         log_level="warning",

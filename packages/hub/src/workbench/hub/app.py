@@ -10,8 +10,8 @@ The page itself and its assets carry no secrets and need no token; the page read
 the URL fragment `wb open` puts it in.
 
 Routes:
-    POST /api/op/<name>            every registry operation, except serve and open (they start a
-                                   hub or a window, not something a hub does)
+    POST /api/op/<name>            every registry operation, except serve, open and mcp (they
+                                   start a hub, a window or an MCP server, not something a hub does)
     GET  /api/state                project, build id, kernel state, scenes, item counts
     GET  /api/blob/<sha>           a data message the kernel wrote to .workbench/blobs/
     GET  /api/asset/<item>/<name>  a file attached to a review item (thumbnails)
@@ -51,7 +51,7 @@ log = logging.getLogger("workbench.hub")
 
 STATIC = Path(__file__).resolve().parent / "static"
 TOKEN_HEADER = "x-workbench-token"
-NOT_OVER_HTTP = frozenset({"serve", "open"})
+NOT_OVER_HTTP = frozenset({"serve", "open", "mcp"})
 SHA_RE = re.compile(r"^[0-9a-f]{64}$")
 MAX_BODY = 32 * 2**20  # bytes: a comment's thumbnail is the largest body
 

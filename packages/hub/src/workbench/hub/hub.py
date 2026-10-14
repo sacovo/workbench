@@ -50,6 +50,7 @@ import time
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from workbench.agentlink.link import AgentLink
 from workbench.buildid import build_id
 from workbench.errors import Conflict, GitError, HubNotRunning, InvalidInput, NotFound, WorkbenchError
 from workbench.hub import review_watch
@@ -233,6 +234,7 @@ class Hub:
         self.retire_grace = retire_grace
         self.loop: asyncio.AbstractEventLoop | None = None
 
+        self.link: AgentLink | None = None  # set by server.run() once the agent link is mounted
         self.state = "starting"
         self.error: dict | None = None
         self.activity: dict | None = None  # what is being built, while building
@@ -259,6 +261,7 @@ class Hub:
         self._first_kernel: asyncio.Event | None = None
         self._review_poke: asyncio.Event | None = None
         self._auto_showing = False
+        self._agent_rebuilding = False
         self._stopping = False
 
     # -- lifecycle -----------------------------------------------------------------------------
@@ -655,6 +658,27 @@ class Hub:
 
         self.spawn(go(), name="refresh")
 
+    def _agent_turn_ended(self) -> None:
+        """AgentLink.turn_ended: a registered session's Stop hook just ended its turn (it was not
+        held back). Rebuild the shown assembly, like `wb show --rebuild`, if the code changed
+        since it was built. Called synchronously on the event loop by the hook's route handler, so
+        it only spawns the rebuild and returns; the hook's answer is never delayed by it. At most
+        one such rebuild runs at a time (_agent_rebuilding), independent of a manual rebuild."""
+        if not self.stale or self.shown is None or self._agent_rebuilding:
+            return
+        self._agent_rebuilding = True
+        assembly, args = self.shown.assembly, self.shown.args
+
+        async def go() -> None:
+            try:
+                await self.show(assembly, args, rebuild=True)
+            except WorkbenchError:
+                pass  # reported in the kernel state, as any rebuild failure is
+            finally:
+                self._agent_rebuilding = False
+
+        self.spawn(go(), name="agent-stop-rebuild")
+
     # -- pages ---------------------------------------------------------------------------------
 
     def broadcast(self, message: dict) -> int:
@@ -871,6 +895,8 @@ class Hub:
                 log.warning("review: %s", exc)
                 continue
             self.broadcast(self.review)
+            if self.link is not None:
+                self.link.review_changed()
 
     async def _watch_code(self) -> None:
         while True:

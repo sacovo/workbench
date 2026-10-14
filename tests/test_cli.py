@@ -11,6 +11,7 @@ import sys
 
 import pytest
 
+from hub_helpers import project  # noqa: F401  (fixture)
 from workbench import __version__
 from workbench.cli import STALE_GL_VARS, TOOLS, main
 
@@ -96,3 +97,31 @@ def test_the_running_environment_itself_is_not_a_warning(capsys, monkeypatch):
 def test_human_readable_doctor_runs_without_json(monkeypatch):
     monkeypatch.delenv("VIRTUAL_ENV", raising=False)
     assert main(["doctor"]) == 0
+
+
+QUESTIONS = [{"id": "q1", "text": "Which?", "options": [{"id": "a", "label": "A"}]}]
+
+
+def test_session_defaults_from_wb_session_when_the_flag_is_not_given(project, monkeypatch, capsys):
+    # The plugin's SessionStart hook (plugin/hooks/wb_hook.py write_env_file) exports WB_SESSION
+    # into the agent's shell; ops that take --session (ask, note, inbox, reply, ...) pick it up
+    # here so the agent does not have to name its own session on every call.
+    monkeypatch.chdir(project.root)
+    monkeypatch.setenv("WB_SESSION", "sess-from-env")
+
+    assert main(["ask", "From the environment", "--questions", json.dumps(QUESTIONS), "--json"]) == 0
+    assert json.loads(capsys.readouterr().out)["opened"]["by"] == {"role": "agent", "session": "sess-from-env"}
+
+    # An explicit --session on the command line wins over the environment.
+    assert main(["ask", "Flag wins", "--questions", json.dumps(QUESTIONS), "--session", "sess-from-flag", "--json"]) == 0
+    assert json.loads(capsys.readouterr().out)["opened"]["by"] == {"role": "agent", "session": "sess-from-flag"}
+
+    # Neither WB_SESSION nor --session: no session is recorded (unchanged behaviour).
+    monkeypatch.delenv("WB_SESSION")
+    assert main(["ask", "Neither", "--questions", json.dumps(QUESTIONS), "--json"]) == 0
+    assert json.loads(capsys.readouterr().out)["opened"]["by"] == {"role": "agent"}
+
+    # An operation without a `session` parameter at all is unaffected by WB_SESSION.
+    monkeypatch.setenv("WB_SESSION", "sess-from-env")
+    assert main(["status", "--json"]) == 0
+    json.loads(capsys.readouterr().out)  # does not raise "unknown argument session"

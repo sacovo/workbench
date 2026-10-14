@@ -48,15 +48,24 @@ owner's camera: save a view and point at it instead.
 
 ## Asking the owner to decide
 
+Write the arguments as one JSON object to `.workbench/ask.json` (ignored by git) and run the
+plain one-line command `wbench ask --file .workbench/ask.json`:
+
+```json
+{"title": "Front limit for the driving pose",
+ "corrections": ["The tipping study used the 35 mm rule for every row; corrected below."],
+ "body": "What changed and what the numbers say, in a few lines.",
+ "evidence": [{"kind": "file", "path": "build/tipping_study.json"}],
+ "attach": ["build/tipping_study.json"],
+ "questions": [{"id": "q1", "text": "Which front limit?", "recommended": "a",
+                "options": [{"id": "a", "label": "35 mm", "effect": {"robot.params:RULES.front_limit": 35}},
+                            {"id": "b", "label": "75 mm", "effect": {"robot.params:RULES.front_limit": 75}}]}]}
 ```
-wbench ask "Front limit for the driving pose" \
-  --corrections '["The tipping study used the 35 mm rule for every row; corrected below."]' \
-  --body "What changed and what the numbers say, in a few lines." \
-  --evidence '[{"kind": "file", "path": "build/tipping_study.json"}]' --attach '["build/tipping_study.json"]' \
-  --questions '[{"id": "q1", "text": "Which front limit?", "recommended": "a",
-                 "options": [{"id": "a", "label": "35 mm", "effect": {"robot.params:RULES.front_limit": 35}},
-                             {"id": "b", "label": "75 mm", "effect": {"robot.params:RULES.front_limit": 75}}]}]'
-```
+
+Keep every `wbench` call a single plain command: no heredocs, line continuations or long inline
+JSON. Claude Code asks the owner to approve commands it cannot read safely, even when the command
+itself is allowed, and a woken agent waiting at such a prompt stalls the loop. The title is
+positional (there is no `--title`); `--file` works for every command.
 
 - Corrections first: if something you reported earlier was wrong, the decision opens with it.
 - Evidence is what the decision rests on; `--attach` freezes files with the item, so a later run

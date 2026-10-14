@@ -6,7 +6,9 @@ authors = [
     { name = "Sandro Covo", email = "sandro@sandrocovo.ch" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "pyyaml>=6.0.3",
+]
 
 [project.scripts]
 wb = "workbench.cli:main"

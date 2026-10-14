@@ -1,114 +1,150 @@
-"""The `wb` command line entry point.
+"""The `wb` command line, generated from the operation registry (workbench.ops).
 
-Only two things work so far: `wb --version` and `wb doctor`. Everything else
-the design describes (the operation registry, `wb serve`, `wb open`, ...) comes
-in later phases; see docs/plan.md. Standard library only: this runs before any
-project environment is known, so it must not need a `uv sync` of its own
-dependencies beyond workbench itself.
+Every operation is a subcommand. Required text and number arguments are positional, everything
+else is an option. List and object arguments take JSON (`--questions '[...]'`). `--file args.json`
+(or `-` for stdin) supplies any arguments as one JSON object, the same object the hub's HTTP
+endpoint takes; options on the command line win over the file. Output is short and
+human-readable; `--json` prints the raw result. Errors go to stderr, prefixed with the command,
+and the exit code is 1 (2 for a malformed command line).
+
+Operations registered with needs_hub=True are forwarded to the running hub over HTTP (address and
+token from .workbench/hub.json); all others run here, in this process.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
-import os
-import shutil
-import subprocess
 import sys
+import traceback
+from pathlib import Path
 
 from workbench import __version__
+from workbench.errors import InvalidInput, WorkbenchError
+from workbench.ops import Op, Param, Registry, default_registry
+from workbench.ops.client import forward
+from workbench.ops.doctor import STALE_GL_VARS, TOOLS, doctor  # noqa: F401  (kept importable from here)
+from workbench.project import find_project
 
-# Tools the app and the agent loop need on this machine. `doctor` is a setup and
-# support report, not a gate: a missing tool is reported, not an error.
-TOOLS = ("uv", "chromium", "herdr", "claude", "node", "pnpm")
-
-# Left over from an NVIDIA GPU this machine no longer has; on the real (AMD) GPU they make
-# XWayland render in software or break GLX outright. See docs/plan.md, "Owner actions, optional".
-STALE_GL_VARS = ("__GLX_VENDOR_LIBRARY_NAME", "LIBVA_DRIVER_NAME", "XWAYLAND_NO_GLAMOR")
-
-VERSION_TIMEOUT = 2.0  # seconds: a tool that hangs or prompts on --version must not hang the doctor
+POSITIONAL_TYPES = ("str", "int", "float", "literal")
+JSON_TYPES = ("dict", "list[str]", "list[dict]")
 
 
-def _tool_report(name: str) -> dict:
-    """Whether `name` is on PATH, where, and the first line of its own --version."""
-    path = shutil.which(name)
-    if path is None:
-        return {"found": False, "path": None, "version": None}
-    version = None
+def _json_value(text: str):
     try:
-        result = subprocess.run(
-            [path, "--version"],
-            capture_output=True,
-            text=True,
-            timeout=VERSION_TIMEOUT,
-        )
-        lines = [line.strip() for line in (result.stdout + result.stderr).splitlines() if line.strip()]
-        version = lines[0] if lines else None
-    except (OSError, subprocess.SubprocessError):
-        version = None  # found on PATH but would not run; still "found"
-    return {"found": True, "path": path, "version": version}
+        return json.loads(text)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError(f"not valid JSON: {exc}") from None
 
 
-def doctor() -> dict:
-    """Report on the tools and environment the app and the agent loop need here."""
-    virtual_env = os.environ.get("VIRTUAL_ENV")
-    # `uv run` sets VIRTUAL_ENV to the environment it runs in; only a different one misdirects uv.
-    foreign = bool(virtual_env) and os.path.realpath(virtual_env) != os.path.realpath(sys.prefix)
-    set_gl_vars = [name for name in STALE_GL_VARS if os.environ.get(name)]
-
-    warnings = []
-    if foreign:
-        warnings.append(
-            f"VIRTUAL_ENV is set ({virtual_env}); uv must run with it unset, e.g. `env -u VIRTUAL_ENV uv ...`."
-        )
-    if set_gl_vars:
-        warnings.append(f"{', '.join(set_gl_vars)} set; stale NVIDIA settings on this AMD machine break X11 GL.")
-
-    return {
-        "tools": {name: _tool_report(name) for name in TOOLS},
-        "virtual_env": {"set": bool(virtual_env), "value": virtual_env, "foreign": foreign},
-        "stale_gl_vars": {"checked": list(STALE_GL_VARS), "set": set_gl_vars},
-        "warnings": warnings,
-    }
-
-
-def _print_human(report: dict) -> None:
-    width = max(len(name) for name in report["tools"])
-    for name, info in report["tools"].items():
-        if info["found"]:
-            version = info["version"] or "(no version output)"
-            print(f"{name:<{width}}  found    {info['path']}  {version}")
+def _add_param(parser: argparse.ArgumentParser, p: Param) -> None:
+    help_text = p.help or None
+    if p.required and p.type in POSITIONAL_TYPES:
+        # Optional to argparse so that --file can supply it; required-ness is checked after merging.
+        kwargs: dict = {"nargs": "?", "default": argparse.SUPPRESS, "help": help_text}
+        if p.type == "literal":
+            kwargs["choices"] = p.choices
         else:
-            print(f"{name:<{width}}  missing")
-    if report["warnings"]:
-        print()
-        for warning in report["warnings"]:
-            print(f"warning: {warning}")
+            kwargs["metavar"] = p.name.upper()
+            if p.type == "int":
+                kwargs["type"] = int
+            elif p.type == "float":
+                kwargs["type"] = float
+        parser.add_argument(p.name, **kwargs)
+        return
+    flag = "--" + p.name.replace("_", "-")
+    kwargs = {"dest": p.name, "default": argparse.SUPPRESS, "help": help_text}
+    if p.type == "bool":
+        parser.add_argument(flag, action=argparse.BooleanOptionalAction, **kwargs)
+    elif p.type in JSON_TYPES:
+        parser.add_argument(flag, type=_json_value, metavar="JSON", **kwargs)
+    elif p.type == "literal":
+        parser.add_argument(flag, choices=p.choices, **kwargs)
+    elif p.type == "int":
+        parser.add_argument(flag, type=int, metavar="N", **kwargs)
+    elif p.type == "float":
+        parser.add_argument(flag, type=float, metavar="X", **kwargs)
+    else:
+        parser.add_argument(flag, metavar="TEXT", **kwargs)
+
+
+def build_parser(registry: Registry) -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="wb", description="Workbench: agent-driven mechanical design.")
+    parser.add_argument("--version", action="version", version=__version__)
+    parser.add_argument(
+        "-C", dest="_directory", metavar="DIR", help="find the project from DIR instead of the current directory"
+    )
+    sub = parser.add_subparsers(dest="_command", metavar="COMMAND")
+    for o in registry:
+        description = o.summary + (f"\n\n{o.description}" if o.description else "")
+        if o.needs_hub:
+            description += "\n\nRuns in the hub (`wb serve`)."
+        sp = sub.add_parser(
+            o.name, help=o.summary, description=description, formatter_class=argparse.RawDescriptionHelpFormatter
+        )
+        for p in o.params:
+            _add_param(sp, p)
+        sp.add_argument(
+            "--file", metavar="PATH", help="JSON object with arguments ('-' reads stdin); command-line options win"
+        )
+        sp.add_argument("--json", action="store_true", help="print the raw JSON result")
+        sp.set_defaults(_op=o)
+    return parser
+
+
+def _read_arguments_file(path: str) -> dict:
+    try:
+        text = sys.stdin.read() if path == "-" else Path(path).read_text(encoding="utf-8")
+    except OSError as exc:
+        raise InvalidInput(f"--file {path}: {exc.strerror or exc}") from None
+    try:
+        data = json.loads(text)
+    except ValueError as exc:
+        raise InvalidInput(f"--file {path}: not valid JSON: {exc}") from None
+    if not isinstance(data, dict):
+        raise InvalidInput(f"--file {path}: expected a JSON object of arguments, got {type(data).__name__}")
+    return data
+
+
+def _arguments(o: Op, args: argparse.Namespace) -> dict:
+    merged = _read_arguments_file(args.file) if args.file is not None else {}
+    for p in o.params:
+        if hasattr(args, p.name):
+            merged[p.name] = getattr(args, p.name)
+    return merged
+
+
+def execute(o: Op, arguments: dict, directory: str | None = None) -> dict:
+    """Run one operation as `wb` does: in the hub if it needs one, else here.
+
+    `directory` is where the project is looked for (default: the current directory)."""
+    if o.needs_hub:
+        o.bind(arguments)  # reject bad arguments here, before the round trip
+        return forward(find_project(directory), o.name, arguments)
+    project = find_project(directory) if o.needs_project else None
+    return o.call(arguments, project=project)
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="wb", description="Workbench: agent-driven mechanical design.")
-    parser.add_argument("--version", action="version", version=__version__)
-    subparsers = parser.add_subparsers(dest="command")
-
-    doctor_parser = subparsers.add_parser("doctor", help="report on the tools and environment this machine needs")
-    doctor_parser.add_argument("--json", action="store_true", help="print the report as JSON")
-
+    parser = build_parser(default_registry())
     args = parser.parse_args(argv)
-
-    if args.command == "doctor":
-        try:
-            report = doctor()
-        except Exception as exc:  # the doctor's own crash is the only non-zero exit
-            print(f"doctor crashed: {exc}", file=sys.stderr)
-            return 1
-        if args.json:
-            print(json.dumps(report, indent=2))
-        else:
-            _print_human(report)
+    o: Op | None = getattr(args, "_op", None)
+    if o is None:
+        parser.print_help()
         return 0
-
-    parser.print_help()
+    try:
+        result = execute(o, _arguments(o, args), args._directory)
+    except WorkbenchError as exc:
+        print(f"wb {o.name}: {exc}", file=sys.stderr)
+        return 1
+    except Exception:
+        traceback.print_exc()
+        print(f"wb {o.name}: internal error (a bug; traceback above)", file=sys.stderr)
+        return 1
+    if args.json:
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+    else:
+        print(o.render(result))
     return 0
 
 

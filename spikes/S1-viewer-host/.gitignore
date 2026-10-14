@@ -1,0 +1,5 @@
+# generated or scratch
+node_modules/
+dist/
+.venv/
+.chrome-*/

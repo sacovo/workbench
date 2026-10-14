@@ -1,0 +1,700 @@
+{
+  "backend": "swiftshader",
+  "flags": [
+    "--use-angle=swiftshader",
+    "--enable-unsafe-swiftshader"
+  ],
+  "suite": "func",
+  "started": "2026-10-14T06:59:10.414Z",
+  "sections": {
+    "first_show": {
+      "ok": true,
+      "host": {
+        "build_s": 4.485996339004487,
+        "height": null,
+        "show_start_wall_ms": 1791961158012.6223,
+        "send_data_called_wall_ms": 1791961160287.239,
+        "encode_s": 0.003803909756243229,
+        "decode_utf8_s": 0.002402178943157196,
+        "payload_bytes": 10248296,
+        "send_start_wall_ms": 1791961160293.4517,
+        "ws_send_s": 0.014389337971806526,
+        "send_end_wall_ms": 1791961160307.8472,
+        "backend_encode_s": 0.03305128635838628,
+        "backend_payload_bytes": 3472898,
+        "backend_load_s": 0.10331365186721087,
+        "backend_ids": 14622,
+        "show_total_s": 2.4329109182581306,
+        "show_end_wall_ms": 1791961160445.5354,
+        "tessellate_convert_s": 2.27461669921875,
+        "n_parts": 58,
+        "n_faces_backend": 2667
+      },
+      "page": {
+        "chars": 10248296,
+        "recvWallMs": 1791961160315.5,
+        "parseMs": 6.800000190734863,
+        "handleMs": 176.80000019073486,
+        "gpuDoneMs": 4203.39999961853,
+        "firstRafAfterMs": 4205.699999809265,
+        "firstFrameWallMs": 1791961164704.8,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 183,
+          "textures": 2,
+          "programs": 6
+        }
+      },
+      "showToFirstFrameMs": 6692.177734375,
+      "sendToRecvMs": 22.04833984375,
+      "elapsedMs": 11190
+    },
+    "q1_stock_ui": {
+      "ok": true,
+      "versions": {
+        "threeCadViewer": "5.1.3",
+        "ocpViewerCore": "1.1.0"
+      },
+      "gl": {
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "vendor": "Google Inc. (Google)",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "attributes": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "default",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": true,
+          "xrCompatible": false
+        },
+        "timerQuery": true,
+        "colorBufferFloat": true,
+        "maxSamples": 4
+      },
+      "scene": {
+        "meshes": 700,
+        "meshTriangles": 1715444,
+        "uniqueTriangles": 215050,
+        "uniqueLineSegments": 126,
+        "uniquePoints": 4638,
+        "leaves": 58
+      },
+      "frame": {
+        "calls": 182,
+        "triangles": 766485,
+        "lines": 0,
+        "points": 4638
+      },
+      "tree": {
+        "domRows": 18,
+        "leafGroups": 58,
+        "pass": true
+      },
+      "toolbar": {
+        "topViewDir": [
+          0,
+          0,
+          1
+        ],
+        "isoViewDir": [
+          0.5773502691896257,
+          -0.5773502691896257,
+          0.5773502691896257
+        ],
+        "hostSeesCamera": true,
+        "pass": true
+      },
+      "treeToggle": {
+        "label": "upper_deck",
+        "stateHidden": [
+          0,
+          0
+        ],
+        "stateShown": [
+          1,
+          1
+        ],
+        "hostState": [
+          0,
+          0
+        ],
+        "pixelsBefore": 108888,
+        "pixelsHidden": 108452,
+        "pass": true
+      },
+      "clipping": {
+        "localClippingEnabled": true,
+        "localClippingAfterTreeTab": false,
+        "sliderBefore": 1000,
+        "sliderAfter": -536.1,
+        "hostSlider": -536.1,
+        "pixelsOpen": 108888,
+        "pixelsClipped": 382,
+        "pass": true
+      },
+      "measure": {
+        "toolSeenByHost": "PropertiesMeasurement",
+        "faceA": "/robot_assembly/housing_lid/faces/faces_2",
+        "faceB": "/robot_assembly/arm_platform/faces/faces_18",
+        "properties": {
+          "response": {
+            "t": 1791961182626.4783,
+            "event": "backend_response",
+            "tool": "PropertiesMeasurement"
+          },
+          "panelDisplay": "none",
+          "panelText": "\n                Properties\n                Shape\n            ",
+          "exactArea": 30924.501291374407
+        },
+        "distance": {
+          "response": {
+            "t": 1791961196124.9058,
+            "event": "backend_response",
+            "tool": "DistanceMeasurement"
+          },
+          "panelDisplay": "none",
+          "panelText": "\n                Distance\n            ",
+          "exactDistance": 64.34974747425197
+        },
+        "pass": false
+      },
+      "explode": {
+        "movedMm": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "restoredErrorMm": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "pass": false
+      },
+      "getImage": {
+        "task": "s1",
+        "length": 114406,
+        "prefix": "data:image/png;base64,",
+        "pass": true
+      },
+      "console": [],
+      "pass": false,
+      "elapsedMs": 50236
+    },
+    "q2_picks": {
+      "ok": false,
+      "error": "Error: only 0 parts with 4 pickable faces: {\"housing_lid\":1,\"arm_platform\":1,\"column\":2,\"hitch_receiver\":3,\"lift_carriage\":1,\"camera\":3,\"housing_left_panel\":1,\"lidar\":1,\"housing_rear_panel\":1,\"touch_display\":1,\"battery\":1}\n    at q2 (file:///home/sandro/work/privat/workbench/spikes/S1-viewer-host/driver/run_s1.mjs:259:33)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async section (file:///home/sandro/work/privat/workbench/spikes/S1-viewer-host/driver/run_s1.mjs:41:46)\n    at async file:///home/sandro/work/privat/workbench/spikes/S1-viewer-host/driver/run_s1.mjs:554:20",
+      "elapsedMs": 3593
+    },
+    "q3_overlay": {
+      "ok": false,
+      "error": "Error: no resolved pick with an exact anchor\n    at q3 (file:///home/sandro/work/privat/workbench/spikes/S1-viewer-host/driver/run_s1.mjs:334:31)\n    at file:///home/sandro/work/privat/workbench/spikes/S1-viewer-host/driver/run_s1.mjs:555:43\n    at section (file:///home/sandro/work/privat/workbench/spikes/S1-viewer-host/driver/run_s1.mjs:41:52)\n    at file:///home/sandro/work/privat/workbench/spikes/S1-viewer-host/driver/run_s1.mjs:555:15\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+      "elapsedMs": 0
+    },
+    "q5_incremental": {
+      "ok": true,
+      "liftTransform": {
+        "height": 500,
+        "moved": [
+          "arm_platform",
+          "left_arm_base",
+          "right_arm_base"
+        ],
+        "regeom": [
+          "front_left_wheel_mount",
+          "front_left_wheel",
+          "front_left_hub",
+          "front_right_wheel_mount",
+          "front_right_wheel",
+          "front_right_hub",
+          "rear_wheel_mount",
+          "rear_wheel",
+          "rear_hub",
+          "battery_tray",
+          "battery",
+          "housing_left_panel",
+          "housing_right_panel",
+          "housing_front_panel",
+          "housing_rear_panel",
+          "housing_lid",
+          "housing_post_rear_left",
+          "housing_post_rear_right",
+          "housing_post_front_left",
+          "housing_post_front_right",
+          "compute",
+          "electronics_plate",
+          "servo_adapter_1",
+          "buck",
+          "servo_trigger",
+          "fuse_block",
+          "relay",
+          "capacitor",
+          "compute_trigger",
+          "estop",
+          "estop_head",
+          "master_switch",
+          "display",
+          "fan",
+          "lidar",
+          "imu",
+          "hitch_receiver",
+          "lift_carriage",
+          "rear_beam",
+          "front_beam",
+          "upper_rail_block",
+          "lower_rail_block",
+          "column",
+          "rail",
+          "camera_mast",
+          "camera",
+          "usb_hub",
+          "right_arm_adapter",
+          "left_arm_adapter",
+          "touch_display"
+        ],
+        "bytesSent": 2257635,
+        "hostBuildS": 6.475099015049636,
+        "hostDiffS": 0.04388506105169654,
+        "hostBackendUpdateS": 0.18304539984092116,
+        "pageApplyMs": 4.5,
+        "pageGpuDoneMs": 2476,
+        "latencyFromSendMs": 2481.330078125,
+        "maxBoxDiffVsFullReshowMm": 0,
+        "maxBoxDiffVsExactMm": 0.9942771730535469,
+        "pickAfterMove": null,
+        "pass": false
+      },
+      "fullReshow": {
+        "height": 500,
+        "payloadBytes": 10250980,
+        "tessellateConvertS": 0.358593505859375,
+        "showTotalS": 0.5254670581780374,
+        "pageHandleMs": 174,
+        "gpuDoneMs": 6014.599999904633,
+        "showToFirstFrameMs": 6582.59814453125
+      },
+      "liftReadd": {
+        "moved": [
+          "arm_platform",
+          "left_arm_base",
+          "right_arm_base",
+          "lift_carriage",
+          "rear_beam",
+          "front_beam",
+          "upper_rail_block",
+          "lower_rail_block",
+          "camera_mast",
+          "camera",
+          "usb_hub",
+          "right_arm_adapter",
+          "left_arm_adapter"
+        ],
+        "bytesSent": 1138,
+        "pageApplyMs": 51.19999980926514,
+        "pageGpuDoneMs": 1284.4000000953674,
+        "leavesAfter": 58,
+        "maxBoxDiffVsExactMm": 164.7500001,
+        "pass": false
+      },
+      "geometryUpdate": {
+        "change": {
+          "edge_margin": 16
+        },
+        "regeom": [
+          "arm_platform"
+        ],
+        "moved": [],
+        "bytesSent": 183657,
+        "hostBuildS": 3.7831161129288375,
+        "hostTessellateS": 0.027540731243789196,
+        "hostEncodeS": 0.00003658095374703407,
+        "pageDecodeApplyMs": 11.900000095367432,
+        "pageGpuDoneMs": 658.0999999046326,
+        "latencyFromSendMs": 671.62451171875,
+        "leavesAfter": 58,
+        "maxBoxDiffVsExactMm": 0.000006203515624747524,
+        "pickAfterGeom": {
+          "t": 1791961254210.9775,
+          "id": "/robot_assembly/usb_hub/faces/faces_5",
+          "ids": [
+            "/robot_assembly/usb_hub/faces/faces_5",
+            false
+          ],
+          "ctx": {
+            "pointer": {
+              "x": 892,
+              "y": 644,
+              "t": 101398.90000009537
+            },
+            "camera": {
+              "position": [
+                1027.0810294721443,
+                -1839.8605529223787,
+                1916.282492513074
+              ],
+              "quaternion": [
+                0.4460149107768816,
+                0.1195093351549047,
+                0.22957529683877875,
+                0.8567866719650288
+              ],
+              "target": [
+                -35.162956028964985,
+                0,
+                428.7000003814697
+              ],
+              "zoom": 1,
+              "ortho": true,
+              "left": -951.8613398428922,
+              "right": 951.8613398428922,
+              "top": 518.7041858257786,
+              "bottom": -518.7041858257786,
+              "near": 5.390292517004248,
+              "far": 53902.92517004248,
+              "canvas": {
+                "x": 6,
+                "y": 48,
+                "width": 1580,
+                "height": 861
+              },
+              "dpr": 1,
+              "drawingBuffer": [
+                1580,
+                861
+              ]
+            }
+          },
+          "resolved": true,
+          "expected_id": "/robot_assembly/arm_platform/faces/faces_18",
+          "id_match": false,
+          "is_same_face": false,
+          "point_to_resolved_face_mm": 36.12478373637689,
+          "click_px": [
+            892,
+            644
+          ],
+          "python_projected_px": [
+            892.3128796276483,
+            643.8504810642744
+          ],
+          "projection_error_px": 0.3467702027825345,
+          "pass": false
+        },
+        "pass": false
+      },
+      "pass": false,
+      "elapsedMs": 38123
+    }
+  },
+  "ping": {
+    "robot_file": "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap/src/robot/__init__.py",
+    "python": "3.12.11 (main, Aug  8 2025, 17:06:48) [Clang 20.1.4 ]"
+  },
+  "chromeConsole": [],
+  "hostState": {
+    "status_keys": [
+      "activeTool",
+      "ambient_intensity",
+      "axes",
+      "axes0",
+      "black_edges",
+      "center_grid",
+      "clip_intersection",
+      "clip_normal_0",
+      "clip_normal_1",
+      "clip_normal_2",
+      "clip_object_colors",
+      "clip_planes",
+      "clip_slider_0",
+      "clip_slider_1",
+      "clip_slider_2",
+      "collapse",
+      "default_edgecolor",
+      "default_opacity",
+      "direct_intensity",
+      "explode",
+      "glass",
+      "grid",
+      "holroyd",
+      "metalness",
+      "ortho",
+      "pan_speed",
+      "position",
+      "quaternion",
+      "relative_time",
+      "rotate_speed",
+      "roughness",
+      "selectedShapeIDs",
+      "states",
+      "studio_4k_env_maps",
+      "studio_ao_intensity",
+      "studio_background",
+      "studio_env_intensity",
+      "studio_env_rotation",
+      "studio_environment",
+      "studio_exposure",
+      "studio_shadow_intensity",
+      "studio_shadow_softness",
+      "studio_texture_mapping",
+      "studio_tone_mapping",
+      "tab",
+      "target",
+      "target0",
+      "tools",
+      "transparent",
+      "zebra_color_scheme",
+      "zebra_count",
+      "zebra_direction",
+      "zebra_mapping_mode",
+      "zebra_opacity",
+      "zoom",
+      "zoom_speed"
+    ],
+    "splash": false,
+    "metrics": {
+      "current_show": {
+        "build_s": 4.2812016839161515,
+        "height": 500,
+        "show_start_wall_ms": 1791961232708.4019,
+        "send_data_called_wall_ms": 1791961233066.9954,
+        "encode_s": 0.0021564429625868797,
+        "decode_utf8_s": 0.0027991533279418945,
+        "payload_bytes": 10250980,
+        "send_start_wall_ms": 1791961233071.9573,
+        "ws_send_s": 0.012215036898851395,
+        "send_end_wall_ms": 1791961233084.1772,
+        "backend_encode_s": 0.03507804684340954,
+        "backend_payload_bytes": 3472885,
+        "backend_load_s": 0.11165595799684525,
+        "backend_ids": 14622,
+        "show_total_s": 0.5254670581780374,
+        "show_end_wall_ms": 1791961233233.8718,
+        "tessellate_convert_s": 0.358593505859375,
+        "n_parts": 58,
+        "n_faces_backend": 2667
+      },
+      "shows": [
+        {
+          "build_s": 4.485996339004487,
+          "height": null,
+          "show_start_wall_ms": 1791961158012.6223,
+          "send_data_called_wall_ms": 1791961160287.239,
+          "encode_s": 0.003803909756243229,
+          "decode_utf8_s": 0.002402178943157196,
+          "payload_bytes": 10248296,
+          "send_start_wall_ms": 1791961160293.4517,
+          "ws_send_s": 0.014389337971806526,
+          "send_end_wall_ms": 1791961160307.8472,
+          "backend_encode_s": 0.03305128635838628,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.10331365186721087,
+          "backend_ids": 14622,
+          "show_total_s": 2.4329109182581306,
+          "show_end_wall_ms": 1791961160445.5354,
+          "tessellate_convert_s": 2.27461669921875,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 4.2812016839161515,
+          "height": 500,
+          "show_start_wall_ms": 1791961232708.4019,
+          "send_data_called_wall_ms": 1791961233066.9954,
+          "encode_s": 0.0021564429625868797,
+          "decode_utf8_s": 0.0027991533279418945,
+          "payload_bytes": 10250980,
+          "send_start_wall_ms": 1791961233071.9573,
+          "ws_send_s": 0.012215036898851395,
+          "send_end_wall_ms": 1791961233084.1772,
+          "backend_encode_s": 0.03507804684340954,
+          "backend_payload_bytes": 3472885,
+          "backend_load_s": 0.11165595799684525,
+          "backend_ids": 14622,
+          "show_total_s": 0.5254670581780374,
+          "show_end_wall_ms": 1791961233233.8718,
+          "tessellate_convert_s": 0.358593505859375,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        }
+      ],
+      "updates": [
+        {
+          "height": 500,
+          "platform": null,
+          "mode": "transform",
+          "build_s": 6.475099015049636,
+          "diff_s": 0.04388506105169654,
+          "moved": [
+            "arm_platform",
+            "left_arm_base",
+            "right_arm_base"
+          ],
+          "regeom": [
+            "front_left_wheel_mount",
+            "front_left_wheel",
+            "front_left_hub",
+            "front_right_wheel_mount",
+            "front_right_wheel",
+            "front_right_hub",
+            "rear_wheel_mount",
+            "rear_wheel",
+            "rear_hub",
+            "battery_tray",
+            "battery",
+            "housing_left_panel",
+            "housing_right_panel",
+            "housing_front_panel",
+            "housing_rear_panel",
+            "housing_lid",
+            "housing_post_rear_left",
+            "housing_post_rear_right",
+            "housing_post_front_left",
+            "housing_post_front_right",
+            "compute",
+            "electronics_plate",
+            "servo_adapter_1",
+            "buck",
+            "servo_trigger",
+            "fuse_block",
+            "relay",
+            "capacitor",
+            "compute_trigger",
+            "estop",
+            "estop_head",
+            "master_switch",
+            "display",
+            "fan",
+            "lidar",
+            "imu",
+            "hitch_receiver",
+            "lift_carriage",
+            "rear_beam",
+            "front_beam",
+            "upper_rail_block",
+            "lower_rail_block",
+            "column",
+            "rail",
+            "camera_mast",
+            "camera",
+            "usb_hub",
+            "right_arm_adapter",
+            "left_arm_adapter",
+            "touch_display"
+          ],
+          "tessellate_s": 0.16757490392774343,
+          "encode_s": 0.002102992031723261,
+          "bytes_sent": 2257635,
+          "backend_update_s": 0.18304539984092116
+        },
+        {
+          "height": null,
+          "platform": null,
+          "mode": "readd",
+          "build_s": 4.116753207053989,
+          "diff_s": 0.02580488519743085,
+          "moved": [
+            "arm_platform",
+            "left_arm_base",
+            "right_arm_base",
+            "lift_carriage",
+            "rear_beam",
+            "front_beam",
+            "upper_rail_block",
+            "lower_rail_block",
+            "camera_mast",
+            "camera",
+            "usb_hub",
+            "right_arm_adapter",
+            "left_arm_adapter"
+          ],
+          "regeom": [],
+          "bytes_sent": 1138,
+          "backend_update_s": 0.02712342608720064
+        },
+        {
+          "height": null,
+          "platform": {
+            "edge_margin": 16
+          },
+          "mode": "transform",
+          "build_s": 3.7831161129288375,
+          "diff_s": 0.0272137769497931,
+          "moved": [],
+          "regeom": [
+            "arm_platform"
+          ],
+          "tessellate_s": 0.027540731243789196,
+          "encode_s": 0.00003658095374703407,
+          "bytes_sent": 183657,
+          "backend_update_s": 0.0029550152830779552
+        }
+      ]
+    },
+    "n_picks": 5,
+    "backend_ids": 14622
+  },
+  "hostLogTail": [
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "+",
+    "+",
+    "c",
+    "cc",
+    "c",
+    "c",
+    "ccccccc",
+    "c",
+    "CameraWarning: Object may extend beyond view (1061.9% of previous size). Skip warnings with `ignore_camera_warnings()`",
+    "Identifier received '/robot_assembly/usb_hub/faces/faces_5'"
+  ],
+  "chromeLogTail": [
+    "WARNING: radv is not a conformant Vulkan implementation, testing use only.",
+    "[462652:462680:1014/085916.234741:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR",
+    "[462652:462680:1014/085916.241025:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR",
+    "[462652:462680:1014/085916.241941:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR",
+    "[462652:462680:1014/085916.349050:ERROR:google_apis/gcm/engine/mcs_client.cc:702]   Error code: 401  Error message: Authentication Failed: wrong_secret",
+    "[462652:462680:1014/085916.349063:ERROR:google_apis/gcm/engine/mcs_client.cc:704] Failed to log in to GCM, resetting connection.",
+    "[462652:462680:1014/085945.460121:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT",
+    "[462652:462680:1014/090035.516981:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT"
+  ],
+  "finished": "2026-10-14T07:00:56.685Z"
+}

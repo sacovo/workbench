@@ -1,0 +1,1272 @@
+{
+  "backend": "angle_gl_egl",
+  "flags": [
+    "--use-gl=angle",
+    "--use-angle=gl-egl",
+    "--ignore-gpu-blocklist"
+  ],
+  "suite": "perf",
+  "started": "2026-10-14T07:40:36.371Z",
+  "sections": {
+    "q4_perf_1600x1000_capped": {
+      "ok": true,
+      "window": [
+        1600,
+        1000
+      ],
+      "uncapped": false,
+      "canvas": [
+        1580,
+        861
+      ],
+      "gl": {
+        "renderer": "ANGLE (AMD, AMD Radeon AI PRO R9700 (radeonsi gfx1201 ACO), OpenGL ES 3.2)",
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "maxSamples": 8,
+        "timerQuery": true
+      },
+      "scene": {
+        "meshes": 700,
+        "meshTriangles": 1715444,
+        "uniqueTriangles": 215050,
+        "uniqueLineSegments": 126,
+        "uniquePoints": 4638,
+        "leaves": 58
+      },
+      "frame": {
+        "calls": 182,
+        "triangles": 766485,
+        "lines": 0,
+        "points": 4638
+      },
+      "show": {
+        "cold": {
+          "showToFirstFrameMs": 2266.22412109375,
+          "sendToRecvMs": 20.546142578125,
+          "host": {
+            "build_s": 4.234925725962967,
+            "tessellate_convert_s": 2.073468017578125,
+            "encode_s": 0.003186957910656929,
+            "payload_bytes": 10248296,
+            "ws_send_s": 0.013571697752922773,
+            "backend_encode_s": 0.03145253099501133,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.09420984191820025,
+            "show_total_s": 2.2191357892006636
+          },
+          "page": {
+            "chars": 10248296,
+            "recvWallMs": 1791963645526.5,
+            "parseMs": 6.599999904632568,
+            "handleMs": 155.80000019073486,
+            "gpuDoneMs": 1.5999999046325684,
+            "firstRafAfterMs": 4.400000095367432,
+            "firstFrameWallMs": 1791963645693.2998,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 183,
+              "textures": 2,
+              "programs": 6
+            }
+          }
+        },
+        "warm": {
+          "showToFirstFrameMs": 488.25048828125,
+          "sendToRecvMs": 18.899169921875,
+          "host": {
+            "build_s": 3.7290856931358576,
+            "tessellate_convert_s": 0.323730224609375,
+            "encode_s": 0.003891339059919119,
+            "payload_bytes": 10251119,
+            "ws_send_s": 0.011579287704080343,
+            "backend_encode_s": 0.032840362284332514,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.10799817368388176,
+            "show_total_s": 0.48442560574039817
+          },
+          "page": {
+            "chars": 10251119,
+            "recvWallMs": 1791963650151.9,
+            "parseMs": 5.800000190734863,
+            "handleMs": 130.89999961853027,
+            "gpuDoneMs": 1.8000001907348633,
+            "firstRafAfterMs": 2.200000286102295,
+            "firstFrameWallMs": 1791963650290.7998,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 183,
+              "textures": 2,
+              "programs": 6
+            }
+          }
+        }
+      },
+      "orbitRaf": {
+        "frames": 300,
+        "degPerFrame": 1.2,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          1580,
+          861
+        ],
+        "wallMs": 5002.5,
+        "fpsMean": 60.00165521807497,
+        "interval": {
+          "n": 290,
+          "mean": 16.666206896551728,
+          "median": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "p99": 16.80000000000109,
+          "max": 16.80000000000109,
+          "min": 16.5
+        },
+        "skippedWarmup": 10,
+        "updateCpu": {
+          "n": 291,
+          "mean": 2.436769747652139,
+          "median": 2.299999713897705,
+          "p95": 3.4000000953674316,
+          "p99": 3.9000000953674316,
+          "max": 4.900000095367432,
+          "min": 1.799999713897705
+        },
+        "gpuTimer": null,
+        "over16_7ms": 0,
+        "statusMessagesSent": 300,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 183,
+          "textures": 2,
+          "programs": 6
+        }
+      },
+      "orbitSync": {
+        "frames": 120,
+        "degPerFrame": 3,
+        "sync": true,
+        "notify": true,
+        "canvas": [
+          1580,
+          861
+        ],
+        "wallMs": 2017.6000003814697,
+        "fpsMean": 60.00436395374207,
+        "interval": {
+          "n": 110,
+          "mean": 16.66545454545455,
+          "median": 16.69999999999709,
+          "p95": 16.799999999999272,
+          "p99": 16.799999999999272,
+          "max": 16.80000000000291,
+          "min": 16.599999999998545
+        },
+        "skippedWarmup": 10,
+        "updateCpu": {
+          "n": 111,
+          "mean": 4.1279279219137655,
+          "median": 4,
+          "p95": 5.5,
+          "p99": 5.799999713897705,
+          "max": 6.700000286102295,
+          "min": 2.9000000953674316
+        },
+        "gpuTimer": null,
+        "over16_7ms": 0,
+        "statusMessagesSent": 120,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 183,
+          "textures": 2,
+          "programs": 6
+        }
+      },
+      "orbitGpuTimer": {
+        "frames": 120,
+        "degPerFrame": 3,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          1580,
+          861
+        ],
+        "wallMs": 2013.1999998092651,
+        "fpsMean": 60.00436395374207,
+        "interval": {
+          "n": 110,
+          "mean": 16.66545454545455,
+          "median": 16.69999999999709,
+          "p95": 16.700000000000728,
+          "p99": 16.799999999999272,
+          "max": 16.80000000000291,
+          "min": 16.599999999998545
+        },
+        "skippedWarmup": 10,
+        "updateCpu": {
+          "n": 111,
+          "mean": 2.248648639197822,
+          "median": 2.0999999046325684,
+          "p95": 3.1000003814697266,
+          "p99": 3.6999998092651367,
+          "max": 4,
+          "min": 1.799999713897705
+        },
+        "gpuTimer": {
+          "n": 111,
+          "mean": 0.7536205405405405,
+          "median": 0.75716,
+          "p95": 0.83736,
+          "p99": 0.84708,
+          "max": 0.8576,
+          "min": 0.54148
+        },
+        "over16_7ms": 0,
+        "statusMessagesSent": 120,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 183,
+          "textures": 2,
+          "programs": 6
+        }
+      },
+      "elapsedMs": 21348
+    },
+    "q4_perf_1600x1000_uncapped": {
+      "ok": true,
+      "window": [
+        1600,
+        1000
+      ],
+      "uncapped": true,
+      "canvas": [
+        1580,
+        861
+      ],
+      "gl": {
+        "renderer": "ANGLE (AMD, AMD Radeon AI PRO R9700 (radeonsi gfx1201 ACO), OpenGL ES 3.2)",
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "maxSamples": 8,
+        "timerQuery": true
+      },
+      "scene": {
+        "meshes": 700,
+        "meshTriangles": 1715444,
+        "uniqueTriangles": 215050,
+        "uniqueLineSegments": 66,
+        "uniquePoints": 4638,
+        "leaves": 58
+      },
+      "frame": {
+        "calls": 198,
+        "triangles": 766511,
+        "lines": 22,
+        "points": 4638
+      },
+      "show": {
+        "cold": {
+          "showToFirstFrameMs": 473.826904296875,
+          "sendToRecvMs": 24.633056640625,
+          "host": {
+            "build_s": 3.802247012965381,
+            "tessellate_convert_s": 0.23965673828125,
+            "encode_s": 0.0028841649182140827,
+            "payload_bytes": 10248961,
+            "ws_send_s": 0.013839612249284983,
+            "backend_encode_s": 0.04079295368865132,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.11969112325459719,
+            "show_total_s": 0.4209880940616131
+          },
+          "page": {
+            "chars": 10248961,
+            "recvWallMs": 1791963664649.1,
+            "parseMs": 8.399999618530273,
+            "handleMs": 192.80000019073486,
+            "gpuDoneMs": 1.3000001907348633,
+            "firstRafAfterMs": 2.8000001907348633,
+            "firstFrameWallMs": 1791963664853.1,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 186,
+              "textures": 12,
+              "programs": 9
+            }
+          }
+        },
+        "warm": {
+          "showToFirstFrameMs": 272.7939453125,
+          "sendToRecvMs": 21.53125,
+          "host": {
+            "build_s": 3.7462296849116683,
+            "tessellate_convert_s": 0.070278076171875,
+            "encode_s": 0.001450933050364256,
+            "payload_bytes": 10251111,
+            "ws_send_s": 0.012049174401909113,
+            "backend_encode_s": 0.03395340032875538,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.12190601602196693,
+            "show_total_s": 0.24200157495215535
+          },
+          "page": {
+            "chars": 10251111,
+            "recvWallMs": 1791963669075.3,
+            "parseMs": 5.300000190734863,
+            "handleMs": 170.89999961853027,
+            "gpuDoneMs": 1.5,
+            "firstRafAfterMs": 1.9000000953674316,
+            "firstFrameWallMs": 1791963669253.4001,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 186,
+              "textures": 12,
+              "programs": 9
+            }
+          }
+        }
+      },
+      "orbitRaf": {
+        "frames": 300,
+        "degPerFrame": 1.2,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          1580,
+          861
+        ],
+        "wallMs": 756.7999997138977,
+        "fpsMean": 399.83455122018415,
+        "interval": {
+          "n": 290,
+          "mean": 2.5010344827586244,
+          "median": 2.399999999999636,
+          "p95": 3.100000000000364,
+          "p99": 5.199999999998909,
+          "max": 6,
+          "min": 2.099999999998545
+        },
+        "skippedWarmup": 10,
+        "updateCpu": {
+          "n": 291,
+          "mean": 2.2092783524818027,
+          "median": 2.1000003814697266,
+          "p95": 2.6999998092651367,
+          "p99": 3.3999996185302734,
+          "max": 3.5,
+          "min": 1.8999996185302734
+        },
+        "gpuTimer": null,
+        "over16_7ms": 0,
+        "statusMessagesSent": 300,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "orbitSync": {
+        "frames": 120,
+        "degPerFrame": 3,
+        "sync": true,
+        "notify": true,
+        "canvas": [
+          1580,
+          861
+        ],
+        "wallMs": 444.69999980926514,
+        "fpsMean": 272.4120851906877,
+        "interval": {
+          "n": 110,
+          "mean": 3.6709090909091007,
+          "median": 3.400000000001455,
+          "p95": 5.200000000000728,
+          "p99": 6,
+          "max": 6.200000000000728,
+          "min": 3
+        },
+        "skippedWarmup": 10,
+        "updateCpu": {
+          "n": 111,
+          "mean": 3.3936937263420037,
+          "median": 3.1000003814697266,
+          "p95": 4.900000095367432,
+          "p99": 5.699999809265137,
+          "max": 5.699999809265137,
+          "min": 2.6000003814697266
+        },
+        "gpuTimer": null,
+        "over16_7ms": 0,
+        "statusMessagesSent": 120,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "orbitGpuTimer": {
+        "frames": 120,
+        "degPerFrame": 3,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          1580,
+          861
+        ],
+        "wallMs": 288,
+        "fpsMean": 416.6666666666667,
+        "interval": {
+          "n": 110,
+          "mean": 2.4,
+          "median": 2.3000000000010914,
+          "p95": 3,
+          "p99": 3.2999999999992724,
+          "max": 3.2999999999992724,
+          "min": 2.099999999998545
+        },
+        "skippedWarmup": 10,
+        "updateCpu": {
+          "n": 111,
+          "mean": 2.1441441355524837,
+          "median": 2.0999999046325684,
+          "p95": 2.700000286102295,
+          "p99": 3.0999999046325684,
+          "max": 3.1000003814697266,
+          "min": 1.8999996185302734
+        },
+        "gpuTimer": {
+          "n": 111,
+          "mean": 0.6145041441441442,
+          "median": 0.61052,
+          "p95": 0.67304,
+          "p99": 0.69188,
+          "max": 0.70032,
+          "min": 0.54868
+        },
+        "over16_7ms": 0,
+        "statusMessagesSent": 120,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "elapsedMs": 11393
+    },
+    "q4_perf_2560x1440_capped": {
+      "ok": true,
+      "window": [
+        2560,
+        1440
+      ],
+      "uncapped": false,
+      "canvas": [
+        2540,
+        1301
+      ],
+      "gl": {
+        "renderer": "ANGLE (AMD, AMD Radeon AI PRO R9700 (radeonsi gfx1201 ACO), OpenGL ES 3.2)",
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "maxSamples": 8,
+        "timerQuery": true
+      },
+      "scene": {
+        "meshes": 700,
+        "meshTriangles": 1715444,
+        "uniqueTriangles": 215050,
+        "uniqueLineSegments": 66,
+        "uniquePoints": 4638,
+        "leaves": 58
+      },
+      "frame": {
+        "calls": 198,
+        "triangles": 766511,
+        "lines": 22,
+        "points": 4638
+      },
+      "show": {
+        "cold": {
+          "showToFirstFrameMs": 318.558349609375,
+          "sendToRecvMs": 23.52490234375,
+          "host": {
+            "build_s": 3.9192057619802654,
+            "tessellate_convert_s": 0.072827392578125,
+            "encode_s": 0.0028862636536359787,
+            "payload_bytes": 10248961,
+            "ws_send_s": 0.015603568870574236,
+            "backend_encode_s": 0.032286934088915586,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.13395068095996976,
+            "show_total_s": 0.26089039305225015
+          },
+          "page": {
+            "chars": 10248961,
+            "recvWallMs": 1791963675981.5,
+            "parseMs": 6.600000381469727,
+            "handleMs": 207,
+            "gpuDoneMs": 2,
+            "firstRafAfterMs": 3.5999999046325684,
+            "firstFrameWallMs": 1791963676198.7002,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 186,
+              "textures": 12,
+              "programs": 9
+            }
+          }
+        },
+        "warm": {
+          "showToFirstFrameMs": 283.15087890625,
+          "sendToRecvMs": 18.54052734375,
+          "host": {
+            "build_s": 3.760175828821957,
+            "tessellate_convert_s": 0.07510302734375,
+            "encode_s": 0.0030879578553140163,
+            "payload_bytes": 10251111,
+            "ws_send_s": 0.011289653368294239,
+            "backend_encode_s": 0.03358564432710409,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.13377948803827167,
+            "show_total_s": 0.26084618270397186
+          },
+          "page": {
+            "chars": 10251111,
+            "recvWallMs": 1791963680432.7002,
+            "parseMs": 5.599999904632568,
+            "handleMs": 176.09999990463257,
+            "gpuDoneMs": 1.5999999046325684,
+            "firstRafAfterMs": 1.9000000953674316,
+            "firstFrameWallMs": 1791963680616.3,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 186,
+              "textures": 12,
+              "programs": 9
+            }
+          }
+        }
+      },
+      "orbitRaf": {
+        "frames": 300,
+        "degPerFrame": 1.2,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          2540,
+          1301
+        ],
+        "wallMs": 5007.800000190735,
+        "fpsMean": 60.002896691564416,
+        "interval": {
+          "n": 290,
+          "mean": 16.66586206896552,
+          "median": 16.69999999999891,
+          "p95": 16.799999999999272,
+          "p99": 16.80000000000109,
+          "max": 16.80000000000109,
+          "min": 16.5
+        },
+        "skippedWarmup": 10,
+        "updateCpu": {
+          "n": 291,
+          "mean": 2.9962199479853573,
+          "median": 2.8000001907348633,
+          "p95": 4.199999809265137,
+          "p99": 5.299999713897705,
+          "max": 6.900000095367432,
+          "min": 2.0999999046325684
+        },
+        "gpuTimer": null,
+        "over16_7ms": 0,
+        "statusMessagesSent": 300,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "orbitSync": {
+        "frames": 120,
+        "degPerFrame": 3,
+        "sync": true,
+        "notify": true,
+        "canvas": [
+          2540,
+          1301
+        ],
+        "wallMs": 2016.5999999046326,
+        "fpsMean": 60.001090928926004,
+        "interval": {
+          "n": 110,
+          "mean": 16.66636363636363,
+          "median": 16.69999999999891,
+          "p95": 16.700000000000728,
+          "p99": 16.80000000000109,
+          "max": 16.80000000000109,
+          "min": 16.599999999998545
+        },
+        "skippedWarmup": 10,
+        "updateCpu": {
+          "n": 111,
+          "mean": 4.447747728846094,
+          "median": 4.300000190734863,
+          "p95": 5.800000190734863,
+          "p99": 7.199999809265137,
+          "max": 10.299999713897705,
+          "min": 3.3000001907348633
+        },
+        "gpuTimer": null,
+        "over16_7ms": 0,
+        "statusMessagesSent": 120,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "orbitGpuTimer": {
+        "frames": 120,
+        "degPerFrame": 3,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          2540,
+          1301
+        ],
+        "wallMs": 2015.2000002861023,
+        "fpsMean": 60.004363953742185,
+        "interval": {
+          "n": 110,
+          "mean": 16.66545454545452,
+          "median": 16.69999999999709,
+          "p95": 16.700000000000728,
+          "p99": 16.799999999999272,
+          "max": 16.799999999999272,
+          "min": 16.5
+        },
+        "skippedWarmup": 10,
+        "updateCpu": {
+          "n": 111,
+          "mean": 2.7873874054298744,
+          "median": 2.5,
+          "p95": 4.599999904632568,
+          "p99": 5.400000095367432,
+          "max": 5.599999904632568,
+          "min": 2.0999999046325684
+        },
+        "gpuTimer": {
+          "n": 111,
+          "mean": 0.8362900900900899,
+          "median": 0.8818,
+          "p95": 0.99028,
+          "p99": 1.00152,
+          "max": 1.02104,
+          "min": 0.62308
+        },
+        "over16_7ms": 0,
+        "statusMessagesSent": 120,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "elapsedMs": 18924
+    },
+    "q4_perf_2560x1440_uncapped": {
+      "ok": true,
+      "window": [
+        2560,
+        1440
+      ],
+      "uncapped": true,
+      "canvas": [
+        2540,
+        1301
+      ],
+      "gl": {
+        "renderer": "ANGLE (AMD, AMD Radeon AI PRO R9700 (radeonsi gfx1201 ACO), OpenGL ES 3.2)",
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "maxSamples": 8,
+        "timerQuery": true
+      },
+      "scene": {
+        "meshes": 700,
+        "meshTriangles": 1715444,
+        "uniqueTriangles": 215050,
+        "uniqueLineSegments": 66,
+        "uniquePoints": 4638,
+        "leaves": 58
+      },
+      "frame": {
+        "calls": 198,
+        "triangles": 766511,
+        "lines": 22,
+        "points": 4638
+      },
+      "show": {
+        "cold": {
+          "showToFirstFrameMs": 309.76220703125,
+          "sendToRecvMs": 21.964599609375,
+          "host": {
+            "build_s": 3.830361562781036,
+            "tessellate_convert_s": 0.07481884765625,
+            "encode_s": 0.002573148813098669,
+            "payload_bytes": 10248961,
+            "ws_send_s": 0.014100997243076563,
+            "backend_encode_s": 0.03312391694635153,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.13230009516701102,
+            "show_total_s": 0.260211412794888
+          },
+          "page": {
+            "chars": 10248961,
+            "recvWallMs": 1791963694829.9001,
+            "parseMs": 7,
+            "handleMs": 198.09999990463257,
+            "gpuDoneMs": 1.6000003814697266,
+            "firstRafAfterMs": 3.200000286102295,
+            "firstFrameWallMs": 1791963695038.2,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 186,
+              "textures": 12,
+              "programs": 9
+            }
+          }
+        },
+        "warm": {
+          "showToFirstFrameMs": 438.739501953125,
+          "sendToRecvMs": 18.83447265625,
+          "host": {
+            "build_s": 3.7144823693670332,
+            "tessellate_convert_s": 0.22223779296875,
+            "encode_s": 0.002673960756510496,
+            "payload_bytes": 10251111,
+            "ws_send_s": 0.011840071994811296,
+            "backend_encode_s": 0.034608269110322,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.13519383035600185,
+            "show_total_s": 0.4085331638343632
+          },
+          "page": {
+            "chars": 10251111,
+            "recvWallMs": 1791963699375,
+            "parseMs": 5.200000286102295,
+            "handleMs": 186.90000009536743,
+            "gpuDoneMs": 1.6999998092651367,
+            "firstRafAfterMs": 2.0999999046325684,
+            "firstFrameWallMs": 1791963699569.2,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 186,
+              "textures": 12,
+              "programs": 9
+            }
+          }
+        }
+      },
+      "orbitRaf": {
+        "frames": 300,
+        "degPerFrame": 1.2,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          2540,
+          1301
+        ],
+        "wallMs": 851.8000001907349,
+        "fpsMean": 356.1341029104756,
+        "interval": {
+          "n": 290,
+          "mean": 2.807931034482756,
+          "median": 2.7000000000007276,
+          "p95": 3.5,
+          "p99": 4.100000000000364,
+          "max": 4.399999999999636,
+          "min": 2.2000000000007276
+        },
+        "skippedWarmup": 10,
+        "updateCpu": {
+          "n": 291,
+          "mean": 2.481443283893808,
+          "median": 2.4000000953674316,
+          "p95": 3.0999999046325684,
+          "p99": 3.6999998092651367,
+          "max": 4,
+          "min": 2
+        },
+        "gpuTimer": null,
+        "over16_7ms": 0,
+        "statusMessagesSent": 300,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "orbitSync": {
+        "frames": 120,
+        "degPerFrame": 3,
+        "sync": true,
+        "notify": true,
+        "canvas": [
+          2540,
+          1301
+        ],
+        "wallMs": 558.8000001907349,
+        "fpsMean": 217.99445105033675,
+        "interval": {
+          "n": 110,
+          "mean": 4.5872727272727305,
+          "median": 4.5,
+          "p95": 5.299999999999272,
+          "p99": 5.400000000001455,
+          "max": 6.200000000000728,
+          "min": 3.8000000000010914
+        },
+        "skippedWarmup": 10,
+        "updateCpu": {
+          "n": 111,
+          "mean": 4.2747747704789445,
+          "median": 4.199999809265137,
+          "p95": 5,
+          "p99": 5.099999904632568,
+          "max": 5.899999618530273,
+          "min": 3.5
+        },
+        "gpuTimer": null,
+        "over16_7ms": 0,
+        "statusMessagesSent": 120,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "orbitGpuTimer": {
+        "frames": 120,
+        "degPerFrame": 3,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          2540,
+          1301
+        ],
+        "wallMs": 342.2000002861023,
+        "fpsMean": 356.1022984784724,
+        "interval": {
+          "n": 110,
+          "mean": 2.808181818181815,
+          "median": 2.7000000000007276,
+          "p95": 3.7999999999992724,
+          "p99": 4.5,
+          "max": 4.600000000000364,
+          "min": 2.1999999999989086
+        },
+        "skippedWarmup": 10,
+        "updateCpu": {
+          "n": 111,
+          "mean": 2.4657657726390942,
+          "median": 2.3000001907348633,
+          "p95": 3.4000000953674316,
+          "p99": 4,
+          "max": 4,
+          "min": 2
+        },
+        "gpuTimer": {
+          "n": 111,
+          "mean": 0.6562508108108107,
+          "median": 0.6524,
+          "p95": 0.71128,
+          "p99": 0.72976,
+          "max": 0.73968,
+          "min": 0.578
+        },
+        "over16_7ms": 0,
+        "statusMessagesSent": 120,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "elapsedMs": 11662
+    }
+  },
+  "ping": {
+    "robot_file": "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap/src/robot/__init__.py",
+    "python": "3.12.11 (main, Aug  8 2025, 17:06:48) [Clang 20.1.4 ]"
+  },
+  "hostState": {
+    "status_keys": [
+      "ambient_intensity",
+      "axes",
+      "axes0",
+      "black_edges",
+      "center_grid",
+      "clip_intersection",
+      "clip_normal_0",
+      "clip_normal_1",
+      "clip_normal_2",
+      "clip_object_colors",
+      "clip_planes",
+      "clip_slider_0",
+      "clip_slider_1",
+      "clip_slider_2",
+      "collapse",
+      "default_edgecolor",
+      "default_opacity",
+      "direct_intensity",
+      "glass",
+      "grid",
+      "holroyd",
+      "metalness",
+      "ortho",
+      "pan_speed",
+      "position",
+      "quaternion",
+      "relative_time",
+      "rotate_speed",
+      "roughness",
+      "states",
+      "studio_4k_env_maps",
+      "studio_ao_intensity",
+      "studio_background",
+      "studio_env_intensity",
+      "studio_env_rotation",
+      "studio_environment",
+      "studio_exposure",
+      "studio_shadow_intensity",
+      "studio_shadow_softness",
+      "studio_texture_mapping",
+      "studio_tone_mapping",
+      "tab",
+      "target",
+      "target0",
+      "tools",
+      "transparent",
+      "zebra_color_scheme",
+      "zebra_count",
+      "zebra_direction",
+      "zebra_mapping_mode",
+      "zebra_opacity",
+      "zoom",
+      "zoom_speed"
+    ],
+    "splash": false,
+    "metrics": {
+      "current_show": {
+        "build_s": 3.7144823693670332,
+        "height": null,
+        "show_start_wall_ms": 1791963699130.4604,
+        "send_data_called_wall_ms": 1791963699352.6982,
+        "encode_s": 0.002673960756510496,
+        "decode_utf8_s": 0.0007879617623984814,
+        "payload_bytes": 10251111,
+        "send_start_wall_ms": 1791963699356.1655,
+        "ws_send_s": 0.011840071994811296,
+        "send_end_wall_ms": 1791963699368.0073,
+        "backend_encode_s": 0.034608269110322,
+        "backend_payload_bytes": 3472898,
+        "backend_load_s": 0.13519383035600185,
+        "backend_ids": 14622,
+        "show_total_s": 0.4085331638343632,
+        "show_end_wall_ms": 1791963699538.9954,
+        "tessellate_convert_s": 0.22223779296875,
+        "n_parts": 58,
+        "n_faces_backend": 2667
+      },
+      "shows": [
+        {
+          "build_s": 4.234925725962967,
+          "height": null,
+          "show_start_wall_ms": 1791963643427.0757,
+          "send_data_called_wall_ms": 1791963645500.5437,
+          "encode_s": 0.003186957910656929,
+          "decode_utf8_s": 0.0022169933654367924,
+          "payload_bytes": 10248296,
+          "send_start_wall_ms": 1791963645505.9539,
+          "ws_send_s": 0.013571697752922773,
+          "send_end_wall_ms": 1791963645519.53,
+          "backend_encode_s": 0.03145253099501133,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.09420984191820025,
+          "backend_ids": 14622,
+          "show_total_s": 2.2191357892006636,
+          "show_end_wall_ms": 1791963645646.2144,
+          "tessellate_convert_s": 2.073468017578125,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 3.7290856931358576,
+          "height": null,
+          "show_start_wall_ms": 1791963649802.5493,
+          "send_data_called_wall_ms": 1791963650126.2795,
+          "encode_s": 0.003891339059919119,
+          "decode_utf8_s": 0.0028237830847501755,
+          "payload_bytes": 10251119,
+          "send_start_wall_ms": 1791963650133.0007,
+          "ws_send_s": 0.011579287704080343,
+          "send_end_wall_ms": 1791963650144.584,
+          "backend_encode_s": 0.032840362284332514,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.10799817368388176,
+          "backend_ids": 14622,
+          "show_total_s": 0.48442560574039817,
+          "show_end_wall_ms": 1791963650286.9766,
+          "tessellate_convert_s": 0.323730224609375,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 3.802247012965381,
+          "height": null,
+          "show_start_wall_ms": 1791963664379.2732,
+          "send_data_called_wall_ms": 1791963664618.93,
+          "encode_s": 0.0028841649182140827,
+          "decode_utf8_s": 0.002648170106112957,
+          "payload_bytes": 10248961,
+          "send_start_wall_ms": 1791963664624.467,
+          "ws_send_s": 0.013839612249284983,
+          "send_end_wall_ms": 1791963664638.31,
+          "backend_encode_s": 0.04079295368865132,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.11969112325459719,
+          "backend_ids": 14622,
+          "show_total_s": 0.4209880940616131,
+          "show_end_wall_ms": 1791963664800.263,
+          "tessellate_convert_s": 0.23965673828125,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 3.7462296849116683,
+          "height": null,
+          "show_start_wall_ms": 1791963668980.6062,
+          "send_data_called_wall_ms": 1791963669050.8843,
+          "encode_s": 0.001450933050364256,
+          "decode_utf8_s": 0.00142945209518075,
+          "payload_bytes": 10251111,
+          "send_start_wall_ms": 1791963669053.7688,
+          "ws_send_s": 0.012049174401909113,
+          "send_end_wall_ms": 1791963669065.8213,
+          "backend_encode_s": 0.03395340032875538,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.12190601602196693,
+          "backend_ids": 14622,
+          "show_total_s": 0.24200157495215535,
+          "show_end_wall_ms": 1791963669222.6099,
+          "tessellate_convert_s": 0.070278076171875,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 3.9192057619802654,
+          "height": null,
+          "show_start_wall_ms": 1791963675880.1418,
+          "send_data_called_wall_ms": 1791963675952.9692,
+          "encode_s": 0.0028862636536359787,
+          "decode_utf8_s": 0.0021147318184375763,
+          "payload_bytes": 10248961,
+          "send_start_wall_ms": 1791963675957.975,
+          "ws_send_s": 0.015603568870574236,
+          "send_end_wall_ms": 1791963675973.5815,
+          "backend_encode_s": 0.032286934088915586,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.13395068095996976,
+          "backend_ids": 14622,
+          "show_total_s": 0.26089039305225015,
+          "show_end_wall_ms": 1791963676141.0337,
+          "tessellate_convert_s": 0.072827392578125,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 3.760175828821957,
+          "height": null,
+          "show_start_wall_ms": 1791963680333.1492,
+          "send_data_called_wall_ms": 1791963680408.2522,
+          "encode_s": 0.0030879578553140163,
+          "decode_utf8_s": 0.002815243322402239,
+          "payload_bytes": 10251111,
+          "send_start_wall_ms": 1791963680414.1597,
+          "ws_send_s": 0.011289653368294239,
+          "send_end_wall_ms": 1791963680425.452,
+          "backend_encode_s": 0.03358564432710409,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.13377948803827167,
+          "backend_ids": 14622,
+          "show_total_s": 0.26084618270397186,
+          "show_end_wall_ms": 1791963680593.997,
+          "tessellate_convert_s": 0.07510302734375,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 3.830361562781036,
+          "height": null,
+          "show_start_wall_ms": 1791963694728.4377,
+          "send_data_called_wall_ms": 1791963694803.2566,
+          "encode_s": 0.002573148813098669,
+          "decode_utf8_s": 0.002100891899317503,
+          "payload_bytes": 10248961,
+          "send_start_wall_ms": 1791963694807.9355,
+          "ws_send_s": 0.014100997243076563,
+          "send_end_wall_ms": 1791963694822.0388,
+          "backend_encode_s": 0.03312391694635153,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.13230009516701102,
+          "backend_ids": 14622,
+          "show_total_s": 0.260211412794888,
+          "show_end_wall_ms": 1791963694988.651,
+          "tessellate_convert_s": 0.07481884765625,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 3.7144823693670332,
+          "height": null,
+          "show_start_wall_ms": 1791963699130.4604,
+          "send_data_called_wall_ms": 1791963699352.6982,
+          "encode_s": 0.002673960756510496,
+          "decode_utf8_s": 0.0007879617623984814,
+          "payload_bytes": 10251111,
+          "send_start_wall_ms": 1791963699356.1655,
+          "ws_send_s": 0.011840071994811296,
+          "send_end_wall_ms": 1791963699368.0073,
+          "backend_encode_s": 0.034608269110322,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.13519383035600185,
+          "backend_ids": 14622,
+          "show_total_s": 0.4085331638343632,
+          "show_end_wall_ms": 1791963699538.9954,
+          "tessellate_convert_s": 0.22223779296875,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        }
+      ]
+    },
+    "n_picks": 0,
+    "backend_ids": 14622
+  },
+  "hostLogTail": [
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c"
+  ],
+  "chromeLogTail": [
+    "WARNING: radv is not a conformant Vulkan implementation, testing use only.",
+    "[569468:569487:1014/094133.712572:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR",
+    "[569468:569487:1014/094133.717939:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR",
+    "[569468:569487:1014/094133.739495:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR",
+    "[569468:569487:1014/094133.821765:ERROR:google_apis/gcm/engine/mcs_client.cc:702]   Error code: 401  Error message: Authentication Failed: wrong_secret",
+    "[569468:569487:1014/094133.821777:ERROR:google_apis/gcm/engine/mcs_client.cc:704] Failed to log in to GCM, resetting connection."
+  ],
+  "finished": "2026-10-14T07:41:41.736Z"
+}

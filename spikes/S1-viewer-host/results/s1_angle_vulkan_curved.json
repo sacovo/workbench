@@ -1,0 +1,709 @@
+{
+  "backend": "angle_vulkan",
+  "flags": [
+    "--use-angle=vulkan",
+    "--enable-features=Vulkan",
+    "--ignore-gpu-blocklist"
+  ],
+  "suite": "curved",
+  "started": "2026-10-14T08:14:05.648Z",
+  "sections": {
+    "first_show": {
+      "ok": true,
+      "host": {
+        "build_s": 4.1793204178102314,
+        "height": null,
+        "show_start_wall_ms": 1791965653193.964,
+        "send_data_called_wall_ms": 1791965655259.93,
+        "encode_s": 0.003878540825098753,
+        "decode_utf8_s": 0.0023350859992206097,
+        "payload_bytes": 10248296,
+        "send_start_wall_ms": 1791965655266.1492,
+        "ws_send_s": 0.012518235016614199,
+        "send_end_wall_ms": 1791965655278.6733,
+        "backend_encode_s": 0.03546853316947818,
+        "backend_payload_bytes": 3472898,
+        "backend_load_s": 0.10042275488376617,
+        "backend_ids": 14622,
+        "show_total_s": 2.221614170819521,
+        "show_end_wall_ms": 1791965655415.5803,
+        "tessellate_convert_s": 2.0659658203125,
+        "n_parts": 58,
+        "n_faces_backend": 2667
+      },
+      "page": {
+        "chars": 10248296,
+        "recvWallMs": 1791965655287.6,
+        "parseMs": 7.599999904632568,
+        "handleMs": 156.59999990463257,
+        "gpuDoneMs": 6.300000190734863,
+        "firstRafAfterMs": 9.300000190734863,
+        "firstFrameWallMs": 1791965655461.1,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 183,
+          "textures": 2,
+          "programs": 6
+        }
+      },
+      "showToFirstFrameMs": 2267.135986328125,
+      "sendToRecvMs": 21.450927734375,
+      "elapsedMs": 6532
+    },
+    "q2_curved_picks": {
+      "ok": true,
+      "search": [
+        {
+          "part": "lidar",
+          "found": 1,
+          "surfaces": [
+            "GeomAbs_Cylinder"
+          ]
+        },
+        {
+          "part": "front_left_wheel",
+          "found": 1,
+          "surfaces": [
+            "GeomAbs_Cylinder"
+          ]
+        },
+        {
+          "part": "front_right_wheel",
+          "found": 1,
+          "surfaces": [
+            "GeomAbs_Cylinder"
+          ]
+        },
+        {
+          "part": "rear_wheel",
+          "found": 1,
+          "surfaces": [
+            "GeomAbs_Cylinder"
+          ]
+        },
+        {
+          "part": "front_left_hub",
+          "found": 1,
+          "surfaces": [
+            "GeomAbs_Cylinder"
+          ]
+        },
+        {
+          "part": "front_right_hub",
+          "found": 1,
+          "surfaces": [
+            "GeomAbs_Cylinder"
+          ]
+        },
+        {
+          "part": "rear_hub",
+          "found": 0,
+          "surfaces": []
+        },
+        {
+          "part": "estop_head",
+          "found": 0,
+          "surfaces": []
+        },
+        {
+          "part": "estop",
+          "found": 0,
+          "surfaces": []
+        },
+        {
+          "part": "master_switch",
+          "found": 0,
+          "surfaces": []
+        },
+        {
+          "part": "capacitor",
+          "found": 0,
+          "surfaces": []
+        },
+        {
+          "part": "front_left_servo",
+          "found": 0,
+          "surfaces": []
+        },
+        {
+          "part": "rear_servo",
+          "found": 0,
+          "surfaces": []
+        },
+        {
+          "part": "left_arm_base",
+          "found": 0,
+          "surfaces": []
+        },
+        {
+          "part": "right_arm_base",
+          "found": 0,
+          "surfaces": []
+        },
+        {
+          "part": "rail",
+          "found": 0,
+          "surfaces": []
+        },
+        {
+          "part": "upper_rail_block",
+          "found": 0,
+          "surfaces": []
+        },
+        {
+          "part": "front_left_wheel_mount",
+          "found": 0,
+          "surfaces": []
+        }
+      ],
+      "nPicks": 6,
+      "nPass": 6,
+      "surfaces": [
+        "GeomAbs_Cylinder",
+        "GeomAbs_Cylinder",
+        "GeomAbs_Cylinder",
+        "GeomAbs_Cylinder",
+        "GeomAbs_Cylinder",
+        "GeomAbs_Cylinder"
+      ],
+      "maxProjectionErrorPx": 0.635241037594649,
+      "maxPointToFaceMm": 4.263256414560601e-14,
+      "picks": [
+        {
+          "expected": "/robot_assembly/lidar/faces/faces_0",
+          "part": "lidar",
+          "how": "surface sample",
+          "view": {
+            "az": 30,
+            "el": 35,
+            "zoom": 8.24818470128781
+          },
+          "pagePx": [
+            829.6399932185249,
+            600.8373162185105,
+            -0.903595650333931
+          ],
+          "pythonPx": [
+            829.6399932185251,
+            600.837316218512,
+            2478.718675705453
+          ],
+          "pageVsPythonPx": 1.4953168872541373e-12,
+          "clickPx": [
+            830,
+            601
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 102.51305644857413,
+          "t": 1791965665412.2615,
+          "id": "/robot_assembly/lidar/faces/faces_0",
+          "ids": [
+            "/robot_assembly/lidar/faces/faces_0",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/lidar/faces/faces_0",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            830,
+            601
+          ],
+          "python_projected_px": [
+            829.6399932185251,
+            600.837316218512
+          ],
+          "projection_error_px": 0.39505809125640917,
+          "anchor": [
+            96.4152380989176,
+            93.03850263092852,
+            110.38705778480744
+          ],
+          "anchor_normal": [
+            0.7648299321045186,
+            0.644232236819144,
+            0
+          ],
+          "anchor_to_point_mm": 0.06347545628818639,
+          "pass": true,
+          "surface": "GeomAbs_Cylinder"
+        },
+        {
+          "expected": "/robot_assembly/front_left_wheel/faces/faces_0",
+          "part": "front_left_wheel",
+          "how": "surface sample",
+          "view": {
+            "az": -15,
+            "el": 80,
+            "zoom": 4.484964572412833
+          },
+          "pagePx": [
+            759.2195065785755,
+            620.9459039754566,
+            -0.9040316424265492
+          ],
+          "pythonPx": [
+            759.2195065785756,
+            620.945903975457,
+            2467.531793102254
+          ],
+          "pageVsPythonPx": 3.595093471822542e-13,
+          "clickPx": [
+            759,
+            621
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 50.1104094949357,
+          "t": 1791965665644.53,
+          "id": "/robot_assembly/front_left_wheel/faces/faces_0",
+          "ids": [
+            "/robot_assembly/front_left_wheel/faces/faces_0",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/front_left_wheel/faces/faces_0",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 4.263256414560601e-14,
+          "click_px": [
+            759,
+            621
+          ],
+          "python_projected_px": [
+            759.2195065785756,
+            620.945903975457
+          ],
+          "projection_error_px": 0.2260741425049425,
+          "anchor": [
+            138.92567742907102,
+            152.59305720599784,
+            76.1609077481362
+          ],
+          "anchor_normal": [
+            0.7503843716739784,
+            -0.43323461898165977,
+            0.4992304674829699
+          ],
+          "anchor_to_point_mm": 0.0706541051657069,
+          "pass": true,
+          "surface": "GeomAbs_Cylinder"
+        },
+        {
+          "expected": "/robot_assembly/front_right_wheel/faces/faces_0",
+          "part": "front_right_wheel",
+          "how": "surface sample",
+          "view": {
+            "az": 30,
+            "el": -30,
+            "zoom": 4.484964572412833
+          },
+          "pagePx": [
+            789.729863042764,
+            413.13523946888324,
+            -0.9046266969396473
+          ],
+          "pythonPx": [
+            789.7298630427659,
+            413.1352394688826,
+            2452.263614864076
+          ],
+          "pageVsPythonPx": 2.03130734748875e-12,
+          "clickPx": [
+            790,
+            413
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 50.759519786829394,
+          "t": 1791965665778.554,
+          "id": "/robot_assembly/front_right_wheel/faces/faces_0",
+          "ids": [
+            "/robot_assembly/front_right_wheel/faces/faces_0",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/front_right_wheel/faces/faces_0",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 2.842170943040401e-14,
+          "click_px": [
+            790,
+            413
+          ],
+          "python_projected_px": [
+            789.7298630427659,
+            413.1352394688826
+          ],
+          "projection_error_px": 0.3020988076893512,
+          "anchor": [
+            144.1288936160829,
+            -149.56883957524838,
+            42.01635416175577
+          ],
+          "anchor_normal": [
+            0.852981552533397,
+            0.49246912896894174,
+            -0.1729064141386525
+          ],
+          "anchor_to_point_mm": 0.08136238068339173,
+          "pass": true,
+          "surface": "GeomAbs_Cylinder"
+        },
+        {
+          "expected": "/robot_assembly/rear_wheel/faces/faces_0",
+          "part": "rear_wheel",
+          "how": "surface sample",
+          "view": {
+            "az": -60,
+            "el": -30,
+            "zoom": 4.546243536142888
+          },
+          "pagePx": [
+            739.2422755552986,
+            551.5104287923057,
+            -0.9045071667201562
+          ],
+          "pythonPx": [
+            739.242275555299,
+            551.5104287923043,
+            2455.330575379234
+          ],
+          "pageVsPythonPx": 1.4062285205060312e-12,
+          "clickPx": [
+            739,
+            552
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 47.0412800287348,
+          "t": 1791965666011.434,
+          "id": "/robot_assembly/rear_wheel/faces/faces_0",
+          "ids": [
+            "/robot_assembly/rear_wheel/faces/faces_0",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/rear_wheel/faces/faces_0",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 7.105427357601002e-15,
+          "click_px": [
+            739,
+            552
+          ],
+          "python_projected_px": [
+            739.242275555299,
+            551.5104287923043
+          ],
+          "projection_error_px": 0.5462393359142578,
+          "anchor": [
+            -198.45547172890815,
+            -32.56912323561869,
+            11.814205001519213
+          ],
+          "anchor_normal": [
+            -2.489203287456367e-16,
+            -0.6411244731420399,
+            -0.7674369094188406
+          ],
+          "anchor_to_point_mm": 0.16449821158315042,
+          "pass": true,
+          "surface": "GeomAbs_Cylinder"
+        },
+        {
+          "expected": "/robot_assembly/front_left_hub/faces/faces_4",
+          "part": "front_left_hub",
+          "how": "surface sample",
+          "view": {
+            "az": -60,
+            "el": -30,
+            "zoom": 8.24818470128781
+          },
+          "pagePx": [
+            856.599645671702,
+            428.49320136623896,
+            -0.9035762847840801
+          ],
+          "pythonPx": [
+            856.5996456717021,
+            428.4932013662364,
+            2479.215565755514
+          ],
+          "pageVsPythonPx": 2.560478976546439e-12,
+          "clickPx": [
+            857,
+            428
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 14.006032718239847,
+          "t": 1791965666244.4368,
+          "id": "/robot_assembly/front_left_hub/faces/faces_4",
+          "ids": [
+            "/robot_assembly/front_left_hub/faces/faces_4",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/front_left_hub/faces/faces_4",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            857,
+            428
+          ],
+          "python_projected_px": [
+            856.5996456717021,
+            428.4932013662364
+          ],
+          "projection_error_px": 0.635241037594649,
+          "anchor": [
+            110.13972956387511,
+            143.85902327120743,
+            46.7581958785247
+          ],
+          "anchor_normal": [
+            0.8534459165821652,
+            -0.4927372296775002,
+            -0.1698237025829151
+          ],
+          "anchor_to_point_mm": 0.10890849361174107,
+          "pass": true,
+          "surface": "GeomAbs_Cylinder"
+        },
+        {
+          "expected": "/robot_assembly/front_right_hub/faces/faces_4",
+          "part": "front_right_hub",
+          "how": "surface sample",
+          "view": {
+            "az": 30,
+            "el": -30,
+            "zoom": 8.24818470128781
+          },
+          "pagePx": [
+            815.2140914255516,
+            535.9989091821179,
+            -0.9036263623732773
+          ],
+          "pythonPx": [
+            815.2140914255549,
+            535.9989091821176,
+            2477.930652288308
+          ],
+          "pageVsPythonPx": 3.3145124091591354e-12,
+          "clickPx": [
+            815,
+            536
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 14.004452603288879,
+          "t": 1791965666478.7874,
+          "id": "/robot_assembly/front_right_hub/faces/faces_4",
+          "ids": [
+            "/robot_assembly/front_right_hub/faces/faces_4",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/front_right_hub/faces/faces_4",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            815,
+            536
+          ],
+          "python_projected_px": [
+            815.2140914255549,
+            535.9989091821176
+          ],
+          "projection_error_px": 0.21409420445164073,
+          "anchor": [
+            103.2852271334009,
+            -148.2988278993945,
+            32.56803440752242
+          ],
+          "anchor_normal": [
+            0.55666572243205,
+            0.3213911046947816,
+            -0.766048974473742
+          ],
+          "anchor_to_point_mm": 0.030944111666249816,
+          "pass": true,
+          "surface": "GeomAbs_Cylinder"
+        }
+      ],
+      "pass": false,
+      "elapsedMs": 11364
+    }
+  },
+  "ping": {
+    "robot_file": "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap/src/robot/__init__.py",
+    "python": "3.12.11 (main, Aug  8 2025, 17:06:48) [Clang 20.1.4 ]"
+  },
+  "hostState": {
+    "status_keys": [
+      "activeTool",
+      "ambient_intensity",
+      "axes",
+      "axes0",
+      "black_edges",
+      "center_grid",
+      "clip_intersection",
+      "clip_normal_0",
+      "clip_normal_1",
+      "clip_normal_2",
+      "clip_object_colors",
+      "clip_planes",
+      "clip_slider_0",
+      "clip_slider_1",
+      "clip_slider_2",
+      "collapse",
+      "default_edgecolor",
+      "default_opacity",
+      "direct_intensity",
+      "glass",
+      "grid",
+      "holroyd",
+      "metalness",
+      "ortho",
+      "pan_speed",
+      "position",
+      "quaternion",
+      "relative_time",
+      "rotate_speed",
+      "roughness",
+      "selectedShapeIDs",
+      "states",
+      "studio_4k_env_maps",
+      "studio_ao_intensity",
+      "studio_background",
+      "studio_env_intensity",
+      "studio_env_rotation",
+      "studio_environment",
+      "studio_exposure",
+      "studio_shadow_intensity",
+      "studio_shadow_softness",
+      "studio_texture_mapping",
+      "studio_tone_mapping",
+      "tab",
+      "target",
+      "target0",
+      "tools",
+      "transparent",
+      "zebra_color_scheme",
+      "zebra_count",
+      "zebra_direction",
+      "zebra_mapping_mode",
+      "zebra_opacity",
+      "zoom",
+      "zoom_speed"
+    ],
+    "splash": false,
+    "metrics": {
+      "current_show": {
+        "build_s": 4.1793204178102314,
+        "height": null,
+        "show_start_wall_ms": 1791965653193.964,
+        "send_data_called_wall_ms": 1791965655259.93,
+        "encode_s": 0.003878540825098753,
+        "decode_utf8_s": 0.0023350859992206097,
+        "payload_bytes": 10248296,
+        "send_start_wall_ms": 1791965655266.1492,
+        "ws_send_s": 0.012518235016614199,
+        "send_end_wall_ms": 1791965655278.6733,
+        "backend_encode_s": 0.03546853316947818,
+        "backend_payload_bytes": 3472898,
+        "backend_load_s": 0.10042275488376617,
+        "backend_ids": 14622,
+        "show_total_s": 2.221614170819521,
+        "show_end_wall_ms": 1791965655415.5803,
+        "tessellate_convert_s": 2.0659658203125,
+        "n_parts": 58,
+        "n_faces_backend": 2667
+      },
+      "shows": [
+        {
+          "build_s": 4.1793204178102314,
+          "height": null,
+          "show_start_wall_ms": 1791965653193.964,
+          "send_data_called_wall_ms": 1791965655259.93,
+          "encode_s": 0.003878540825098753,
+          "decode_utf8_s": 0.0023350859992206097,
+          "payload_bytes": 10248296,
+          "send_start_wall_ms": 1791965655266.1492,
+          "ws_send_s": 0.012518235016614199,
+          "send_end_wall_ms": 1791965655278.6733,
+          "backend_encode_s": 0.03546853316947818,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.10042275488376617,
+          "backend_ids": 14622,
+          "show_total_s": 2.221614170819521,
+          "show_end_wall_ms": 1791965655415.5803,
+          "tessellate_convert_s": 2.0659658203125,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        }
+      ]
+    },
+    "n_picks": 6,
+    "backend_ids": 14622
+  },
+  "hostLogTail": [
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "+",
+    "Identifier received '/robot_assembly/lidar/faces/faces_0'",
+    "Identifier received '/robot_assembly/front_left_wheel/faces/faces_0'",
+    "Identifier received '/robot_assembly/front_right_wheel/faces/faces_0'",
+    "Identifier received '/robot_assembly/rear_wheel/faces/faces_0'",
+    "Identifier received '/robot_assembly/front_left_hub/faces/faces_4'",
+    "Identifier received '/robot_assembly/front_right_hub/faces/faces_4'"
+  ],
+  "chromeLogTail": [
+    "WARNING: radv is not a conformant Vulkan implementation, testing use only.",
+    "WARNING: radv is not a conformant Vulkan implementation, testing use only.",
+    "WARNING: radv is not a conformant Vulkan implementation, testing use only.",
+    "[651646:651665:1014/101410.388996:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR",
+    "[651646:651665:1014/101410.397249:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR",
+    "[651646:651665:1014/101410.406870:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR",
+    "[651646:651665:1014/101410.419456:ERROR:google_apis/gcm/engine/mcs_client.cc:702]   Error code: 401  Error message: Authentication Failed: wrong_secret",
+    "[651646:651665:1014/101410.419464:ERROR:google_apis/gcm/engine/mcs_client.cc:704] Failed to log in to GCM, resetting connection.",
+    "[651678:651678:1014/101415.452970:ERROR:gpu/command_buffer/service/gl_utils.cc:427] [.WebGL-0x9e4001b6600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+    "[651678:651678:1014/101425.334600:ERROR:gpu/command_buffer/service/gl_utils.cc:427] [.WebGL-0x9e4001b6600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+    "[651678:651678:1014/101425.335558:ERROR:gpu/command_buffer/service/gl_utils.cc:427] [.WebGL-0x9e4001b6600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+    "[651678:651678:1014/101425.341136:ERROR:gpu/command_buffer/service/gl_utils.cc:427] [.WebGL-0x9e4001b6600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+  ],
+  "finished": "2026-10-14T08:14:26.908Z"
+}

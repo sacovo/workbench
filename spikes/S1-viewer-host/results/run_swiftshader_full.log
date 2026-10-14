@@ -1,0 +1,49 @@
+== first_show
+   pass=undefined (15964 ms)
+== q1_stock_ui
+   toolbar: true
+   treeToggle: true
+   clipping: true
+   measure: true
+   explode: true
+   getImage: true
+   pass=true (140633 ms)
+== q2_picks
+   pick 1: /robot_assembly/camera/faces/faces_5 -> /robot_assembly/camera/faces/faces_5 pass=true err=0.422px
+   pick 2: /robot_assembly/camera/faces/faces_2 -> /robot_assembly/camera/faces/faces_2 pass=true err=0.237px
+   pick 3: /robot_assembly/camera/faces/faces_3 -> /robot_assembly/camera/faces/faces_3 pass=true err=0.237px
+   pick 4: /robot_assembly/camera/faces/faces_1 -> /robot_assembly/camera/faces/faces_1 pass=true err=0.467px
+   pick 5: /robot_assembly/hitch_receiver/faces/faces_5 -> /robot_assembly/hitch_receiver/faces/faces_5 pass=true err=0.124px
+   pick 6: /robot_assembly/hitch_receiver/faces/faces_4 -> /robot_assembly/hitch_receiver/faces/faces_4 pass=true err=0.184px
+   pick 7: /robot_assembly/hitch_receiver/faces/faces_1 -> /robot_assembly/hitch_receiver/faces/faces_1 pass=true err=0.165px
+   pick 8: /robot_assembly/hitch_receiver/faces/faces_2 -> /robot_assembly/hitch_receiver/faces/faces_2 pass=true err=0.409px
+   pick 9: /robot_assembly/touch_display/faces/faces_0 -> /robot_assembly/touch_display/faces/faces_0 pass=true err=0.459px
+   pick 10: /robot_assembly/touch_display/faces/faces_2 -> /robot_assembly/touch_display/faces/faces_2 pass=true err=0.209px
+   pick 11: /robot_assembly/touch_display/faces/faces_3 -> /robot_assembly/touch_display/faces/faces_3 pass=true err=0.209px
+   pick 12: /robot_assembly/touch_display/faces/faces_5 -> /robot_assembly/touch_display/faces/faces_5 pass=true err=0.190px
+   pick 13: /robot_assembly/lift_carriage/faces/faces_1 -> /robot_assembly/lift_carriage/faces/faces_1 pass=true err=0.265px
+   pick 14: /robot_assembly/lift_carriage/faces/faces_4 -> /robot_assembly/lift_carriage/faces/faces_4 pass=true err=0.458px
+   pick 15: /robot_assembly/lift_carriage/faces/faces_41 -> /robot_assembly/lift_carriage/faces/faces_41 pass=true err=0.383px
+   pick 16: /robot_assembly/lift_carriage/faces/faces_47 -> /robot_assembly/lift_carriage/faces/faces_47 pass=true err=0.239px
+   pick 17: /robot_assembly/fan/faces/faces_3 -> /robot_assembly/fan/faces/faces_3 pass=true err=0.315px
+   pick 18: /robot_assembly/fan/faces/faces_5 -> /robot_assembly/fan/faces/faces_5 pass=true err=0.140px
+   pick 19: /robot_assembly/fan/faces/faces_1 -> /robot_assembly/fan/faces/faces_1 pass=true err=0.304px
+   pick 20: /robot_assembly/fan/faces/faces_4 -> /robot_assembly/fan/faces/faces_4 pass=true err=0.271px
+   pass=true (339779 ms)
+== q3_overlay
+   pass=true (13746 ms)
+== q5_incremental
+   liftTransform: true
+   fullReshow: true
+   liftReadd: true
+   geometryUpdate: true
+   pass=true (91820 ms)
+== q4_perf_1600x1000_capped
+   pass=undefined (119336 ms)
+== q4_perf_1600x1000_uncapped
+   pass=undefined (100665 ms)
+== q4_perf_2560x1440_capped
+   pass=undefined (123460 ms)
+== q4_perf_2560x1440_uncapped
+   pass=undefined (104393 ms)
+wrote /home/sandro/work/privat/workbench/spikes/S1-viewer-host/results/s1_swiftshader_full.json

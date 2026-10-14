@@ -1,0 +1,152 @@
+{
+  "when": "2026-10-14T07:41:57.834Z",
+  "angle": "vulkan",
+  "flags": [
+    "--use-angle=vulkan",
+    "--enable-features=Vulkan",
+    "--ignore-gpu-blocklist"
+  ],
+  "window": [
+    1600,
+    1000
+  ],
+  "visible": false,
+  "gl": {
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "vendor": "Google Inc. (AMD)",
+    "renderer": "ANGLE (AMD, Vulkan 1.4.354 (AMD Radeon AI PRO R9700 (RADV GFX1201) (0x00007551)), radv)",
+    "attributes": {
+      "alpha": true,
+      "antialias": true,
+      "depth": true,
+      "desynchronized": false,
+      "failIfMajorPerformanceCaveat": false,
+      "powerPreference": "default",
+      "premultipliedAlpha": true,
+      "preserveDrawingBuffer": false,
+      "stencil": true,
+      "xrCompatible": false
+    },
+    "timerQuery": true,
+    "colorBufferFloat": true,
+    "maxSamples": 8
+  },
+  "scene": {
+    "meshes": 700,
+    "meshTriangles": 1715444,
+    "uniqueTriangles": 215050,
+    "uniqueLineSegments": 126,
+    "uniquePoints": 4638,
+    "leaves": 58
+  },
+  "showToFirstFrameMs": 2333.0859375,
+  "host": {
+    "tessellate_convert_s": 2.128994384765625,
+    "payload_bytes": 10248296
+  },
+  "page": {
+    "chars": 10248296,
+    "recvWallMs": 1791963728670.2,
+    "parseMs": 6.699999809265137,
+    "handleMs": 160.19999980926514,
+    "gpuDoneMs": 5.900000095367432,
+    "firstRafAfterMs": 8.900000095367432,
+    "firstFrameWallMs": 1791963728846,
+    "info": {
+      "calls": 8,
+      "triangles": 923,
+      "lines": 0,
+      "points": 0,
+      "geometries": 183,
+      "textures": 2,
+      "programs": 6
+    }
+  },
+  "orbit": {
+    "frames": 300,
+    "degPerFrame": 1.2,
+    "sync": false,
+    "notify": true,
+    "canvas": [
+      1580,
+      861
+    ],
+    "wallMs": 5004.799999713898,
+    "fpsMean": 60.002896691564416,
+    "interval": {
+      "n": 290,
+      "mean": 16.66586206896552,
+      "median": 16.69999999999891,
+      "p95": 16.700000000000728,
+      "p99": 16.80000000000109,
+      "max": 16.80000000000109,
+      "min": 16.5
+    },
+    "skippedWarmup": 10,
+    "updateCpu": {
+      "n": 291,
+      "mean": 2.3601374380367317,
+      "median": 2.1999998092651367,
+      "p95": 3.4000000953674316,
+      "p99": 4.599999904632568,
+      "max": 4.800000190734863,
+      "min": 1.799999713897705
+    },
+    "gpuTimer": null,
+    "over16_7ms": 0,
+    "statusMessagesSent": 300,
+    "info": {
+      "calls": 8,
+      "triangles": 923,
+      "lines": 0,
+      "points": 0,
+      "geometries": 183,
+      "textures": 2,
+      "programs": 6
+    }
+  },
+  "orbitSync": {
+    "frames": 120,
+    "degPerFrame": 3,
+    "sync": true,
+    "notify": true,
+    "canvas": [
+      1580,
+      861
+    ],
+    "wallMs": 2015.1999998092651,
+    "fpsMean": 60.001090928926004,
+    "interval": {
+      "n": 110,
+      "mean": 16.66636363636363,
+      "median": 16.69999999999891,
+      "p95": 16.799999999999272,
+      "p99": 16.80000000000109,
+      "max": 16.80000000000109,
+      "min": 16.599999999998545
+    },
+    "skippedWarmup": 10,
+    "updateCpu": {
+      "n": 111,
+      "mean": 3.9495495632962063,
+      "median": 3.8000001907348633,
+      "p95": 5,
+      "p99": 5.399999618530273,
+      "max": 5.5,
+      "min": 3.0999999046325684
+    },
+    "gpuTimer": null,
+    "over16_7ms": 0,
+    "statusMessagesSent": 120,
+    "info": {
+      "calls": 8,
+      "triangles": 923,
+      "lines": 0,
+      "points": 0,
+      "geometries": 183,
+      "textures": 2,
+      "programs": 6
+    }
+  },
+  "verdict60fps": "pass"
+}

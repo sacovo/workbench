@@ -1,0 +1,3969 @@
+{
+  "backend": "swiftshader",
+  "flags": [
+    "--use-angle=swiftshader",
+    "--enable-unsafe-swiftshader"
+  ],
+  "suite": "full",
+  "started": "2026-10-14T07:53:02.054Z",
+  "sections": {
+    "first_show": {
+      "ok": true,
+      "host": {
+        "build_s": 7.318399566691369,
+        "height": null,
+        "show_start_wall_ms": 1791964393566.1392,
+        "send_data_called_wall_ms": 1791964396761.4314,
+        "encode_s": 0.005900616757571697,
+        "decode_utf8_s": 0.004079550039023161,
+        "payload_bytes": 10248296,
+        "send_start_wall_ms": 1791964396771.418,
+        "ws_send_s": 0.028181116096675396,
+        "send_end_wall_ms": 1791964396799.6035,
+        "backend_encode_s": 0.04208842199295759,
+        "backend_payload_bytes": 3472898,
+        "backend_load_s": 0.16618329379707575,
+        "backend_ids": 14622,
+        "show_total_s": 3.4434613031335175,
+        "show_end_wall_ms": 1791964397009.6035,
+        "tessellate_convert_s": 3.195292236328125,
+        "n_parts": 58,
+        "n_faces_backend": 2667
+      },
+      "page": {
+        "chars": 10248296,
+        "recvWallMs": 1791964396817.3,
+        "parseMs": 11.900000095367432,
+        "handleMs": 357.90000009536743,
+        "gpuDoneMs": 5002.5,
+        "firstRafAfterMs": 5005.5,
+        "firstFrameWallMs": 1791964402192.6,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 183,
+          "textures": 2,
+          "programs": 6
+        }
+      },
+      "showToFirstFrameMs": 8626.4609375,
+      "sendToRecvMs": 45.882080078125,
+      "elapsedMs": 15964
+    },
+    "q1_stock_ui": {
+      "ok": true,
+      "versions": {
+        "threeCadViewer": "5.1.3",
+        "ocpViewerCore": "1.1.0"
+      },
+      "gl": {
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "vendor": "Google Inc. (Google)",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "attributes": {
+          "alpha": true,
+          "antialias": true,
+          "depth": true,
+          "desynchronized": false,
+          "failIfMajorPerformanceCaveat": false,
+          "powerPreference": "default",
+          "premultipliedAlpha": true,
+          "preserveDrawingBuffer": false,
+          "stencil": true,
+          "xrCompatible": false
+        },
+        "timerQuery": true,
+        "colorBufferFloat": true,
+        "maxSamples": 4
+      },
+      "scene": {
+        "meshes": 700,
+        "meshTriangles": 1715444,
+        "uniqueTriangles": 215050,
+        "uniqueLineSegments": 126,
+        "uniquePoints": 4638,
+        "leaves": 58
+      },
+      "frame": {
+        "calls": 182,
+        "triangles": 766485,
+        "lines": 0,
+        "points": 4638
+      },
+      "tree": {
+        "domRows": 18,
+        "leafGroups": 58,
+        "pass": true
+      },
+      "toolbar": {
+        "topViewDir": [
+          0,
+          0,
+          1
+        ],
+        "isoViewDir": [
+          0.5773502691896257,
+          -0.5773502691896257,
+          0.5773502691896257
+        ],
+        "hostSeesCamera": true,
+        "pass": true
+      },
+      "treeToggle": {
+        "label": "upper_deck",
+        "stateHidden": [
+          0,
+          0
+        ],
+        "stateShown": [
+          1,
+          1
+        ],
+        "hostState": [
+          0,
+          0
+        ],
+        "pixelsBefore": 108888,
+        "pixelsHidden": 108452,
+        "pass": true
+      },
+      "clipping": {
+        "localClippingEnabled": true,
+        "localClippingAfterTreeTab": false,
+        "sliderBefore": 1000,
+        "sliderAfter": 107.1,
+        "hostSlider": 107.1,
+        "pixelsOpen": 108888,
+        "pixelsClipped": 90640,
+        "pass": true
+      },
+      "measure": {
+        "toolSeenByHost": "PropertiesMeasurement",
+        "properties": {
+          "face": "/robot_assembly/housing_lid/faces/faces_2",
+          "panelText": "Properties\nFace / Plane\ncenter\t(\t-173.820\t-100.000\t263.200\t)\narea\t\t\t30924.501\t\t\nangle to xy\t0.000 (180.000)\nbb min\t(\t-173.820\t-100.000\t263.200\t)\nbb center\t(\t-90.513\t0.000\t263.200\t)\nbb max\t(\t-7.206\t100.000\t263.200\t)\nbb size\t(\t166.614\t200.000\t0.000\t)",
+          "exactArea": 30924.501291374407,
+          "panelShowsExactArea": true
+        },
+        "distance": {
+          "faces": [
+            "/robot_assembly/housing_lid/faces/faces_2",
+            "/robot_assembly/arm_platform/faces/faces_18"
+          ],
+          "panelText": "Distance\ndistance\t\t\t64.350\t(min)\t\n⇒ x | y | z\t(\t56.500\t0.000\t30.800\t)\npoint 1\t(\t-7.206\t60.000\t263.200\t)\npoint 2\t(\t49.294\t60.000\t232.400\t)\nangle\t0.000 (180.000)\nreference 1\tface normal\nnormal 1\t(\t0.000\t0.000\t1.000\t)\nreference 2\tface normal\nnormal 2\t(\t0.000\t0.000\t1.000\t)",
+          "exactDistance": 64.34974747425197,
+          "panelShowsExactDistance": true
+        },
+        "pass": true
+      },
+      "explode": {
+        "movedMm": [
+          144.13018510521624,
+          671.3743439434775,
+          376.72130254356364,
+          309.51909013506634,
+          415.36593219873026
+        ],
+        "restoredErrorMm": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hostSawExplode": true,
+        "pass": true
+      },
+      "getImage": {
+        "task": "s1",
+        "length": 99910,
+        "prefix": "data:image/png;base64,",
+        "pass": true
+      },
+      "console": [],
+      "pass": true,
+      "elapsedMs": 140633
+    },
+    "q2_picks": {
+      "ok": true,
+      "search": [
+        {
+          "part": "camera",
+          "zoom": 3.7100268535913044,
+          "found": 5,
+          "tried": [
+            {
+              "az": -60,
+              "el": 35,
+              "n": 3,
+              "rejected": {
+                "facing_away": 3
+              }
+            },
+            {
+              "az": 30,
+              "el": 35,
+              "n": 3,
+              "rejected": {
+                "facing_away": 3
+              }
+            },
+            {
+              "az": 120,
+              "el": 35,
+              "n": 3,
+              "rejected": {
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -150,
+              "el": 35,
+              "n": 2,
+              "rejected": {
+                "occluded": 1,
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -60,
+              "el": -30,
+              "n": 2,
+              "rejected": {
+                "facing_away": 3,
+                "occluded": 1
+              }
+            },
+            {
+              "az": 30,
+              "el": -30,
+              "n": 2,
+              "rejected": {
+                "facing_away": 3,
+                "occluded": 1
+              }
+            },
+            {
+              "az": 120,
+              "el": -30,
+              "n": 2,
+              "rejected": {
+                "facing_away": 3,
+                "occluded": 1
+              }
+            },
+            {
+              "az": -150,
+              "el": -30,
+              "n": 1,
+              "rejected": {
+                "occluded": 2,
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -15,
+              "el": 80,
+              "n": 1,
+              "rejected": {
+                "facing_away": 5
+              }
+            },
+            {
+              "az": -105,
+              "el": 5,
+              "n": 1,
+              "rejected": {
+                "facing_away": 5
+              }
+            },
+            {
+              "az": 75,
+              "el": 5,
+              "n": 1,
+              "rejected": {
+                "facing_away": 5
+              }
+            }
+          ]
+        },
+        {
+          "part": "hitch_receiver",
+          "zoom": 2.886864645450734,
+          "found": 5,
+          "tried": [
+            {
+              "az": -60,
+              "el": 35,
+              "n": 3,
+              "rejected": {
+                "facing_away": 3
+              }
+            },
+            {
+              "az": 30,
+              "el": 35,
+              "n": 3,
+              "rejected": {
+                "facing_away": 3
+              }
+            },
+            {
+              "az": 120,
+              "el": 35,
+              "n": 0,
+              "rejected": {
+                "occluded": 3,
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -150,
+              "el": 35,
+              "n": 0,
+              "rejected": {
+                "occluded": 3,
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -60,
+              "el": -30,
+              "n": 3,
+              "rejected": {
+                "facing_away": 3
+              }
+            },
+            {
+              "az": 30,
+              "el": -30,
+              "n": 3,
+              "rejected": {
+                "facing_away": 3
+              }
+            },
+            {
+              "az": 120,
+              "el": -30,
+              "n": 1,
+              "rejected": {
+                "occluded": 2,
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -150,
+              "el": -30,
+              "n": 0,
+              "rejected": {
+                "occluded": 3,
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -15,
+              "el": 80,
+              "n": 0,
+              "rejected": {
+                "facing_away": 5,
+                "occluded": 1
+              }
+            },
+            {
+              "az": -105,
+              "el": 5,
+              "n": 0,
+              "rejected": {
+                "facing_away": 5,
+                "occluded": 1
+              }
+            },
+            {
+              "az": 75,
+              "el": 5,
+              "n": 0,
+              "rejected": {
+                "facing_away": 5,
+                "occluded": 1
+              }
+            }
+          ]
+        },
+        {
+          "part": "touch_display",
+          "zoom": 5.921773631693813,
+          "found": 5,
+          "tried": [
+            {
+              "az": -60,
+              "el": 35,
+              "n": 2,
+              "rejected": {
+                "facing_away": 3,
+                "occluded": 1
+              }
+            },
+            {
+              "az": 30,
+              "el": 35,
+              "n": 1,
+              "rejected": {
+                "facing_away": 3,
+                "occluded": 2
+              }
+            },
+            {
+              "az": 120,
+              "el": 35,
+              "n": 3,
+              "rejected": {
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -150,
+              "el": 35,
+              "n": 3,
+              "rejected": {
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -60,
+              "el": -30,
+              "n": 2,
+              "rejected": {
+                "facing_away": 3,
+                "occluded": 1
+              }
+            },
+            {
+              "az": 30,
+              "el": -30,
+              "n": 1,
+              "rejected": {
+                "facing_away": 3,
+                "occluded": 2
+              }
+            },
+            {
+              "az": 120,
+              "el": -30,
+              "n": 3,
+              "rejected": {
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -150,
+              "el": -30,
+              "n": 3,
+              "rejected": {
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -15,
+              "el": 80,
+              "n": 0,
+              "rejected": {
+                "facing_away": 5,
+                "occluded": 1
+              }
+            },
+            {
+              "az": -105,
+              "el": 5,
+              "n": 1,
+              "rejected": {
+                "facing_away": 5
+              }
+            },
+            {
+              "az": 75,
+              "el": 5,
+              "n": 1,
+              "rejected": {
+                "facing_away": 5
+              }
+            }
+          ]
+        },
+        {
+          "part": "lift_carriage",
+          "zoom": 3.4992298732736167,
+          "found": 6,
+          "tried": [
+            {
+              "az": -60,
+              "el": 35,
+              "n": 0,
+              "rejected": {
+                "facing_away": 13,
+                "occluded": 10,
+                "small": 32,
+                "near_edge": 1
+              }
+            },
+            {
+              "az": 30,
+              "el": 35,
+              "n": 0,
+              "rejected": {
+                "facing_away": 13,
+                "occluded": 9,
+                "small": 32,
+                "near_edge": 2
+              }
+            },
+            {
+              "az": 120,
+              "el": 35,
+              "n": 1,
+              "rejected": {
+                "occluded": 7,
+                "facing_away": 15,
+                "small": 32,
+                "near_edge": 1
+              }
+            },
+            {
+              "az": -150,
+              "el": 35,
+              "n": 0,
+              "rejected": {
+                "occluded": 9,
+                "facing_away": 15,
+                "small": 32
+              }
+            },
+            {
+              "az": -60,
+              "el": -30,
+              "n": 2,
+              "rejected": {
+                "facing_away": 11,
+                "occluded": 9,
+                "small": 32,
+                "near_edge": 2
+              }
+            },
+            {
+              "az": 30,
+              "el": -30,
+              "n": 3,
+              "rejected": {
+                "facing_away": 11,
+                "occluded": 7,
+                "small": 32,
+                "near_edge": 3
+              }
+            },
+            {
+              "az": 120,
+              "el": -30,
+              "n": 0,
+              "rejected": {
+                "occluded": 9,
+                "facing_away": 15,
+                "small": 32
+              }
+            },
+            {
+              "az": -150,
+              "el": -30,
+              "n": 0,
+              "rejected": {
+                "occluded": 9,
+                "facing_away": 15,
+                "small": 32
+              }
+            },
+            {
+              "az": -15,
+              "el": 80,
+              "n": 0,
+              "rejected": {
+                "facing_away": 20,
+                "occluded": 4,
+                "small": 32
+              }
+            },
+            {
+              "az": -105,
+              "el": 5,
+              "n": 2,
+              "rejected": {
+                "facing_away": 20,
+                "small": 32,
+                "occluded": 2
+              }
+            }
+          ]
+        },
+        {
+          "part": "front_left_wheel_mount",
+          "zoom": 8.60205607813122,
+          "found": 2,
+          "tried": [
+            {
+              "az": -60,
+              "el": 35,
+              "n": 1,
+              "rejected": {
+                "occluded": 6,
+                "facing_away": 17
+              }
+            },
+            {
+              "az": 30,
+              "el": 35,
+              "n": 1,
+              "rejected": {
+                "facing_away": 16,
+                "occluded": 7
+              }
+            },
+            {
+              "az": 120,
+              "el": 35,
+              "n": 1,
+              "rejected": {
+                "facing_away": 16,
+                "occluded": 7
+              }
+            },
+            {
+              "az": -150,
+              "el": 35,
+              "n": 0,
+              "rejected": {
+                "occluded": 7,
+                "facing_away": 17
+              }
+            },
+            {
+              "az": -60,
+              "el": -30,
+              "n": 1,
+              "rejected": {
+                "occluded": 6,
+                "facing_away": 17
+              }
+            },
+            {
+              "az": 30,
+              "el": -30,
+              "n": 0,
+              "rejected": {
+                "facing_away": 16,
+                "occluded": 8
+              }
+            },
+            {
+              "az": 120,
+              "el": -30,
+              "n": 1,
+              "rejected": {
+                "facing_away": 16,
+                "occluded": 7
+              }
+            },
+            {
+              "az": -150,
+              "el": -30,
+              "n": 0,
+              "rejected": {
+                "occluded": 7,
+                "facing_away": 17
+              }
+            },
+            {
+              "az": -15,
+              "el": 80,
+              "n": 0,
+              "rejected": {
+                "facing_away": 21,
+                "occluded": 3
+              }
+            },
+            {
+              "az": -105,
+              "el": 5,
+              "n": 0,
+              "rejected": {
+                "occluded": 1,
+                "facing_away": 23
+              }
+            },
+            {
+              "az": 75,
+              "el": 5,
+              "n": 0,
+              "rejected": {
+                "facing_away": 22,
+                "occluded": 2
+              }
+            }
+          ]
+        },
+        {
+          "part": "estop",
+          "zoom": 9.237966865442349,
+          "found": 2,
+          "tried": [
+            {
+              "az": -60,
+              "el": 35,
+              "n": 0,
+              "rejected": {
+                "facing_away": 3,
+                "occluded": 3
+              }
+            },
+            {
+              "az": 30,
+              "el": 35,
+              "n": 0,
+              "rejected": {
+                "facing_away": 3,
+                "occluded": 3
+              }
+            },
+            {
+              "az": 120,
+              "el": 35,
+              "n": 0,
+              "rejected": {
+                "occluded": 3,
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -150,
+              "el": 35,
+              "n": 0,
+              "rejected": {
+                "occluded": 3,
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -60,
+              "el": -30,
+              "n": 0,
+              "rejected": {
+                "facing_away": 3,
+                "occluded": 3
+              }
+            },
+            {
+              "az": 30,
+              "el": -30,
+              "n": 0,
+              "rejected": {
+                "facing_away": 3,
+                "occluded": 3
+              }
+            },
+            {
+              "az": 120,
+              "el": -30,
+              "n": 2,
+              "rejected": {
+                "occluded": 1,
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -150,
+              "el": -30,
+              "n": 0,
+              "rejected": {
+                "occluded": 3,
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -15,
+              "el": 80,
+              "n": 0,
+              "rejected": {
+                "facing_away": 5,
+                "occluded": 1
+              }
+            },
+            {
+              "az": -105,
+              "el": 5,
+              "n": 0,
+              "rejected": {
+                "facing_away": 5,
+                "occluded": 1
+              }
+            },
+            {
+              "az": 75,
+              "el": 5,
+              "n": 0,
+              "rejected": {
+                "facing_away": 5,
+                "occluded": 1
+              }
+            }
+          ]
+        },
+        {
+          "part": "fan",
+          "zoom": 7.698305721201957,
+          "found": 5,
+          "tried": [
+            {
+              "az": -60,
+              "el": 35,
+              "n": 0,
+              "rejected": {
+                "facing_away": 3,
+                "occluded": 3
+              }
+            },
+            {
+              "az": 30,
+              "el": 35,
+              "n": 3,
+              "rejected": {
+                "facing_away": 3
+              }
+            },
+            {
+              "az": 120,
+              "el": 35,
+              "n": 3,
+              "rejected": {
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -150,
+              "el": 35,
+              "n": 0,
+              "rejected": {
+                "occluded": 3,
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -60,
+              "el": -30,
+              "n": 0,
+              "rejected": {
+                "facing_away": 3,
+                "occluded": 3
+              }
+            },
+            {
+              "az": 30,
+              "el": -30,
+              "n": 1,
+              "rejected": {
+                "facing_away": 3,
+                "occluded": 2
+              }
+            },
+            {
+              "az": 120,
+              "el": -30,
+              "n": 3,
+              "rejected": {
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -150,
+              "el": -30,
+              "n": 0,
+              "rejected": {
+                "occluded": 3,
+                "facing_away": 3
+              }
+            },
+            {
+              "az": -15,
+              "el": 80,
+              "n": 1,
+              "rejected": {
+                "facing_away": 5
+              }
+            },
+            {
+              "az": -105,
+              "el": 5,
+              "n": 0,
+              "rejected": {
+                "facing_away": 5,
+                "occluded": 1
+              }
+            },
+            {
+              "az": 75,
+              "el": 5,
+              "n": 1,
+              "rejected": {
+                "facing_away": 5
+              }
+            }
+          ]
+        }
+      ],
+      "parts": [
+        "camera",
+        "hitch_receiver",
+        "touch_display",
+        "lift_carriage",
+        "fan"
+      ],
+      "nPicks": 20,
+      "nPass": 20,
+      "maxProjectionErrorPx": 0.46693929133900686,
+      "meanProjectionErrorPx": 0.28429041951614564,
+      "maxPageVsPythonPx": 2.2991740043103942e-12,
+      "maxPointToFaceMm": 7.105427357601002e-15,
+      "maxAnchorToPointMm": 0.1857518378988994,
+      "picks": [
+        {
+          "expected": "/robot_assembly/camera/faces/faces_5",
+          "part": "camera",
+          "how": "centroid",
+          "view": {
+            "az": -15,
+            "el": 80,
+            "zoom": 3.7100268535913044
+          },
+          "pagePx": [
+            795.9999999999998,
+            467.42176930152965,
+            -0.9035530614311967
+          ],
+          "pythonPx": [
+            796,
+            467.42176930152976,
+            2479.8114410632497
+          ],
+          "pageVsPythonPx": 2.5421149729252077e-13,
+          "clickPx": [
+            796,
+            467
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 61.35918099003996,
+          "t": 1791964630044.3013,
+          "id": "/robot_assembly/camera/faces/faces_5",
+          "ids": [
+            "/robot_assembly/camera/faces/faces_5",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/camera/faces/faces_5",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            796,
+            467
+          ],
+          "python_projected_px": [
+            796,
+            467.42176930152976
+          ],
+          "projection_error_px": 0.4217693015297641,
+          "anchor": [
+            70.6611611345071,
+            0.03561831941648563,
+            602.9000000000001
+          ],
+          "anchor_normal": [
+            0,
+            0,
+            1
+          ],
+          "anchor_to_point_mm": 0.13761861845345066,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/camera/faces/faces_2",
+          "part": "camera",
+          "how": "centroid",
+          "view": {
+            "az": -105,
+            "el": 5,
+            "zoom": 3.7100268535913044
+          },
+          "pagePx": [
+            846.1397195124858,
+            494.80892952362103,
+            -0.9051007586070965
+          ],
+          "pythonPx": [
+            846.1397195124858,
+            494.8089295236204,
+            2440.099925865534
+          ],
+          "pageVsPythonPx": 6.252776074688882e-13,
+          "clickPx": [
+            846,
+            495
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 60.133025241534895,
+          "t": 1791964639531.1167,
+          "id": "/robot_assembly/camera/faces/faces_2",
+          "ids": [
+            "/robot_assembly/camera/faces/faces_2",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/camera/faces/faces_2",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            846,
+            495
+          ],
+          "python_projected_px": [
+            846.1397195124858,
+            494.8089295236204
+          ],
+          "projection_error_px": 0.23670544800068616,
+          "anchor": [
+            70.7476104212434,
+            -62.25,
+            582.3394209389219
+          ],
+          "anchor_normal": [
+            0,
+            -1,
+            0
+          ],
+          "anchor_to_point_mm": 0.07635588714067798,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/camera/faces/faces_3",
+          "part": "camera",
+          "how": "centroid",
+          "view": {
+            "az": 75,
+            "el": 5,
+            "zoom": 3.7100268535913044
+          },
+          "pagePx": [
+            846.1397195124862,
+            494.80892952361745,
+            -0.9051007586070965
+          ],
+          "pythonPx": [
+            846.1397195124865,
+            494.808929523618,
+            2440.099925865534
+          ],
+          "pageVsPythonPx": 6.629024818318271e-13,
+          "clickPx": [
+            846,
+            495
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 60.133025241534895,
+          "t": 1791964640068.7456,
+          "id": "/robot_assembly/camera/faces/faces_3",
+          "ids": [
+            "/robot_assembly/camera/faces/faces_3",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/camera/faces/faces_3",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            846,
+            495
+          ],
+          "python_projected_px": [
+            846.1397195124865,
+            494.808929523618
+          ],
+          "projection_error_px": 0.23670544800301593,
+          "anchor": [
+            70.84057060325551,
+            62.25,
+            582.3394209389219
+          ],
+          "anchor_normal": [
+            0,
+            1,
+            0
+          ],
+          "anchor_to_point_mm": 0.07635588714062608,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/camera/faces/faces_1",
+          "part": "camera",
+          "how": "centroid",
+          "view": {
+            "az": 30,
+            "el": -30,
+            "zoom": 3.7100268535913044
+          },
+          "pagePx": [
+            764.8795180722877,
+            451.5488720725885,
+            -0.9033508450722032
+          ],
+          "pythonPx": [
+            764.8795180722892,
+            451.54887207258776,
+            2485
+          ],
+          "pageVsPythonPx": 1.652374732401385e-12,
+          "clickPx": [
+            765,
+            452
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 53.08791260803077,
+          "t": 1791964640663.1804,
+          "id": "/robot_assembly/camera/faces/faces_1",
+          "ids": [
+            "/robot_assembly/camera/faces/faces_1",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/camera/faces/faces_1",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            765,
+            452
+          ],
+          "python_projected_px": [
+            764.8795180722892,
+            451.54887207258776
+          ],
+          "projection_error_px": 0.46693929133900686,
+          "anchor": [
+            90.79409051224957,
+            0.044703853595819965,
+            582.2197077074401
+          ],
+          "anchor_normal": [
+            1,
+            0,
+            0
+          ],
+          "anchor_to_point_mm": 0.1857518378988994,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/hitch_receiver/faces/faces_5",
+          "part": "hitch_receiver",
+          "how": "centroid",
+          "view": {
+            "az": -60,
+            "el": 35,
+            "zoom": 2.886864645450734
+          },
+          "pagePx": [
+            795.9999999999995,
+            427.124038108763,
+            -0.9033452184547808
+          ],
+          "pythonPx": [
+            796,
+            427.12403810876265,
+            2485.1443702985084
+          ],
+          "pageVsPythonPx": 5.684341886080801e-13,
+          "clickPx": [
+            796,
+            427
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 65.15620044045254,
+          "t": 1791964653067.668,
+          "id": "/robot_assembly/hitch_receiver/faces/faces_5",
+          "ids": [
+            "/robot_assembly/hitch_receiver/faces/faces_5",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/hitch_receiver/faces/faces_5",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            796,
+            427
+          ],
+          "python_projected_px": [
+            796,
+            427.12403810876265
+          ],
+          "projection_error_px": 0.12403810876264743,
+          "anchor": [
+            118.39203776115517,
+            0.07733904118822466,
+            89.19999999999982
+          ],
+          "anchor_normal": [
+            0,
+            0,
+            1
+          ],
+          "anchor_to_point_mm": 0.08930343249770197,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/hitch_receiver/faces/faces_4",
+          "part": "hitch_receiver",
+          "how": "centroid",
+          "view": {
+            "az": -60,
+            "el": -30,
+            "zoom": 2.886864645450734
+          },
+          "pagePx": [
+            796,
+            532.8157872239608,
+            -0.903270949374575
+          ],
+          "pythonPx": [
+            795.9999999999998,
+            532.8157872239599,
+            2487.05
+          ],
+          "pageVsPythonPx": 9.374856803373542e-13,
+          "clickPx": [
+            796,
+            533
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 60.543331231946084,
+          "t": 1791964673080.6895,
+          "id": "/robot_assembly/hitch_receiver/faces/faces_4",
+          "ids": [
+            "/robot_assembly/hitch_receiver/faces/faces_4",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/hitch_receiver/faces/faces_4",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            796,
+            533
+          ],
+          "python_projected_px": [
+            795.9999999999998,
+            532.8157872239599
+          ],
+          "projection_error_px": 0.18421277604011266,
+          "anchor": [
+            118.36061761221731,
+            0.13176033552917943,
+            37.40000000000009
+          ],
+          "anchor_normal": [
+            0,
+            0,
+            -1
+          ],
+          "anchor_to_point_mm": 0.15214373037272647,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/hitch_receiver/faces/faces_1",
+          "part": "hitch_receiver",
+          "how": "centroid",
+          "view": {
+            "az": 30,
+            "el": -30,
+            "zoom": 2.886864645450734
+          },
+          "pagePx": [
+            755.9747186532773,
+            443.83708956011986,
+            -0.903732514644724
+          ],
+          "pythonPx": [
+            755.9747186532782,
+            443.83708956011924,
+            2475.2069492238656
+          ],
+          "pageVsPythonPx": 1.1036995510350834e-12,
+          "clickPx": [
+            756,
+            444
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 52.18743897060774,
+          "t": 1791964693447.4648,
+          "id": "/robot_assembly/hitch_receiver/faces/faces_1",
+          "ids": [
+            "/robot_assembly/hitch_receiver/faces/faces_1",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/hitch_receiver/faces/faces_1",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            756,
+            444
+          ],
+          "python_projected_px": [
+            755.9747186532782,
+            443.83708956011924
+          ],
+          "projection_error_px": 0.16486041948937602,
+          "anchor": [
+            151.4940905122494,
+            0.012055185307190186,
+            63.21883757358637
+          ],
+          "anchor_normal": [
+            1,
+            0,
+            0
+          ],
+          "anchor_to_point_mm": 0.08205283026281371,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/hitch_receiver/faces/faces_2",
+          "part": "hitch_receiver",
+          "how": "centroid",
+          "view": {
+            "az": -60,
+            "el": -30,
+            "zoom": 2.886864645450734
+          },
+          "pagePx": [
+            699.1375000000002,
+            394.6146143259302,
+            -0.9051046530689199
+          ],
+          "pythonPx": [
+            699.1374999999998,
+            394.61461432592944,
+            2440
+          ],
+          "pageVsPythonPx": 8.138738998739172e-13,
+          "clickPx": [
+            699,
+            395
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 52.18493011158086,
+          "t": 1791964713923.7405,
+          "id": "/robot_assembly/hitch_receiver/faces/faces_2",
+          "ids": [
+            "/robot_assembly/hitch_receiver/faces/faces_2",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/hitch_receiver/faces/faces_2",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            699,
+            395
+          ],
+          "python_projected_px": [
+            699.1374999999998,
+            394.61461432592944
+          ],
+          "projection_error_px": 0.409180116548656,
+          "anchor": [
+            118.3711238254632,
+            -80.00000000000023,
+            63.13515944271512
+          ],
+          "anchor_normal": [
+            0,
+            -1,
+            0
+          ],
+          "anchor_to_point_mm": 0.17740142062677955,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/touch_display/faces/faces_0",
+          "part": "touch_display",
+          "how": "centroid",
+          "view": {
+            "az": -150,
+            "el": 35,
+            "zoom": 5.921773631693813
+          },
+          "pagePx": [
+            773.6471153846152,
+            500.7067756508656,
+            -0.903015074958111
+          ],
+          "pythonPx": [
+            773.6471153846148,
+            500.70677565086334,
+            2493.6153416807538
+          ],
+          "pageVsPythonPx": 2.2991740043103942e-12,
+          "clickPx": [
+            774,
+            501
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 120.4510025668798,
+          "t": 1791964719572.5552,
+          "id": "/robot_assembly/touch_display/faces/faces_0",
+          "ids": [
+            "/robot_assembly/touch_display/faces/faces_0",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/touch_display/faces/faces_0",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            774,
+            501
+          ],
+          "python_projected_px": [
+            773.6471153846148,
+            500.70677565086334
+          ],
+          "projection_error_px": 0.4588115851873798,
+          "anchor": [
+            -25.205909487750205,
+            -0.08203157134823869,
+            700.3566562120241
+          ],
+          "anchor_normal": [
+            -1,
+            0,
+            0
+          ],
+          "anchor_to_point_mm": 0.09277856785897355,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/touch_display/faces/faces_2",
+          "part": "touch_display",
+          "how": "centroid",
+          "view": {
+            "az": -105,
+            "el": 5,
+            "zoom": 5.921773631693813
+          },
+          "pagePx": [
+            831.997747342297,
+            490.2089750426004,
+            -0.9038163059184869
+          ],
+          "pythonPx": [
+            831.9977473422975,
+            490.2089750426001,
+            2473.056994766827
+          ],
+          "pageVsPythonPx": 6.355287432313019e-13,
+          "clickPx": [
+            832,
+            490
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 43.19423084129316,
+          "t": 1791964720089.091,
+          "id": "/robot_assembly/touch_display/faces/faces_2",
+          "ids": [
+            "/robot_assembly/touch_display/faces/faces_2",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/touch_display/faces/faces_2",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            832,
+            490
+          ],
+          "python_projected_px": [
+            831.9977473422975,
+            490.2089750426001
+          ],
+          "projection_error_px": 0.20898718356981782,
+          "anchor": [
+            -16.205439993407253,
+            -28,
+            700.4422201519089
+          ],
+          "anchor_normal": [
+            0,
+            -1,
+            0
+          ],
+          "anchor_to_point_mm": 0.04222276225159039,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/touch_display/faces/faces_3",
+          "part": "touch_display",
+          "how": "centroid",
+          "view": {
+            "az": 75,
+            "el": 5,
+            "zoom": 5.921773631693813
+          },
+          "pagePx": [
+            831.997747342298,
+            490.20897504259534,
+            -0.9038163059184869
+          ],
+          "pythonPx": [
+            831.997747342298,
+            490.2089750425962,
+            2473.056994766827
+          ],
+          "pageVsPythonPx": 8.526512829121202e-13,
+          "clickPx": [
+            832,
+            490
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 43.19423084129305,
+          "t": 1791964720699.9355,
+          "id": "/robot_assembly/touch_display/faces/faces_3",
+          "ids": [
+            "/robot_assembly/touch_display/faces/faces_3",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/touch_display/faces/faces_3",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 7.105427357601002e-15,
+          "click_px": [
+            832,
+            490
+          ],
+          "python_projected_px": [
+            831.997747342298,
+            490.2089750425962
+          ],
+          "projection_error_px": 0.20898718356589097,
+          "anchor": [
+            -16.20637898209361,
+            28,
+            700.4422201519089
+          ],
+          "anchor_normal": [
+            0,
+            1,
+            0
+          ],
+          "anchor_to_point_mm": 0.04222276225158913,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/touch_display/faces/faces_5",
+          "part": "touch_display",
+          "how": "centroid",
+          "view": {
+            "az": -60,
+            "el": 35,
+            "zoom": 5.921773631693813
+          },
+          "pagePx": [
+            795.9999999999992,
+            319.80977022011734,
+            -0.9036380596219916
+          ],
+          "pythonPx": [
+            795.9999999999997,
+            319.8097702201179,
+            2477.6305189823092
+          ],
+          "pageVsPythonPx": 7.279509460923746e-13,
+          "clickPx": [
+            796,
+            320
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 36.43672384095102,
+          "t": 1791964721330.7769,
+          "id": "/robot_assembly/touch_display/faces/faces_5",
+          "ids": [
+            "/robot_assembly/touch_display/faces/faces_5",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/touch_display/faces/faces_5",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            796,
+            320
+          ],
+          "python_projected_px": [
+            795.9999999999997,
+            319.8097702201179
+          ],
+          "projection_error_px": 0.19022977988208822,
+          "anchor": [
+            -16.17252565885235,
+            -0.05782248780246846,
+            739.4000000000001
+          ],
+          "anchor_normal": [
+            0,
+            0,
+            1
+          ],
+          "anchor_to_point_mm": 0.06676765779602267,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/lift_carriage/faces/faces_1",
+          "part": "lift_carriage",
+          "how": "centroid",
+          "view": {
+            "az": -105,
+            "el": 5,
+            "zoom": 3.4992298732736167
+          },
+          "pagePx": [
+            819.2639652894602,
+            465.0207161137653,
+            -0.9039138904713784
+          ],
+          "pythonPx": [
+            819.2639652894602,
+            465.0207161137648,
+            2470.553126105984
+          ],
+          "pageVsPythonPx": 4.547473508864641e-13,
+          "clickPx": [
+            819,
+            465
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 78.85629229824782,
+          "t": 1791964733793.8281,
+          "id": "/robot_assembly/lift_carriage/faces/faces_1",
+          "ids": [
+            "/robot_assembly/lift_carriage/faces/faces_1",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/lift_carriage/faces/faces_1",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 3.552713678800501e-15,
+          "click_px": [
+            819,
+            465
+          ],
+          "python_projected_px": [
+            819.2639652894602,
+            465.0207161137648
+          ],
+          "projection_error_px": 0.26477694652164363,
+          "anchor": [
+            79.25538337713999,
+            -30,
+            170.5504275690147
+          ],
+          "anchor_normal": [
+            0,
+            -1,
+            0
+          ],
+          "anchor_to_point_mm": 0.09355524384741344,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/lift_carriage/faces/faces_4",
+          "part": "lift_carriage",
+          "how": "centroid",
+          "view": {
+            "az": 120,
+            "el": 35,
+            "zoom": 3.4992298732736167
+          },
+          "pagePx": [
+            751.5473460162285,
+            504.9297618811972,
+            -0.9037526573718258
+          ],
+          "pythonPx": [
+            751.5473460162282,
+            504.9297618811965,
+            2474.6901180078635
+          ],
+          "pageVsPythonPx": 7.626344918775623e-13,
+          "clickPx": [
+            752,
+            505
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 58.72815378451382,
+          "t": 1791964754307.727,
+          "id": "/robot_assembly/lift_carriage/faces/faces_4",
+          "ids": [
+            "/robot_assembly/lift_carriage/faces/faces_4",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/lift_carriage/faces/faces_4",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 3.552713678800501e-15,
+          "click_px": [
+            752,
+            505
+          ],
+          "python_projected_px": [
+            751.5473460162282,
+            504.9297618811965
+          ],
+          "projection_error_px": 0.4580709796063904,
+          "anchor": [
+            79.17041454885043,
+            30,
+            170.57436574953226
+          ],
+          "anchor_normal": [
+            0,
+            1,
+            0
+          ],
+          "anchor_to_point_mm": 0.18112720418875783,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/lift_carriage/faces/faces_41",
+          "part": "lift_carriage",
+          "how": "centroid",
+          "view": {
+            "az": 30,
+            "el": -30,
+            "zoom": 3.4992298732736167
+          },
+          "pagePx": [
+            767.3815340909096,
+            352.0364261428802,
+            -0.902556759784801
+          ],
+          "pythonPx": [
+            767.3815340909097,
+            352.0364261428796,
+            2505.3750000000005
+          ],
+          "pageVsPythonPx": 6.355287432313018e-13,
+          "clickPx": [
+            767,
+            352
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 53.72862142531394,
+          "t": 1791964773655.08,
+          "id": "/robot_assembly/lift_carriage/faces/faces_41",
+          "ids": [
+            "/robot_assembly/lift_carriage/faces/faces_41",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/lift_carriage/faces/faces_41",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            767,
+            352
+          ],
+          "python_projected_px": [
+            767.3815340909097,
+            352.0364261428796
+          ],
+          "projection_error_px": 0.38326900006568476,
+          "anchor": [
+            98.76807750356534,
+            -0.10015990073043213,
+            203.4000000000001
+          ],
+          "anchor_normal": [
+            0,
+            0,
+            -1
+          ],
+          "anchor_to_point_mm": 0.13233293384942338,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/lift_carriage/faces/faces_47",
+          "part": "lift_carriage",
+          "how": "centroid",
+          "view": {
+            "az": -60,
+            "el": -30,
+            "zoom": 3.4992298732736167
+          },
+          "pagePx": [
+            844.2245814392763,
+            495.08253907099333,
+            -0.9020211258471187
+          ],
+          "pythonPx": [
+            844.224581439276,
+            495.0825390709931,
+            2519.118538198497
+          ],
+          "pageVsPythonPx": 4.099037227506403e-13,
+          "clickPx": [
+            844,
+            495
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 50.56466141286554,
+          "t": 1791964793428.9016,
+          "id": "/robot_assembly/lift_carriage/faces/faces_47",
+          "ids": [
+            "/robot_assembly/lift_carriage/faces/faces_47",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/lift_carriage/faces/faces_47",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            844,
+            495
+          ],
+          "python_projected_px": [
+            844.224581439276,
+            495.0825390709931
+          ],
+          "projection_error_px": 0.23926872154061868,
+          "anchor": [
+            83.6307415413703,
+            25,
+            168.1246411857278
+          ],
+          "anchor_normal": [
+            0,
+            -1,
+            0
+          ],
+          "anchor_to_point_mm": 0.10567206591991407,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/fan/faces/faces_3",
+          "part": "fan",
+          "how": "centroid",
+          "view": {
+            "az": 75,
+            "el": 5,
+            "zoom": 7.698305721201957
+          },
+          "pagePx": [
+            816.8915497968694,
+            485.2953873015053,
+            -0.9032350207601381
+          ],
+          "pythonPx": [
+            816.8915497968704,
+            485.2953873015047,
+            2487.971872663762
+          ],
+          "pageVsPythonPx": 1.170477633080168e-12,
+          "clickPx": [
+            817,
+            485
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 187.15998990670607,
+          "t": 1791964809093.604,
+          "id": "/robot_assembly/fan/faces/faces_3",
+          "ids": [
+            "/robot_assembly/fan/faces/faces_3",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/fan/faces/faces_3",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            817,
+            485
+          ],
+          "python_projected_px": [
+            816.8915497968704,
+            485.2953873015047
+          ],
+          "projection_error_px": 0.3146666560808165,
+          "anchor": [
+            -90.53034164469784,
+            125,
+            176.24552431859266
+          ],
+          "anchor_normal": [
+            0,
+            1,
+            0
+          ],
+          "anchor_to_point_mm": 0.048731590406447665,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/fan/faces/faces_5",
+          "part": "fan",
+          "how": "centroid",
+          "view": {
+            "az": -15,
+            "el": 80,
+            "zoom": 7.698305721201957
+          },
+          "pagePx": [
+            795.9999999999998,
+            444.8600067814742,
+            -0.9039176848816053
+          ],
+          "pythonPx": [
+            796,
+            444.8600067814744,
+            2470.4557674096336
+          ],
+          "pageVsPythonPx": 2.8421709430404007e-13,
+          "clickPx": [
+            796,
+            445
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 80.63718631681553,
+          "t": 1791964821111.411,
+          "id": "/robot_assembly/fan/faces/faces_5",
+          "ids": [
+            "/robot_assembly/fan/faces/faces_5",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/fan/faces/faces_5",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            796,
+            445
+          ],
+          "python_projected_px": [
+            796,
+            444.8600067814744
+          ],
+          "projection_error_px": 0.13999321852560342,
+          "anchor": [
+            -90.49169123647681,
+            112.49430246036438,
+            206.19999999999982
+          ],
+          "anchor_normal": [
+            0,
+            0,
+            1
+          ],
+          "anchor_to_point_mm": 0.02201360272155717,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/fan/faces/faces_1",
+          "part": "fan",
+          "how": "centroid",
+          "view": {
+            "az": 30,
+            "el": 35,
+            "zoom": 7.698305721201957
+          },
+          "pagePx": [
+            699.1374999999992,
+            574.729361153736,
+            -0.9035956842448974
+          ],
+          "pythonPx": [
+            699.1374999999992,
+            574.7293611537353,
+            2478.717805602513
+          ],
+          "pageVsPythonPx": 6.821210263296962e-13,
+          "clickPx": [
+            699,
+            575
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 69.98229828883177,
+          "t": 1791964834718.6255,
+          "id": "/robot_assembly/fan/faces/faces_1",
+          "ids": [
+            "/robot_assembly/fan/faces/faces_1",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/fan/faces/faces_1",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            699,
+            575
+          ],
+          "python_projected_px": [
+            699.1374999999992,
+            574.7293611537353
+          ],
+          "projection_error_px": 0.30356487792111253,
+          "anchor": [
+            -60.5129547438753,
+            112.4754128805223,
+            176.1402283445268
+          ],
+          "anchor_normal": [
+            1,
+            0,
+            0
+          ],
+          "anchor_to_point_mm": 0.06463108572672925,
+          "pass": true
+        },
+        {
+          "expected": "/robot_assembly/fan/faces/faces_4",
+          "part": "fan",
+          "how": "centroid",
+          "view": {
+            "az": 120,
+            "el": -30,
+            "zoom": 7.698305721201957
+          },
+          "pagePx": [
+            795.9999999999985,
+            646.2707713481423,
+            -0.9033508450722032
+          ],
+          "pythonPx": [
+            795.9999999999993,
+            646.2707713481426,
+            2485
+          ],
+          "pageVsPythonPx": 8.658131612109979e-13,
+          "clickPx": [
+            796,
+            646
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 44.77471164247753,
+          "t": 1791964846495.0051,
+          "id": "/robot_assembly/fan/faces/faces_4",
+          "ids": [
+            "/robot_assembly/fan/faces/faces_4",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/fan/faces/faces_4",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            796,
+            646
+          ],
+          "python_projected_px": [
+            795.9999999999993,
+            646.2707713481426
+          ],
+          "projection_error_px": 0.2707713481426026,
+          "anchor": [
+            -90.55488604052925,
+            112.57262713623163,
+            146.20000000000005
+          ],
+          "anchor_normal": [
+            0,
+            0,
+            -1
+          ],
+          "anchor_to_point_mm": 0.0838625933077124,
+          "pass": true
+        }
+      ],
+      "partPicks": [
+        {
+          "expectedPart": "camera",
+          "got": "/robot_assembly/camera",
+          "pass": true
+        },
+        {
+          "expectedPart": "hitch_receiver",
+          "got": "/robot_assembly/hitch_receiver",
+          "pass": true
+        },
+        {
+          "expectedPart": "touch_display",
+          "got": "/robot_assembly/touch_display",
+          "pass": true
+        },
+        {
+          "expectedPart": "lift_carriage",
+          "got": "/robot_assembly/lift_carriage",
+          "pass": true
+        },
+        {
+          "expectedPart": "fan",
+          "got": "/robot_assembly/fan",
+          "pass": true
+        }
+      ],
+      "partPicksPass": true,
+      "pass": true,
+      "elapsedMs": 339779
+    },
+    "q3_overlay": {
+      "ok": true,
+      "anchorFrom": "/robot_assembly/fan/faces/faces_1",
+      "anchor": [
+        -60.5129547438753,
+        112.4754128805223,
+        176.1402283445268
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "pin": {
+        "length": 60,
+        "head": 9
+      },
+      "arrow": {
+        "length": 90
+      },
+      "anchorSearch": [
+        {
+          "anchor": "/robot_assembly/hitch_receiver/faces/faces_4",
+          "glueViews": 0,
+          "occlusionView": null,
+          "mostHidden": 0,
+          "samples": 16
+        },
+        {
+          "anchor": "/robot_assembly/hitch_receiver/faces/faces_2",
+          "glueViews": 0,
+          "occlusionView": null,
+          "mostHidden": 0,
+          "samples": 16
+        },
+        {
+          "anchor": "/robot_assembly/hitch_receiver/faces/faces_1",
+          "glueViews": 1,
+          "occlusionView": null,
+          "mostHidden": 0,
+          "samples": 16
+        },
+        {
+          "anchor": "/robot_assembly/hitch_receiver/faces/faces_5",
+          "glueViews": 1,
+          "occlusionView": null,
+          "mostHidden": 0,
+          "samples": 16
+        },
+        {
+          "anchor": "/robot_assembly/fan/faces/faces_4",
+          "glueViews": 0,
+          "occlusionView": null,
+          "mostHidden": 0,
+          "samples": 16
+        },
+        {
+          "anchor": "/robot_assembly/lift_carriage/faces/faces_47",
+          "glueViews": 0,
+          "occlusionView": null,
+          "mostHidden": 0,
+          "samples": 16
+        },
+        {
+          "anchor": "/robot_assembly/lift_carriage/faces/faces_1",
+          "glueViews": 1,
+          "occlusionView": null,
+          "mostHidden": 0,
+          "samples": 16
+        },
+        {
+          "anchor": "/robot_assembly/lift_carriage/faces/faces_4",
+          "glueViews": 1,
+          "occlusionView": null,
+          "mostHidden": 0,
+          "samples": 16
+        },
+        {
+          "anchor": "/robot_assembly/fan/faces/faces_1",
+          "glueViews": 3,
+          "occlusionView": {
+            "az": -160,
+            "el": -30,
+            "occluders": [
+              "/robot_assembly/rear_wheel",
+              "/robot_assembly/housing_rear_panel"
+            ]
+          },
+          "mostHidden": 16,
+          "samples": 16
+        }
+      ],
+      "glue": [
+        {
+          "az": 90,
+          "el": 45,
+          "zoom": 1.5,
+          "headPixels": 378,
+          "expectedDiscPx": 402.8616536560488,
+          "centroid": [
+            741.0449735449736,
+            803.2195767195767
+          ],
+          "pythonProjected": [
+            741.078197689233,
+            803.2732483192049
+          ],
+          "pageProjected": [
+            741.0781976892331,
+            803.2732483192052
+          ],
+          "errorPx": 0.06312277218576019,
+          "needlePixels": 370,
+          "arrowPixels": 215,
+          "screenshot": "q3_glue_1_swiftshader.png",
+          "pass": true
+        },
+        {
+          "az": 0,
+          "el": 75,
+          "zoom": 1.5,
+          "headPixels": 373,
+          "expectedDiscPx": 402.8616536560488,
+          "centroid": [
+            937.5134048257372,
+            613.8083109919571
+          ],
+          "pythonProjected": [
+            937.5200964302387,
+            613.7975504118423
+          ],
+          "pageProjected": [
+            937.5200964302387,
+            613.7975504118424
+          ],
+          "errorPx": 0.012671529316235755,
+          "needlePixels": 358,
+          "arrowPixels": 228,
+          "screenshot": "q3_glue_2_swiftshader.png",
+          "pass": true
+        },
+        {
+          "az": 60,
+          "el": 15,
+          "zoom": 1.5,
+          "headPixels": 373,
+          "expectedDiscPx": 402.8616536560488,
+          "centroid": [
+            819.1943699731903,
+            824.1943699731903
+          ],
+          "pythonProjected": [
+            819.1963721923684,
+            824.2788576269834
+          ],
+          "pageProjected": [
+            819.1963721923682,
+            824.2788576269843
+          ],
+          "errorPx": 0.08451137512249822,
+          "needlePixels": 314,
+          "arrowPixels": 130,
+          "screenshot": "q3_glue_3_swiftshader.png",
+          "pass": true
+        }
+      ],
+      "occlusion": {
+        "az": -160,
+        "el": -30,
+        "occluders": [
+          "/robot_assembly/rear_wheel",
+          "/robot_assembly/housing_rear_panel"
+        ],
+        "withDepthTest": {
+          "head": 0,
+          "needle": 0,
+          "arrow": 0
+        },
+        "controlNoDepthTest": {
+          "head": 375,
+          "needle": 186,
+          "arrow": 604,
+          "headCentroidErrorPx": 0.058503040520856184
+        },
+        "pass": true
+      },
+      "overlayStats": {
+        "draws": 16,
+        "skippedTargets": 12,
+        "lastDrawMs": 0.3000001907348633
+      },
+      "pass": true,
+      "elapsedMs": 13746
+    },
+    "q5_incremental": {
+      "ok": true,
+      "liftTransform": {
+        "height": 500,
+        "moved": [
+          "arm_platform",
+          "left_arm_base",
+          "right_arm_base",
+          "lift_carriage",
+          "rear_beam",
+          "front_beam",
+          "upper_rail_block",
+          "lower_rail_block",
+          "camera_mast",
+          "camera",
+          "usb_hub",
+          "right_arm_adapter",
+          "left_arm_adapter"
+        ],
+        "regeom": [],
+        "bytesSent": 1152,
+        "hostBuildS": 4.334136365912855,
+        "hostDiffS": 0.12855502869933844,
+        "hostBackendUpdateS": 0.06708920979872346,
+        "pageApplyMs": 537.1999998092651,
+        "pageGpuDoneMs": 611.6999998092651,
+        "latencyFromSendMs": 1149.549072265625,
+        "maxBoxDiffVsExactMm": 0.000006103515630684342,
+        "pickAfterMove": {
+          "expected": "/robot_assembly/camera/faces/faces_5",
+          "part": "camera",
+          "how": "centroid",
+          "view": {
+            "az": -60,
+            "el": 35,
+            "zoom": 3.7100268535913044
+          },
+          "pagePx": [
+            796.0000000000007,
+            426.2405668997988,
+            -0.9042497423636451
+          ],
+          "pythonPx": [
+            796.0000000000002,
+            426.24056689979807,
+            2488.241683054804
+          ],
+          "pageVsPythonPx": 8.676771314227238e-13,
+          "clickPx": [
+            796,
+            426
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 50.72919997963962,
+          "t": 1791964903352.266,
+          "id": "/robot_assembly/camera/faces/faces_5",
+          "ids": [
+            "/robot_assembly/camera/faces/faces_5",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/camera/faces/faces_5",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            796,
+            426
+          ],
+          "python_projected_px": [
+            796.0000000000002,
+            426.24056689979807
+          ],
+          "projection_error_px": 0.24056689979806833,
+          "anchor": [
+            70.72670473211292,
+            0.1167155949044627,
+            870.5
+          ],
+          "anchor_normal": [
+            0,
+            0,
+            1
+          ],
+          "anchor_to_point_mm": 0.1347715602733661,
+          "pass": true
+        },
+        "pass": true
+      },
+      "fullReshow": {
+        "height": 500,
+        "payloadBytes": 10250980,
+        "tessellateConvertS": 0.39241650390625,
+        "showTotalS": 0.555523213930428,
+        "pageHandleMs": 162.10000038146973,
+        "gpuDoneMs": 328.59999990463257,
+        "showToFirstFrameMs": 918.300537109375,
+        "maxBoxDiffIncrementalVsFullMm": 0,
+        "pass": true
+      },
+      "liftReadd": {
+        "moved": [
+          "arm_platform",
+          "left_arm_base",
+          "right_arm_base",
+          "lift_carriage",
+          "rear_beam",
+          "front_beam",
+          "upper_rail_block",
+          "lower_rail_block",
+          "camera_mast",
+          "camera",
+          "usb_hub",
+          "right_arm_adapter",
+          "left_arm_adapter"
+        ],
+        "regeom": [],
+        "bytesSent": 1305,
+        "pageApplyMs": 45.69999980926514,
+        "pageGpuDoneMs": 22.59999990463257,
+        "leavesAfter": 58,
+        "maxBoxDiffVsExactMm": 0.000006103515630684342,
+        "pickAfterReadd": {
+          "expected": "/robot_assembly/lift_carriage/faces/faces_1",
+          "part": "lift_carriage",
+          "how": "centroid",
+          "view": {
+            "az": -60,
+            "el": -30,
+            "zoom": 3.4992298732736167
+          },
+          "pagePx": [
+            752.8568243857337,
+            422.6912460941457,
+            -0.903506803441214
+          ],
+          "pythonPx": [
+            752.8568243857331,
+            422.6912460941449,
+            2480.99834952365
+          ],
+          "pageVsPythonPx": 9.779711566628324e-13,
+          "clickPx": [
+            753,
+            423
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 60.87233788764155,
+          "t": 1791964935951.1033,
+          "id": "/robot_assembly/lift_carriage/faces/faces_1",
+          "ids": [
+            "/robot_assembly/lift_carriage/faces/faces_1",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/lift_carriage/faces/faces_1",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 3.552713678800501e-15,
+          "click_px": [
+            753,
+            423
+          ],
+          "python_projected_px": [
+            752.8568243857331,
+            422.6912460941449
+          ],
+          "projection_error_px": 0.3403354681802494,
+          "anchor": [
+            79.40541211636764,
+            -30,
+            170.40204173742632
+          ],
+          "anchor_normal": [
+            0,
+            -1,
+            0
+          ],
+          "anchor_to_point_mm": 0.15038373966512225,
+          "pass": true
+        },
+        "pass": true
+      },
+      "geometryUpdate": {
+        "change": {
+          "edge_margin": 16
+        },
+        "regeom": [
+          "arm_platform"
+        ],
+        "moved": [],
+        "bytesSent": 183657,
+        "hostBuildS": 5.14993464294821,
+        "hostTessellateS": 0.028012873604893684,
+        "hostEncodeS": 0.00003488082438707352,
+        "hostBackendUpdateS": 0.0027252500876784325,
+        "pageDecodeApplyMs": 3.5999999046325684,
+        "pageGpuDoneMs": 792.2999997138977,
+        "latencyFromSendMs": 797.86328125,
+        "leavesAfter": 58,
+        "maxBoxDiffVsExactMm": 0.000006103515630684342,
+        "pickAfterGeom": {
+          "expected": "/robot_assembly/arm_platform/faces/faces_18",
+          "part": "arm_platform",
+          "how": "centroid",
+          "view": {
+            "az": -15,
+            "el": 80,
+            "zoom": 1.3469369199449366
+          },
+          "pagePx": [
+            796.012029196102,
+            478.2530311293559,
+            -0.9030599843690755
+          ],
+          "pythonPx": [
+            796.012029196102,
+            478.25303112935586,
+            2498.5158148236455
+          ],
+          "pageVsPythonPx": 5.684341886080802e-14,
+          "clickPx": [
+            796,
+            478
+          ],
+          "topElementIsCanvas": true,
+          "edgeMarginPx": 44.44714674621898,
+          "t": 1791964979270.939,
+          "id": "/robot_assembly/arm_platform/faces/faces_18",
+          "ids": [
+            "/robot_assembly/arm_platform/faces/faces_18",
+            false
+          ],
+          "resolved": true,
+          "expected_id": "/robot_assembly/arm_platform/faces/faces_18",
+          "id_match": true,
+          "is_same_face": true,
+          "point_to_resolved_face_mm": 0,
+          "click_px": [
+            796,
+            478
+          ],
+          "python_projected_px": [
+            796.012029196102,
+            478.25303112935586
+          ],
+          "projection_error_px": 0.25331690425623804,
+          "anchor": [
+            98.61087472086922,
+            0.049092523340959815,
+            232.4000000000001
+          ],
+          "anchor_normal": [
+            0,
+            0,
+            1
+          ],
+          "anchor_to_point_mm": 0.23008975778731225,
+          "pass": true
+        },
+        "pass": true
+      },
+      "pass": true,
+      "elapsedMs": 91820
+    },
+    "q4_perf_1600x1000_capped": {
+      "ok": true,
+      "window": [
+        1600,
+        1000
+      ],
+      "uncapped": false,
+      "canvas": [
+        1580,
+        861
+      ],
+      "gl": {
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "maxSamples": 4,
+        "timerQuery": true
+      },
+      "scene": {
+        "meshes": 700,
+        "meshTriangles": 1715444,
+        "uniqueTriangles": 215050,
+        "uniqueLineSegments": 66,
+        "uniquePoints": 4638,
+        "leaves": 58
+      },
+      "frame": {
+        "calls": 198,
+        "triangles": 766511,
+        "lines": 22,
+        "points": 4638
+      },
+      "show": {
+        "cold": {
+          "showToFirstFrameMs": 5869.6025390625,
+          "sendToRecvMs": 33.33984375,
+          "host": {
+            "build_s": 4.001622194889933,
+            "tessellate_convert_s": 0.36339697265625,
+            "encode_s": 0.0019149580039083958,
+            "payload_bytes": 10248841,
+            "ws_send_s": 0.021460307762026787,
+            "backend_encode_s": 0.07280348474159837,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.13527209777384996,
+            "show_total_s": 0.6013812609016895
+          },
+          "page": {
+            "chars": 10248841,
+            "recvWallMs": 1791964993672.4,
+            "parseMs": 9.900000095367432,
+            "handleMs": 332.90000009536743,
+            "gpuDoneMs": 5122,
+            "firstRafAfterMs": 5124.799999713898,
+            "firstFrameWallMs": 1791964999140,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 186,
+              "textures": 12,
+              "programs": 9
+            }
+          }
+        },
+        "warm": {
+          "showToFirstFrameMs": 6327.98388671875,
+          "sendToRecvMs": 24.395751953125,
+          "host": {
+            "build_s": 4.459482106845826,
+            "tessellate_convert_s": 0.13229052734375,
+            "encode_s": 0.002133831847459078,
+            "payload_bytes": 10251117,
+            "ws_send_s": 0.016479772981256247,
+            "backend_encode_s": 0.03558343602344394,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.15233679907396436,
+            "show_total_s": 0.3412763886153698
+          },
+          "page": {
+            "chars": 10251117,
+            "recvWallMs": 1791965004082.5999,
+            "parseMs": 7.099999904632568,
+            "handleMs": 307.7999997138977,
+            "gpuDoneMs": 5852.200000286102,
+            "firstRafAfterMs": 5852.700000286102,
+            "firstFrameWallMs": 1791965010250.2,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 186,
+              "textures": 12,
+              "programs": 9
+            }
+          }
+        }
+      },
+      "orbitRaf": {
+        "frames": 40,
+        "degPerFrame": 9,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          1580,
+          861
+        ],
+        "wallMs": 50693.199999809265,
+        "fpsMean": 0.7535617567408456,
+        "interval": {
+          "n": 32,
+          "mean": 1327.0312499999998,
+          "median": 1316.6000000000058,
+          "p95": 1416.5999999999985,
+          "p99": 2683.300000000003,
+          "max": 2683.300000000003,
+          "min": 33.30000000000291
+        },
+        "skippedWarmup": 8,
+        "updateCpu": {
+          "n": 33,
+          "mean": 9.08181819048795,
+          "median": 8.700000286102295,
+          "p95": 14.700000286102295,
+          "p99": 17.09999990463257,
+          "max": 17.09999990463257,
+          "min": 5.599999904632568
+        },
+        "gpuTimer": null,
+        "over16_7ms": 32,
+        "statusMessagesSent": 40,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "orbitSync": {
+        "frames": 16,
+        "degPerFrame": 22.5,
+        "sync": true,
+        "notify": true,
+        "canvas": [
+          1580,
+          861
+        ],
+        "wallMs": 26066.300000190735,
+        "fpsMean": 0.7500317321117429,
+        "interval": {
+          "n": 13,
+          "mean": 1333.2769230769236,
+          "median": 1333.300000000003,
+          "p95": 1349.9000000000087,
+          "p99": 1349.9000000000087,
+          "max": 1349.9000000000087,
+          "min": 1299.8999999999942
+        },
+        "skippedWarmup": 3,
+        "updateCpu": {
+          "n": 14,
+          "mean": 1334.642857176917,
+          "median": 1336,
+          "p95": 1357.3999996185303,
+          "p99": 1357.3999996185303,
+          "max": 1357.3999996185303,
+          "min": 1293.0999999046326
+        },
+        "gpuTimer": null,
+        "over16_7ms": 13,
+        "statusMessagesSent": 16,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "orbitGpuTimer": {
+        "frames": 16,
+        "degPerFrame": 22.5,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          1580,
+          861
+        ],
+        "wallMs": 18055,
+        "fpsMean": 0.750027404847485,
+        "interval": {
+          "n": 13,
+          "mean": 1333.284615384615,
+          "median": 1316.699999999997,
+          "p95": 2683.300000000003,
+          "p99": 2683.300000000003,
+          "max": 2683.300000000003,
+          "min": 16.60000000000582
+        },
+        "skippedWarmup": 3,
+        "updateCpu": {
+          "n": 14,
+          "mean": 7.23571423121861,
+          "median": 7.299999713897705,
+          "p95": 9.300000190734863,
+          "p99": 9.300000190734863,
+          "max": 9.300000190734863,
+          "min": 4.399999618530273
+        },
+        "gpuTimer": {
+          "n": 11,
+          "mean": 1328.8387612727272,
+          "median": 1332.968415,
+          "p95": 1361.088261,
+          "p99": 1361.088261,
+          "max": 1361.088261,
+          "min": 1291.242579
+        },
+        "over16_7ms": 10,
+        "statusMessagesSent": 16,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "elapsedMs": 119336
+    },
+    "q4_perf_1600x1000_uncapped": {
+      "ok": true,
+      "window": [
+        1600,
+        1000
+      ],
+      "uncapped": true,
+      "canvas": [
+        1580,
+        861
+      ],
+      "gl": {
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "maxSamples": 4,
+        "timerQuery": true
+      },
+      "scene": {
+        "meshes": 700,
+        "meshTriangles": 1715444,
+        "uniqueTriangles": 215050,
+        "uniqueLineSegments": 66,
+        "uniquePoints": 4638,
+        "leaves": 58
+      },
+      "frame": {
+        "calls": 198,
+        "triangles": 766511,
+        "lines": 22,
+        "points": 4638
+      },
+      "show": {
+        "cold": {
+          "showToFirstFrameMs": 5357.1357421875,
+          "sendToRecvMs": 20.972412109375,
+          "host": {
+            "build_s": 4.251464304979891,
+            "tessellate_convert_s": 0.071868408203125,
+            "encode_s": 0.001874667126685381,
+            "payload_bytes": 10248961,
+            "ws_send_s": 0.013287146110087633,
+            "backend_encode_s": 0.03218878619372845,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.12819906324148178,
+            "show_total_s": 0.25004316307604313
+          },
+          "page": {
+            "chars": 10248961,
+            "recvWallMs": 1791965112895.5,
+            "parseMs": 7.100000381469727,
+            "handleMs": 300,
+            "gpuDoneMs": 4951.199999809265,
+            "firstRafAfterMs": 4953.39999961853,
+            "firstFrameWallMs": 1791965118156,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 186,
+              "textures": 12,
+              "programs": 9
+            }
+          }
+        },
+        "warm": {
+          "showToFirstFrameMs": 6270.1416015625,
+          "sendToRecvMs": 22.94580078125,
+          "host": {
+            "build_s": 4.198022005613893,
+            "tessellate_convert_s": 0.16493896484375,
+            "encode_s": 0.003343529999256134,
+            "payload_bytes": 10251111,
+            "ws_send_s": 0.01496492000296712,
+            "backend_encode_s": 0.0379281397908926,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.14501993218436837,
+            "show_total_s": 0.36833071894943714
+          },
+          "page": {
+            "chars": 10251111,
+            "recvWallMs": 1791965122864.7998,
+            "parseMs": 5.800000190734863,
+            "handleMs": 290.2999997138977,
+            "gpuDoneMs": 5780.900000095367,
+            "firstRafAfterMs": 5781.400000095367,
+            "firstFrameWallMs": 1791965128942.2998,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 186,
+              "textures": 12,
+              "programs": 9
+            }
+          }
+        }
+      },
+      "orbitRaf": {
+        "frames": 40,
+        "degPerFrame": 9,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          1580,
+          861
+        ],
+        "wallMs": 887.6999998092651,
+        "fpsMean": 39.038672685128674,
+        "interval": {
+          "n": 32,
+          "mean": 25.615625000000023,
+          "median": 7.399999999997817,
+          "p95": 31.5,
+          "p99": 565.7000000000007,
+          "max": 565.7000000000007,
+          "min": 0.9000000000014552
+        },
+        "skippedWarmup": 8,
+        "updateCpu": {
+          "n": 33,
+          "mean": 24.200000011559688,
+          "median": 6.400000095367432,
+          "p95": 23.200000286102295,
+          "p99": 565.5,
+          "max": 565.5,
+          "min": 3.200000286102295
+        },
+        "gpuTimer": null,
+        "over16_7ms": 2,
+        "statusMessagesSent": 40,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "orbitSync": {
+        "frames": 16,
+        "degPerFrame": 22.5,
+        "sync": true,
+        "notify": true,
+        "canvas": [
+          1580,
+          861
+        ],
+        "wallMs": 75928.5,
+        "fpsMean": 0.7516884078083076,
+        "interval": {
+          "n": 13,
+          "mean": 1330.3384615384623,
+          "median": 1325,
+          "p95": 1368.699999999997,
+          "p99": 1368.699999999997,
+          "max": 1368.699999999997,
+          "min": 1302.800000000003
+        },
+        "skippedWarmup": 3,
+        "updateCpu": {
+          "n": 14,
+          "mean": 1327.2642857687813,
+          "median": 1321,
+          "p95": 1375.4000000953674,
+          "p99": 1375.4000000953674,
+          "max": 1375.4000000953674,
+          "min": 1301.6999998092651
+        },
+        "gpuTimer": null,
+        "over16_7ms": 13,
+        "statusMessagesSent": 16,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "orbitGpuTimer": {
+        "frames": 16,
+        "degPerFrame": 22.5,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          1580,
+          861
+        ],
+        "wallMs": 105.19999980926514,
+        "fpsMean": 174.2627345844368,
+        "interval": {
+          "n": 13,
+          "mean": 5.738461538461986,
+          "median": 5.400000000008731,
+          "p95": 8.10000000000582,
+          "p99": 8.10000000000582,
+          "max": 8.10000000000582,
+          "min": 5.099999999991269
+        },
+        "skippedWarmup": 3,
+        "updateCpu": {
+          "n": 14,
+          "mean": 5.057142836706979,
+          "median": 4.900000095367432,
+          "p95": 6.699999809265137,
+          "p99": 6.699999809265137,
+          "max": 6.699999809265137,
+          "min": 4.099999904632568
+        },
+        "gpuTimer": null,
+        "over16_7ms": 0,
+        "statusMessagesSent": 16,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "elapsedMs": 100665
+    },
+    "q4_perf_2560x1440_capped": {
+      "ok": true,
+      "window": [
+        2560,
+        1440
+      ],
+      "uncapped": false,
+      "canvas": [
+        2540,
+        1301
+      ],
+      "gl": {
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "maxSamples": 4,
+        "timerQuery": true
+      },
+      "scene": {
+        "meshes": 700,
+        "meshTriangles": 1715444,
+        "uniqueTriangles": 215050,
+        "uniqueLineSegments": 66,
+        "uniquePoints": 4638,
+        "leaves": 58
+      },
+      "frame": {
+        "calls": 198,
+        "triangles": 766511,
+        "lines": 22,
+        "points": 4638
+      },
+      "show": {
+        "cold": {
+          "showToFirstFrameMs": 5563.666259765625,
+          "sendToRecvMs": 20.123779296875,
+          "host": {
+            "build_s": 4.031635938677937,
+            "tessellate_convert_s": 0.06815380859375,
+            "encode_s": 0.0015743030235171318,
+            "payload_bytes": 10248961,
+            "ws_send_s": 0.013116193003952503,
+            "backend_encode_s": 0.03109288914129138,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.1338991979137063,
+            "show_total_s": 0.2503632283769548
+          },
+          "page": {
+            "chars": 10248961,
+            "recvWallMs": 1791965213400.0999,
+            "parseMs": 6.799999713897705,
+            "handleMs": 296.6000003814697,
+            "gpuDoneMs": 5167.199999809265,
+            "firstRafAfterMs": 5169,
+            "firstFrameWallMs": 1791965218872.5,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 186,
+              "textures": 12,
+              "programs": 9
+            }
+          }
+        },
+        "warm": {
+          "showToFirstFrameMs": 6280.20849609375,
+          "sendToRecvMs": 21.5,
+          "host": {
+            "build_s": 3.8717654775828123,
+            "tessellate_convert_s": 0.1145673828125,
+            "encode_s": 0.0015089120715856552,
+            "payload_bytes": 10251111,
+            "ws_send_s": 0.013588599860668182,
+            "backend_encode_s": 0.030636662151664495,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.14320676494389772,
+            "show_total_s": 0.30597213795408607
+          },
+          "page": {
+            "chars": 10251111,
+            "recvWallMs": 1791965223196.2,
+            "parseMs": 4.800000190734863,
+            "handleMs": 302.5,
+            "gpuDoneMs": 5833.5,
+            "firstRafAfterMs": 5834,
+            "firstFrameWallMs": 1791965229337.5,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 186,
+              "textures": 12,
+              "programs": 9
+            }
+          }
+        }
+      },
+      "orbitRaf": {
+        "frames": 40,
+        "degPerFrame": 9,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          2540,
+          1301
+        ],
+        "wallMs": 53450.800000190735,
+        "fpsMean": 0.7103502470686953,
+        "interval": {
+          "n": 32,
+          "mean": 1407.7562499999997,
+          "median": 1399.9000000000015,
+          "p95": 1466.7000000000044,
+          "p99": 1500,
+          "max": 1500,
+          "min": 1366.6000000000058
+        },
+        "skippedWarmup": 8,
+        "updateCpu": {
+          "n": 33,
+          "mean": 11.06363634629683,
+          "median": 11,
+          "p95": 13.099999904632568,
+          "p99": 14.699999809265137,
+          "max": 14.699999809265137,
+          "min": 5.600000381469727
+        },
+        "gpuTimer": null,
+        "over16_7ms": 32,
+        "statusMessagesSent": 40,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "orbitSync": {
+        "frames": 16,
+        "degPerFrame": 22.5,
+        "sync": true,
+        "notify": true,
+        "canvas": [
+          2540,
+          1301
+        ],
+        "wallMs": 27185.699999809265,
+        "fpsMean": 0.7162850153174797,
+        "interval": {
+          "n": 13,
+          "mean": 1396.0923076923075,
+          "median": 1399.8999999999942,
+          "p95": 1433.300000000003,
+          "p99": 1433.300000000003,
+          "max": 1433.300000000003,
+          "min": 1366.5
+        },
+        "skippedWarmup": 3,
+        "updateCpu": {
+          "n": 14,
+          "mean": 1395.1357142925262,
+          "median": 1391.2999997138977,
+          "p95": 1428,
+          "p99": 1428,
+          "max": 1428,
+          "min": 1374
+        },
+        "gpuTimer": null,
+        "over16_7ms": 13,
+        "statusMessagesSent": 16,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "orbitGpuTimer": {
+        "frames": 16,
+        "degPerFrame": 22.5,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          2540,
+          1301
+        ],
+        "wallMs": 19198.900000095367,
+        "fpsMean": 0.7039965341709087,
+        "interval": {
+          "n": 13,
+          "mean": 1420.4615384615386,
+          "median": 1416.6000000000058,
+          "p95": 1483.300000000003,
+          "p99": 1483.300000000003,
+          "max": 1483.300000000003,
+          "min": 1383.199999999997
+        },
+        "skippedWarmup": 3,
+        "updateCpu": {
+          "n": 14,
+          "mean": 9.221428496497017,
+          "median": 9.599999904632568,
+          "p95": 11.299999713897705,
+          "p99": 11.299999713897705,
+          "max": 11.299999713897705,
+          "min": 6.699999809265137
+        },
+        "gpuTimer": {
+          "n": 11,
+          "mean": 1404.9714186363635,
+          "median": 1398.89549,
+          "p95": 1487.198945,
+          "p99": 1487.198945,
+          "max": 1487.198945,
+          "min": 1365.765293
+        },
+        "over16_7ms": 13,
+        "statusMessagesSent": 16,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "elapsedMs": 123460
+    },
+    "q4_perf_2560x1440_uncapped": {
+      "ok": true,
+      "window": [
+        2560,
+        1440
+      ],
+      "uncapped": true,
+      "canvas": [
+        2540,
+        1301
+      ],
+      "gl": {
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "maxSamples": 4,
+        "timerQuery": true
+      },
+      "scene": {
+        "meshes": 700,
+        "meshTriangles": 1715444,
+        "uniqueTriangles": 215050,
+        "uniqueLineSegments": 66,
+        "uniquePoints": 4638,
+        "leaves": 58
+      },
+      "frame": {
+        "calls": 198,
+        "triangles": 766511,
+        "lines": 22,
+        "points": 4638
+      },
+      "show": {
+        "cold": {
+          "showToFirstFrameMs": 5513.89306640625,
+          "sendToRecvMs": 20.27392578125,
+          "host": {
+            "build_s": 4.038941611070186,
+            "tessellate_convert_s": 0.0673232421875,
+            "encode_s": 0.0016423859633505344,
+            "payload_bytes": 10248961,
+            "ws_send_s": 0.01335611892864108,
+            "backend_encode_s": 0.036451526917517185,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.15337547101080418,
+            "show_total_s": 0.2743691857904196
+          },
+          "page": {
+            "chars": 10248961,
+            "recvWallMs": 1791965336814.3,
+            "parseMs": 7,
+            "handleMs": 299.2000002861023,
+            "gpuDoneMs": 5115.099999904633,
+            "firstRafAfterMs": 5117,
+            "firstFrameWallMs": 1791965342237.5,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 186,
+              "textures": 12,
+              "programs": 9
+            }
+          }
+        },
+        "warm": {
+          "showToFirstFrameMs": 6629.286865234375,
+          "sendToRecvMs": 20.325439453125,
+          "host": {
+            "build_s": 4.112500316929072,
+            "tessellate_convert_s": 0.1250341796875,
+            "encode_s": 0.0015557748265564442,
+            "payload_bytes": 10251111,
+            "ws_send_s": 0.013357638847082853,
+            "backend_encode_s": 0.029829694889485836,
+            "backend_payload_bytes": 3472898,
+            "backend_load_s": 0.14124159095808864,
+            "show_total_s": 0.31316310027614236
+          },
+          "page": {
+            "chars": 10251111,
+            "recvWallMs": 1791965346820.6,
+            "parseMs": 5.299999713897705,
+            "handleMs": 314.40000009536743,
+            "gpuDoneMs": 6160.700000286102,
+            "firstRafAfterMs": 6161.200000286102,
+            "firstFrameWallMs": 1791965353301.5,
+            "info": {
+              "calls": 8,
+              "triangles": 923,
+              "lines": 0,
+              "points": 0,
+              "geometries": 186,
+              "textures": 12,
+              "programs": 9
+            }
+          }
+        }
+      },
+      "orbitRaf": {
+        "frames": 40,
+        "degPerFrame": 9,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          2540,
+          1301
+        ],
+        "wallMs": 906.7999997138977,
+        "fpsMean": 39.21568627450981,
+        "interval": {
+          "n": 32,
+          "mean": 25.5,
+          "median": 7.5,
+          "p95": 24.5,
+          "p99": 567.5,
+          "max": 567.5,
+          "min": 2.599999999998545
+        },
+        "skippedWarmup": 8,
+        "updateCpu": {
+          "n": 33,
+          "mean": 24.190909067789715,
+          "median": 6.199999809265137,
+          "p95": 20.5,
+          "p99": 572.8000001907349,
+          "max": 572.8000001907349,
+          "min": 3.5
+        },
+        "gpuTimer": null,
+        "over16_7ms": 1,
+        "statusMessagesSent": 40,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "orbitSync": {
+        "frames": 16,
+        "degPerFrame": 22.5,
+        "sync": true,
+        "notify": true,
+        "canvas": [
+          2540,
+          1301
+        ],
+        "wallMs": 79208.80000019073,
+        "fpsMean": 0.7200381066321047,
+        "interval": {
+          "n": 13,
+          "mean": 1388.815384615385,
+          "median": 1393,
+          "p95": 1420.2999999999884,
+          "p99": 1420.2999999999884,
+          "max": 1420.2999999999884,
+          "min": 1361.5
+        },
+        "skippedWarmup": 3,
+        "updateCpu": {
+          "n": 14,
+          "mean": 1389.2785714694432,
+          "median": 1392.5999999046326,
+          "p95": 1413.1999998092651,
+          "p99": 1413.1999998092651,
+          "max": 1413.1999998092651,
+          "min": 1360.9000000953674
+        },
+        "gpuTimer": null,
+        "over16_7ms": 13,
+        "statusMessagesSent": 16,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "orbitGpuTimer": {
+        "frames": 16,
+        "degPerFrame": 22.5,
+        "sync": false,
+        "notify": true,
+        "canvas": [
+          2540,
+          1301
+        ],
+        "wallMs": 156.69999980926514,
+        "fpsMean": 110.16949152542372,
+        "interval": {
+          "n": 13,
+          "mean": 9.076923076923077,
+          "median": 8.30000000000291,
+          "p95": 13.30000000000291,
+          "p99": 13.30000000000291,
+          "max": 13.30000000000291,
+          "min": 6.80000000000291
+        },
+        "skippedWarmup": 3,
+        "updateCpu": {
+          "n": 14,
+          "mean": 7.235714299338205,
+          "median": 7.199999809265137,
+          "p95": 10.099999904632568,
+          "p99": 10.099999904632568,
+          "max": 10.099999904632568,
+          "min": 3.8000001907348633
+        },
+        "gpuTimer": null,
+        "over16_7ms": 0,
+        "statusMessagesSent": 16,
+        "info": {
+          "calls": 8,
+          "triangles": 923,
+          "lines": 0,
+          "points": 0,
+          "geometries": 186,
+          "textures": 12,
+          "programs": 9
+        }
+      },
+      "elapsedMs": 104393
+    }
+  },
+  "ping": {
+    "robot_file": "/tmp/claude-1000/-home-sandro-work-privat-my-robot/0addebd4-35be-458b-990c-7ebe8c983d5f/scratchpad/robot-snap/src/robot/__init__.py",
+    "python": "3.12.11 (main, Aug  8 2025, 17:06:48) [Clang 20.1.4 ]"
+  },
+  "chromeConsole": [],
+  "hostState": {
+    "status_keys": [
+      "activeTool",
+      "ambient_intensity",
+      "axes",
+      "axes0",
+      "black_edges",
+      "center_grid",
+      "clip_intersection",
+      "clip_normal_0",
+      "clip_normal_1",
+      "clip_normal_2",
+      "clip_object_colors",
+      "clip_planes",
+      "clip_slider_0",
+      "clip_slider_1",
+      "clip_slider_2",
+      "collapse",
+      "default_edgecolor",
+      "default_opacity",
+      "direct_intensity",
+      "explode",
+      "glass",
+      "grid",
+      "holroyd",
+      "lastPick",
+      "metalness",
+      "ortho",
+      "pan_speed",
+      "position",
+      "quaternion",
+      "relative_time",
+      "rotate_speed",
+      "roughness",
+      "selectedShapeIDs",
+      "states",
+      "studio_4k_env_maps",
+      "studio_ao_intensity",
+      "studio_background",
+      "studio_env_intensity",
+      "studio_env_rotation",
+      "studio_environment",
+      "studio_exposure",
+      "studio_shadow_intensity",
+      "studio_shadow_softness",
+      "studio_texture_mapping",
+      "studio_tone_mapping",
+      "tab",
+      "target",
+      "target0",
+      "tools",
+      "transparent",
+      "zebra_color_scheme",
+      "zebra_count",
+      "zebra_direction",
+      "zebra_mapping_mode",
+      "zebra_opacity",
+      "zoom",
+      "zoom_speed"
+    ],
+    "splash": false,
+    "metrics": {
+      "current_show": {
+        "build_s": 4.112500316929072,
+        "height": null,
+        "show_start_wall_ms": 1791965346672.2131,
+        "send_data_called_wall_ms": 1791965346797.2473,
+        "encode_s": 0.0015557748265564442,
+        "decode_utf8_s": 0.0014676419086754322,
+        "payload_bytes": 10251111,
+        "send_start_wall_ms": 1791965346800.2747,
+        "ws_send_s": 0.013357638847082853,
+        "send_end_wall_ms": 1791965346813.6345,
+        "backend_encode_s": 0.029829694889485836,
+        "backend_payload_bytes": 3472898,
+        "backend_load_s": 0.14124159095808864,
+        "backend_ids": 14622,
+        "show_total_s": 0.31316310027614236,
+        "show_end_wall_ms": 1791965346985.3777,
+        "tessellate_convert_s": 0.1250341796875,
+        "n_parts": 58,
+        "n_faces_backend": 2667
+      },
+      "shows": [
+        {
+          "build_s": 7.318399566691369,
+          "height": null,
+          "show_start_wall_ms": 1791964393566.1392,
+          "send_data_called_wall_ms": 1791964396761.4314,
+          "encode_s": 0.005900616757571697,
+          "decode_utf8_s": 0.004079550039023161,
+          "payload_bytes": 10248296,
+          "send_start_wall_ms": 1791964396771.418,
+          "ws_send_s": 0.028181116096675396,
+          "send_end_wall_ms": 1791964396799.6035,
+          "backend_encode_s": 0.04208842199295759,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.16618329379707575,
+          "backend_ids": 14622,
+          "show_total_s": 3.4434613031335175,
+          "show_end_wall_ms": 1791964397009.6035,
+          "tessellate_convert_s": 3.195292236328125,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 4.385010177269578,
+          "height": 500,
+          "show_start_wall_ms": 1791964908424.7996,
+          "send_data_called_wall_ms": 1791964908817.216,
+          "encode_s": 0.001678133849054575,
+          "decode_utf8_s": 0.002888033166527748,
+          "payload_bytes": 10250980,
+          "send_start_wall_ms": 1791964908821.7876,
+          "ws_send_s": 0.012601125985383987,
+          "send_end_wall_ms": 1791964908834.3918,
+          "backend_encode_s": 0.03209978435188532,
+          "backend_payload_bytes": 3472885,
+          "backend_load_s": 0.1119141629897058,
+          "backend_ids": 14622,
+          "show_total_s": 0.555523213930428,
+          "show_end_wall_ms": 1791964908980.3247,
+          "tessellate_convert_s": 0.39241650390625,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 4.001622194889933,
+          "height": null,
+          "show_start_wall_ms": 1791964993270.3975,
+          "send_data_called_wall_ms": 1791964993633.7944,
+          "encode_s": 0.0019149580039083958,
+          "decode_utf8_s": 0.0033412487246096134,
+          "payload_bytes": 10248841,
+          "send_start_wall_ms": 1791964993639.06,
+          "ws_send_s": 0.021460307762026787,
+          "send_end_wall_ms": 1791964993660.5261,
+          "backend_encode_s": 0.07280348474159837,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.13527209777384996,
+          "backend_ids": 14622,
+          "show_total_s": 0.6013812609016895,
+          "show_end_wall_ms": 1791964993871.7808,
+          "tessellate_convert_s": 0.36339697265625,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 4.459482106845826,
+          "height": null,
+          "show_start_wall_ms": 1791965003922.216,
+          "send_data_called_wall_ms": 1791965004054.5066,
+          "encode_s": 0.002133831847459078,
+          "decode_utf8_s": 0.0015592328272759914,
+          "payload_bytes": 10251117,
+          "send_start_wall_ms": 1791965004058.204,
+          "ws_send_s": 0.016479772981256247,
+          "send_end_wall_ms": 1791965004074.6863,
+          "backend_encode_s": 0.03558343602344394,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.15233679907396436,
+          "backend_ids": 14622,
+          "show_total_s": 0.3412763886153698,
+          "show_end_wall_ms": 1791965004263.4949,
+          "tessellate_convert_s": 0.13229052734375,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 4.251464304979891,
+          "height": null,
+          "show_start_wall_ms": 1791965112798.8643,
+          "send_data_called_wall_ms": 1791965112870.7327,
+          "encode_s": 0.001874667126685381,
+          "decode_utf8_s": 0.0019163591787219048,
+          "payload_bytes": 10248961,
+          "send_start_wall_ms": 1791965112874.5276,
+          "ws_send_s": 0.013287146110087633,
+          "send_end_wall_ms": 1791965112887.8167,
+          "backend_encode_s": 0.03218878619372845,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.12819906324148178,
+          "backend_ids": 14622,
+          "show_total_s": 0.25004316307604313,
+          "show_end_wall_ms": 1791965113048.91,
+          "tessellate_convert_s": 0.071868408203125,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 4.198022005613893,
+          "height": null,
+          "show_start_wall_ms": 1791965122672.1582,
+          "send_data_called_wall_ms": 1791965122837.0972,
+          "encode_s": 0.003343529999256134,
+          "decode_utf8_s": 0.0014099609106779099,
+          "payload_bytes": 10251111,
+          "send_start_wall_ms": 1791965122841.854,
+          "ws_send_s": 0.01496492000296712,
+          "send_end_wall_ms": 1791965122856.8215,
+          "backend_encode_s": 0.0379281397908926,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.14501993218436837,
+          "backend_ids": 14622,
+          "show_total_s": 0.36833071894943714,
+          "show_end_wall_ms": 1791965123040.4905,
+          "tessellate_convert_s": 0.16493896484375,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 4.031635938677937,
+          "height": null,
+          "show_start_wall_ms": 1791965213308.8337,
+          "send_data_called_wall_ms": 1791965213376.9875,
+          "encode_s": 0.0015743030235171318,
+          "decode_utf8_s": 0.001410850789397955,
+          "payload_bytes": 10248961,
+          "send_start_wall_ms": 1791965213379.976,
+          "ws_send_s": 0.013116193003952503,
+          "send_end_wall_ms": 1791965213393.094,
+          "backend_encode_s": 0.03109288914129138,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.1338991979137063,
+          "backend_ids": 14622,
+          "show_total_s": 0.2503632283769548,
+          "show_end_wall_ms": 1791965213559.1992,
+          "tessellate_convert_s": 0.06815380859375,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 3.8717654775828123,
+          "height": null,
+          "show_start_wall_ms": 1791965223057.2915,
+          "send_data_called_wall_ms": 1791965223171.859,
+          "encode_s": 0.0015089120715856552,
+          "decode_utf8_s": 0.0013292599469423294,
+          "payload_bytes": 10251111,
+          "send_start_wall_ms": 1791965223174.7,
+          "ws_send_s": 0.013588599860668182,
+          "send_end_wall_ms": 1791965223188.291,
+          "backend_encode_s": 0.030636662151664495,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.14320676494389772,
+          "backend_ids": 14622,
+          "show_total_s": 0.30597213795408607,
+          "show_end_wall_ms": 1791965223363.2654,
+          "tessellate_convert_s": 0.1145673828125,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 4.038941611070186,
+          "height": null,
+          "show_start_wall_ms": 1791965336723.607,
+          "send_data_called_wall_ms": 1791965336790.9302,
+          "encode_s": 0.0016423859633505344,
+          "decode_utf8_s": 0.0014507020823657513,
+          "payload_bytes": 10248961,
+          "send_start_wall_ms": 1791965336794.0261,
+          "ws_send_s": 0.01335611892864108,
+          "send_end_wall_ms": 1791965336807.3845,
+          "backend_encode_s": 0.036451526917517185,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.15337547101080418,
+          "backend_ids": 14622,
+          "show_total_s": 0.2743691857904196,
+          "show_end_wall_ms": 1791965336997.9775,
+          "tessellate_convert_s": 0.0673232421875,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        },
+        {
+          "build_s": 4.112500316929072,
+          "height": null,
+          "show_start_wall_ms": 1791965346672.2131,
+          "send_data_called_wall_ms": 1791965346797.2473,
+          "encode_s": 0.0015557748265564442,
+          "decode_utf8_s": 0.0014676419086754322,
+          "payload_bytes": 10251111,
+          "send_start_wall_ms": 1791965346800.2747,
+          "ws_send_s": 0.013357638847082853,
+          "send_end_wall_ms": 1791965346813.6345,
+          "backend_encode_s": 0.029829694889485836,
+          "backend_payload_bytes": 3472898,
+          "backend_load_s": 0.14124159095808864,
+          "backend_ids": 14622,
+          "show_total_s": 0.31316310027614236,
+          "show_end_wall_ms": 1791965346985.3777,
+          "tessellate_convert_s": 0.1250341796875,
+          "n_parts": 58,
+          "n_faces_backend": 2667
+        }
+      ],
+      "updates": [
+        {
+          "height": 500,
+          "platform": null,
+          "mode": "transform",
+          "build_s": 4.334136365912855,
+          "diff_s": 0.12855502869933844,
+          "moved": [
+            "arm_platform",
+            "left_arm_base",
+            "right_arm_base",
+            "lift_carriage",
+            "rear_beam",
+            "front_beam",
+            "upper_rail_block",
+            "lower_rail_block",
+            "camera_mast",
+            "camera",
+            "usb_hub",
+            "right_arm_adapter",
+            "left_arm_adapter"
+          ],
+          "regeom": [],
+          "bytes_sent": 1152,
+          "backend_update_s": 0.06708920979872346
+        },
+        {
+          "height": null,
+          "platform": null,
+          "mode": "readd",
+          "build_s": 4.285238874144852,
+          "diff_s": 0.12093207519501448,
+          "moved": [
+            "arm_platform",
+            "left_arm_base",
+            "right_arm_base",
+            "lift_carriage",
+            "rear_beam",
+            "front_beam",
+            "upper_rail_block",
+            "lower_rail_block",
+            "camera_mast",
+            "camera",
+            "usb_hub",
+            "right_arm_adapter",
+            "left_arm_adapter"
+          ],
+          "regeom": [],
+          "bytes_sent": 1305,
+          "backend_update_s": 0.049511671997606754
+        },
+        {
+          "height": null,
+          "platform": {
+            "edge_margin": 16
+          },
+          "mode": "transform",
+          "build_s": 5.14993464294821,
+          "diff_s": 0.11897279694676399,
+          "moved": [],
+          "regeom": [
+            "arm_platform"
+          ],
+          "tessellate_s": 0.028012873604893684,
+          "encode_s": 0.00003488082438707352,
+          "bytes_sent": 183657,
+          "backend_update_s": 0.0027252500876784325
+        }
+      ]
+    },
+    "n_picks": 23,
+    "backend_ids": 14622
+  },
+  "hostLogTail": [
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c",
+    "c"
+  ],
+  "chromeLogTail": [
+    "WARNING: radv is not a conformant Vulkan implementation, testing use only.",
+    "[639027:639048:1014/100855.577911:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR",
+    "[639027:639048:1014/100855.578821:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR",
+    "[639027:639048:1014/100855.579790:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR",
+    "[639027:639048:1014/100855.643425:ERROR:google_apis/gcm/engine/mcs_client.cc:702]   Error code: 401  Error message: Authentication Failed: wrong_secret",
+    "[639027:639048:1014/100855.643433:ERROR:google_apis/gcm/engine/mcs_client.cc:704] Failed to log in to GCM, resetting connection.",
+    "[639027:639048:1014/100921.726976:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT",
+    "[639027:639048:1014/101003.634994:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT"
+  ],
+  "finished": "2026-10-14T08:10:36.062Z"
+}

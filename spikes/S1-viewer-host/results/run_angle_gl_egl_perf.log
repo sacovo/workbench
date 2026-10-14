@@ -1,0 +1,9 @@
+== q4_perf_1600x1000_capped
+   pass=undefined (21348 ms)
+== q4_perf_1600x1000_uncapped
+   pass=undefined (11393 ms)
+== q4_perf_2560x1440_capped
+   pass=undefined (18924 ms)
+== q4_perf_2560x1440_uncapped
+   pass=undefined (11662 ms)
+wrote /home/sandro/work/privat/workbench/spikes/S1-viewer-host/results/s1_angle_gl_egl_perf.json

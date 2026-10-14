@@ -1,10 +1,11 @@
 [tool.uv.workspace]
-members = ["packages/*"]
+members = ["packages/hub"]
 # examples/minimal is its own uv project (not a workspace member): it mirrors my-robot
 # at toy scale, with its own lockfile and environment. The kernel depends on build123d and
 # runs inside a project's environment, so it is installed and tested there
-# (examples/minimal, my-robot), not in this root environment, which holds only the hub.
-exclude = ["examples/minimal"]
+# (examples/minimal, my-robot), not in this root environment, which holds only the hub. It is
+# not a workspace member, because uv installs every member of a workspace without a root project.
+exclude = ["examples/minimal", "packages/kernel"]
 
 [tool.uv.sources]
 workbench = { workspace = true }

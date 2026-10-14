@@ -1,19 +1,23 @@
 """Operations about the hub and the page: `serve`, `open`, `show`, `selection` and `agents`.
 
-`serve` and `open` run in the calling process (they start the hub, or the owner's window). `show`,
-`selection` and `agents` need the hub: the CLI forwards them over HTTP and they run in the hub
-process, where the kernel, the page and the agent link are. The hub's modules are imported inside
-the functions, so that every other `wbench` command stays free of the web stack's import time.
+`serve` runs in the calling process (it starts the hub). `open`, `show`, `selection` and `agents`
+need the hub: the CLI forwards them over HTTP and they run in the hub process, where the kernel,
+the page, the agent link and (for `open`) the page credential are. `open` opens the owner's window
+from there precisely so that the page credential, which only the hub process holds in memory, never
+has to pass through the CLI or appear in this operation's result (workbench.hub.app, workbench.hub.
+launch). The hub's modules are imported inside the functions, so that every other `wbench` command
+stays free of the web stack's import time.
 """
 
 from __future__ import annotations
 
 import json
+import os
 from typing import Optional
 
 from workbench.errors import HubNotRunning
 from workbench.ops.registry import op
-from workbench.project import Project, running_hub
+from workbench.project import Project
 
 SHOW_TIMEOUT = 1000.0  # s: a new kernel's start plus a build, both bounded by the hub's own deadlines
 
@@ -102,16 +106,21 @@ def serve(project: Project, port: int = 0, open: bool = False) -> dict:
     return run(project, port=port, open_window_too=open)
 
 
-@op("open", summary="Open the running hub's page in a Chromium app window (native Wayland)", human=_human_open)
+@op("open", summary="Open the running hub's page in a Chromium app window (native Wayland)", needs_hub=True, human=_human_open)
 def open_(project: Project) -> dict:
-    """Finds the hub through .workbench/hub.json and starts `chromium --app` with its own profile
-    in .workbench/chromium, the stale NVIDIA variables removed and native Wayland."""
+    """Forwarded over HTTP to the running hub like show, selection and agents, and runs there:
+    the hub process is the only place the page credential exists (never in .workbench/hub.json),
+    so opening the window from inside it, rather than from the CLI's own process, is what keeps
+    the credential out of the CLI entirely. Starts `chromium --app` with its own profile in
+    .workbench/chromium, the stale NVIDIA variables removed and native Wayland; the result below
+    never contains the page credential (workbench.hub.launch redacts it from the URL it returns)."""
+    from workbench.hub.hub import running_instance
     from workbench.hub.launch import open_window
+    from workbench.project import HubInfo
 
-    hub, why = running_hub(project)
-    if hub is None:
-        raise HubNotRunning(f"hub not running: start it with `wbench serve` ({why})")
-    return open_window(project, hub)
+    hub = running_instance(project)
+    info = HubInfo(pid=os.getpid(), port=hub.port, token=hub.token)
+    return open_window(project, info, hub.page_credential)
 
 
 @op(

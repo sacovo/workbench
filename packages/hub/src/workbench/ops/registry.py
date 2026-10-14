@@ -191,6 +191,20 @@ class Op:
             raise TypeError(f"operation {self.name} returned a result that is not JSON: {exc}") from None
         return result
 
+    def writes_as_owner(self, arguments: Any) -> bool:
+        """True if calling this operation with `arguments` writes an event authored by the
+        owner: this op is registered `owner_only=True` (answer, comment: their role is always
+        "owner"), or the caller passed `role="owner"` explicitly (reply, set-status, attach, link
+        and view-create take `role`, default "agent"; the UI passes "owner").
+
+        The one rule behind every owner-write guard: the CLI refusing it under Claude Code
+        (workbench.cli.execute), the MCP shim refusing it always (workbench.mcp.server), and the
+        hub refusing it over HTTP without the page credential (workbench.hub.app). A new
+        owner-writing path never needs its own scattered check, only to be called through one of
+        those. Works on the raw arguments, before bind() validates them, so a guard can refuse a
+        call before it runs even if the rest of the arguments turn out malformed."""
+        return self.owner_only or (isinstance(arguments, dict) and arguments.get("role") == "owner")
+
     def render(self, result: dict) -> str:
         if self.human is not None:
             return self.human(result)

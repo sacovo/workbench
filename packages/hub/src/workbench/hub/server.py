@@ -4,6 +4,12 @@ The socket is bound before anything else, so the port (ephemeral by default) is 
 `.workbench/hub.json` is written with the pid, the port and a fresh random token. The file is
 removed on the way out if it still names this process. Kernels are stopped with the hub; a kernel
 whose hub is killed outright ends on its own when its stdin closes.
+
+A second secret, the page credential, is generated here too (`PAGE_CREDENTIAL_ENV` overrides it)
+and handed only to the `Hub`: it is never written to hub.json, so an agent holding that file's
+token cannot present it. The only way a browser receives it is a window this process itself opens
+(`open_window` below, or the `open` operation forwarded back to this running hub); see
+workbench.hub.launch and workbench.hub.app.
 """
 
 from __future__ import annotations
@@ -26,6 +32,11 @@ from workbench.hub.launch import open_window
 from workbench.project import HubInfo, Project, clear_hub_info, read_hub_info, running_hub, write_hub_info
 
 log = logging.getLogger("workbench.hub")
+
+# For tests only: whoever starts the hub process (a test fixture, the e2e driver) may fix the
+# page credential instead of a random one, so it can build the owner's page URL itself without
+# going through a real `wbench open`/`serve --open` window. Not meant for the owner's own use.
+PAGE_CREDENTIAL_ENV = "WB_PAGE_CREDENTIAL"
 
 
 def _logging() -> None:
@@ -58,7 +69,8 @@ def run(project: Project, port: int = 0, open_window_too: bool = False, kernel_c
     sock = bind(port)
     port = sock.getsockname()[1]
     token = secrets.token_urlsafe(32)
-    hub = Hub(project, token, port, kernel_command=kernel_command)
+    page_credential = os.environ.get(PAGE_CREDENTIAL_ENV) or secrets.token_urlsafe(32)
+    hub = Hub(project, token, port, page_credential=page_credential, kernel_command=kernel_command)
     hub.link = AgentLink(
         project,
         lambda: hub.review.get("items", []),
@@ -79,7 +91,7 @@ def run(project: Project, port: int = 0, open_window_too: bool = False, kernel_c
                 while server is not None and not server.started:
                     await asyncio.sleep(0.05)
                 try:
-                    opened = await asyncio.to_thread(open_window, project, info)
+                    opened = await asyncio.to_thread(open_window, project, info, page_credential)
                     log.info("opened the page (chromium pid %s)", opened["pid"])
                 except WorkbenchError as exc:
                     log.warning("could not open the page: %s", exc)

@@ -5,14 +5,18 @@ schemas the hub's HTTP routes use (workbench.ops.registry, docs/plan.md design p
 hand-written here, so a tool cannot drift from its operation. Only the agent's own interaction ops
 are exposed (TOOL_NAMES), not the owner-only ones (answer, comment: the UI calls them directly,
 never the agent) or the ops that run a process instead of answering one request (serve, open, mcp
-itself).
+itself). Of the ops that are exposed, any call whose arguments write as the owner (Op.
+writes_as_owner: a `role` argument of "owner", e.g. reply or view-create) is refused unconditionally
+below, in case the registry ever exposes a role-taking op this list did not anticipate: the shim
+serves agents only, regardless of CLAUDECODE (the CLI's own gate, workbench.cli.execute, is not
+enough by itself here: an MCP server subprocess is not guaranteed to inherit it).
 
 Each call runs through workbench.cli.execute(), off the event loop: a local operation runs in this
 process, one that needs_hub is forwarded over HTTP to the running hub, exactly as the CLI does.
-Anything that goes wrong (bad arguments, no hub, a hub error) comes back as a tool error
-(CallToolResult.is_error with the message as its content), not a protocol-level one, so the agent
-sees the real message and can self-correct; left to the mcp package's own default, an exception
-raised from the handler is masked as a generic "Internal server error"
+Anything that goes wrong (bad arguments, no hub, a hub error, an owner-write refused) comes back as
+a tool error (CallToolResult.is_error with the message as its content), not a protocol-level one,
+so the agent sees the real message and can self-correct; left to the mcp package's own default, an
+exception raised from the handler is masked as a generic "Internal server error"
 (mcp.server.runner.modern_error_data), which would hide every WorkbenchError's message.
 """
 
@@ -74,9 +78,18 @@ def build_tools(registry: Registry | None = None) -> list[types.Tool]:
 
 async def _call(op_name: str, arguments: dict, directory: str | None) -> types.CallToolResult:
     """One tool call, the way the CLI runs a command: workbench.cli.execute(), off the event loop
-    (it blocks on file I/O or an HTTP round trip to the hub)."""
+    (it blocks on file I/O or an HTTP round trip to the hub). Refuses an owner write first, always
+    (see the module docstring): an agent tool call can never take role="owner"."""
     try:
         op = default_registry().get(op_name)
+        if op.writes_as_owner(arguments):
+            return types.CallToolResult(
+                content=[types.TextContent(
+                    type="text",
+                    text="owner actions come from the workbench page the hub opens, never an agent tool call",
+                )],
+                is_error=True,
+            )
         result = await anyio.to_thread.run_sync(execute, op, arguments, directory)
     except WorkbenchError as exc:
         return types.CallToolResult(content=[types.TextContent(type="text", text=str(exc))], is_error=True)

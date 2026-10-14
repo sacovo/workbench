@@ -9,13 +9,24 @@ Every request passes the guard first:
 The page itself and its assets carry no secrets and need no token; the page reads the token from
 the URL fragment `wbench open` puts it in.
 
+A second gate sits in front of the registry endpoints and `/api/page/comment`: a call that writes
+as the owner (Op.writes_as_owner) must also carry the page credential in `X-Workbench-Page-
+Credential`, matching the one `Hub` keeps in memory (never in hub.json, a log or an op response).
+The guard's token alone is not enough for these, because an agent can read that token from
+hub.json too; the page credential reaches only a window the hub itself opened (workbench.hub.
+launch, the `open` operation below). This is a guard against mistakes (the owner's own CLI, run
+without CLAUDECODE, still answers as the owner with just the token), not a security boundary
+against the same Unix user.
+
 Routes:
-    POST /api/op/<name>            every registry operation, except serve, open and mcp (they
-                                   start a hub, a window or an MCP server, not something a hub does)
+    POST /api/op/<name>            every registry operation except serve and mcp (they start a
+                                   hub or an MCP server, not something a hub does); a call that
+                                   writes as the owner also needs the page credential
     GET  /api/state                project, build id, kernel state, scenes, item counts
     GET  /api/blob/<sha>           a data message the kernel wrote to .workbench/blobs/
     GET  /api/asset/<item>/<name>  a file attached to a review item (thumbnails)
     POST /api/page/comment         the Comment tab: a comment on the pick with frozen evidence
+                                   (always an owner write; always needs the page credential)
     WS   /ws                       the page
     GET  /, /assets/...            the page, built from ui/ into static/
 `extra_routes` are mounted before the page, under the same guard (the agent link adds its own).
@@ -51,13 +62,22 @@ log = logging.getLogger("workbench.hub")
 
 STATIC = Path(__file__).resolve().parent / "static"
 TOKEN_HEADER = "x-workbench-token"
-NOT_OVER_HTTP = frozenset({"serve", "open", "mcp"})
+PAGE_HEADER = "x-workbench-page-credential"
+NOT_OVER_HTTP = frozenset({"serve", "mcp"})  # they start their own process, not something a hub does
 SHA_RE = re.compile(r"^[0-9a-f]{64}$")
 MAX_BODY = 32 * 2**20  # bytes: a comment's thumbnail is the largest body
+OWNER_WRITE_REFUSED = (
+    "owner actions need the page credential; open the page with `wbench open` or `serve --open`"
+)
 
 
 def _error(status: int, message: str) -> JSONResponse:
     return JSONResponse({"error": message}, status_code=status)
+
+
+def _page_credential_ok(request: Request, hub: Hub) -> bool:
+    given = request.headers.get(PAGE_HEADER) or ""
+    return hmac.compare_digest(given.encode(), hub.page_credential.encode())
 
 
 class Guard:
@@ -117,9 +137,13 @@ async def _json_body(request: Request):
 
 
 def _op_route(endpoint: Endpoint, hub: Hub) -> Route:
+    o = default_registry().get(endpoint.name)  # same Op the endpoint wraps; for writes_as_owner
+
     async def handle(request: Request) -> Response:
         try:
             body = await _json_body(request)
+            if o.writes_as_owner(body) and not _page_credential_ok(request, hub):
+                return _error(403, OWNER_WRITE_REFUSED)
             result = await run_in_threadpool(endpoint.call, body)
         except WorkbenchError as exc:
             return _error(exc.http_status, str(exc))
@@ -161,6 +185,8 @@ def create_app(
         return FileResponse(path, headers={"Cache-Control": "no-cache"})
 
     async def comment(request: Request) -> Response:
+        if not _page_credential_ok(request, hub):
+            return _error(403, OWNER_WRITE_REFUSED)
         try:
             body = await _json_body(request)
             result = await run_in_threadpool(hub.comment_from_page, body)

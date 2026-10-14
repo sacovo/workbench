@@ -181,6 +181,91 @@ def test_cli_refuses_owner_only_ops_under_claude_code(project, monkeypatch, caps
         execute(default_registry().get("comment"), {"title": "x"}, str(project.root))
 
 
+def test_writes_as_owner_is_the_one_rule_behind_the_role_owner_gate():
+    # Op.writes_as_owner is what cli.execute, the MCP shim and the hub's HTTP routes all call
+    # (docs/plan.md design principle 2 extended to authority): a single rule, not one check per op.
+    registry = default_registry()
+    for name in ("answer", "comment"):  # owner_only: always, whatever the arguments
+        o = registry.get(name)
+        assert o.writes_as_owner({}) is True
+        assert o.writes_as_owner({"role": "agent"}) is True  # owner_only ignores a role argument
+        assert o.writes_as_owner("not a dict") is True  # never crashes on malformed input either
+
+    for name in ("reply", "set-status", "attach", "link", "view-create"):  # take --role, default agent
+        o = registry.get(name)
+        assert o.writes_as_owner({"role": "owner"}) is True
+        assert o.writes_as_owner({"role": "agent"}) is False
+        assert o.writes_as_owner({"role": "reviewer"}) is False
+        assert o.writes_as_owner({}) is False  # omitted: the op's own default (agent) applies later
+        assert o.writes_as_owner("not a dict") is False
+
+    # ask and note take a role too, but "owner" is not even one of its choices (schema.py refuses
+    # it on bind()); writes_as_owner only looks at the string, so it is unaffected either way.
+    assert registry.get("ask").writes_as_owner({"role": "reviewer"}) is False
+    assert registry.get("status").writes_as_owner({}) is False  # a role-less op: never an owner write
+
+
+ROLE_TAKING_OPS = ("reply", "set-status", "attach", "link", "view-create")
+
+
+def _minimal_role_op_args(name: str, item_id: str, other_id: str, tmp_path) -> dict:
+    if name == "reply":
+        return {"id": item_id, "body": "hello"}
+    if name == "set-status":
+        return {"id": item_id, "to": "waiting_agent"}
+    if name == "attach":
+        source = tmp_path / "note.txt"
+        source.write_text("x")
+        return {"id": item_id, "source": str(source)}
+    if name == "link":
+        return {"id": item_id, "to": other_id}
+    if name == "view-create":
+        return {"assembly": "demo", "camera": {"position": [0.0, 0.0, 0.0], "target": [0.0, 0.0, 0.0]}}
+    raise AssertionError(name)
+
+
+@pytest.mark.parametrize("name", ROLE_TAKING_OPS)
+def test_cli_refuses_role_owner_for_every_role_taking_op_under_claude_code(project, monkeypatch, tmp_path, name):
+    # docs/plan.md's own examples of the gap: `wbench reply R-0001 "..." --role owner` and
+    # `wbench set-status R-0001 done --role owner` succeeded in the agent's shell (test_cli.py-
+    # style main() coverage of exactly those two is below). attach, link and view-create take the
+    # same --role and must be refused the same way, under the one rule, with no op-by-op special
+    # case: this test parametrizes over all five rather than hand-copying the check per op.
+    monkeypatch.chdir(project.root)
+    questions = [{"id": "q1", "text": "Which?", "options": [{"id": "a", "label": "A"}]}]
+    item_id = default_registry().get("ask").call({"title": "t1", "questions": questions}, project=project)["id"]
+    other_id = default_registry().get("ask").call({"title": "t2", "questions": questions}, project=project)["id"]
+    args = _minimal_role_op_args(name, item_id, other_id, tmp_path)
+
+    monkeypatch.setenv("CLAUDECODE", "1")
+    with pytest.raises(OwnerOnly, match="workbench page"):
+        execute(default_registry().get(name), {**args, "role": "owner"}, str(project.root))
+
+    # the same operation, same CLAUDECODE, still runs with role agent (the CLI's usual caller)
+    result = execute(default_registry().get(name), {**args, "role": "agent"}, str(project.root))
+    assert isinstance(result, dict) and result
+
+
+def test_cli_refuses_reply_and_set_status_with_role_owner_under_claude_code(project, monkeypatch, capsys):
+    monkeypatch.chdir(project.root)
+    questions = [{"id": "q1", "text": "Which?", "options": [{"id": "a", "label": "A"}]}]
+    main(["ask", "Front limit", "--questions", json.dumps(questions)])
+    capsys.readouterr()
+
+    monkeypatch.setenv("CLAUDECODE", "1")
+    assert main(["reply", "R-0001", "Applied 75 mm.", "--role", "owner"]) == 1
+    assert "owner actions come from the workbench page" in capsys.readouterr().err
+    assert main(["set-status", "R-0001", "done", "--role", "owner"]) == 1
+    assert "owner actions come from the workbench page" in capsys.readouterr().err
+    # refused before either ran: the item is exactly as `ask` left it
+    assert default_registry().get("item").call({"id": "R-0001"}, project=project)["status"] == "waiting_owner"
+
+    # the same commands, same CLAUDECODE, succeed with role agent (the CLI's own usual caller)
+    assert main(["reply", "R-0001", "Applied 75 mm.", "--role", "agent"]) == 0
+    capsys.readouterr()
+    assert main(["set-status", "R-0001", "done", "--role", "agent"]) == 0
+
+
 def test_owner_only_ops_run_via_the_cli_without_claude_code_and_via_the_hub_regardless(project, monkeypatch):
     questions = [{"id": "q1", "text": "Which?", "options": [{"id": "a", "label": "A"}]}]
     default_registry().get("ask").call({"title": "Front limit", "questions": questions}, project=project)
@@ -189,6 +274,11 @@ def test_owner_only_ops_run_via_the_cli_without_claude_code_and_via_the_hub_rega
     monkeypatch.delenv("CLAUDECODE", raising=False)
     state = execute(default_registry().get("comment"), {"title": "Via the CLI, no CLAUDECODE"}, str(project.root))
     assert state["opened"]["by"] == {"role": "owner"}
+
+    # Not only owner_only ops: a plain role="owner" argument is let through the same way, since a
+    # terminal with CLAUDECODE unset is the owner's own, not an agent's (docs/plan.md "today").
+    state = execute(default_registry().get("reply"), {"id": "R-0001", "body": "fine", "role": "owner"}, str(project.root))
+    assert state["last_activity"]["role"] == "owner"
 
     # The hub's HTTP handler calls Op.call() directly, never execute(): a CLAUDECODE set on the
     # hub's own process (it may itself have been started from inside Claude Code) must not matter.

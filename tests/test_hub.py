@@ -21,10 +21,10 @@ from websockets.exceptions import InvalidStatus
 from hub_helpers import WB, project  # noqa: F401  (project: fixture)
 from hub_running import RunningHub, fake_control, kernel_processes, wait_until
 from workbench.errors import HubNotRunning
-from workbench.hub.server import bind
+from workbench.hub.launch import open_window
 from workbench.ops import default_registry
 from workbench.ops.doctor import STALE_GL_VARS
-from workbench.project import pid_alive, write_hub_info
+from workbench.project import HubInfo, pid_alive, write_hub_info
 
 QUESTIONS = [
     {"id": "q1", "text": "Which front limit?", "options": [{"id": "a", "label": "35 mm"}, {"id": "b", "label": "75 mm"}], "recommended": "a"},
@@ -88,6 +88,64 @@ def test_the_api_needs_the_token_and_the_hubs_own_origin_and_host(running):
         assert refused.value.response.status_code == 403
 
 
+# -- the page-credential gate -------------------------------------------------------------------
+# answer and comment are owner_only; reply and set-status are not, but role="owner" makes them
+# write as the owner too (Op.writes_as_owner) - the exact gap this gate closes (docs/plan.md,
+# the authority-confusion risk): only the page `wbench open`/`serve --open` opened holds the
+# credential, so the hub.json token alone (what an agent's shell or an HTTP client reading that
+# file can present) is refused even though the Guard accepts it for everything else.
+
+OWNER_WRITE_CASES = [
+    ("answer", {"id": "R-0001", "answers": {"q1": {"choice": "a"}}}),
+    ("comment", {"title": "Edge too close"}),
+    ("reply", {"id": "R-0001", "body": "noted", "role": "owner"}),
+    ("set-status", {"id": "R-0001", "to": "done", "role": "owner"}),
+]
+
+
+@pytest.mark.parametrize(("name", "arguments"), OWNER_WRITE_CASES)
+def test_owner_writes_over_http_need_the_page_credential_even_with_the_right_token(running, name, arguments):
+    running.op("ask", title="Front limit", questions=QUESTIONS)  # R-0001, for reply/set-status/answer
+
+    for bad in (None, "wrong"):
+        status, body = running.request("POST", f"/api/op/{name}", arguments, page_token=bad)
+        assert status == 403 and "page credential" in body["error"], (bad, status, body)
+
+    status, body = running.request("POST", f"/api/op/{name}", arguments)  # DEFAULT: running.page_credential
+    assert status == 200, body
+
+
+def test_agent_writes_over_http_need_no_page_credential(running):
+    running.op("ask", title="Front limit", questions=QUESTIONS)  # R-0001
+    cases = [
+        ("ask", {"title": "Another one", "questions": QUESTIONS}),
+        ("note", {"kind": "finding", "title": "Edge too thin"}),
+        ("reply", {"id": "R-0001", "body": "still working on it"}),  # role defaults to agent
+        ("set-status", {"id": "R-0001", "to": "waiting_owner"}),
+    ]
+    for name, arguments in cases:
+        status, body = running.request("POST", f"/api/op/{name}", arguments, page_token=None)
+        assert status == 200, (name, body)
+
+
+def test_page_comment_needs_the_page_credential(running):
+    shown = running.op("show", assembly="demo")
+    page = running.page()
+    page.wait("wb_scene")
+    page.show_scene(shown["scene"])
+    pick(page, shown["scene"], {"lastPick": {"path": "/demo_assembly", "name": "carriage"}}, point=[0.5, 0.5, 1.0], normal=[0, 0, 1])
+    page.wait("wb_pick")
+    selection = running.op("selection")
+    comment = {"seq": selection["seq"], "title": "Too close to the wheel", "body": "", "camera": CAMERA}
+
+    for bad in (None, "wrong"):
+        status, body = running.request("POST", "/api/page/comment", comment, page_token=bad)
+        assert status == 403 and "page credential" in body["error"], (bad, status, body)
+
+    status, body = running.request("POST", "/api/page/comment", comment)  # DEFAULT: running.page_credential
+    assert status == 200, body
+
+
 # -- operations and blobs ----------------------------------------------------------------------
 
 def test_operations_answer_with_their_results_and_errors(running):
@@ -99,8 +157,7 @@ def test_operations_answer_with_their_results_and_errors(running):
         ("item", {"id": "R-0099"}, 404, "no item R-0099"),
         ("item", {"id": "R-0001", "bogus": 1}, 400, "unknown argument(s) bogus"),
         ("show", {"assembly": "nope"}, 400, "no assembly 'nope'"),
-        ("serve", {}, 404, "no route"),  # starting a hub or a window is not something a hub does
-        ("open", {}, 404, "no route"),
+        ("serve", {}, 404, "no route"),  # starting a hub is not something a hub does; open is (below)
     ]
     for name, arguments, code, needle in cases:
         status, body = running.request("POST", f"/api/op/{name}", arguments)
@@ -286,10 +343,8 @@ def test_a_pick_is_resolved_by_the_kernel_and_a_comment_freezes_it(running):
 
 # -- the app window ----------------------------------------------------------------------------
 
-def test_open_starts_a_native_wayland_app_window_without_the_stale_variables(project, tmp_path, monkeypatch):
-    record = tmp_path / "chromium.json"
-    bin_dir = tmp_path / "bin"
-    bin_dir.mkdir()
+def _fake_chromium(bin_dir, record) -> None:
+    """A stand-in `chromium` on PATH that records its argv and environment and exits."""
     fake = bin_dir / "chromium"
     fake.write_text(
         f"#!{sys.executable}\nimport json, os, sys\n"
@@ -297,27 +352,82 @@ def test_open_starts_a_native_wayland_app_window_without_the_stale_variables(pro
         f"os.replace({str(record)!r} + '.tmp', {str(record)!r})\n"
     )
     fake.chmod(0o755)
+
+
+def test_open_window_starts_a_native_wayland_app_window_without_the_stale_variables(project, tmp_path, monkeypatch):
+    # open_window() itself (workbench.hub.launch): the subprocess mechanics, independent of
+    # whether it is called from `wbench serve --open` or the `open` operation (both below).
+    record = tmp_path / "chromium.json"
+    bin_dir = tmp_path / "bin"
+    bin_dir.mkdir()
+    _fake_chromium(bin_dir, record)
     monkeypatch.setenv("PATH", f"{bin_dir}{os.pathsep}{os.environ['PATH']}")
     monkeypatch.setenv("WAYLAND_DISPLAY", "wayland-test")
     monkeypatch.setenv("VIRTUAL_ENV", "/home/sandro/.venv")
     for name in STALE_GL_VARS:
         monkeypatch.setenv(name, "nvidia")
-    open_op = default_registry().get("open")
-    with pytest.raises(HubNotRunning):
-        open_op.call({}, project=project)
 
-    listener = bind(0)
-    listener.listen()
-    port = listener.getsockname()[1]
-    try:
-        write_hub_info(project, port=port, token="tok-123")
-        result = open_op.call({}, project=project)
-        seen = json.loads(wait_until(lambda: record.exists() and record.read_text(), 10, "the fake chromium to run"))
-    finally:
-        listener.close()
-    assert seen["argv"][0] == f"--app=http://127.0.0.1:{port}/#token=tok-123"
+    with pytest.raises(HubNotRunning):  # the open operation needs a hub running in this process
+        default_registry().get("open").call({}, project=project)
+
+    result = open_window(project, HubInfo(pid=1234, port=5678, token="tok-123"), "page-cred-xyz")
+    seen = json.loads(wait_until(lambda: record.exists() and record.read_text(), 10, "the fake chromium to run"))
+    assert seen["argv"][0] == "--app=http://127.0.0.1:5678/#token=tok-123&pc=page-cred-xyz"
     assert "--ozone-platform=wayland" in seen["argv"]
     assert f"--user-data-dir={project.state_dir / 'chromium'}" in seen["argv"]
     assert sorted(set(STALE_GL_VARS) & set(seen["env"])) == [] and "VIRTUAL_ENV" not in seen["env"]
     assert seen["env"]["WAYLAND_DISPLAY"] == "wayland-test"
-    assert result["url"] == f"http://127.0.0.1:{port}/" and "tok-123" not in json.dumps(result)
+    assert result["url"] == "http://127.0.0.1:5678/"
+    dumped = json.dumps(result)
+    assert "tok-123" not in dumped and "page-cred-xyz" not in dumped  # neither secret in the result
+
+
+def test_open_is_forwarded_to_the_hub_and_its_response_never_carries_the_page_credential(running, tmp_path, monkeypatch):
+    # `open` is needs_hub=True (like show, selection, agents): the CLI forwards it over HTTP with
+    # only the hub.json token, so the page credential it hands the real browser (workbench.hub.
+    # launch) never has to pass through the CLI or appear in the op's own JSON result.
+    record = tmp_path / "chromium.json"
+    bin_dir = tmp_path / "bin"
+    bin_dir.mkdir()
+    _fake_chromium(bin_dir, record)
+    monkeypatch.setenv("PATH", f"{bin_dir}{os.pathsep}{os.environ['PATH']}")
+    monkeypatch.setenv("WAYLAND_DISPLAY", "wayland-test")
+
+    # open is not an owner write: the base token alone, with no page credential, is enough.
+    status, result = running.request("POST", "/api/op/open", {}, page_token=None)
+    assert status == 200, result
+    dumped = json.dumps(result)
+    assert running.page_credential not in dumped and running.token not in dumped
+
+    seen = json.loads(wait_until(lambda: record.exists() and record.read_text(), 10, "the fake chromium to run"))
+    url = next(a for a in seen["argv"] if a.startswith("--app="))
+    assert f"token={running.token}" in url and f"pc={running.page_credential}" in url
+
+
+def test_wbench_open_cli_forwards_over_http_and_never_sees_the_page_credential(running, tmp_path, monkeypatch):
+    # The real `wbench open` subprocess this time (argv parsing, ops.client.forward's own HTTP
+    # call), not just the operation or the route: proves the installed CLI, not only the Python
+    # layer underneath it, never receives or prints the page credential. The browser itself is
+    # launched by the hub (the `running` fixture, in this test process), not by the `wbench open`
+    # subprocess, so PATH/WAYLAND_DISPLAY are set on this process, matching where open_window()
+    # actually runs.
+    record = tmp_path / "chromium.json"
+    bin_dir = tmp_path / "bin"
+    bin_dir.mkdir()
+    _fake_chromium(bin_dir, record)
+    monkeypatch.setenv("PATH", f"{bin_dir}{os.pathsep}{os.environ['PATH']}")
+    monkeypatch.setenv("WAYLAND_DISPLAY", "wayland-test")
+    write_hub_info(running.project, port=running.port, token=running.token)  # as `wbench serve` would
+    try:
+        result = subprocess.run(
+            [str(WB), "-C", str(running.project.root), "open", "--json"],
+            capture_output=True, text=True, timeout=30,
+        )
+    finally:
+        (running.project.state_dir / "hub.json").unlink(missing_ok=True)
+    assert result.returncode == 0, result.stderr
+    assert running.page_credential not in result.stdout and running.token not in result.stdout
+
+    seen = json.loads(wait_until(lambda: record.exists() and record.read_text(), 10, "the fake chromium to run"))
+    url = next(a for a in seen["argv"] if a.startswith("--app="))
+    assert f"token={running.token}" in url and f"pc={running.page_credential}" in url

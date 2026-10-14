@@ -14,6 +14,7 @@
 // already has review/.
 
 import { execFile } from "node:child_process";
+import { randomBytes } from "node:crypto";
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -41,6 +42,11 @@ const QUESTIONS = [
     { id: "q1", text: "Which front limit?", options: [{ id: "a", label: "35 mm" }, { id: "b", label: "75 mm" }], recommended: "a" },
     { id: "q2", text: "Anything else?", options: [], free_text: true },
 ];
+// This driver starts the hub process itself (below), so it fixes the hub's page credential
+// through WB_PAGE_CREDENTIAL (workbench.hub.server, for tests only) instead of going through a
+// real `wbench open`: it then builds the page's own URL with it, the same way that open window
+// would have (workbench.hub.launch), without reading it back from the hub in any other way.
+const PAGE_CREDENTIAL = randomBytes(24).toString("hex");
 
 mkdirSync(OUT, { recursive: true });
 const result = { target: NAME, project: T.project, started: new Date().toISOString(), steps: [], pass: false };
@@ -153,7 +159,7 @@ try {
     if (existsSync(path.join(T.project, ".workbench", "hub.json"))) throw new Error(`${T.project}/.workbench/hub.json exists: is a hub running there?`);
 
     await step("serve: hub up, kernel ready", async () => {
-        hub = startProcess(WB, ["-C", T.project, "serve"], { log: hubLog });
+        hub = startProcess(WB, ["-C", T.project, "serve"], { log: hubLog, env: childEnv({ WB_PAGE_CREDENTIAL: PAGE_CREDENTIAL }) });
         info = await waitUntil(() => {
             try {
                 return JSON.parse(readFileSync(path.join(T.project, ".workbench", "hub.json"), "utf8"));
@@ -175,7 +181,7 @@ try {
     });
 
     await step("page: loads and shows the scene", async () => {
-        chrome = await startChrome({ url: `http://127.0.0.1:${info.port}/#token=${info.token}`, width: W, height: H, cdpPort: CDP, profileDir: path.join(OUT, `.chrome-${NAME}`), log: chromeLog });
+        chrome = await startChrome({ url: `http://127.0.0.1:${info.port}/#token=${info.token}&pc=${PAGE_CREDENTIAL}`, width: W, height: H, cdpPort: CDP, profileDir: path.join(OUT, `.chrome-${NAME}`), log: chromeLog });
         page = chrome.page;
         const shown = await waitUntil(() => ev("window.__wb && __wb.store().shown"), { timeoutMs: 300000, what: "the scene in the page" });
         await frames(2);

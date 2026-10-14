@@ -64,11 +64,12 @@ class RunningHub:
                  retire_grace: float = 30.0, static_dir: Path | None = None, ready_timeout: float = 20.0):
         self.project = project
         self.token = secrets.token_urlsafe(16)
+        self.page_credential = secrets.token_urlsafe(16)  # what a page `wbench open` opened would carry
         sock = bind(0)
         self.port = sock.getsockname()[1]
         command = kernel_command or [sys.executable, str(FAKE_KERNEL), "serve", "--project", str(project.root)]
-        self.hub = Hub(project, self.token, self.port, kernel_command=command, auto_show=auto_show,
-                       review_poll=0.1, code_poll=0.2, retire_grace=retire_grace)
+        self.hub = Hub(project, self.token, self.port, page_credential=self.page_credential, kernel_command=command,
+                       auto_show=auto_show, review_poll=0.1, code_poll=0.2, retire_grace=retire_grace)
         app = create_app(self.hub, **({} if static_dir is None else {"static_dir": static_dir}))
         config = uvicorn.Config(app, log_level="warning", access_log=False, lifespan="on", ws_ping_interval=None)
         self.server = uvicorn.Server(config)
@@ -86,8 +87,11 @@ class RunningHub:
         self.thread.join(30)
         assert not self.thread.is_alive(), "the hub did not stop"
 
-    def request(self, method: str, path: str, body=None, *, token=DEFAULT, headers: dict | None = None):
-        """(status, parsed JSON or raw bytes)."""
+    def request(self, method: str, path: str, body=None, *, token=DEFAULT, page_token=DEFAULT, headers: dict | None = None):
+        """(status, parsed JSON or raw bytes). `page_token` is what a page the hub itself opened
+        would send in X-Workbench-Page-Credential (DEFAULT: this hub's real page_credential, so a
+        plain `.op()`/`.request()` call acts like the page by default); pass None to act like an
+        agent holding only the hub.json token, or an explicit wrong value to test the 403."""
         h = {}
         if body is not None:
             h["Content-Type"] = "application/json"
@@ -95,6 +99,10 @@ class RunningHub:
             token = self.token
         if token is not None:
             h["X-Workbench-Token"] = token
+        if page_token is DEFAULT:
+            page_token = self.page_credential
+        if page_token is not None:
+            h["X-Workbench-Page-Credential"] = page_token
         h.update(headers or {})
         data = None if body is None else (body if isinstance(body, bytes) else json.dumps(body).encode())
         req = urllib.request.Request(self.url + path, data=data, method=method, headers=h)

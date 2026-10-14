@@ -41,10 +41,12 @@ class LinkedHub:
     def __init__(self, project):
         self.project = project
         self.token = secrets.token_urlsafe(16)
+        self.page_credential = secrets.token_urlsafe(16)  # what a page `wbench open` opened would carry
         sock = bind(0)
         self.port = sock.getsockname()[1]
         command = [sys.executable, str(FAKE_KERNEL), "serve", "--project", str(project.root)]
-        self.hub = Hub(project, self.token, self.port, kernel_command=command, auto_show=False, review_poll=0.1, code_poll=0.1)
+        self.hub = Hub(project, self.token, self.port, page_credential=self.page_credential, kernel_command=command,
+                       auto_show=False, review_poll=0.1, code_poll=0.1)
         self.link = AgentLink(project, lambda: self.hub.review.get("items", []), NullTransport(), token=self.token,
                               poke_review=self.hub.poke_review, turn_ended=self.hub._agent_turn_ended)
         self.hub.link = self.link  # as server.run() wires it
@@ -65,7 +67,8 @@ class LinkedHub:
     def request(self, method: str, path: str, body: dict | None = None, headers: dict | None = None):
         conn = http.client.HTTPConnection("127.0.0.1", self.port, timeout=10)
         conn.request(method, path, body=None if body is None else json.dumps(body),
-                     headers={"X-Workbench-Token": self.token, "Content-Type": "application/json", **(headers or {})})
+                     headers={"X-Workbench-Token": self.token, "X-Workbench-Page-Credential": self.page_credential,
+                               "Content-Type": "application/json", **(headers or {})})
         response = conn.getresponse()
         data = json.loads(response.read() or b"null")
         conn.close()

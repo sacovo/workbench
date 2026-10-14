@@ -218,6 +218,7 @@ class Hub:
         token: str,
         port: int,
         *,
+        page_credential: str,
         kernel_command: list[str] | None = None,
         auto_show: bool = True,
         review_poll: float = REVIEW_POLL,
@@ -226,6 +227,11 @@ class Hub:
     ):
         self.project = project
         self.token = token
+        # A second secret, never in .workbench/hub.json, a log or an op response (workbench.hub.
+        # launch, workbench.hub.app): only a page the hub itself opens receives it, in the URL
+        # fragment, so it is what tells an owner write over HTTP apart from the agent's own calls
+        # with the same hub.json token (workbench.hub.app's page-credential gate).
+        self.page_credential = page_credential
         self.port = port
         self.kernel_command = kernel_command or default_kernel_command(project.root)
         self.auto_show = auto_show

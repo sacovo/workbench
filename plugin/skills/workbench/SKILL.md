@@ -42,7 +42,8 @@ Targets: `{"kind": "part", "label": "lower_plate"}`, `{"kind": "param", "key":
 "robot.params:BASE.wheel_width"}`, `{"kind": "fact", "key": "..."}`, `{"kind": "file", "path":
 "src/robot/stability.py", "line": 145}`, `{"kind": "view", "id": "V-0001"}`.
 
-`wbench answer` and `wbench comment` write as the owner; they are refused in your shell. Never move the
+`wbench answer` and `wbench comment` write as the owner, and so does any other command given
+`--role owner` (you have no reason to pass it); all are refused in your shell. Never move the
 owner's camera: save a view and point at it instead.
 
 ## Asking the owner to decide

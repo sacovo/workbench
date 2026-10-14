@@ -1,24 +1,47 @@
-// The hub's HTTP API. The token comes from the URL fragment `wbench open` puts it in (#token=...),
-// never sent to the server as part of a URL, and is kept in sessionStorage so a reload works.
+// The hub's HTTP API. Two secrets come from the URL fragment `wbench open` / `serve --open` puts
+// them in (#token=...&pc=...), never sent to the server as part of a URL, and are kept in
+// sessionStorage so a reload works. `token` is the ordinary hub.json token, sent on every call.
+// `pageCredential` is the page credential: only a window the hub itself opened ever receives it
+// (never hub.json, a log or an op response), and the hub requires it, in addition to `token`, for
+// a call that writes as the owner (answer, comment, or role: "owner" on reply/set-status/view-
+// create/...) - the guard against the agent's own shell or an HTTP client with just the hub.json
+// token writing as the owner. Sent on every call regardless, same as `token`: the hub alone
+// decides which calls need it.
 
-export const token: string | null = (() => {
-    const m = location.hash.match(/token=([^&]+)/);
-    if (m) {
-        const t = decodeURIComponent(m[1]);
+interface PageSecrets {
+    token: string | null;
+    pageCredential: string | null;
+}
+
+function readPageSecrets(): PageSecrets {
+    const fromUrl = new URLSearchParams(location.hash.slice(1));
+    const urlToken = fromUrl.get("token");
+    const urlPageCredential = fromUrl.get("pc");
+    if (urlToken || urlPageCredential) {
         try {
-            sessionStorage.setItem("wb-token", t);
+            if (urlToken) sessionStorage.setItem("wb-token", urlToken);
+            if (urlPageCredential) sessionStorage.setItem("wb-page-credential", urlPageCredential);
         } catch {
-            /* storage off: the token lives as long as this document */
+            /* storage off: the secrets live as long as this document */
         }
         history.replaceState(null, "", location.pathname + location.search);
-        return t;
     }
-    try {
-        return sessionStorage.getItem("wb-token");
-    } catch {
-        return null;
-    }
-})();
+    const stored = (key: string): string | null => {
+        try {
+            return sessionStorage.getItem(key);
+        } catch {
+            return null;
+        }
+    };
+    return {
+        token: urlToken ?? stored("wb-token"),
+        pageCredential: urlPageCredential ?? stored("wb-page-credential"),
+    };
+}
+
+const secrets = readPageSecrets();
+export const token = secrets.token;
+export const pageCredential = secrets.pageCredential;
 
 export class ApiError extends Error {
     status: number;
@@ -31,6 +54,7 @@ export class ApiError extends Error {
 export async function api<T = unknown>(path: string, init: RequestInit = {}): Promise<T> {
     const headers = new Headers(init.headers);
     if (token) headers.set("X-Workbench-Token", token);
+    if (pageCredential) headers.set("X-Workbench-Page-Credential", pageCredential);
     if (init.body && !headers.has("Content-Type")) headers.set("Content-Type", "application/json");
     const response = await fetch(path, { ...init, headers });
     const json = (response.headers.get("Content-Type") ?? "").includes("json");

@@ -86,6 +86,37 @@ def test_call_status_then_ask_then_inbox(project):
     anyio.run(go)
 
 
+def test_role_owner_is_refused_even_without_claude_code(project, monkeypatch):
+    # The shim serves agents only: a role="owner" call is refused unconditionally, not only under
+    # CLAUDECODE (an MCP server subprocess is not guaranteed to inherit it from the agent's
+    # shell), so CLAUDECODE is explicitly unset here to prove this is not the CLI's own gate
+    # (workbench.cli.execute) firing instead of the shim's.
+    monkeypatch.delenv("CLAUDECODE", raising=False)
+
+    async def go():
+        async with stdio_client(_params(str(project.root))) as (read, write):
+            async with ClientSession(read, write) as session:
+                await session.initialize()
+
+                questions = [{"id": "q1", "text": "Which?", "options": [{"id": "a", "label": "A"}]}]
+                asked = await session.call_tool("ask", {"title": "Front limit", "questions": questions})
+                item_id = json.loads(_text(asked))["id"]
+
+                refused = await session.call_tool("reply", {"id": item_id, "body": "noted", "role": "owner"})
+                assert refused.is_error is True and "owner" in _text(refused).lower()
+
+                camera = {"position": [0.0, 0.0, 0.0], "target": [0.0, 0.0, 0.0]}
+                refused_view = await session.call_tool("view-create", {"assembly": "demo", "camera": camera, "role": "owner"})
+                assert refused_view.is_error is True and "owner" in _text(refused_view).lower()
+
+                # role agent (reply's own default) still works, over the same connection
+                ok = await session.call_tool("reply", {"id": item_id, "body": "noted"})
+                assert ok.is_error is False
+                assert json.loads(_text(ok))["last_activity"]["role"] == "agent"
+
+    anyio.run(go)
+
+
 def test_the_project_is_found_from_claude_project_dir_when_elsewhere(project, tmp_path):
     async def go():
         params = _params(str(tmp_path), CLAUDE_PROJECT_DIR=str(project.root))

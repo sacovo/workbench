@@ -177,7 +177,7 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(result, indent=2, ensure_ascii=False))
     else:
         print(o.render(result))
-    return 0
+    return o.exit_code(result) if o.exit_code is not None else 0
 
 
 if __name__ == "__main__":

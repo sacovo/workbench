@@ -125,3 +125,37 @@ def test_session_defaults_from_wb_session_when_the_flag_is_not_given(project, mo
     monkeypatch.setenv("WB_SESSION", "sess-from-env")
     assert main(["status", "--json"]) == 0
     json.loads(capsys.readouterr().out)  # does not raise "unknown argument session"
+
+
+class _Done:
+    def __init__(self, returncode, stdout, stderr=""):
+        self.returncode, self.stdout, self.stderr = returncode, stdout, stderr
+
+
+def test_check_prints_the_table_and_exits_by_the_result(project, monkeypatch, capsys):
+    # The kernel side (python -m workbench_kernel check) is tested in packages/kernel; here only
+    # what the hub does with its answer: the command it runs, the table, and the exit code.
+    from workbench.ops import check_ops
+
+    calls = []
+
+    def fake_run(command, **kwargs):
+        calls.append((command, kwargs["env"]))
+        ok = "good" in command
+        return _Done(0 if ok else 1, "noise\n" + json.dumps({"ok": ok, "text": f"TABLE {ok}", "groups": [], "count": 1, "failed": []}))
+
+    monkeypatch.chdir(project.root)
+    monkeypatch.setenv("VIRTUAL_ENV", "/elsewhere")
+    monkeypatch.setattr(check_ops.subprocess, "run", fake_run)
+    assert main(["check", "--groups", '["good"]']) == 0
+    assert capsys.readouterr().out.strip() == "TABLE True"
+    assert main(["check"]) == 1
+    assert capsys.readouterr().out.strip() == "TABLE False"
+    command, env = calls[0]
+    assert command[:4] == ["uv", "run", "--project", str(project.root)] and command[-1] == "good"
+    assert "VIRTUAL_ENV" not in env
+
+    # A run that cannot report (a wrong group, a broken environment) is an error, not a table.
+    monkeypatch.setattr(check_ops.subprocess, "run", lambda command, **kw: _Done(2, json.dumps({"ok": False, "error": "no check group 'x'"})))
+    assert main(["check", "--groups", '["x"]']) == 1
+    assert "no check group 'x'" in capsys.readouterr().err

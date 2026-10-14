@@ -117,5 +117,40 @@ def main(argv: list[str] | None = None) -> int:
     sub = parser.add_subparsers(dest="command", required=True)
     serve_parser = sub.add_parser("serve", help="answer the protocol on stdin and stdout")
     serve_parser.add_argument("--project", type=Path, default=Path.cwd(), help="project root (default: current directory)")
+    check_parser = sub.add_parser("check", help="run the project's check groups and print the result")
+    check_parser.add_argument("groups", nargs="*", help="groups to run (default: all)")
+    check_parser.add_argument("--project", type=Path, default=Path.cwd(), help="project root (default: current directory)")
+    check_parser.add_argument("--json", action="store_true", help="print JSON (with the table as 'text')")
     args = parser.parse_args(argv)
+    if args.command == "check":
+        return check(args.project, args.groups, args.json)
     return serve(args.project)
+
+
+def check(project_root: Path, groups: list[str], as_json: bool) -> int:
+    """Run check groups. Exit 0 when every check passes, 1 when any fails or a group asserts
+    nothing, 2 when the project or a group name is wrong. With --json, stdout carries exactly one
+    JSON object and whatever the checks print goes to stderr."""
+    import contextlib
+    import importlib
+
+    from workbench_kernel.api import Project
+    from workbench_kernel.checks import CheckError, run_checks, table
+    from workbench_kernel.paths import manifest_module
+
+    out = sys.stdout
+    with contextlib.redirect_stdout(sys.stderr):
+        try:
+            module = importlib.import_module(manifest_module(project_root.resolve()))
+            projects = [v for v in vars(module).values() if isinstance(v, Project)]
+            if len(projects) != 1:
+                raise CheckError(f"manifest {module.__name__} must create exactly one Project, has {len(projects)}")
+            result = run_checks(projects[0], groups or None)
+        except Exception as exc:  # noqa: BLE001 - a usage error, reported as such
+            result = {"ok": False, "error": f"{type(exc).__name__}: {exc}"}
+    if "error" in result:
+        out.write(json.dumps(result) + "\n" if as_json else f"check: {result['error']}\n")
+        return 2
+    result["text"] = table(result)
+    out.write(json.dumps(result, allow_nan=False) + "\n" if as_json else result["text"] + "\n")
+    return 0 if result["ok"] else 1

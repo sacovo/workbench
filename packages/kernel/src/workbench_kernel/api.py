@@ -110,6 +110,7 @@ class Project:
         self.units = units
         self.params = {module: list(names) for module, names in params.items()}
         self.assemblies: dict[str, AssemblySpec] = {}
+        self.check_groups: dict[str, Callable[[], list]] = {}
 
     def assembly(self, name: str) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
         """Register an assembly builder under `name`. The function is returned unchanged and not called."""
@@ -121,6 +122,25 @@ class Project:
                 raise ManifestError(f"assembly {name!r} is registered twice")
             doc = inspect.getdoc(fn)
             self.assemblies[name] = AssemblySpec(name, fn, _arguments(name, fn), doc)
+            return fn
+
+        return register
+
+    def checks(self, name: str) -> Callable[[Callable[[], list]], Callable[[], list]]:
+        """Register a check group under `name`: a function without arguments that returns a list of
+        `workbench_kernel.checks.Check`. The function is returned unchanged and not called."""
+        if not isinstance(name, str) or not name:
+            raise ManifestError("a check group needs a non-empty name")
+
+        def register(fn: Callable[[], list]) -> Callable[[], list]:
+            if name in self.check_groups:
+                raise ManifestError(f"check group {name!r} is registered twice")
+            required = [
+                p.name for p in inspect.signature(fn).parameters.values() if p.default is inspect.Parameter.empty
+            ]
+            if required:
+                raise ManifestError(f"check group {name!r} must take no arguments, takes {required}")
+            self.check_groups[name] = fn
             return fn
 
         return register
@@ -143,4 +163,5 @@ class Project:
             "units": self.units,
             "assemblies": {name: spec.describe() for name, spec in self.assemblies.items()},
             "params": {module: list(names) for module, names in self.params.items()},
+            "check_groups": list(self.check_groups),
         }

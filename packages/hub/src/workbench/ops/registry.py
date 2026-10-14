@@ -136,6 +136,9 @@ class Op:
     # refuses to run it as a Claude Code agent's shell (workbench.cli.execute). Never checked on
     # the hub's HTTP path, which calls Op.call() directly.
     owner_only: bool = False
+    # Exit status of the CLI for a successful call's result (default 0): `check` exits 1 when a
+    # check fails, so a shell or CI can gate on it while still printing the whole table.
+    exit_code: Callable[[dict], int] | None = None
 
     @property
     def needs_project(self) -> bool:
@@ -237,6 +240,7 @@ class Registry:
         owner_only: bool = False,
         args: dict[str, str] | None = None,
         human: Callable[[dict], str] | None = None,
+        exit_code: Callable[[dict], int] | None = None,
     ) -> Callable[[Callable[..., dict]], Callable[..., dict]]:
         """Decorator registering an operation; see the module docstring."""
 
@@ -256,6 +260,7 @@ class Registry:
                 human=human,
                 description=inspect.getdoc(fn) or "",
                 owner_only=owner_only,
+                exit_code=exit_code,
             )
             return fn
 

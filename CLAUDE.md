@@ -31,6 +31,7 @@ env -u VIRTUAL_ENV uv run wbench set-status R-0001 done                   # or d
 env -u VIRTUAL_ENV uv run wbench view-create robot --camera '{...}'       # save a view
 env -u VIRTUAL_ENV uv run wbench status                                   # project, build id, hub, item counts
 env -u VIRTUAL_ENV uv run wbench snapshot                                 # working tree to refs/wb/snap/<build id>
+env -u VIRTUAL_ENV uv run wbench check [--groups '[...]']                 # the project's engineering checks; exit 1 on a failure
 ```
 
 `examples/minimal` is its own uv project, not a workspace member, so it has its own lockfile and

@@ -1,0 +1,87 @@
+{
+  "closed_form": {
+    "deflection_bending": 2.2857142857142856,
+    "deflection": 2.2902742857142857,
+    "frequency": 205.62954893301142
+  },
+  "rows": [
+    {
+      "size": 5.0,
+      "elements": 2004,
+      "nodes": 3965,
+      "ccx": {
+        "tip_uz": -2.267587614035088,
+        "reaction": [
+          1.989804e-09,
+          2.07291e-09,
+          100.0
+        ],
+        "energy": 113.3798,
+        "frequencies": [
+          206.5697,
+          409.7786,
+          1279.729
+        ]
+      },
+      "skfem": {
+        "tip_uz": -2.2675848803546623,
+        "energy": 113.37975178575128
+      }
+    },
+    {
+      "size": 3.5,
+      "elements": 5242,
+      "nodes": 9763,
+      "ccx": {
+        "tip_uz": -2.2693658655462183,
+        "reaction": [
+          2.600601e-09,
+          3.250963e-09,
+          100.0
+        ],
+        "energy": 113.4684,
+        "frequencies": [
+          206.4614,
+          409.6715,
+          1278.903
+        ]
+      },
+      "skfem": {
+        "tip_uz": -2.2693639812901987,
+        "energy": 113.46841139878238
+      }
+    },
+    {
+      "size": 2.5,
+      "elements": 12832,
+      "nodes": 22091,
+      "ccx": {
+        "tip_uz": -2.2703618134715025,
+        "reaction": [
+          3.545715e-10,
+          -1.595152e-09,
+          100.0
+        ],
+        "energy": 113.5182,
+        "frequencies": [
+          206.4008,
+          409.5792,
+          1278.439
+        ]
+      },
+      "skfem": {
+        "tip_uz": -2.2703605509137152,
+        "energy": 113.51816939566885
+      }
+    }
+  ],
+  "checks": {
+    "deflection vs Timoshenko": -0.008694361355313873,
+    "deflection vs Euler-Bernoulli": -0.006716706606217593,
+    "frequency vs Euler-Bernoulli": 0.0037506820930675033,
+    "skfem vs ccx deflection": -5.561042207835598e-07,
+    "reaction z + F": 0.0,
+    "energy vs F*d/2": 9.630749093769708e-07,
+    "change, last two meshes": 0.0004388661786116632
+  }
+}

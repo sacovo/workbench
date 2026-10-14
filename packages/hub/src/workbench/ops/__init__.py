@@ -10,7 +10,7 @@ from workbench.ops.registry import REGISTRY, Endpoint, Op, Param, Registry, op
 def default_registry() -> Registry:
     # Imported here, not at module level, so that registry.py can be imported by the operation
     # modules without a cycle.
-    from workbench.ops import doctor, project_ops, review_ops  # noqa: F401  (registers on import)
+    from workbench.ops import doctor, hub_ops, project_ops, review_ops  # noqa: F401  (registers on import)
 
     return REGISTRY
 

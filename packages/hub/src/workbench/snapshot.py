@@ -21,6 +21,7 @@ are recognisable, work without a configured git identity and never prompt for a 
 from __future__ import annotations
 
 import os
+import subprocess
 import tempfile
 from pathlib import Path
 
@@ -85,11 +86,19 @@ def working_tree(path: str | os.PathLike) -> str:
     and untracked, not ignored; excluded and out-of-scope paths keep HEAD's content), via a temp
     index."""
     top, pathspec = project_scope(path)
+    # `git add` refuses the whole command when an exclude names a path that .gitignore already
+    # ignores (as many projects do with .workbench/); such a path is never added anyway.
+    pathspec = [p for p in pathspec if not (p.startswith(":(exclude") and _ignored(top, p.split(")", 1)[1]))]
     with tempfile.TemporaryDirectory(prefix="wb-snapshot-") as tmp:
         env = git_env(GIT_INDEX_FILE=str(Path(tmp) / "index"))
         git(["read-tree", "HEAD"], cwd=top, env=env)
         git(["add", "-A", "--", *pathspec], cwd=top, env=env)
         return git(["write-tree"], cwd=top, env=env).decode().strip()
+
+
+def _ignored(top: Path, rel: str) -> bool:
+    """True if git ignores `rel` (a path relative to the repository top)."""
+    return subprocess.run(["git", "check-ignore", "-q", "--", rel], cwd=top, capture_output=True).returncode == 0
 
 
 def _resolve(top: Path, ref: str) -> str | None:

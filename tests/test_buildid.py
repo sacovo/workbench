@@ -228,3 +228,16 @@ def test_a_review_write_changes_neither_the_build_id_nor_the_snapshot(project):
 
     in_tree = git_quiet(project.root, "ls-tree", "-r", "--name-only", after["tree"]).splitlines()
     assert "review/R-0001.yaml" not in in_tree and "review/INDEX.md" not in in_tree
+
+
+def test_snapshot_works_when_the_workbench_directory_is_git_ignored(tmp_path, monkeypatch):
+    # A project that ignores .workbench/ (my-robot does): naming an ignored path in `git add`'s
+    # exclude pathspec made git refuse the whole add.
+    isolate_git(monkeypatch)
+    root = make_repo(tmp_path / "proj", {".gitignore": "build/\n.workbench/\n"})
+    (root / ".workbench").mkdir()
+    (root / ".workbench/ask.json").write_text("{}\n")
+    (root / "new.txt").write_text("x\n")
+    result = snapshot(root)
+    assert "new.txt" in _files_in_commit(root, result["commit"])
+    assert not any(name.startswith(".workbench") for name in _files_in_commit(root, result["commit"]))

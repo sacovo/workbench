@@ -79,3 +79,11 @@ def test_an_empty_command_is_refused(project):
 
     with pytest.raises(InvalidInput):
         run(project, "run", title="Nothing", command="  ")
+
+
+def test_a_running_job_prints_in_item_and_status(project):
+    from workbench.cli import main
+
+    state = ReviewStore(project).open_item({"by": {"role": "agent"}, "kind": "job", "title": "Long"})
+    assert main(["-C", str(project.root), "item", state["id"]]) == 0
+    assert main(["-C", str(project.root), "status"]) == 0

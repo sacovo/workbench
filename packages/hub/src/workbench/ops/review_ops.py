@@ -24,7 +24,7 @@ Author = Literal["agent", "reviewer"]
 Status = Literal["waiting_owner", "waiting_agent", "done", "dropped"]
 NoteKind = Literal["comment", "finding", "measurement", "change"]
 
-WHOSE = {"waiting_owner": "owner's move", "waiting_agent": "agent's move", "done": "done", "dropped": "dropped"}
+WHOSE = {"waiting_owner": "owner's move", "waiting_agent": "agent's move", "done": "done", "dropped": "dropped", "running": "running"}
 
 _TARGETS_HELP = (
     "JSON list of targets: {kind: part, label, assembly?} | {kind: param, key: \"robot.params:BASE.wheel_width\"} | "

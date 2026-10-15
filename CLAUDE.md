@@ -34,6 +34,9 @@ env -u VIRTUAL_ENV uv run wbench snapshot                                 # work
 env -u VIRTUAL_ENV uv run wbench check [--groups '[...]']                 # the project's engineering checks; exit 1 on a failure
 env -u VIRTUAL_ENV uv run wbench run "Full test suite" "uv run pytest -q"           # a job: its end wakes the agent
 env -u VIRTUAL_ENV uv run wbench job-check                                # report jobs whose runner died
+env -u VIRTUAL_ENV uv run wbench ledger                                   # assumed vs measured values, and the outputs they hold
+env -u VIRTUAL_ENV uv run wbench measure KEY --value 36.1 --source "..."  # record a measurement (no --value: the owner's answer)
+env -u VIRTUAL_ENV uv run wbench make lower_plate.dxf                     # a declared output as a job; refused while held
 ```
 
 `examples/minimal` is its own uv project, not a workspace member, so it has its own lockfile and

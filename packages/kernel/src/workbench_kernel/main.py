@@ -121,10 +121,37 @@ def main(argv: list[str] | None = None) -> int:
     check_parser.add_argument("groups", nargs="*", help="groups to run (default: all)")
     check_parser.add_argument("--project", type=Path, default=Path.cwd(), help="project root (default: current directory)")
     check_parser.add_argument("--json", action="store_true", help="print JSON (with the table as 'text')")
+    ledger_parser = sub.add_parser("ledger", help="print the ledger of assumed and measured values, and the holds, as JSON")
+    ledger_parser.add_argument("--project", type=Path, default=Path.cwd(), help="project root (default: current directory)")
+    ledger_parser.add_argument("--output", help="also list why this output is held")
     args = parser.parse_args(argv)
     if args.command == "check":
         return check(args.project, args.groups, args.json)
+    if args.command == "ledger":
+        return ledger(args.project, args.output)
     return serve(args.project)
+
+
+def ledger(project_root: Path, output: str | None) -> int:
+    """Print the ledger's summary as one JSON object (workbench_kernel.ledger.summary); with an
+    output, also its holds. Exit 0, or 2 when the manifest or the ledger cannot be read."""
+    import contextlib
+
+    from workbench_kernel import ledger as ledger_
+
+    out = sys.stdout
+    with contextlib.redirect_stdout(sys.stderr):
+        try:
+            root = project_root.resolve()
+            result = ledger_.summary(ledger_._project(root), root)
+            if output is not None:
+                result["output"] = output
+                result["holds"] = ledger_.holds(ledger_._project(root), root, output)
+        except Exception as exc:  # noqa: BLE001 - a usage error, reported as such
+            out.write(json.dumps({"error": f"{type(exc).__name__}: {exc}"}) + "\n")
+            return 2
+    out.write(json.dumps(result, default=repr) + "\n")
+    return 0
 
 
 def check(project_root: Path, groups: list[str], as_json: bool) -> int:

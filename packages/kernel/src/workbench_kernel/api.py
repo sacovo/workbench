@@ -111,6 +111,8 @@ class Project:
         self.params = {module: list(names) for module, names in params.items()}
         self.assemblies: dict[str, AssemblySpec] = {}
         self.check_groups: dict[str, Callable[[], list]] = {}
+        self.assumptions: dict = {}  # key -> workbench_kernel.ledger.Assumption
+        self.outputs: dict = {}  # name -> workbench_kernel.ledger.Output
 
     def assembly(self, name: str) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
         """Register an assembly builder under `name`. The function is returned unchanged and not called."""
@@ -145,6 +147,35 @@ class Project:
 
         return register
 
+    def assume(self, key: str, item: str, unit: str, tolerance: float = 0.0, note: str = "") -> None:
+        """Declare a parameter (`module:OBJECT.field`) as assumed until measured; `item` is the
+        measurement request that asks for it. Outputs that need it are held until a measurement
+        is recorded in the ledger and the parameter carries it (workbench_kernel.ledger)."""
+        from workbench_kernel.ledger import Assumption, split_key
+
+        split_key(key)
+        if key in self.assumptions:
+            raise ManifestError(f"assumption {key!r} is declared twice")
+        if not isinstance(item, str) or not item or not isinstance(unit, str) or not unit:
+            raise ManifestError(f"assumption {key!r} needs the item that asks for it and a unit")
+        if isinstance(tolerance, bool) or not isinstance(tolerance, (int, float)) or tolerance < 0:
+            raise ManifestError(f"assumption {key!r}: tolerance must be a number of at least 0")
+        self.assumptions[key] = Assumption(key, item, unit, float(tolerance), note)
+
+    def output(self, name: str, command: str, needs: list[str] | tuple[str, ...] = (), doc: str = "") -> None:
+        """Declare a file the project makes, the command that makes it, and the assumed values it
+        rests on. Assumptions are declared before the outputs that need them."""
+        from workbench_kernel.ledger import Output
+
+        if not isinstance(name, str) or not name or not isinstance(command, str) or not command.strip():
+            raise ManifestError("an output needs a name and a command")
+        if name in self.outputs:
+            raise ManifestError(f"output {name!r} is declared twice")
+        unknown = [key for key in needs if key not in self.assumptions]
+        if unknown:
+            raise ManifestError(f"output {name!r} needs {unknown}, which no assume() declares")
+        self.outputs[name] = Output(name, command, tuple(needs), doc)
+
     def check_params(self) -> None:
         """Every declared parameter object exists. Imports the parameter modules, so the kernel
         calls it only after the manifest itself has been imported."""
@@ -164,4 +195,6 @@ class Project:
             "assemblies": {name: spec.describe() for name, spec in self.assemblies.items()},
             "params": {module: list(names) for module, names in self.params.items()},
             "check_groups": list(self.check_groups),
+            "assumptions": [a.describe() for a in self.assumptions.values()],
+            "outputs": [o.describe() for o in self.outputs.values()],
         }

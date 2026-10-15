@@ -27,10 +27,17 @@ class Waiting:
     count: int  # unread owner events
     event: str  # type of that newest event: answer, open, reply, status, attach, link, update
     author: str | None  # session id of the agent that opened the item, if an agent did
+    by: str = "owner"  # role of the newest unread event: owner, or runner for a job's end
 
     @property
     def due(self) -> bool:
         return self.status == "waiting_agent"
+
+    def news(self) -> str:
+        """What happened, in two or three fixed words: "owner answered", "job ended"."""
+        from workbench.agentlink.texts import verb
+
+        return "job ended" if self.by == "runner" else f"owner {verb(self.event)}"
 
 
 def event_type(state: dict, index: int) -> str:
@@ -69,6 +76,7 @@ def waiting(items: Iterable[dict]) -> list[Waiting]:
                 count=len(unread),
                 event=event_type(state, last),
                 author=_author(state),
+                by="runner" if (state.get("last_activity") or {}).get("role") == "runner" and last == state["last_activity"]["index"] else "owner",
             )
         )
     return out

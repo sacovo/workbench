@@ -59,7 +59,7 @@ def wake_pointer(due: Sequence[Waiting]) -> str:
     """Typed into an idle agent: ids and fixed verbs only."""
     if not due:
         raise ValueError("a wake pointer needs at least one item")
-    parts = "; ".join(f"owner {verb(w.event)} {w.id}" for w in due[:MAX_LISTED])
+    parts = "; ".join(f"{w.news()} {w.id}" for w in due[:MAX_LISTED])
     return f"{POINTER_PREFIX} {parts}{_more(due)}. {PULL}"
 
 
@@ -68,7 +68,7 @@ def stop_reason(due: Sequence[Waiting]) -> str:
     if not due:
         raise ValueError("a stop reason needs at least one item")
     ids = ", ".join(w.id for w in due[:MAX_LISTED])
-    return f"{POINTER_PREFIX} unread owner events on {ids}{_more(due)}. {PULL}"
+    return f"{POINTER_PREFIX} unread events on {ids}{_more(due)}. {PULL}" if any(w.by != "owner" for w in due[:MAX_LISTED]) else f"{POINTER_PREFIX} unread owner events on {ids}{_more(due)}. {PULL}"
 
 
 def context(waiting: Sequence[Waiting]) -> str:
@@ -77,7 +77,7 @@ def context(waiting: Sequence[Waiting]) -> str:
         raise ValueError("context needs at least one item")
     n = len(waiting)
     listed = "; ".join(
-        f'{w.id} {w.kind} "{clean_title(w.title)}" (owner {verb(w.event)})' for w in waiting[:MAX_LISTED]
+        f'{w.id} {w.kind} "{clean_title(w.title)}" ({w.news()})' for w in waiting[:MAX_LISTED]
     )
     noun = "item has" if n == 1 else "items have"
     return f"{POINTER_PREFIX} {n} {noun} owner events the agent has not read: {listed}{_more(waiting)}. {PULL}"

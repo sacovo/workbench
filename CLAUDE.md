@@ -32,6 +32,8 @@ env -u VIRTUAL_ENV uv run wbench view-create robot --camera '{...}'       # save
 env -u VIRTUAL_ENV uv run wbench status                                   # project, build id, hub, item counts
 env -u VIRTUAL_ENV uv run wbench snapshot                                 # working tree to refs/wb/snap/<build id>
 env -u VIRTUAL_ENV uv run wbench check [--groups '[...]']                 # the project's engineering checks; exit 1 on a failure
+env -u VIRTUAL_ENV uv run wbench run "Full test suite" "uv run pytest -q"           # a job: its end wakes the agent
+env -u VIRTUAL_ENV uv run wbench job-check                                # report jobs whose runner died
 ```
 
 `examples/minimal` is its own uv project, not a workspace member, so it has its own lockfile and

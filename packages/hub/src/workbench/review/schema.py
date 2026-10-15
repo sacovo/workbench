@@ -45,9 +45,10 @@ from pathlib import PurePosixPath
 from workbench.buildid import BUILD_ID_RE
 from workbench.errors import InvalidInput
 
-KINDS = ("comment", "finding", "decision", "measurement", "change")
-ROLES = ("owner", "agent", "reviewer")
-STATUSES = ("waiting_owner", "waiting_agent", "done", "dropped")
+KINDS = ("comment", "finding", "decision", "measurement", "change", "job")
+# runner: the workbench itself, reporting on a job it ran for someone (workbench.jobs).
+ROLES = ("owner", "agent", "reviewer", "runner")
+STATUSES = ("waiting_owner", "waiting_agent", "done", "dropped", "running")  # running: a job, until its runner reports
 EVENT_TYPES = ("open", "reply", "answer", "status", "delivered", "attach", "link")
 TARGET_KINDS = ("part", "param", "fact", "file", "view")
 

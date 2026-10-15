@@ -32,6 +32,8 @@ from workbench.errors import InvalidInput
 
 
 def initial_status(kind: str, role: str) -> str:
+    if kind == "job":
+        return "running"  # until the runner reports the end
     if role == "owner":
         return "waiting_agent"
     if role == "reviewer" and kind in ("finding", "comment", "change"):
@@ -104,6 +106,9 @@ def fold(events: list[dict], item_id: str) -> dict:
         return ev.get("by", {}).get("role")
 
     owner_events = [i for i, ev in enumerate(events) if role(ev) == "owner"]
+    # A job's end, reported by the runner, is news for both sides: the agent is woken for it like
+    # for an owner event, and the owner sees it in the page.
+    runner_events = [i for i, ev in enumerate(events) if role(ev) == "runner"]
     last_owner = owner_events[-1] if owner_events else -1
     activity = [(i, ev) for i, ev in enumerate(events) if ev["event"] != "delivered"]
     last_i, last_ev = activity[-1]
@@ -132,9 +137,9 @@ def fold(events: list[dict], item_id: str) -> dict:
             "attachments": attachments,
             "links": links,
             "last_activity": {"at": last_ev["at"], "role": role(last_ev), "event": last_ev["event"], "index": last_i},
-            "unread_agent": [i for i in owner_events if i > last_delivered],
+            "unread_agent": [i for i in sorted(owner_events + runner_events) if i > last_delivered],
             "unread_owner": [
-                i for i, ev in enumerate(events) if i > last_owner and role(ev) in ("agent", "reviewer")
+                i for i, ev in enumerate(events) if i > last_owner and role(ev) in ("agent", "reviewer", "runner")
             ],
             "delivered": delivered,
             "event_count": len(events),

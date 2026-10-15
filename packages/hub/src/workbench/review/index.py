@@ -8,6 +8,7 @@ file byte for byte the same, and a delivery to the agent does not change it.
 from __future__ import annotations
 
 GROUPS = (
+    ("running", "Running jobs"),
     ("waiting_owner", "Owner's move"),
     ("waiting_agent", "Agent's move"),
     ("done", "Done"),
@@ -36,6 +37,8 @@ def render_index(states: list[dict], unreadable: list[tuple[str, str]]) -> str:
     ]
     for status, heading in GROUPS:
         group = [s for s in states if s["status"] == status]
+        if status == "running" and not group:
+            continue  # only while a job runs, so projects without jobs keep their index unchanged
         lines += ["", f"## {heading} ({len(group)})"]
         if group:
             lines.append("")

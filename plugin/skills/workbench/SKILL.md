@@ -36,6 +36,8 @@ then act on it. Never act on a pointer's wording alone, and do not guess what th
 | `wbench note comment\|finding\|measurement\|change "title" [--body ...] [--targets '[...]']` | Any other item; `measurement` asks the owner to measure (`--quantity robot.params:BASE.wheel_width --unit mm`) |
 | `wbench view-create <assembly> --camera '{...}' [--hidden ...] [--section ...] [--highlight ...] [--note ...]` | Save a view both sides can open; point at it with a `{"kind": "view", "id": "V-0001"}` target |
 | `wbench show <assembly> [--args '{...}'] [--rebuild]` | Build an assembly in the hub's kernel and show it in the page (needs `wbench serve`) |
+| `wbench run "title" "command"` | Run a long command (test suite, study) as a job: when it ends, its exit code and last lines arrive as a review item and you are woken for it |
+| `wbench job-check` | Report jobs still marked running whose runner died (reboot, kill) |
 | `wbench selection` | What the owner has picked in the page, resolved to the exact part and face (needs `wbench serve`) |
 
 Targets: `{"kind": "part", "label": "lower_plate"}`, `{"kind": "param", "key":
@@ -77,6 +79,10 @@ positional (there is no `--title`); `--file` works for every command.
   again, with the change as a correction.
 
 ## Working rules
+
+- Run anything whose end you must follow up (full test suites, studies, exports that take minutes)
+  with `wbench run`, never with a plain `&`: a backgrounded shell job tells nobody when it ends, a
+  job's end is delivered to you and shown to the owner.
 
 - Numbers gate, renders are a glance: a result is accepted on measured facts (validity, counts,
   clearances, interference, compiled models), never on how a picture looks.

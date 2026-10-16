@@ -11,7 +11,6 @@ from typing import Literal, Optional
 
 import pytest
 
-from hub_helpers import project  # noqa: F401  (fixture)
 from workbench.cli import OwnerOnly, execute, main
 from workbench.errors import HubNotRunning, InvalidInput, NotFound
 from workbench.ops import Registry, default_registry

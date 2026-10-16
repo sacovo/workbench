@@ -14,7 +14,6 @@ from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 from mcp_types import CallToolResult
 
-from hub_helpers import project  # noqa: F401  (fixture)
 from hub_running import RunningHub
 from workbench.mcp import TOOL_NAMES
 from workbench.project import write_hub_info

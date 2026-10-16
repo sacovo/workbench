@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import json
 
-from hub_helpers import git, project  # noqa: F401  (fixture)
+from hub_helpers import git
 from test_jobs import wait_for_end
 from workbench import jobs, outputs
 from workbench.buildid import build_id

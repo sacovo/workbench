@@ -9,7 +9,7 @@ import subprocess
 
 import pytest
 
-from hub_helpers import git, git_quiet, isolate_git, make_repo, project  # noqa: F401  (project: fixture)
+from hub_helpers import git, git_quiet, isolate_git, make_repo
 from workbench.buildid import build_id, build_state
 from workbench.errors import GitError
 from workbench.ops import default_registry

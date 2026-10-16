@@ -17,7 +17,6 @@ from pathlib import Path
 import pytest
 import uvicorn
 
-from hub_helpers import project  # noqa: F401  (fixture)
 from hub_running import fake_control
 from test_agentlink_hookscript import CASES, SID, STOP_ACTIVE, hook_env, run_hook
 from workbench.agentlink import AgentLink, NullTransport

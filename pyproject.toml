@@ -13,8 +13,14 @@ workbench = { workspace = true }
 [dependency-groups]
 dev = [
     "pytest>=9.1.1",
+    "pytest-xdist>=3.8.0",
     "workbench",
 ]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# On all cores (pytest-xdist); idle workers take tests from busy files. `-n 0` runs serially. The hook's
+# latency budgets (marker `timing`) are measured on a quiet machine, not beside busy workers, so the
+# default run leaves them out: run them with `pytest -q -m timing -n 0` (a later -m replaces this one).
+addopts = "-n auto --dist worksteal -m 'not timing'"
+markers = ["timing: wall-clock latency against a budget (agentlink.budgets); run alone, `-m timing -n 0`"]

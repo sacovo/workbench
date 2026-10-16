@@ -14,7 +14,8 @@ restate it elsewhere.
 env -u VIRTUAL_ENV uv sync                 # installs workbench and workbench-kernel, plus pytest
 env -u VIRTUAL_ENV uv run wbench --version
 env -u VIRTUAL_ENV uv run wbench doctor    # add --json for machine-readable output
-env -u VIRTUAL_ENV uv run pytest -q
+env -u VIRTUAL_ENV uv run pytest -q                    # on all cores (xdist), about 12 s; `-n 0` serially
+env -u VIRTUAL_ENV uv run pytest -q -m timing -n 0     # the hook's latency budgets, alone on a quiet machine
 ```
 
 Review items (`docs/plan.md`, "Review items"); run `wbench <command> --help` for each one's full
@@ -82,5 +83,5 @@ after a change, say so and change the design or the limit openly.
 
 **Report corrections first.** If an earlier statement turns out wrong, lead with that.
 
-**At most three subagents run at the same time, reviewers included.** This is the owner's usage
+**At most two subagents run at the same time, reviewers included.** This is the owner's usage
 budget, not a capability limit; plan parallel work accordingly.

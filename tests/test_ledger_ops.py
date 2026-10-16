@@ -9,7 +9,6 @@ import json
 
 import pytest
 
-from hub_helpers import project  # noqa: F401  (fixture)
 from test_jobs import run, wait_for_end
 from workbench.errors import InvalidInput
 from workbench.ops import ledger_ops

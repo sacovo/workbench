@@ -25,7 +25,6 @@ from starlette.applications import Starlette
 from starlette.responses import JSONResponse
 from starlette.routing import Route
 
-from hub_helpers import project  # noqa: F401  (fixture)
 from workbench.agentlink import AgentLink, NullTransport
 from workbench.agentlink.budgets import HOOK_DOWN_MAX_MS, HOOK_UP_P95_MS
 from workbench.agentlink.routes import routes
@@ -321,6 +320,7 @@ def _closed_port() -> int:
     return port
 
 
+@pytest.mark.timing
 def test_without_a_hub_every_hook_is_silent_and_under_the_budget(project):
     env = hook_env(project.root)
     scenarios = {
@@ -343,6 +343,7 @@ def test_without_a_hub_every_hook_is_silent_and_under_the_budget(project):
     assert max(worst.values()) < HOOK_DOWN_MAX_MS, worst
 
 
+@pytest.mark.timing
 def test_with_the_hub_up_the_p95_is_under_the_budget(project, hub):
     for i in range(12):
         run(project, "comment", title=f"Owner comment {i}")
@@ -364,6 +365,7 @@ def test_with_the_hub_up_the_p95_is_under_the_budget(project, hub):
     assert max(v[1] for v in stats.values()) < HOOK_UP_P95_MS, stats
 
 
+@pytest.mark.timing
 def test_a_hub_that_never_answers_is_bounded_by_the_deadline(project):
     hung = socket.socket()
     hung.bind(("127.0.0.1", 0))

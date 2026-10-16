@@ -11,3 +11,7 @@ dist/
 
 # MuJoCo
 MUJOCO_LOG.TXT
+
+# qlty: only its config is tracked
+.qlty/*
+!.qlty/qlty.toml

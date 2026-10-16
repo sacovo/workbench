@@ -11,7 +11,6 @@ import sys
 
 import pytest
 
-from hub_helpers import project  # noqa: F401  (fixture)
 from workbench import __version__
 from workbench.cli import STALE_GL_VARS, TOOLS, main
 

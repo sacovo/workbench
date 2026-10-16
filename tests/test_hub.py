@@ -18,7 +18,7 @@ import zlib
 import pytest
 from websockets.exceptions import InvalidStatus
 
-from hub_helpers import WB, project  # noqa: F401  (project: fixture)
+from hub_helpers import WB
 from hub_running import RunningHub, fake_control, kernel_processes, wait_until
 from workbench.errors import HubNotRunning
 from workbench.hub.launch import open_window

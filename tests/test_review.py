@@ -13,7 +13,6 @@ import time
 
 import pytest
 
-from hub_helpers import project  # noqa: F401  (fixture)
 from workbench.errors import InvalidInput, NotFound
 from workbench.ops import default_registry
 from workbench.review import ReviewStore

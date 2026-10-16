@@ -7,7 +7,7 @@ import json
 import os
 import subprocess
 
-from hub_helpers import WB, project  # noqa: F401  (project: fixture)
+from hub_helpers import WB
 
 LIMIT = "demo.params:RULES.front_limit"
 QUESTIONS = [

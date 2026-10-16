@@ -12,7 +12,6 @@ from pathlib import Path
 
 import pytest
 
-from hub_helpers import project  # noqa: F401  (fixture)
 from workbench.agentlink import AgentLink, HerdrTransport, NullTransport, TransportError, make_transport
 from workbench.agentlink.link import BURST, MAX_ATTEMPTS, POLL_WORKING
 from workbench.ops import default_registry

@@ -8,7 +8,6 @@ import json
 
 import pytest
 
-from hub_helpers import project  # noqa: F401  (fixture)
 from workbench.agentlink import AgentLink
 from workbench.agentlink.link import STATE_FILE
 from workbench.agentlink.texts import clean_title, context, stop_reason, wake_pointer

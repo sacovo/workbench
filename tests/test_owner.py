@@ -8,7 +8,6 @@ import json
 
 import pytest
 
-from hub_helpers import project  # noqa: F401  (fixture)
 from test_jobs import run
 from workbench import owner_cli
 from workbench.ops import bom_ops

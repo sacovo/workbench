@@ -162,3 +162,41 @@ def test_bad_outputs_are_refused(tmp_path, bad):
     (tmp_path / "bom.toml").write_text(bad)
     with pytest.raises(bom.BomError, match="outputs"):
         bom.load(tmp_path)
+
+
+def link(root, item, url, state, **extra):
+    path = root / bom.LINKS_FILE
+    path.parent.mkdir(exist_ok=True)
+    with path.open("a") as f:
+        f.write(json.dumps({"id": item, "url": url, "state": state, "by": {"role": "owner"}, "at": "2026-10-16T10:00:00Z", **extra}) + "\n")
+
+
+def test_the_latest_link_and_the_latest_good_one_are_given_per_item(root):
+    link(root, "servo", "https://a.ch/s", "requested")
+    link(root, "servo", "https://a.ch/s", "ok", price=13.9, shop="A")
+    link(root, "servo", "https://b.ch/s", "requested")
+    r = rows(root)
+    assert r["servo"]["source"]["url"] == "https://a.ch/s" and r["servo"]["source"]["price"] == 13.9
+    assert (r["servo"]["link"]["url"], r["servo"]["link"]["state"]) == ("https://b.ch/s", "requested")
+    assert "link" not in r["arm"] and "source" not in r["arm"]
+    link(root, "servo", "https://b.ch/s", "wrong", summary="7.4 V version")
+    r = rows(root)
+    assert r["servo"]["source"]["url"] == "https://a.ch/s" and r["servo"]["link"]["state"] == "wrong"
+
+
+@pytest.mark.parametrize("record", [{"id": "nonsense", "url": "https://a.ch", "state": "ok"}, {"id": "servo", "url": "https://a.ch", "state": "great"}])
+def test_a_stale_or_bad_link_is_skipped_and_reported(root, record):
+    path = root / bom.LINKS_FILE
+    path.parent.mkdir(exist_ok=True)
+    path.write_text(json.dumps(record) + "\n")
+    status = bom.status(root)
+    assert len(status["problems"]) == 1 and "skipped" in status["problems"][0]
+    assert "link" not in {r["id"]: r for r in status["items"]}["servo"]
+
+
+def test_a_broken_links_line_is_an_error(root):
+    path = root / bom.LINKS_FILE
+    path.parent.mkdir(exist_ok=True)
+    path.write_text('{"id": "servo"\n')
+    with pytest.raises(bom.BomError, match="links.jsonl:1"):
+        bom.status(root)

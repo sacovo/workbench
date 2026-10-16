@@ -5,7 +5,9 @@ import { notify } from "../store";
 // Materials and tools (`wbench bom`): what the project needs, what the owner has, what is still to
 // order or make. "Have" is the owner's own record (`wbench have`, ledger/inventory.jsonl); editing
 // it here calls the same operation with the page's owner credential. Items not ready to order say
-// so ("on hold", "decide first", "optional") and stay out of the shopping list.
+// so ("on hold", "decide first", "optional") and stay out of the shopping list. A product page pasted
+// in an item's link field goes to the agent to check (`wbench check-link`); one it found right
+// becomes the item's source, and the shopping list says where to buy.
 
 interface Row {
     id: string;
@@ -21,10 +23,22 @@ interface Row {
     unit?: string;
     hold?: string;
     files?: { name: string; state: string; held: string[] }[];
+    link?: Link;
+    source?: Link;
     have: number;
     short: number;
     action: string;
     recorded: boolean;
+}
+
+interface Link {
+    url: string;
+    state: "requested" | "ok" | "check" | "wrong";
+    summary?: string;
+    price?: number;
+    currency?: string;
+    shop?: string;
+    note?: string;
 }
 
 interface Bom {
@@ -80,11 +94,67 @@ function HaveInput({ row, onSaved }: { row: Row; onSaved: () => void }) {
     );
 }
 
+function linkText(l: Link): string {
+    return [l.shop, l.price !== undefined ? `${l.price} ${l.currency ?? ""}`.trim() : ""].filter(Boolean).join(", ") || new URL(l.url).hostname;
+}
+
 function shoppingList(rows: Row[]): string {
     return rows
         .filter((r) => r.short > 0 && r.kind === "bought" && r.action === "to order")
-        .map((r) => `${r.short} x ${r.name}${r.notes ? ` (${r.notes})` : ""}`)
+        .map((r) => `${r.short} x ${r.name}${r.notes ? ` (${r.notes})` : ""}${r.source ? `: ${linkText(r.source)}, ${r.source.url}` : ""}`)
         .join("\n");
+}
+
+const STATE_TEXT = { requested: "being checked", ok: "checked, ok", check: "check this", wrong: "not this one" };
+
+function LinkCell({ row, onSaved }: { row: Row; onSaved: () => void }) {
+    const [url, setUrl] = useState("");
+    const [busy, setBusy] = useState(false);
+    const pending = row.link && row.link.state !== "ok" ? row.link : undefined; // an ok one is the source
+    const send = async () => {
+        if (!url.trim()) return;
+        setBusy(true);
+        try {
+            await op("check-link", { id: row.id, url: url.trim() });
+            setUrl("");
+            notify("info", `${row.name}: sent to the agent to check`);
+            onSaved();
+        } catch (e) {
+            notify("error", `${row.name}: ${e instanceof Error ? e.message : String(e)}`);
+        } finally {
+            setBusy(false);
+        }
+    };
+    return (
+        <div className="link-cell" data-link={row.id}>
+            {row.source && (
+                <a href={row.source.url} target="_blank" rel="noreferrer" title={row.source.summary ?? ""} className="source">
+                    {linkText(row.source)}
+                </a>
+            )}
+            {pending && (
+                <div className={pending.state === "requested" ? "dim" : "hold"} title={pending.summary ?? pending.url}>
+                    <a href={pending.url} target="_blank" rel="noreferrer">
+                        {STATE_TEXT[pending.state]}
+                    </a>
+                    {pending.summary && <span>: {pending.summary}</span>}
+                </div>
+            )}
+            <input
+                className="link"
+                placeholder="product page"
+                value={url}
+                disabled={busy}
+                onChange={(e) => setUrl(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && send()}
+            />
+            {url.trim() && (
+                <button className="check" disabled={busy} onClick={send}>
+                    Check
+                </button>
+            )}
+        </div>
+    );
 }
 
 export function MaterialsPanel() {
@@ -127,7 +197,8 @@ export function MaterialsPanel() {
             </div>
             <p className="dim">
                 {counts.length ? `${counts.map(([a, n]) => `${n} ${a}`).join(", ")}.` : "Nothing is short."} Type how many you have; it is saved
-                when you leave the field. The shopping list holds only what is ready to order.
+                when you leave the field. The shopping list holds only what is ready to order. Paste a product page under Where and the
+                agent checks it against the item; one that checks out is kept as the item's source.
             </p>
             {(bom.problems ?? []).map((p) => (
                 <p key={p} className="error">
@@ -144,6 +215,7 @@ export function MaterialsPanel() {
                                 <th>Need</th>
                                 <th>Have</th>
                                 <th />
+                                <th>Where</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -167,6 +239,9 @@ export function MaterialsPanel() {
                                         <td className={NOT_READY.includes(r.action) && r.short > 0 ? "hold" : "dim"} title={r.hold || r.status || ""}>
                                             {r.short > 0 ? `${r.action} ${r.short}` : "ok"}
                                             {r.short > 0 && r.hold && <div className="dim">{r.hold}</div>}
+                                        </td>
+                                        <td>
+                                            <LinkCell row={r} onSaved={load} />
                                         </td>
                                     </tr>
                                 ))}

@@ -2,9 +2,9 @@
 
 It lists what waits on the owner (decisions, measurements, comments to read) and lets them answer:
 pick an option (Enter takes the recommended one), type their own text where a question allows it,
-give a measured value, reply, or close an item; and walk through the materials and tools to record
-what they have. Everything goes through the same operations as the page (answer, reply,
-set-status, have), as the owner. Like those operations, it refuses to run in a Claude Code agent's
+give a measured value, reply, or close an item; walk through the materials and tools to record
+what they have; and send a product page to the agent to check against an item. Everything goes
+through the same operations as the page (answer, reply, set-status, have, check-link), as the owner. Like those operations, it refuses to run in a Claude Code agent's
 shell.
 """
 
@@ -39,6 +39,7 @@ def run(directory: str | None = None, ask: Callable[[str], str] = input, say: Ca
         for number, state in enumerate(items, 1):
             say(f"  {number}. {state['id']} {state['kind']}: {state['title']}")
         say("  m. materials and tools: record what you have")
+        say("  l. a product link: the agent checks it against an item")
         say("  q. quit")
         choice = ask("> ").strip().lower()
         if choice in ("q", "quit", ""):
@@ -46,10 +47,13 @@ def run(directory: str | None = None, ask: Callable[[str], str] = input, say: Ca
         if choice == "m":
             materials(project, ask, say)
             continue
+        if choice == "l":
+            link(project, ask, say)
+            continue
         if choice.isdigit() and 1 <= int(choice) <= len(items):
             item(project, items[int(choice) - 1], ask, say)
             continue
-        say("Type a number, m or q.")
+        say("Type a number, m, l or q.")
 
 
 def item(project, state: dict, ask, say) -> None:
@@ -127,6 +131,29 @@ def _amount(reply: str, row: dict) -> float | None:
     if not math.isfinite(value) or value < 0 or (not row.get("unit") and value != int(value)):
         return None
     return value
+
+
+def link(project, ask, say) -> None:
+    rows = _call(project, "bom")["items"]
+    while True:
+        wanted = ask("Which item? its id or part of its name (Enter stops)> ").strip()
+        if not wanted:
+            return
+        found = [r for r in rows if r["id"] == wanted] or [r for r in rows if wanted.lower() in r["name"].lower() or wanted.lower() in r["id"]]
+        if len(found) == 1:
+            break
+        say(f"  {len(found)} items match" + (": " + ", ".join(f"{r['id']} ({r['name']})" for r in found[:8]) if found else "") + "; be more exact")
+    row = found[0]
+    url = ask(f"{row['name']}: the product page> ").strip()
+    if not url:
+        return
+    note = ask("A note for the agent (Enter for none)> ").strip()
+    try:
+        result = _call(project, "check-link", id=row["id"], url=url, note=note)
+    except WorkbenchError as exc:
+        say(f"  not sent: {exc}")
+        return
+    say(f"  {result['review']['id']}: the agent checks it; its answer comes back here")
 
 
 def materials(project, ask, say) -> None:

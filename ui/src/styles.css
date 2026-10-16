@@ -354,6 +354,23 @@ input.have {
     width: 3.5rem;
 }
 
+.link-cell {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    align-items: center;
+    min-width: 12rem;
+}
+
+.link-cell input.link {
+    flex: 1;
+    min-width: 8rem;
+}
+
+.link-cell a.source {
+    font-weight: 600;
+}
+
 table.bom td.hold {
     color: var(--warn, #a15c00);
     font-weight: 600;

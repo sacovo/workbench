@@ -40,6 +40,12 @@ says otherwise. Each item's shortfall is its quantity less what is had: to order
 Inventory records whose id is not (or no longer) in the bom, or whose `have` is not a number of at
 least 0, are skipped and reported in `problems`: the ledger is append-only, so one stale record
 must not stop the whole list.
+
+Product links the owner asks the agent to check are in `ledger/links.jsonl`, appended the same way
+(`wbench check-link` by the owner, `wbench link-verdict` by the agent): {"id": ..., "url": ...,
+"state": "requested" | "ok" | "check" | "wrong", "summary": ..., "price": ..., "currency": ...,
+"shop": ..., "by": {...}, "at": ...}. Each item gets its latest record as `link` and its latest
+"ok" one as `source`: where to buy it, for the shopping list.
 """
 
 from __future__ import annotations
@@ -51,6 +57,8 @@ from dataclasses import dataclass, field, replace
 from pathlib import Path
 
 INVENTORY_FILE = Path("ledger") / "inventory.jsonl"
+LINKS_FILE = Path("ledger") / "links.jsonl"
+LINK_STATES = ("requested", "ok", "check", "wrong")
 KINDS = ("bought", "sheet", "printed", "turned", "tools")
 MADE = ("sheet", "printed", "turned")
 STATUSES = ("owned", "decided", "assumed", "designed", "open", "optional", "from SO-ARM100")
@@ -221,6 +229,39 @@ def read_inventory(root: Path, bom: Bom, problems: list[str] | None = None) -> d
     return out
 
 
+def read_links(root: Path, bom: Bom, problems: list[str] | None = None) -> dict[str, dict]:
+    """{id: {"link": latest record, "source": latest "ok" record or None}}. A line that is not JSON,
+    or lacks id, url or state, is an error; a record for an id not in the bom, or with an unknown
+    state, is skipped and described in `problems`."""
+    path = Path(root) / LINKS_FILE
+    problems = [] if problems is None else problems
+    try:
+        lines = path.read_text(encoding="utf-8").splitlines()
+    except FileNotFoundError:
+        return {}
+    out: dict[str, dict] = {}
+    for number, line in enumerate(lines, 1):
+        if not line.strip():
+            continue
+        try:
+            record = json.loads(line)
+        except ValueError as exc:
+            raise BomError(f"{LINKS_FILE}:{number}: not valid JSON: {exc}") from None
+        if not isinstance(record, dict) or not all(k in record for k in ("id", "url", "state")):
+            raise BomError(f"{LINKS_FILE}:{number}: a record needs id, url and state")
+        if not isinstance(record["id"], str) or record["id"] not in bom.items:
+            problems.append(f"{LINKS_FILE}:{number}: {record['id']!r} is not in the bom (renamed or removed?); skipped")
+            continue
+        if record["state"] not in LINK_STATES:
+            problems.append(f"{LINKS_FILE}:{number}: state {record['state']!r} is not one of {', '.join(LINK_STATES)}; skipped")
+            continue
+        entry = out.setdefault(record["id"], {"link": None, "source": None})
+        entry["link"] = record
+        if record["state"] == "ok":
+            entry["source"] = record
+    return out
+
+
 def action_of(item: Item) -> str:
     if item.hold:
         return "on hold"
@@ -254,6 +295,7 @@ def status(root: Path) -> dict:
     if declared is not None:
         problems += check_outputs(bom, declared)
     inventory = read_inventory(root, bom, problems)
+    links = read_links(root, bom, problems)
     rows = []
     for item in bom.items.values():
         record = inventory.get(item.id)
@@ -262,7 +304,8 @@ def status(root: Path) -> dict:
         else:
             have = item.qty if item.status == "owned" else 0.0
         short = round(max(0.0, item.qty - have), 6)  # no 0.30000000000000004
-        rows.append({**item.describe(), "have": have, "short": short, "action": action_of(item), "recorded": record is not None})
+        rows.append({**item.describe(), "have": have, "short": short, "action": action_of(item), "recorded": record is not None,
+                     **{k: v for k, v in links.get(item.id, {}).items() if v is not None}})
     return {
         "title": bom.title,
         "items": rows,

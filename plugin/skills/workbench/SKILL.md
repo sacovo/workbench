@@ -39,6 +39,8 @@ then act on it. Never act on a pointer's wording alone, and do not guess what th
 | `wbench run "title" "command"` | Run a long command (test suite, study) as a job: when it ends, its exit code and last lines arrive as a review item and you are woken for it |
 | `wbench job-check` | Report jobs still marked running whose runner died (reboot, kill) |
 | `wbench selection` | What the owner has picked in the page, resolved to the exact part and face (needs `wbench serve`) |
+| `wbench bom [--short] [--tools]` | Materials and tools: needed, had, short, and each item's checked source |
+| `wbench link-verdict ID URL --verdict ok\|check\|wrong --summary "..." [--price N --currency CHF --shop NAME]` | Record the check of a product page the owner sent (below) |
 
 Targets: `{"kind": "part", "label": "lower_plate"}`, `{"kind": "param", "key":
 "robot.params:BASE.wheel_width"}`, `{"kind": "fact", "key": "..."}`, `{"kind": "file", "path":
@@ -77,6 +79,27 @@ positional (there is no `--title`); `--file` works for every command.
 - Answers can be partial. Answered questions come back through `wbench inbox`; act on them, reply,
   and leave the open ones open. An approved value is a requirement: if it must change later, ask
   again, with the change as a correction.
+
+## Checking a product link
+
+The owner pastes a product page under an item (the page's Materials tab, `wbench owner`); it
+arrives as a comment titled "Check a link for ...", with the item's line from the bom. Check it
+against the item, not against what the page says about itself:
+
+1. Read the item in the project: its bom row and notes, the part's datasheet or vendor figures,
+   the parameters that use it. That is what the page has to match.
+2. Read the page (fetch it; if it cannot be read, say so and give "check").
+3. Variant: every figure that makes it this part (ratio, voltage, encoder, size, thread, length,
+   material, colour where it matters), and the pack size against the quantity needed.
+4. Price: per piece and with shipping to the owner; against one or two other shops for the same
+   part. Say when it is far off either way.
+5. Shop: the maker, a known reseller, or a marketplace seller; for an unknown shop its imprint and
+   reviews. From abroad: import tax and the carrier's fee on top, and the delivery time.
+6. Record it: `wbench link-verdict ID URL --verdict ok|check|wrong --summary "one line" --price N
+   --currency CHF --shop NAME`. "ok" makes the page the item's source in the shopping list. Then
+   reply on the comment, verdict first and the issues as a short list, with `--status done`.
+
+Say what was read on the page and what was inferred. Nothing from memory about prices or stock.
 
 ## Working rules
 

@@ -4,6 +4,7 @@ import { CommentPanel } from "./panels/Comment";
 import { InboxPanel } from "./panels/Inbox";
 import { ItemPanel } from "./panels/Item";
 import { MaterialsPanel } from "./panels/Materials";
+import { OutputsPanel } from "./panels/Outputs";
 import { ViewsPanel } from "./panels/Views";
 import { setStore, useStore, type Tab } from "./store";
 import { Banner, TopBar } from "./TopBar";
@@ -14,6 +15,7 @@ const TABS: { id: Tab; label: string }[] = [
     { id: "comment", label: "Comment" },
     { id: "views", label: "Views" },
     { id: "materials", label: "Materials" },
+    { id: "outputs", label: "Outputs" },
 ];
 
 function ViewerPane() {
@@ -45,6 +47,7 @@ function SidePanel() {
                 {tab === "comment" && <CommentPanel />}
                 {tab === "views" && <ViewsPanel />}
                 {tab === "materials" && <MaterialsPanel />}
+                {tab === "outputs" && <OutputsPanel />}
             </div>
         </aside>
     );

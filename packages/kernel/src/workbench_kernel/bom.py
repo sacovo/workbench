@@ -25,8 +25,9 @@ A project lists its parts and tools in `bom.toml` at its root (or the file named
     qty_text = "8 + 1"         # optional, how the quantity reads
     status = "decided"         # owned, decided, assumed, designed, open, optional
     notes = "..."
-    # made parts may give `material`, `size` and `file`; tools give `for` and `service` (who can do
-    # the job instead of the tool)
+    # made parts may give `material`, `size` and `file`, and `outputs`: the names of the files the
+    # project declares (`wb.output`) that make it, checked against the manifest; tools give `for`
+    # and `service` (who can do the job instead of the tool)
 
 What the owner has is recorded in `ledger/inventory.jsonl`, one JSON object per line, appended and
 never rewritten (`wbench have`): {"id": ..., "have": 3, "by": {...}, "at": ..., "note": ...}. The
@@ -78,6 +79,7 @@ class Item:
     used_for: str = ""
     service: str = ""
     unit: str = ""
+    outputs: tuple[str, ...] = ()  # declared output files that make it
     hold: str = ""  # what it waits for, from a [[hold]] that names it
 
     @property
@@ -85,7 +87,7 @@ class Item:
         return self.qty_text or (f"{self.qty:.6g}" if self.qty < 1e6 else f"{self.qty:.0f}") + (f" {self.unit}" if self.unit else "")
 
     def describe(self) -> dict:
-        return {k: v for k, v in self.__dict__.items() if v not in ("", None)}
+        return {k: list(v) if isinstance(v, tuple) else v for k, v in self.__dict__.items() if v not in ("", None, ())}
 
 
 @dataclass(frozen=True)
@@ -133,7 +135,7 @@ def load(root: Path) -> Bom:
         members = []
         for i, raw in enumerate(group.get("item", [])):
             here = f"{where} ({name}) item {i + 1}"
-            unknown = set(raw) - {"id", *TEXT_FIELDS, "qty"}
+            unknown = set(raw) - {"id", *TEXT_FIELDS, "qty", "outputs"}
             if unknown:
                 raise BomError(f"{here}: unknown fields {sorted(unknown)}")
             if not isinstance(raw.get("id"), str) or not raw["id"] or not raw.get("name"):
@@ -141,6 +143,11 @@ def load(root: Path) -> Bom:
             wrong = [key for key in TEXT_FIELDS if key in raw and not isinstance(raw[key], str)]
             if wrong:
                 raise BomError(f"{here} ({raw['id']}): {', '.join(wrong)} must be text")
+            outputs = raw.get("outputs", [])
+            if not isinstance(outputs, list) or not all(isinstance(o, str) and o for o in outputs):
+                raise BomError(f"{here} ({raw['id']}): outputs must be a list of output names")
+            if outputs and kind not in MADE:
+                raise BomError(f"{here} ({raw['id']}): only a made part (sheet, printed, turned) has outputs")
             qty = raw.get("qty")
             if isinstance(qty, bool) or not isinstance(qty, (int, float)) or not math.isfinite(qty) or qty < 0:
                 raise BomError(f"{here} ({raw['id']}): qty must be a finite number of at least 0")
@@ -153,6 +160,7 @@ def load(root: Path) -> Bom:
                 status=raw.get("status", ""), qty_text=raw.get("qty_text", ""), notes=raw.get("notes", ""),
                 material=raw.get("material", ""), size=raw.get("size", ""), file=raw.get("file", ""),
                 used_for=raw.get("for", ""), service=raw.get("service", ""), unit=raw.get("unit", ""),
+                outputs=tuple(outputs),
             )
             items[item.id] = item
             members.append(item)
@@ -223,10 +231,28 @@ def action_of(item: Item) -> str:
     return "missing" if item.kind == "tools" else "to make" if item.kind in MADE else "to order"
 
 
+def declared_outputs(root: Path) -> set[str] | None:
+    """The output names the project's manifest declares, or None when it has no manifest."""
+    try:
+        from workbench_kernel.ledger import _project
+
+        return set(_project(Path(root)).outputs)
+    except Exception:  # noqa: BLE001 - no manifest, or one that does not import: nothing to check against
+        return None
+
+
+def check_outputs(bom: Bom, declared: set[str]) -> list[str]:
+    """Items naming outputs the manifest does not declare."""
+    return [f"{item.id}: output {name!r} is not declared on the manifest" for item in bom.items.values() for name in item.outputs if name not in declared]
+
+
 def status(root: Path) -> dict:
     """Every item with what is needed, had and short, and the totals by kind."""
     bom = load(root)
     problems: list[str] = []
+    declared = declared_outputs(root)
+    if declared is not None:
+        problems += check_outputs(bom, declared)
     inventory = read_inventory(root, bom, problems)
     rows = []
     for item in bom.items.values():
@@ -243,6 +269,10 @@ def status(root: Path) -> dict:
         "short": {action: sum(1 for r in rows if r["short"] > 0 and r["action"] == action) for action in ACTIONS},
         "problems": problems,
     }
+
+
+def _files(item: Item) -> str:
+    return ", ".join([*item.outputs, *([item.file] if item.file else [])])
 
 
 def _cell(text: str) -> str:
@@ -267,7 +297,10 @@ def markdown(bom: Bom) -> str:
             out += [f"| {_cell(i.name)} | {i.shown_qty} | {_cell(i.used_for)} | {_cell(i.service)} | {_cell(i.notes)} |" for i in group.items]
         elif group.kind == "sheet":
             out += ["| Part | Qty | Material | Size, mm | File |", "|---|---|---|---|---|"]
-            out += [f"| {_cell(i.name)} | {i.shown_qty} | {_cell(i.material)} | {_cell(i.size)} | {_cell(i.file)} |" for i in group.items]
+            out += [f"| {_cell(i.name)} | {i.shown_qty} | {_cell(i.material)} | {_cell(i.size)} | {_cell(_files(i))} |" for i in group.items]
+        elif group.kind in MADE:
+            out += ["| Part | Qty | Status | Notes | Files |", "|---|---|---|---|---|"]
+            out += [f"| {_cell(i.name)} | {i.shown_qty} | {i.status}{', held' if i.hold else ''} | {_cell(i.notes)} | {_cell(_files(i))} |" for i in group.items]
         else:
             out += ["| Part | Qty | Status | Notes |", "|---|---|---|---|"]
             out += [f"| {_cell(i.name)} | {i.shown_qty} | {i.status}{', held' if i.hold else ''} | {_cell(i.notes)} |" for i in group.items]

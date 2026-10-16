@@ -141,3 +141,24 @@ def test_markdown_lists_holds_groups_and_tools_without_inventory(root):
     assert "| Servo | 8 + 1 | decided |" in text
     assert "| Calipers | 1 | measuring the hub ring |" in text
     assert "have" not in text.lower().split("generated")[1]
+
+
+def test_made_items_name_their_output_files_and_unknown_names_are_reported(tmp_path):
+    (tmp_path / "bom.toml").write_text(BOM.replace('id = "mount"\nname = "Wheel mount"\nqty = 3', 'id = "mount"\nname = "Wheel mount"\nqty = 3\noutputs = ["wheel_mount.stl"]'))
+    loaded = bom.load(tmp_path)
+    assert loaded.items["mount"].outputs == ("wheel_mount.stl",)
+    assert "| Wheel mount | 3 |  |  | wheel_mount.stl |" in bom.markdown(loaded)
+    assert bom.check_outputs(loaded, {"wheel_mount.stl"}) == []
+    assert bom.check_outputs(loaded, {"lower_plate.dxf"}) == ["mount: output 'wheel_mount.stl' is not declared on the manifest"]
+    assert {r["id"]: r for r in bom.status(tmp_path)["items"]}["mount"]["outputs"] == ["wheel_mount.stl"]
+
+
+@pytest.mark.parametrize("bad", [
+    BOM.replace('qty = 3', 'qty = 3\noutputs = "wheel_mount.stl"'),
+    BOM.replace('qty = 3', 'qty = 3\noutputs = [5]'),
+    BOM.replace('qty = 2\nstatus = "owned"', 'qty = 2\nstatus = "owned"\noutputs = ["arm.stl"]'),  # a bought item
+])
+def test_bad_outputs_are_refused(tmp_path, bad):
+    (tmp_path / "bom.toml").write_text(bad)
+    with pytest.raises(bom.BomError, match="outputs"):
+        bom.load(tmp_path)

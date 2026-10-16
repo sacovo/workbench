@@ -358,3 +358,18 @@ table.bom td.hold {
     color: var(--warn, #a15c00);
     font-weight: 600;
 }
+
+.hold {
+    color: var(--warn, #a15c00);
+}
+td.out-current {
+    color: var(--ok, #2e7d32);
+}
+td.out-stale,
+td.out-unstamped {
+    color: var(--warn, #a15c00);
+}
+td.out-modified,
+td.out-missing {
+    color: var(--bad, #c62828);
+}

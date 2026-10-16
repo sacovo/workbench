@@ -52,13 +52,14 @@ def log_path(project: Project, item_id: str) -> Path:
     return jobs_dir(project) / f"{item_id}.log"
 
 
-def start(project: Project, item_id: str, command: str) -> dict:
+def start(project: Project, item_id: str, command: str, make: dict | None = None) -> dict:
     """Write the job's spec and start its runner, detached from the caller (own session, no
-    terminal), so it outlives the shell or agent turn that started it."""
+    terminal), so it outlives the shell or agent turn that started it. `make` (from the make
+    operation) names the declared outputs to stamp when the command succeeds (workbench.outputs)."""
     project.ensure_state_dir()
     directory = jobs_dir(project)
     directory.mkdir(parents=True, exist_ok=True)
-    spec = {"item": item_id, "command": command, "cwd": str(project.root), "started": time.time()}
+    spec = {"item": item_id, "command": command, "cwd": str(project.root), "started": time.time(), **({"make": make} if make else {})}
     spec_path(project, item_id).write_text(json.dumps(spec, indent=2) + "\n", encoding="utf-8")
     env = {k: v for k, v in os.environ.items() if k not in _DROP_ENV}
     runner = subprocess.Popen(
@@ -118,6 +119,14 @@ def run(project: Project, item_id: str) -> int:
         headline = f"Killed by signal {signal.Signals(-code).name} after {took}."
     else:
         headline = f"{'Finished' if code == 0 else 'Failed'}: exit {code} after {took}."
+    if code == 0 and spec.get("make"):
+        from workbench import outputs
+
+        try:
+            stamped = outputs.stamp_changed(project, spec)
+            headline += f" Stamped as made: {', '.join(stamped)}." if stamped else " It wrote none of its declared outputs: nothing stamped."
+        except Exception as exc:  # noqa: BLE001 - the job's own result still gets reported
+            headline += f" Stamping failed: {type(exc).__name__}: {exc}"
     report(project, item_id, headline, log)
     return 0
 

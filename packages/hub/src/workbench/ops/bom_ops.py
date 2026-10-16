@@ -14,6 +14,7 @@ from typing import Optional
 
 from workbench.errors import InvalidInput
 from workbench.ops.ledger_ops import kernel_json
+from workbench.outputs import status as output_status
 from workbench.ops.registry import op
 from workbench.project import Project
 from workbench.review.store import ReviewStore, make_by, now
@@ -51,11 +52,20 @@ def _human_bom(r: dict) -> str:
 def bom(project: Project, short: bool = False, tools: bool = False, markdown: bool = False) -> dict:
     """From the project's bom.toml and the owner's inventory records. Each item: quantity needed,
     had (an owned item counts in full until recorded otherwise) and short, with the action:
-    to order (bought), to make (made), missing (tools)."""
+    to order (bought), to make (made), missing (tools). A made item that names its output files
+    gets each one's state (workbench.outputs) and holds."""
     if markdown:
         return {"items": [], "short": {}, "markdown": _markdown(project)}
     result = kernel_json(project, "bom")
     rows = result["items"]
+    if any(row.get("outputs") for row in rows):
+        files = {o["name"]: o for o in output_status(project, kernel_json(project, "ledger"))["outputs"]}
+        for row in rows:
+            if row.get("outputs"):
+                row["files"] = [
+                    {"name": name, "state": files[name]["state"], "held": files[name]["held"]} if name in files else {"name": name, "state": "undeclared", "held": []}
+                    for name in row["outputs"]
+                ]
     if tools:
         rows = [r for r in rows if r["kind"] == "tools"]
     if short:

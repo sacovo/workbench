@@ -14,7 +14,7 @@ import subprocess
 from pathlib import Path
 from typing import Optional
 
-from workbench import jobs
+from workbench import jobs, outputs
 from workbench.errors import InvalidInput, WorkbenchError
 from workbench.hub.kernel import kernel_env
 from workbench.ops.registry import op
@@ -169,6 +169,29 @@ def make(project: Project, output: str, session: Optional[str] = None) -> dict:
     declared = {o["name"]: o for o in result["outputs"]}[output]
     title = f"Make {output}"
     body = f"`{declared['command']}`\n\nNeeds: " + (", ".join(declared["needs"]) or "no assumed values")
+    names = outputs.siblings(result, output)
+    values = {a["key"]: {k: a[k] for k in ("value", "unit", "state", "item")} | {"record": a["record"]} for a in result["assumptions"] if a["key"] in declared["needs"]}
+    make_spec = {"outputs": names, "before": outputs.before(project, names), "build": outputs.current_build(project), "values": values}
     state = ReviewStore(project).open_item({"by": make_by("agent", session), "kind": "job", "title": title, "body": body})
-    started = jobs.start(project, state["id"], declared["command"])
-    return {"id": state["id"], "title": title, **started}
+    started = jobs.start(project, state["id"], declared["command"], make=make_spec)
+    return {"id": state["id"], "title": title, "stamps": names, **started}
+
+
+_STATE_MARK = {"missing": "missing", "unstamped": "unstamped", "modified": "MODIFIED", "stale": "stale", "current": "current"}
+
+
+def _human_outputs(r: dict) -> str:
+    lines = [f"build {r['build']}"]
+    for o in r["outputs"]:
+        made = o["stamp"]
+        when = f"; made {made['at']} at {str(made.get('build'))[:12]} by {made.get('job')}" if made else ""
+        lines.append(f"{_STATE_MARK[o['state']]:>9}  {o['path']}{when}")
+        lines += [f"           held: {reason}" for reason in o["held"]]
+    return "\n".join(lines)
+
+
+@op("outputs", summary="Declared outputs: whether each file is missing, unstamped, modified, stale or current, and held", human=_human_outputs)
+def outputs_(project: Project) -> dict:
+    """Each declared output's file against its as-made stamp (ledger/made.jsonl) and the current
+    build id, with the ledger's holds (workbench.outputs)."""
+    return outputs.status(project, kernel_ledger(project))

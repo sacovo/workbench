@@ -5,9 +5,11 @@ commit plus "+" and 8 hex digits of a hash of the dirty state ("5367af0+1c2d3e4f
 not. The commit part is always the repository's HEAD, even when the project is nested inside a
 larger repository. The dirty state is scoped to the project directory (the directory holding the
 `pyproject.toml` with the `[tool.workbench]` table, as a pathspec relative to the git top level;
-see `project_scope`), excluding the project's own `review/` and `.workbench/`: review items are
-discussion and `.workbench/` is private state, neither is design, so writing a comment or an
-answer must not change the id. Within that scope it is:
+see `project_scope`), excluding the project's own `review/`, `ledger/` and `.workbench/`: review
+items are discussion, the ledger is records about the design (measurements, the owner's inventory,
+as-made stamps: a measurement changes the design only once a parameter takes it, and the parameter
+is design) and `.workbench/` is private state, so writing a comment, an answer or a stamp must not
+change the id. Within that scope it is:
 
 - the diff of tracked files against HEAD, as git sees it (`git diff HEAD`, renames off): for each
   changed path its new mode and the hash of its new content, or that it was deleted;
@@ -96,11 +98,11 @@ def repo_root(path: str | os.PathLike) -> Path:
     return Path(os.fsdecode(out.rstrip(b"\n")))
 
 
-# A project's own review items and private state are discussion, not design (module docstring):
+# A project's own review items, ledger records and private state are not design (module docstring):
 # excluded from the dirty hash and from snapshots. Matches workbench.review.store.REVIEW_DIR and
 # workbench.project.STATE_DIR; kept as literals here rather than imported, since review.store
 # already imports this module and project.py is lower-level than either.
-_EXCLUDED_FROM_SCOPE = ("review", ".workbench")
+_EXCLUDED_FROM_SCOPE = ("review", "ledger", ".workbench")
 
 
 def project_scope(project_root: str | os.PathLike) -> tuple[Path, list[str]]:

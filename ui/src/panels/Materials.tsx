@@ -20,6 +20,7 @@ interface Row {
     service?: string;
     unit?: string;
     hold?: string;
+    files?: { name: string; state: string; held: string[] }[];
     have: number;
     short: number;
     action: string;
@@ -153,6 +154,11 @@ export function MaterialsPanel() {
                                         <td title={[r.notes, r.used_for && `for: ${r.used_for}`, r.service && `instead: ${r.service}`].filter(Boolean).join("\n")}>
                                             {r.name}
                                             {r.used_for && <div className="dim">{r.used_for}</div>}
+                                            {r.files?.map((f) => (
+                                                <div key={f.name} className={f.held.length ? "hold" : "dim"} title={f.held.join("\n")}>
+                                                    {f.name}: {f.held.length ? "held" : f.state}
+                                                </div>
+                                            ))}
                                         </td>
                                         <td>{r.qty_text || `${r.qty}${r.unit ? ` ${r.unit}` : ""}`}</td>
                                         <td>

@@ -25,6 +25,8 @@ Routes:
     GET  /api/state                project, build id, kernel state, scenes, item counts
     GET  /api/blob/<sha>           a data message the kernel wrote to .workbench/blobs/
     GET  /api/asset/<item>/<name>  a file attached to a review item (thumbnails)
+    POST /api/page/pair            a window the hub opened trades its one-time pairing code for the
+                                   page credential (workbench.hub.launch)
     POST /api/page/comment         the Comment tab: a comment on the pick with frozen evidence
                                    (always an owner write; always needs the page credential)
     WS   /ws                       the page
@@ -195,6 +197,16 @@ def create_app(
             return _error(exc.http_status, str(exc))
         return JSONResponse(result)
 
+    async def pair(request: Request) -> Response:
+        try:
+            body = await _json_body(request)
+        except WorkbenchError as exc:
+            return _error(exc.http_status, str(exc))
+        credential = hub.redeem_pairing(body.get("code") if isinstance(body, dict) else None)
+        if credential is None:
+            return _error(403, "unknown, spent or expired pairing code; open the page again with `wbench open`")
+        return JSONResponse({"pc": credential})
+
     async def ws(websocket: WebSocket) -> None:
         await websocket.accept()
         page = Page(websocket)
@@ -238,6 +250,7 @@ def create_app(
         Route("/api/state", state, methods=["GET"]),
         Route("/api/blob/{sha}", blob, methods=["GET"]),
         Route("/api/asset/{item}/{name}", asset, methods=["GET"]),
+        Route("/api/page/pair", pair, methods=["POST"]),
         Route("/api/page/comment", comment, methods=["POST"]),
         *(_op_route(e, hub) for e in endpoints),
         WebSocketRoute("/ws", ws),

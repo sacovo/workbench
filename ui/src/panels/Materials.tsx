@@ -4,7 +4,8 @@ import { notify } from "../store";
 
 // Materials and tools (`wbench bom`): what the project needs, what the owner has, what is still to
 // order or make. "Have" is the owner's own record (`wbench have`, ledger/inventory.jsonl); editing
-// it here calls the same operation with the page's owner credential.
+// it here calls the same operation with the page's owner credential. Items not ready to order say
+// so ("on hold", "decide first", "optional") and stay out of the shopping list.
 
 interface Row {
     id: string;
@@ -17,6 +18,8 @@ interface Row {
     notes?: string;
     used_for?: string;
     service?: string;
+    unit?: string;
+    hold?: string;
     have: number;
     short: number;
     action: string;
@@ -27,7 +30,20 @@ interface Bom {
     title: string;
     items: Row[];
     short: Record<string, number>;
+    problems?: string[];
 }
+
+// What the owner typed, as an amount the item takes: digits with an optional decimal part (comma
+// or point), whole unless the item has a unit. Anything else, an empty field included, is null.
+export function parseHave(text: string, unit?: string): number | null {
+    const t = text.trim().replace(",", ".");
+    if (!/^\d+(\.\d+)?$/.test(t)) return null;
+    const qty = Number(t);
+    if (!Number.isFinite(qty) || (!unit && !Number.isInteger(qty))) return null;
+    return qty;
+}
+
+const NOT_READY = ["on hold", "decide first", "optional"];
 
 type Filter = "all" | "short" | "tools";
 
@@ -35,10 +51,11 @@ function HaveInput({ row, onSaved }: { row: Row; onSaved: () => void }) {
     const [value, setValue] = useState(String(row.have));
     useEffect(() => setValue(String(row.have)), [row.have]);
     const save = async () => {
-        const qty = Number(value.replace(",", "."));
-        if (!Number.isFinite(qty) || qty < 0) {
+        if (value === String(row.have)) return; // unchanged: tabbing through writes nothing
+        const qty = parseHave(value, row.unit);
+        if (qty === null) {
             setValue(String(row.have));
-            return notify("error", `${row.name}: a number of at least 0`);
+            return notify("error", `${row.name}: ${row.unit ? `a number of ${row.unit}` : "a whole number"}, at least 0`);
         }
         if (qty === row.have && row.recorded) return;
         try {
@@ -64,7 +81,7 @@ function HaveInput({ row, onSaved }: { row: Row; onSaved: () => void }) {
 
 function shoppingList(rows: Row[]): string {
     return rows
-        .filter((r) => r.short > 0 && r.kind === "bought")
+        .filter((r) => r.short > 0 && r.kind === "bought" && r.action === "to order")
         .map((r) => `${r.short} x ${r.name}${r.notes ? ` (${r.notes})` : ""}`)
         .join("\n");
 }
@@ -82,6 +99,11 @@ export function MaterialsPanel() {
             .catch((e) => setError(e instanceof Error ? e.message : String(e)));
     }, []);
     useEffect(load, [load]);
+    useEffect(() => {
+        // The inventory may change elsewhere (`wbench have`, another window): reload on return.
+        window.addEventListener("focus", load);
+        return () => window.removeEventListener("focus", load);
+    }, [load]);
     if (error) return <p className="error">No materials list: {error}</p>;
     if (!bom) return <p className="dim">Loading the materials list…</p>;
     const rows = bom.items.filter((r) => (filter === "tools" ? r.kind === "tools" : filter === "short" ? r.short > 0 : true));
@@ -102,7 +124,15 @@ export function MaterialsPanel() {
                     Copy shopping list
                 </button>
             </div>
-            <p className="dim">{counts.length ? counts.map(([a, n]) => `${n} ${a}`).join(", ") : "Nothing is short."} Type how many you have; it is saved when you leave the field.</p>
+            <p className="dim">
+                {counts.length ? `${counts.map(([a, n]) => `${n} ${a}`).join(", ")}.` : "Nothing is short."} Type how many you have; it is saved
+                when you leave the field. The shopping list holds only what is ready to order.
+            </p>
+            {(bom.problems ?? []).map((p) => (
+                <p key={p} className="error">
+                    {p}
+                </p>
+            ))}
             {groups.map((group) => (
                 <section key={group}>
                     <h3>{group}</h3>
@@ -124,11 +154,14 @@ export function MaterialsPanel() {
                                             {r.name}
                                             {r.used_for && <div className="dim">{r.used_for}</div>}
                                         </td>
-                                        <td>{r.qty_text || r.qty}</td>
+                                        <td>{r.qty_text || `${r.qty}${r.unit ? ` ${r.unit}` : ""}`}</td>
                                         <td>
                                             <HaveInput row={r} onSaved={load} />
                                         </td>
-                                        <td className="dim">{r.short > 0 ? `${r.action} ${r.short}` : "ok"}</td>
+                                        <td className={NOT_READY.includes(r.action) && r.short > 0 ? "hold" : "dim"} title={r.hold || r.status || ""}>
+                                            {r.short > 0 ? `${r.action} ${r.short}` : "ok"}
+                                            {r.short > 0 && r.hold && <div className="dim">{r.hold}</div>}
+                                        </td>
                                     </tr>
                                 ))}
                         </tbody>

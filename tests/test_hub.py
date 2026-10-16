@@ -370,9 +370,9 @@ def test_open_window_starts_a_native_wayland_app_window_without_the_stale_variab
     with pytest.raises(HubNotRunning):  # the open operation needs a hub running in this process
         default_registry().get("open").call({}, project=project)
 
-    result = open_window(project, HubInfo(pid=1234, port=5678, token="tok-123"), "page-cred-xyz")
+    result = open_window(project, HubInfo(pid=1234, port=5678, token="tok-123"), "pair-code-xyz")
     seen = json.loads(wait_until(lambda: record.exists() and record.read_text(), 10, "the fake chromium to run"))
-    assert seen["argv"][0] == "--app=http://127.0.0.1:5678/#token=tok-123&pc=page-cred-xyz"
+    assert seen["argv"][0] == "--app=http://127.0.0.1:5678/#token=tok-123&pair=pair-code-xyz"
     assert "--ozone-platform=wayland" in seen["argv"]
     assert f"--user-data-dir={project.state_dir / 'chromium'}" in seen["argv"]
     assert sorted(set(STALE_GL_VARS) & set(seen["env"])) == [] and "VIRTUAL_ENV" not in seen["env"]
@@ -401,7 +401,22 @@ def test_open_is_forwarded_to_the_hub_and_its_response_never_carries_the_page_cr
 
     seen = json.loads(wait_until(lambda: record.exists() and record.read_text(), 10, "the fake chromium to run"))
     url = next(a for a in seen["argv"] if a.startswith("--app="))
-    assert f"token={running.token}" in url and f"pc={running.page_credential}" in url
+    _assert_pairs_once(running, url)
+
+
+def _assert_pairs_once(running, url):
+    """The window's URL carries the token and a pairing code, never the page credential (`ps`
+    shows a command line to every process of the user, R-0117); the code buys the credential once."""
+    assert f"token={running.token}" in url and running.page_credential not in url
+    code = url.split("pair=", 1)[1]
+    status, body = running.request("POST", "/api/page/pair", {"code": code}, page_token=None)
+    assert status == 200 and body == {"pc": running.page_credential}
+    status, body = running.request("POST", "/api/page/pair", {"code": code}, page_token=None)
+    assert status == 403, body
+    status, body = running.request("POST", "/api/page/pair", {"code": "made-up"}, page_token=None)
+    assert status == 403, body
+    status, body = running.request("POST", "/api/page/pair", {"code": "made-up"}, token=None, page_token=None)
+    assert status in (401, 403), body
 
 
 def test_wbench_open_cli_forwards_over_http_and_never_sees_the_page_credential(running, tmp_path, monkeypatch):
@@ -430,4 +445,4 @@ def test_wbench_open_cli_forwards_over_http_and_never_sees_the_page_credential(r
 
     seen = json.loads(wait_until(lambda: record.exists() and record.read_text(), 10, "the fake chromium to run"))
     url = next(a for a in seen["argv"] if a.startswith("--app="))
-    assert f"token={running.token}" in url and f"pc={running.page_credential}" in url
+    _assert_pairs_once(running, url)

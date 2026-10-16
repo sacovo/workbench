@@ -1,6 +1,9 @@
-// The hub's HTTP API. Two secrets come from the URL fragment `wbench open` / `serve --open` puts
-// them in (#token=...&pc=...), never sent to the server as part of a URL, and are kept in
-// sessionStorage so a reload works. `token` is the ordinary hub.json token, sent on every call.
+// The hub's HTTP API. Two secrets, kept in sessionStorage so a reload works. The URL fragment
+// `wbench open` / `serve --open` puts on the window (#token=...&pair=..., never sent to the server
+// as part of a URL) carries the token and a one-time pairing code, which the page trades for the
+// page credential (POST /api/page/pair) before its first call: the credential itself never sits on
+// Chromium's command line (R-0117). Tests that start a hub with a fixed credential may still pass
+// it as #pc=... directly. `token` is the ordinary hub.json token, sent on every call.
 // `pageCredential` is the page credential: only a window the hub itself opened ever receives it
 // (never hub.json, a log or an op response), and the hub requires it, in addition to `token`, for
 // a call that writes as the owner (answer, comment, or role: "owner" on reply/set-status/view-
@@ -17,7 +20,8 @@ function readPageSecrets(): PageSecrets {
     const fromUrl = new URLSearchParams(location.hash.slice(1));
     const urlToken = fromUrl.get("token");
     const urlPageCredential = fromUrl.get("pc");
-    if (urlToken || urlPageCredential) {
+    pairingCode = fromUrl.get("pair");
+    if (urlToken || urlPageCredential || pairingCode) {
         try {
             if (urlToken) sessionStorage.setItem("wb-token", urlToken);
             if (urlPageCredential) sessionStorage.setItem("wb-page-credential", urlPageCredential);
@@ -39,9 +43,31 @@ function readPageSecrets(): PageSecrets {
     };
 }
 
+let pairingCode: string | null = null;
 const secrets = readPageSecrets();
 export const token = secrets.token;
-export const pageCredential = secrets.pageCredential;
+let pageCredential = secrets.pageCredential;
+
+// Trades the window's pairing code for the page credential, once; every call waits for it.
+const paired: Promise<void> = pairingCode
+    ? fetch("/api/page/pair", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", ...(token ? { "X-Workbench-Token": token } : {}) },
+          body: JSON.stringify({ code: pairingCode }),
+      })
+          .then((r) => (r.ok ? r.json() : null))
+          .then((body) => {
+              if (body && typeof body.pc === "string") {
+                  pageCredential = body.pc;
+                  try {
+                      sessionStorage.setItem("wb-page-credential", body.pc);
+                  } catch {
+                      /* storage off: the credential lives as long as this document */
+                  }
+              }
+          })
+          .catch(() => undefined)
+    : Promise.resolve();
 
 export class ApiError extends Error {
     status: number;
@@ -52,6 +78,7 @@ export class ApiError extends Error {
 }
 
 export async function api<T = unknown>(path: string, init: RequestInit = {}): Promise<T> {
+    await paired;
     const headers = new Headers(init.headers);
     if (token) headers.set("X-Workbench-Token", token);
     if (pageCredential) headers.set("X-Workbench-Page-Credential", pageCredential);

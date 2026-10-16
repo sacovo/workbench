@@ -26,6 +26,8 @@ def _qty(value: float) -> str:
 
 
 def _human_bom(r: dict) -> str:
+    if r.get("markdown") is not None:
+        return r["markdown"].removesuffix("\n")  # print() puts back the newline the kernel ended it with
     lines, group = [], None
     for row in r["items"]:
         if row["group"] != group:
@@ -36,6 +38,7 @@ def _human_bom(r: dict) -> str:
         lines.append(f"  {mark:>14}  {row['id']:<24} need {shown:<8} have {_qty(row['have']):<5} {row['name']}")
     counts = ", ".join(f"{n} {action}" for action, n in r["short"].items() if n)
     lines.append(f"\n{counts or 'nothing short'}")
+    lines += [f"warning: {p}" for p in r.get("problems", [])]
     return "\n".join(lines).lstrip("\n")
 
 
@@ -89,6 +92,8 @@ def have(project: Project, id: str, qty: float, note: str = "", name: Optional[s
     items = {row["id"]: row for row in kernel_json(project, "bom")["items"]}
     if id not in items:
         raise InvalidInput(f"no item {id!r} in the bom")
+    if not items[id].get("unit") and qty != int(qty):
+        raise InvalidInput(f"{id} is counted: a whole number, got {qty!r}")
     record = {"id": id, "have": qty, "by": make_by("owner", None, name), "at": now(), **({"note": note} if note else {})}
     with project.lock():
         path = project.root / INVENTORY_FILE

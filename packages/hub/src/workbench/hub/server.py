@@ -91,7 +91,7 @@ def run(project: Project, port: int = 0, open_window_too: bool = False, kernel_c
                 while server is not None and not server.started:
                     await asyncio.sleep(0.05)
                 try:
-                    opened = await asyncio.to_thread(open_window, project, info, page_credential)
+                    opened = await asyncio.to_thread(open_window, project, info, hub.pairing_code())
                     log.info("opened the page (chromium pid %s)", opened["pid"])
                 except WorkbenchError as exc:
                     log.warning("could not open the page: %s", exc)

@@ -9,6 +9,7 @@ A project lists its parts and tools in `bom.toml` at its root (or the file named
     [[hold]]
     what = "Lower plate and upper deck"
     wait_for = "The wheel's hub ring width (R-0027)."
+    items = ["lower-plate", "upper-deck"]   # optional: the item ids it holds
 
     [[group]]
     name = "Arms and servos"
@@ -19,6 +20,8 @@ A project lists its parts and tools in `bom.toml` at its root (or the file named
     id = "sts3215"             # unique; the owner's inventory refers to it
     name = "Feetech STS3215, 12 V, 30 kg*cm"
     qty = 9                    # a number; 0 with qty_text "as needed" counts nothing
+    unit = "m"                 # optional: a measured amount (metres of wire); without one the
+                               # item is counted, and what is had must be a whole number
     qty_text = "8 + 1"         # optional, how the quantity reads
     status = "decided"         # owned, decided, assumed, designed, open, optional
     notes = "..."
@@ -29,20 +32,30 @@ What the owner has is recorded in `ledger/inventory.jsonl`, one JSON object per 
 never rewritten (`wbench have`): {"id": ..., "have": 3, "by": {...}, "at": ..., "note": ...}. The
 latest record for an id counts; an item with status "owned" counts as had in full until a record
 says otherwise. Each item's shortfall is its quantity less what is had: to order (bought), to make
-(made), or missing (tools).
+(made), or missing (tools). An item that is not ready to order says so instead: "on hold" (a
+`[[hold]]` names it), "decide first" (status assumed or open: the model is not chosen) or
+"optional". Those are listed but not counted as short, and a shopping list leaves them out.
+
+Inventory records whose id is not (or no longer) in the bom, or whose `have` is not a number of at
+least 0, are skipped and reported in `problems`: the ledger is append-only, so one stale record
+must not stop the whole list.
 """
 
 from __future__ import annotations
 
 import json
+import math
 import tomllib
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 
 INVENTORY_FILE = Path("ledger") / "inventory.jsonl"
 KINDS = ("bought", "sheet", "printed", "turned", "tools")
 MADE = ("sheet", "printed", "turned")
 STATUSES = ("owned", "decided", "assumed", "designed", "open", "optional", "from SO-ARM100")
+UNDECIDED = ("assumed", "open")  # the model or design is not chosen: decide before ordering
+ACTIONS = ("to order", "to make", "missing", "on hold", "decide first", "optional")
+TEXT_FIELDS = ("name", "qty_text", "status", "notes", "material", "size", "file", "for", "service", "unit")
 
 
 class BomError(Exception):
@@ -64,10 +77,12 @@ class Item:
     file: str = ""
     used_for: str = ""
     service: str = ""
+    unit: str = ""
+    hold: str = ""  # what it waits for, from a [[hold]] that names it
 
     @property
     def shown_qty(self) -> str:
-        return self.qty_text or f"{self.qty:g}"
+        return self.qty_text or (f"{self.qty:.6g}" if self.qty < 1e6 else f"{self.qty:.0f}") + (f" {self.unit}" if self.unit else "")
 
     def describe(self) -> dict:
         return {k: v for k, v in self.__dict__.items() if v not in ("", None)}
@@ -85,7 +100,7 @@ class Group:
 class Bom:
     title: str
     intro: str
-    holds: tuple[tuple[str, str], ...]
+    holds: tuple[tuple[str, str, tuple[str, ...]], ...]  # what, wait for, item ids
     groups: tuple[Group, ...]
     outro: str = ""
     items: dict = field(default_factory=dict)  # id -> Item
@@ -118,14 +133,17 @@ def load(root: Path) -> Bom:
         members = []
         for i, raw in enumerate(group.get("item", [])):
             here = f"{where} ({name}) item {i + 1}"
-            unknown = set(raw) - {"id", "name", "qty", "qty_text", "status", "notes", "material", "size", "file", "for", "service"}
+            unknown = set(raw) - {"id", *TEXT_FIELDS, "qty"}
             if unknown:
                 raise BomError(f"{here}: unknown fields {sorted(unknown)}")
-            if not raw.get("id") or not raw.get("name"):
-                raise BomError(f"{here}: needs an id and a name")
+            if not isinstance(raw.get("id"), str) or not raw["id"] or not raw.get("name"):
+                raise BomError(f"{here}: needs an id (text) and a name")
+            wrong = [key for key in TEXT_FIELDS if key in raw and not isinstance(raw[key], str)]
+            if wrong:
+                raise BomError(f"{here} ({raw['id']}): {', '.join(wrong)} must be text")
             qty = raw.get("qty")
-            if isinstance(qty, bool) or not isinstance(qty, (int, float)) or qty < 0:
-                raise BomError(f"{here} ({raw['id']}): qty must be a number of at least 0")
+            if isinstance(qty, bool) or not isinstance(qty, (int, float)) or not math.isfinite(qty) or qty < 0:
+                raise BomError(f"{here} ({raw['id']}): qty must be a finite number of at least 0")
             if raw.get("status", "") not in ("", *STATUSES):
                 raise BomError(f"{here} ({raw['id']}): status must be one of {STATUSES}")
             if raw["id"] in items:
@@ -134,18 +152,43 @@ def load(root: Path) -> Bom:
                 id=raw["id"], name=raw["name"], qty=float(qty), group=name, kind=kind,
                 status=raw.get("status", ""), qty_text=raw.get("qty_text", ""), notes=raw.get("notes", ""),
                 material=raw.get("material", ""), size=raw.get("size", ""), file=raw.get("file", ""),
-                used_for=raw.get("for", ""), service=raw.get("service", ""),
+                used_for=raw.get("for", ""), service=raw.get("service", ""), unit=raw.get("unit", ""),
             )
             items[item.id] = item
             members.append(item)
         groups.append(Group(name, kind, group.get("note", ""), tuple(members)))
-    holds = tuple((h["what"], h["wait_for"]) for h in data.get("hold", []))
-    return Bom(data.get("title", "Parts list"), data.get("intro", ""), holds, tuple(groups), data.get("outro", ""), items)
+    holds = []
+    for h, hold in enumerate(data.get("hold", [])):
+        where = f"{path.name} hold {h + 1}"
+        what, wait_for, held = hold.get("what"), hold.get("wait_for"), hold.get("items", [])
+        if not isinstance(what, str) or not what or not isinstance(wait_for, str) or not wait_for:
+            raise BomError(f"{where}: needs what and wait_for, both text")
+        if set(hold) - {"what", "wait_for", "items"}:
+            raise BomError(f"{where}: unknown fields {sorted(set(hold) - {'what', 'wait_for', 'items'})}")
+        if not isinstance(held, list) or not all(isinstance(i, str) for i in held):
+            raise BomError(f"{where}: items must be a list of item ids")
+        missing = [i for i in held if i not in items]
+        if missing:
+            raise BomError(f"{where}: items {missing} are not in the bom")
+        for i in held:
+            items[i] = replace(items[i], hold=wait_for)
+        holds.append((what, wait_for, tuple(held)))
+    groups = [replace(g, items=tuple(items[i.id] for i in g.items)) for g in groups]
+    return Bom(data.get("title", "Parts list"), data.get("intro", ""), tuple(holds), tuple(groups), data.get("outro", ""), items)
 
 
-def read_inventory(root: Path, bom: Bom) -> dict[str, dict]:
-    """The latest inventory record for each id."""
+def _amount(value) -> float | None:
+    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or value < 0:
+        return None
+    return float(value)
+
+
+def read_inventory(root: Path, bom: Bom, problems: list[str] | None = None) -> dict[str, dict]:
+    """The latest usable inventory record for each id. A line that is not JSON, or lacks id or
+    have, is an error; a record for an id not in the bom, or with a `have` that is not a number of
+    at least 0, is skipped and described in `problems` (when given)."""
     path = Path(root) / INVENTORY_FILE
+    problems = [] if problems is None else problems
     try:
         lines = path.read_text(encoding="utf-8").splitlines()
     except FileNotFoundError:
@@ -160,16 +203,31 @@ def read_inventory(root: Path, bom: Bom) -> dict[str, dict]:
             raise BomError(f"{INVENTORY_FILE}:{number}: not valid JSON: {exc}") from None
         if not isinstance(record, dict) or "id" not in record or "have" not in record:
             raise BomError(f"{INVENTORY_FILE}:{number}: a record needs id and have")
-        if record["id"] not in bom.items:
-            raise BomError(f"{INVENTORY_FILE}:{number}: {record['id']!r} is not in the bom")
+        if not isinstance(record["id"], str) or record["id"] not in bom.items:
+            problems.append(f"{INVENTORY_FILE}:{number}: {record['id']!r} is not in the bom (renamed or removed?); skipped")
+            continue
+        if _amount(record["have"]) is None:
+            problems.append(f"{INVENTORY_FILE}:{number}: have {record['have']!r} for {record['id']!r} is not a number of at least 0; skipped")
+            continue
         out[record["id"]] = record
     return out
+
+
+def action_of(item: Item) -> str:
+    if item.hold:
+        return "on hold"
+    if item.status in UNDECIDED:
+        return "decide first"
+    if item.status == "optional":
+        return "optional"
+    return "missing" if item.kind == "tools" else "to make" if item.kind in MADE else "to order"
 
 
 def status(root: Path) -> dict:
     """Every item with what is needed, had and short, and the totals by kind."""
     bom = load(root)
-    inventory = read_inventory(root, bom)
+    problems: list[str] = []
+    inventory = read_inventory(root, bom, problems)
     rows = []
     for item in bom.items.values():
         record = inventory.get(item.id)
@@ -177,13 +235,13 @@ def status(root: Path) -> dict:
             have = float(record["have"])
         else:
             have = item.qty if item.status == "owned" else 0.0
-        short = max(0.0, item.qty - have)
-        action = "missing" if item.kind == "tools" else "to make" if item.kind in MADE else "to order"
-        rows.append({**item.describe(), "have": have, "short": short, "action": action, "recorded": record is not None})
+        short = round(max(0.0, item.qty - have), 6)  # no 0.30000000000000004
+        rows.append({**item.describe(), "have": have, "short": short, "action": action_of(item), "recorded": record is not None})
     return {
         "title": bom.title,
         "items": rows,
-        "short": {action: sum(1 for r in rows if r["short"] > 0 and r["action"] == action) for action in ("to order", "to make", "missing")},
+        "short": {action: sum(1 for r in rows if r["short"] > 0 and r["action"] == action) for action in ACTIONS},
+        "problems": problems,
     }
 
 
@@ -198,7 +256,7 @@ def markdown(bom: Bom) -> str:
         out += [bom.intro.strip(), ""]
     if bom.holds:
         out += ["## Hold: do not order or cut before measuring", "", "| What | Wait for |", "|---|---|"]
-        out += [f"| {_cell(what)} | {_cell(wait)} |" for what, wait in bom.holds]
+        out += [f"| {_cell(what)} | {_cell(wait)} |" for what, wait, _ in bom.holds]
         out.append("")
     for group in bom.groups:
         out += [f"## {group.name}", ""]
@@ -212,7 +270,7 @@ def markdown(bom: Bom) -> str:
             out += [f"| {_cell(i.name)} | {i.shown_qty} | {_cell(i.material)} | {_cell(i.size)} | {_cell(i.file)} |" for i in group.items]
         else:
             out += ["| Part | Qty | Status | Notes |", "|---|---|---|---|"]
-            out += [f"| {_cell(i.name)} | {i.shown_qty} | {i.status} | {_cell(i.notes)} |" for i in group.items]
+            out += [f"| {_cell(i.name)} | {i.shown_qty} | {i.status}{', held' if i.hold else ''} | {_cell(i.notes)} |" for i in group.items]
         out.append("")
     if bom.outro:
         out += [bom.outro.strip(), ""]

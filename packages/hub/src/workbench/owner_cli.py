@@ -10,6 +10,7 @@ shell.
 
 from __future__ import annotations
 
+import math
 import os
 from collections.abc import Callable
 
@@ -117,6 +118,17 @@ def item(project, state: dict, ask, say) -> None:
         say(f"replied on {state['id']}")
 
 
+def _amount(reply: str, row: dict) -> float | None:
+    """The reply as an amount the item takes: finite, at least 0, whole unless it has a unit."""
+    try:
+        value = float(reply)
+    except ValueError:
+        return None
+    if not math.isfinite(value) or value < 0 or (not row.get("unit") and value != int(value)):
+        return None
+    return value
+
+
 def materials(project, ask, say) -> None:
     status = _call(project, "bom")
     say("")
@@ -124,17 +136,22 @@ def materials(project, ask, say) -> None:
     for row in status["items"]:
         need = row.get("qty_text") or f"{row['qty']:g}"
         state = f"have {row['have']:g}" + ("" if row["recorded"] else " (not recorded)")
-        reply = ask(f"{row['group']} | {row['name']} | need {need}, {state}> ").strip().replace(",", ".")
+        if row["action"] in ("on hold", "decide first", "optional"):
+            state += f"; {row['action']}" + (f": {row['hold']}" if row.get("hold") else "")
+        while True:
+            reply = ask(f"{row['group']} | {row['name']} | need {need}, {state}> ").strip().replace(",", ".")
+            if reply.lower() in ("q", "") or _amount(reply, row) is not None:
+                break
+            say(f"  {'a whole number' if not row.get('unit') else 'a number'} of at least 0, please (Enter skips, q stops)")
         if reply.lower() == "q":
             break
         if not reply:
             continue
         try:
-            qty = float(reply)
-        except ValueError:
-            say("  a number, please; skipped")
+            result = _call(project, "have", id=row["id"], qty=_amount(reply, row))
+        except WorkbenchError as exc:
+            say(f"  not recorded: {exc}")
             continue
-        result = _call(project, "have", id=row["id"], qty=qty)
         if result["item"]["short"] > 0:
             say(f"  {result['item']['action']} {result['item']['short']:g}")
     short = _call(project, "bom", short=True)["items"]

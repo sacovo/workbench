@@ -67,6 +67,7 @@ BUILD_TIMEOUT = 600.0  # s: one build or update
 PICK_TIMEOUT = 60.0  # s: a pick or a measure request may wait behind an update in the same kernel
 RETIRE_GRACE = 30.0  # s an old kernel keeps answering after a swap
 REVIEW_POLL = 0.5  # s
+PAIRING_TTL = 120.0  # s a window's pairing code stays redeemable (workbench.hub.launch)
 CODE_POLL = 2.0  # s
 MAX_IMAGE_BYTES = 16 * 2**20
 
@@ -232,6 +233,7 @@ class Hub:
         # fragment, so it is what tells an owner write over HTTP apart from the agent's own calls
         # with the same hub.json token (workbench.hub.app's page-credential gate).
         self.page_credential = page_credential
+        self._pairing: dict[str, float] = {}  # one-time codes for windows the hub opens -> expiry
         self.port = port
         self.kernel_command = kernel_command or default_kernel_command(project.root)
         self.auto_show = auto_show
@@ -691,6 +693,22 @@ class Hub:
         for page in list(self.pages):
             page.send(message)
         return len(self.pages)
+
+    def pairing_code(self) -> str:
+        """A one-time code for a window the hub opens: the page trades it for the page credential
+        (POST /api/page/pair), so the credential itself never appears on a command line."""
+        import secrets
+
+        now = time.monotonic()
+        self._pairing = {code: expiry for code, expiry in self._pairing.items() if expiry > now}
+        code = secrets.token_urlsafe(24)
+        self._pairing[code] = now + PAIRING_TTL
+        return code
+
+    def redeem_pairing(self, code: str) -> str | None:
+        """The page credential for a code issued by pairing_code(), once; None if unknown, spent or expired."""
+        expiry = self._pairing.pop(code, None) if isinstance(code, str) else None
+        return self.page_credential if expiry is not None and expiry > time.monotonic() else None
 
     def page_connected(self, page: Page) -> None:
         self.pages.add(page)

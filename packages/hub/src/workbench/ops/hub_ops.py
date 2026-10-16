@@ -120,7 +120,7 @@ def open_(project: Project) -> dict:
 
     hub = running_instance(project)
     info = HubInfo(pid=os.getpid(), port=hub.port, token=hub.token)
-    return open_window(project, info, hub.page_credential)
+    return open_window(project, info, hub.pairing_code())
 
 
 @op(

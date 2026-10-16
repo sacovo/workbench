@@ -353,3 +353,8 @@ table.bom tr.short td:first-child {
 input.have {
     width: 3.5rem;
 }
+
+table.bom td.hold {
+    color: var(--warn, #a15c00);
+    font-weight: 600;
+}

@@ -80,13 +80,38 @@ def test_the_latest_inventory_record_counts(root):
     r = rows(root)
     assert (r["servo"]["have"], r["servo"]["short"]) == (7, 2)
     assert r["arm"]["short"] == 1
-    assert bom.status(root)["short"] == {"to order": 2, "to make": 1, "missing": 1}
+    assert bom.status(root)["short"] == {"to order": 2, "to make": 1, "missing": 1, "on hold": 0, "decide first": 0, "optional": 0}
 
 
-def test_a_record_for_an_unknown_item_is_an_error(root):
-    have(root, "nonsense", 1)
-    with pytest.raises(bom.BomError, match="not in the bom"):
-        bom.status(root)
+@pytest.mark.parametrize("record", [{"id": "nonsense", "have": 1}, {"id": "servo", "have": "abc"}, {"id": "servo", "have": None},
+                                    {"id": "servo", "have": -5}, {"id": "servo", "have": float("nan")}, {"id": 5, "have": 1}])
+def test_a_stale_or_bad_record_is_skipped_and_reported_not_fatal(root, record):
+    """The ledger is append-only: a record for a renamed item, or a hand-edited value, must not
+    stop the list (R-0116, R-0120); the latest usable record still counts."""
+    have(root, "servo", 4)
+    path = root / bom.INVENTORY_FILE
+    with path.open("a") as f:
+        f.write(json.dumps({**record, "by": {"role": "owner"}, "at": "2026-10-16T10:01:00Z"}) + "\n")
+    status = bom.status(root)
+    assert len(status["problems"]) == 1 and "skipped" in status["problems"][0]
+    assert {r["id"]: r["have"] for r in status["items"]}["servo"] == 4
+
+
+def test_held_and_undecided_items_are_listed_but_not_counted_as_ready_to_order(tmp_path):
+    text = BOM.replace('wait_for = "R-0027"', 'wait_for = "R-0027"\nitems = ["mount"]').replace('qty = 2\nstatus = "owned"', 'qty = 2\nstatus = "assumed"')
+    (tmp_path / "bom.toml").write_text(text)
+    status = bom.status(tmp_path)
+    r = {row["id"]: row for row in status["items"]}
+    assert (r["mount"]["action"], r["mount"]["hold"], r["mount"]["short"]) == ("on hold", "R-0027", 3)
+    assert (r["arm"]["action"], r["arm"]["short"]) == ("decide first", 2)
+    assert status["short"]["to order"] == 1 and status["short"]["to make"] == 0 and status["short"]["on hold"] == 1
+    assert "| Arm | 2 | assumed |" in bom.markdown(bom.load(tmp_path))
+
+
+def test_shortfalls_are_rounded(root):
+    (root / "bom.toml").write_text(BOM.replace('qty = 3', 'qty = 0.3\nunit = "m"'))
+    have(root, "mount", 0.1)  # 0.3 - 0.1 is 0.19999999999999998 in floating point
+    assert repr(rows(root)["mount"]["short"]) == "0.2" and rows(root)["mount"]["unit"] == "m"
 
 
 @pytest.mark.parametrize("bad", [
@@ -95,6 +120,12 @@ def test_a_record_for_an_unknown_item_is_an_error(root):
     BOM.replace('id = "mount"', 'id = "servo"'),
     BOM.replace('status = "decided"', 'status = "maybe"'),
     BOM.replace('qty_text = "8 + 1"', 'colour = "red"'),
+    BOM.replace('wait_for = "R-0027"', ''),
+    BOM.replace('wait_for = "R-0027"', 'wait_for = "R-0027"\nitems = ["nonsense"]'),
+    BOM.replace('qty_text = "8 + 1"', 'notes = 5'),
+    BOM.replace('id = "mount"', 'id = 5'),
+    BOM.replace('qty = 3', 'qty = nan'),
+    BOM.replace('qty = 3', 'qty = inf'),
 ])
 def test_malformed_boms_are_refused(tmp_path, bad):
     (tmp_path / "bom.toml").write_text(bad)

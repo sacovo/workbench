@@ -78,3 +78,29 @@ def test_have_appends_an_inventory_record(project, kernel):
     assert [r["have"] for r in records] == [4, 9] and records[1]["note"] == "arrived" and records[0]["by"]["role"] == "owner"
     with pytest.raises(Exception):
         run(project, "have", id="nonsense", qty=1)
+
+
+def test_have_takes_whole_numbers_for_counted_items_and_names_an_unknown_id(project, kernel):
+    from workbench.errors import InvalidInput
+
+    with pytest.raises(InvalidInput, match="whole number"):
+        run(project, "have", id="servo", qty=1.5)
+    with pytest.raises(InvalidInput, match="no item"):
+        run(project, "have", id="nonsense", qty=1)
+
+
+def test_owner_walk_asks_again_after_a_bad_count_instead_of_ending(project, kernel, monkeypatch):
+    """R-0119: a mistyped count used to end the whole session."""
+    monkeypatch.delenv("CLAUDECODE", raising=False)
+    ask, say, said = scripted(["m", "-1", "nan", "1.5", "abc", "4", "q"])
+    monkeypatch.setattr(owner_cli, "owner_items", lambda project: [])
+    assert owner_cli.run(str(project.root), ask, say) == 0
+    records = [json.loads(line) for line in (project.root / bom_ops.INVENTORY_FILE).read_text().splitlines()]
+    assert [r["have"] for r in records] == [4]
+    assert sum("a whole number of at least 0" in line for line in said) == 4
+
+
+def test_bom_markdown_through_the_cli_prints_the_list_not_the_counts():
+    """R-0115: `wbench bom --markdown > PARTS.md` must write the parts list."""
+    result = {"items": [], "short": {}, "markdown": "# Parts\n\n| a | b |\n"}
+    assert bom_ops._human_bom(result) == "# Parts\n\n| a | b |"

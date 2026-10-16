@@ -111,3 +111,12 @@ def test_cli_exit_codes_and_json(checked_project):
     failing = run_cli(checked_project)
     assert failing.returncode == 1 and "gap" in failing.stdout and "1 failing" in failing.stdout
     assert run_cli(checked_project, "nope").returncode == 2
+
+
+def test_numpy_values_describe_as_plain_json():
+    np = pytest.importorskip("numpy")
+    check = make(np.float64(1.0), np.float64(2.0))
+    assert type(check.value) is float and type(check.limit) is float
+    described = check.describe()
+    assert type(described["passed"]) is bool
+    assert json.loads(json.dumps(described, allow_nan=False))["passed"] is True

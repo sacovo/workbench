@@ -54,6 +54,8 @@ class Check:
             number = getattr(self, field)
             if isinstance(number, bool) or not isinstance(number, (int, float)) or not math.isfinite(number):
                 raise CheckError(f"{where}: {field} must be a finite number, got {number!r}")
+            # A numpy float is a float, but its comparisons give numpy bools, which JSON refuses.
+            object.__setattr__(self, field, float(number))
         if self.limit <= 0:
             raise CheckError(f"{where}: limit must be positive, got {self.limit}")
 

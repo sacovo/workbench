@@ -37,6 +37,10 @@ env -u VIRTUAL_ENV uv run wbench job-check                                # repo
 env -u VIRTUAL_ENV uv run wbench ledger                                   # assumed vs measured values, and the outputs they hold
 env -u VIRTUAL_ENV uv run wbench measure KEY --value 36.1 --source "..."  # record a measurement (no --value: the owner's answer)
 env -u VIRTUAL_ENV uv run wbench make lower_plate.dxf                     # a declared output as a job; refused while held
+env -u VIRTUAL_ENV uv run wbench bom [--short] [--tools] [--markdown]      # materials and tools from the project's bom.toml, with the owner's inventory
+env -u VIRTUAL_ENV uv run wbench todo                                     # what waits on the owner
+wbench owner      # the owner's own terminal (interactive; refused in an agent's shell): answer, measure, record materials
+wbench have ID N  # owner: how many of an item are on hand (also the page's Materials tab)
 ```
 
 `examples/minimal` is its own uv project, not a workspace member, so it has its own lockfile and

@@ -158,7 +158,22 @@ def execute(o: Op, arguments: dict, directory: str | None = None) -> dict:
 
 
 def main(argv: list[str] | None = None) -> int:
+    argv = sys.argv[1:] if argv is None else argv
+    rest = argv[2:] if argv[:1] == ["-C"] else argv
+    if rest[:1] == ["owner"]:
+        from workbench import owner_cli
+
+        try:
+            return owner_cli.run(argv[1] if argv[:1] == ["-C"] else None)
+        except WorkbenchError as exc:
+            print(f"wbench owner: {exc}", file=sys.stderr)
+            return 1
+        except (EOFError, KeyboardInterrupt):
+            print()
+            return 0
     parser = build_parser(default_registry())
+    sub = next(a for a in parser._actions if isinstance(a, argparse._SubParsersAction))
+    sub.add_parser("owner", help="the owner's terminal: answer what waits on you, record materials (interactive)")
     args = parser.parse_args(argv)
     o: Op | None = getattr(args, "_op", None)
     if o is None:

@@ -124,12 +124,32 @@ def main(argv: list[str] | None = None) -> int:
     ledger_parser = sub.add_parser("ledger", help="print the ledger of assumed and measured values, and the holds, as JSON")
     ledger_parser.add_argument("--project", type=Path, default=Path.cwd(), help="project root (default: current directory)")
     ledger_parser.add_argument("--output", help="also list why this output is held")
+    bom_parser = sub.add_parser("bom", help="print the materials and tools with what is had and short, as JSON")
+    bom_parser.add_argument("--project", type=Path, default=Path.cwd(), help="project root (default: current directory)")
+    bom_parser.add_argument("--markdown", action="store_true", help="print the parts list as markdown instead")
     args = parser.parse_args(argv)
     if args.command == "check":
         return check(args.project, args.groups, args.json)
     if args.command == "ledger":
         return ledger(args.project, args.output)
+    if args.command == "bom":
+        return bom(args.project, args.markdown)
     return serve(args.project)
+
+
+def bom(project_root: Path, as_markdown: bool) -> int:
+    """Print the bom's status as one JSON object (workbench_kernel.bom.status), or the parts list
+    as markdown. Exit 0, or 2 when bom.toml or the inventory cannot be read."""
+    from workbench_kernel import bom as bom_
+
+    root = project_root.resolve()
+    try:
+        text = bom_.markdown(bom_.load(root)) if as_markdown else json.dumps(bom_.status(root))
+    except bom_.BomError as exc:
+        sys.stdout.write(json.dumps({"error": f"BomError: {exc}"}) + "\n")
+        return 2
+    sys.stdout.write(text + "\n")
+    return 0
 
 
 def ledger(project_root: Path, output: str | None) -> int:

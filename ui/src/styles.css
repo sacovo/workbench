@@ -327,3 +327,29 @@ button.link {
     background: var(--error-bg);
     color: var(--error);
 }
+
+/* Materials and tools */
+.materials-bar {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    margin-bottom: 0.4rem;
+}
+table.bom {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+table.bom th,
+table.bom td {
+    text-align: left;
+    padding: 0.2rem 0.3rem;
+    border-bottom: 1px solid var(--line, #3333);
+    vertical-align: top;
+}
+table.bom tr.short td:first-child {
+    font-weight: 600;
+}
+input.have {
+    width: 3.5rem;
+}

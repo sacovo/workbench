@@ -3,6 +3,7 @@ import { mountViewer, refreshPins } from "./hub";
 import { CommentPanel } from "./panels/Comment";
 import { InboxPanel } from "./panels/Inbox";
 import { ItemPanel } from "./panels/Item";
+import { MaterialsPanel } from "./panels/Materials";
 import { ViewsPanel } from "./panels/Views";
 import { setStore, useStore, type Tab } from "./store";
 import { Banner, TopBar } from "./TopBar";
@@ -12,6 +13,7 @@ const TABS: { id: Tab; label: string }[] = [
     { id: "item", label: "Item" },
     { id: "comment", label: "Comment" },
     { id: "views", label: "Views" },
+    { id: "materials", label: "Materials" },
 ];
 
 function ViewerPane() {
@@ -42,6 +44,7 @@ function SidePanel() {
                 {tab === "item" && <ItemPanel />}
                 {tab === "comment" && <CommentPanel />}
                 {tab === "views" && <ViewsPanel />}
+                {tab === "materials" && <MaterialsPanel />}
             </div>
         </aside>
     );

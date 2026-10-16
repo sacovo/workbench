@@ -122,7 +122,7 @@ export interface Notice {
     message: string;
 }
 
-export type Tab = "inbox" | "item" | "comment" | "views";
+export type Tab = "inbox" | "item" | "comment" | "views" | "materials";
 
 export interface Store {
     connected: boolean;

@@ -37,15 +37,14 @@ class OutputHeld(WorkbenchError):
     http_status = 409
 
 
-def kernel_ledger(project: Project, output: Optional[str] = None) -> dict:
+def kernel_json(project: Project, *arguments: str) -> dict:
+    """One JSON object from `python -m workbench_kernel <arguments> --project ROOT` in the project's environment."""
     root = str(project.root)
-    command = ["uv", "run", "--project", root, "python", "-m", "workbench_kernel", "ledger", "--project", root]
-    if output is not None:
-        command += ["--output", output]
+    command = ["uv", "run", "--project", root, "python", "-m", "workbench_kernel", *arguments, "--project", root]
     try:
         done = subprocess.run(command, cwd=project.root, env=kernel_env(), capture_output=True, text=True, timeout=TIMEOUT)
     except (OSError, subprocess.TimeoutExpired) as exc:
-        raise LedgerRunError(f"could not read the ledger: {exc}") from None
+        raise LedgerRunError(f"could not run the kernel: {exc}") from None
     lines = done.stdout.strip().splitlines()
     try:
         result = json.loads(lines[-1]) if lines else None
@@ -53,8 +52,12 @@ def kernel_ledger(project: Project, output: Optional[str] = None) -> dict:
         result = None
     if not isinstance(result, dict) or done.returncode != 0 or "error" in result:
         reason = result.get("error") if isinstance(result, dict) else None
-        raise LedgerRunError(f"ledger failed (exit {done.returncode}): {reason or done.stderr.strip()[-2000:] or 'no output'}")
+        raise LedgerRunError(f"kernel {arguments[0]} failed (exit {done.returncode}): {reason or done.stderr.strip()[-2000:] or 'no output'}")
     return result
+
+
+def kernel_ledger(project: Project, output: Optional[str] = None) -> dict:
+    return kernel_json(project, "ledger", *(["--output", output] if output is not None else []))
 
 
 def _human_ledger(r: dict) -> str:

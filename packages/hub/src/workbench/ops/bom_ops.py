@@ -49,6 +49,11 @@ def _human_bom(r: dict) -> str:
             lines.append(f"{'':18}source: {_link_text(source)}")
         if link and link is not source and link != source:
             lines.append(f"{'':18}link {link['state']}: {_link_text(link)}")
+        for cart in row.get("carts", []):
+            qty = f" x{_qty(cart['qty'])}" if cart.get("qty") is not None else ""
+            lines.append(f"{'':18}in cart at {cart['shop']}{qty} since {cart.get('at', '')[:10]}")
+        if row.get("documents"):
+            lines.append(f"{'':18}documents: {', '.join(row['documents'])}")
     counts = ", ".join(f"{n} {action}" for action, n in r["short"].items() if n)
     lines.append(f"\n{counts or 'nothing short'}")
     lines += [f"warning: {p}" for p in r.get("problems", [])]

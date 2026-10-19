@@ -485,6 +485,94 @@ input.have {
     font-weight: 600;
 }
 
+/* cart marks and documents (R-0260) */
+.carts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    align-items: center;
+    margin-top: 0.2rem;
+}
+.carts .cart {
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0 0.3rem;
+    background: var(--info-bg);
+    white-space: nowrap;
+}
+.carts button.clear {
+    border: none;
+    background: none;
+    padding: 0 0 0 0.25rem;
+    color: var(--dim);
+    cursor: pointer;
+}
+.carts input.cart-shop {
+    width: 9rem;
+}
+table.bom button.doc {
+    display: block;
+    font-size: 0.9em;
+    text-align: left;
+}
+table.bom tr.drop-over td {
+    background: var(--info-bg);
+}
+.dropped {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    align-items: center;
+    margin-top: 0.2rem;
+    font-weight: normal;
+}
+.documents .dropzone {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    align-items: center;
+    padding: 0.8rem;
+    border: 2px dashed var(--line);
+    border-radius: 4px;
+    margin-bottom: 0.6rem;
+}
+.documents .dropzone.over {
+    border-color: var(--accent);
+    background: var(--info-bg);
+}
+.documents .dropzone label {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+.documents .dropzone .pick {
+    cursor: pointer;
+}
+.documents .dropzone .pick .link {
+    color: var(--accent);
+    text-decoration: underline;
+}
+table.docs {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+table.docs td {
+    padding: 0.2rem 0.3rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+}
+table.docs td:nth-child(3),
+table.docs td:nth-child(4) {
+    white-space: nowrap;
+    width: 1%;
+}
+button.danger {
+    color: var(--error);
+    background: var(--error-bg);
+    border: 1px solid var(--error);
+}
+
 table.bom td.hold {
     color: var(--warn, #a15c00);
     font-weight: 600;

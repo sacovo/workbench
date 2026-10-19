@@ -200,3 +200,50 @@ def test_a_broken_links_line_is_an_error(root):
     path.write_text('{"id": "servo"\n')
     with pytest.raises(bom.BomError, match="links.jsonl:1"):
         bom.status(root)
+
+
+def record(root, name, **fields):
+    path = root / name
+    path.parent.mkdir(exist_ok=True)
+    with path.open("a") as f:
+        f.write(json.dumps({**fields, "by": {"role": "owner"}, "at": "2026-10-19T10:00:00Z"}) + "\n")
+
+
+def test_documents_are_listed_and_given_to_the_items_they_name(root):
+    sheet = root / "documents" / "datasheets" / "servo.pdf"
+    sheet.parent.mkdir(parents=True)
+    sheet.write_bytes(b"%PDF")
+    record(root, bom.DOCUMENTS_FILE, path="documents/datasheets/servo.pdf", kind="datasheet", items=["servo", "gone"])
+    record(root, bom.DOCUMENTS_FILE, path="documents/receipts/shop.pdf", kind="receipt", items=[])
+    result = bom.status(root)
+    docs = {d["path"]: d for d in result["documents"]}
+    assert set(docs) == {"documents/datasheets/servo.pdf", "documents/receipts/shop.pdf"}
+    assert docs["documents/datasheets/servo.pdf"]["items"] == ["servo"]  # the stale id is dropped
+    assert docs["documents/receipts/shop.pdf"]["missing"] is True
+    assert any("'gone'" in p for p in result["problems"]) and any("shop.pdf" in p and "missing" in p for p in result["problems"])
+    r = {row["id"]: row for row in result["items"]}
+    assert r["servo"]["documents"] == ["documents/datasheets/servo.pdf"]
+    assert "documents" not in r["arm"]
+
+
+def test_the_latest_document_record_counts_and_a_removal_unlists_it(root):
+    record(root, bom.DOCUMENTS_FILE, path="documents/datasheets/a.pdf", kind="datasheet", items=["servo"])
+    record(root, bom.DOCUMENTS_FILE, path="documents/datasheets/a.pdf", kind="datasheet", items=["arm"], title="Arm sheet")
+    record(root, bom.DOCUMENTS_FILE, path="documents/other/b.txt", kind="other", items=[])
+    record(root, bom.DOCUMENTS_FILE, path="documents/other/b.txt", removed=True)
+    record(root, bom.DOCUMENTS_FILE, path="../outside.pdf", kind="other", items=[])
+    result = bom.status(root)
+    (doc,) = result["documents"]
+    assert (doc["items"], doc["title"]) == (["arm"], "Arm sheet")
+    assert any("outside.pdf" in p for p in result["problems"])
+
+
+def test_a_cart_mark_holds_per_shop_until_cleared(root):
+    record(root, bom.CARTS_FILE, id="servo", shop="Galaxus", state="in cart", qty=9)
+    record(root, bom.CARTS_FILE, id="servo", shop="Digitec", state="in cart")
+    record(root, bom.CARTS_FILE, id="servo", shop="digitec", state="cleared")  # shop names match without case
+    record(root, bom.CARTS_FILE, id="arm", shop="Galaxus", state="lost")
+    result = bom.status(root)
+    r = {row["id"]: row for row in result["items"]}
+    assert [(c["shop"], c.get("qty")) for c in r["servo"]["carts"]] == [("Galaxus", 9)]
+    assert "carts" not in r["arm"] and any("'lost'" in p for p in result["problems"])

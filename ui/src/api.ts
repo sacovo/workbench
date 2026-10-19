@@ -114,3 +114,22 @@ export async function assetJson<T = unknown>(path: string): Promise<T> {
     const [, , item, name] = path.split("/");
     return api<T>(`/api/asset/${item}/${name}`);
 }
+
+/** A document under documents/ (GET /api/document), opened in a new tab as an object URL. */
+export async function openDocument(path: string): Promise<void> {
+    const tab = window.open("", "_blank"); // opened before the await, so the browser treats it as the click's
+    const response = await fetch(`/api/document?path=${encodeURIComponent(path)}`, { headers: token ? { "X-Workbench-Token": token } : {} });
+    if (!response.ok) {
+        tab?.close();
+        throw new ApiError(response.status, await response.text());
+    }
+    const url = URL.createObjectURL(await response.blob());
+    if (tab) tab.location.href = url;
+    else window.location.assign(url);
+}
+
+/** A file dropped in the Materials tab, stored as a document (POST /api/page/document, an owner write). */
+export function uploadDocument(file: File, kind: string, items: string[], title = ""): Promise<{ record: { path: string } }> {
+    const q = new URLSearchParams({ filename: file.name, kind, items: items.join(","), ...(title ? { title } : {}) });
+    return api(`/api/page/document?${q}`, { method: "POST", body: file, headers: { "Content-Type": "application/octet-stream" } });
+}

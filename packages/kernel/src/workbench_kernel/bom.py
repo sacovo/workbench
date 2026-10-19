@@ -46,6 +46,18 @@ Product links the owner asks the agent to check are in `ledger/links.jsonl`, app
 "state": "requested" | "ok" | "check" | "wrong", "summary": ..., "price": ..., "currency": ...,
 "shop": ..., "by": {...}, "at": ...}. Each item gets its latest record as `link` and its latest
 "ok" one as `source`: where to buy it, for the shopping list.
+
+Documents (datasheets, order confirmations, receipts, manuals) are files under `documents/<kind>s/`
+in the project, tracked with it; `ledger/documents.jsonl` describes them (`wbench doc-add`, or a
+file dropped in the page): {"path": "documents/datasheets/x.pdf", "sha256": ..., "size": ...,
+"kind": ..., "items": [ids], "title": ..., "note": ..., "by": {...}, "at": ...}, or {"path": ...,
+"removed": true, ...}. The latest record for a path counts. Each item gets the documents that name
+it; the whole list is `documents`, item-less ones included.
+
+Shop carts (owner's decision R-0260 in my-robot): the owner marks an item as put in a shop's cart,
+in `ledger/carts.jsonl`: {"id": ..., "shop": ..., "state": "in cart" | "cleared", "url": ...,
+"qty": ..., "by": {...}, "at": ...}. The latest record per item and shop counts; each item gets
+the shops whose cart holds it as `carts`.
 """
 
 from __future__ import annotations
@@ -59,6 +71,11 @@ from pathlib import Path
 INVENTORY_FILE = Path("ledger") / "inventory.jsonl"
 LINKS_FILE = Path("ledger") / "links.jsonl"
 LINK_STATES = ("requested", "ok", "check", "wrong")
+DOCUMENTS_DIR = Path("documents")
+DOCUMENTS_FILE = Path("ledger") / "documents.jsonl"
+DOCUMENT_KINDS = ("datasheet", "order", "receipt", "manual", "other")
+CARTS_FILE = Path("ledger") / "carts.jsonl"
+CART_STATES = ("in cart", "cleared")
 KINDS = ("bought", "sheet", "printed", "turned", "tools")
 MADE = ("sheet", "printed", "turned")
 STATUSES = ("owned", "decided", "assumed", "designed", "open", "optional", "from SO-ARM100")
@@ -262,6 +279,76 @@ def read_links(root: Path, bom: Bom, problems: list[str] | None = None) -> dict[
     return out
 
 
+def _records(root: Path, name: Path, needs: tuple[str, ...]):
+    """(line number, record) for each JSON line of a ledger file; a line that is not JSON, or lacks
+    a field in `needs`, is an error."""
+    try:
+        lines = (Path(root) / name).read_text(encoding="utf-8").splitlines()
+    except FileNotFoundError:
+        return
+    for number, line in enumerate(lines, 1):
+        if not line.strip():
+            continue
+        try:
+            record = json.loads(line)
+        except ValueError as exc:
+            raise BomError(f"{name}:{number}: not valid JSON: {exc}") from None
+        if not isinstance(record, dict) or not all(k in record for k in needs):
+            raise BomError(f"{name}:{number}: a record needs {', '.join(needs)}")
+        yield number, record
+
+
+def read_documents(root: Path, bom: Bom, problems: list[str] | None = None) -> list[dict]:
+    """The current documents, in the order first recorded. An item id no longer in the bom is
+    dropped from a document's items and reported; a document whose file is gone is listed with
+    `missing` and reported."""
+    problems = [] if problems is None else problems
+    latest: dict[str, tuple[int, dict]] = {}
+    for number, record in _records(root, DOCUMENTS_FILE, ("path",)):
+        path = record["path"]
+        if not isinstance(path, str) or not path.startswith(f"{DOCUMENTS_DIR.as_posix()}/") or ".." in Path(path).parts:
+            problems.append(f"{DOCUMENTS_FILE}:{number}: {path!r} is not under {DOCUMENTS_DIR}/; skipped")
+            continue
+        if record.get("removed"):
+            latest.pop(path, None)
+            continue
+        if record.get("kind") not in DOCUMENT_KINDS:
+            problems.append(f"{DOCUMENTS_FILE}:{number}: kind {record.get('kind')!r} is not one of {', '.join(DOCUMENT_KINDS)}; skipped")
+            continue
+        latest[path] = (number, record)
+    out = []
+    for path, (number, record) in latest.items():
+        items = record.get("items") if isinstance(record.get("items"), list) else []
+        gone = [i for i in items if i not in bom.items]
+        if gone:
+            problems.append(f"{DOCUMENTS_FILE}:{number}: {path}: items {gone} are not in the bom (renamed or removed?)")
+        doc = {**{k: v for k, v in record.items() if k not in ("by", "items")}, "items": [i for i in items if i in bom.items]}
+        if not (Path(root) / path).is_file():
+            problems.append(f"{path} is described in {DOCUMENTS_FILE} but the file is missing")
+            doc["missing"] = True
+        out.append(doc)
+    return out
+
+
+def read_carts(root: Path, bom: Bom, problems: list[str] | None = None) -> dict[str, list[dict]]:
+    """{id: [the latest "in cart" record of each shop whose cart holds it]}."""
+    problems = [] if problems is None else problems
+    latest: dict[tuple[str, str], dict] = {}
+    for number, record in _records(root, CARTS_FILE, ("id", "shop", "state")):
+        if not isinstance(record["id"], str) or record["id"] not in bom.items:
+            problems.append(f"{CARTS_FILE}:{number}: {record['id']!r} is not in the bom (renamed or removed?); skipped")
+            continue
+        if record["state"] not in CART_STATES:
+            problems.append(f"{CARTS_FILE}:{number}: state {record['state']!r} is not one of {', '.join(CART_STATES)}; skipped")
+            continue
+        latest[(record["id"], str(record["shop"]).strip().casefold())] = record
+    out: dict[str, list[dict]] = {}
+    for (item, _), record in latest.items():
+        if record["state"] == "in cart":
+            out.setdefault(item, []).append({k: v for k, v in record.items() if k not in ("id", "by", "state")})
+    return out
+
+
 def action_of(item: Item) -> str:
     if item.hold:
         return "on hold"
@@ -296,6 +383,8 @@ def status(root: Path) -> dict:
         problems += check_outputs(bom, declared)
     inventory = read_inventory(root, bom, problems)
     links = read_links(root, bom, problems)
+    documents = read_documents(root, bom, problems)
+    carts = read_carts(root, bom, problems)
     rows = []
     for item in bom.items.values():
         record = inventory.get(item.id)
@@ -305,11 +394,14 @@ def status(root: Path) -> dict:
             have = item.qty if item.status == "owned" else 0.0
         short = round(max(0.0, item.qty - have), 6)  # no 0.30000000000000004
         rows.append({**item.describe(), "have": have, "short": short, "action": action_of(item), "recorded": record is not None,
-                     **{k: v for k, v in links.get(item.id, {}).items() if v is not None}})
+                     **{k: v for k, v in links.get(item.id, {}).items() if v is not None},
+                     **({"documents": docs} if (docs := [d["path"] for d in documents if item.id in d["items"]]) else {}),
+                     **({"carts": carts[item.id]} if item.id in carts else {})})
     return {
         "title": bom.title,
         "items": rows,
         "short": {action: sum(1 for r in rows if r["short"] > 0 and r["action"] == action) for action in ACTIONS},
+        "documents": documents,
         "problems": problems,
     }
 

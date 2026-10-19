@@ -41,6 +41,9 @@ env -u VIRTUAL_ENV uv run wbench make lower_plate.dxf                     # a de
 env -u VIRTUAL_ENV uv run wbench outputs                                  # declared outputs: missing, unstamped, modified, stale or current, and held
 env -u VIRTUAL_ENV uv run wbench bom [--short] [--tools] [--markdown]      # materials and tools from the project's bom.toml, with the owner's inventory
 env -u VIRTUAL_ENV uv run wbench todo                                     # what waits on the owner
+env -u VIRTUAL_ENV uv run wbench docs [--item ID]                         # documents/ (datasheets, orders, receipts, manuals) with their bom items
+env -u VIRTUAL_ENV uv run wbench doc-add FILE datasheet --items '["id"]'  # copy a document in; orders and receipts: owner only (also doc-edit, doc-remove)
+wbench cart ID SHOP [--clear]  # owner: an item put in a shop's cart (also the page's Materials tab)
 wbench owner      # the owner's own terminal (interactive; refused in an agent's shell): answer, measure, record materials
 wbench have ID N  # owner: how many of an item are on hand (also the page's Materials tab)
 ```

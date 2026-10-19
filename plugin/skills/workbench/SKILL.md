@@ -41,6 +41,9 @@ then act on it. Never act on a pointer's wording alone, and do not guess what th
 | `wbench selection` | What the owner has picked in the page, resolved to the exact part and face (needs `wbench serve`) |
 | `wbench bom [--short] [--tools]` | Materials and tools: needed, had, short, and each item's checked source |
 | `wbench link-verdict ID URL --verdict ok\|check\|wrong --summary "..." [--price N --currency CHF --shop NAME]` | Record the check of a product page the owner sent (below) |
+| `wbench docs [--item ID] [--kind K]` | The project's documents (datasheets, orders, receipts, manuals) under `documents/`, with the bom items each belongs to |
+| `wbench doc-add FILE datasheet\|manual\|other --items '["id"]' [--title ...]` | File a datasheet or manual you fetched with its items; orders and receipts are the owner's |
+| `wbench doc-edit PATH --items '[...]'` | Change a document's items, title or note |
 
 Targets: `{"kind": "part", "label": "lower_plate"}`, `{"kind": "param", "key":
 "robot.params:BASE.wheel_width"}`, `{"kind": "fact", "key": "..."}`, `{"kind": "file", "path":
@@ -100,6 +103,15 @@ against the item, not against what the page says about itself:
    reply on the comment, verdict first and the issues as a short list, with `--status done`.
 
 Say what was read on the page and what was inferred. Nothing from memory about prices or stock.
+
+## Documents and carts
+
+Datasheets, manuals, order confirmations and receipts are plain files under `documents/<kind>s/`
+in the project (R-0260 in my-robot); `wbench docs` lists them with their bom items. Read a part's
+datasheet there before taking a figure from memory, and file one you fetched with `wbench
+doc-add`. Order confirmations and receipts come only from the owner; never fetch them from mail.
+An item the owner put in a shop's cart shows `in cart at <shop>` in `wbench bom` (`wbench cart`,
+owner only): it is not to be ordered again elsewhere.
 
 ## Working rules
 

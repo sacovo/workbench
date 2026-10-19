@@ -25,6 +25,10 @@ Routes:
     GET  /api/state                project, build id, kernel state, scenes, item counts
     GET  /api/blob/<sha>           a data message the kernel wrote to .workbench/blobs/
     GET  /api/asset/<item>/<name>  a file attached to a review item (thumbnails)
+    GET  /api/document?path=...    a document under documents/ (workbench.ops.doc_ops)
+    POST /api/page/document?...    the Materials tab: a dropped file as a document (the body is the
+                                   file; filename, kind, items (comma-separated), title, note in the
+                                   query; always an owner write; always needs the page credential)
     POST /api/page/pair            a window the hub opened trades its one-time pairing code for the
                                    page credential (workbench.hub.launch)
     POST /api/page/comment         the Comment tab: a comment on the pick with frozen evidence
@@ -56,7 +60,7 @@ from starlette.websockets import WebSocket, WebSocketDisconnect
 
 from workbench.errors import WorkbenchError
 from workbench.hub.hub import Hub, Page
-from workbench.ops import Endpoint, default_registry
+from workbench.ops import Endpoint, default_registry, doc_ops
 from workbench.review.schema import ITEM_ID_RE
 from workbench.review.store import ASSET_NAME_RE
 
@@ -186,6 +190,36 @@ def create_app(
             return _error(404, f"no attachment review/assets/{item}/{name}")
         return FileResponse(path, headers={"Cache-Control": "no-cache"})
 
+    async def document(request: Request) -> Response:
+        rel = request.query_params.get("path", "")
+        root = (hub.project.root / doc_ops.DOCUMENTS_DIR).resolve()
+        path = (hub.project.root / rel).resolve()
+        if not rel or not path.is_relative_to(root):
+            return _error(400, f"a document is a file under {doc_ops.DOCUMENTS_DIR}/, got {rel!r}")
+        if not path.is_file():
+            return _error(404, f"no document {rel}")
+        return FileResponse(path, headers={"Cache-Control": "no-cache"})
+
+    async def add_document(request: Request) -> Response:
+        if not _page_credential_ok(request, hub):
+            return _error(403, OWNER_WRITE_REFUSED)
+        q = request.query_params
+        try:
+            data = bytearray()
+            async for chunk in request.stream():
+                data += chunk
+                if len(data) > doc_ops.MAX_DOCUMENT:
+                    raise WorkbenchError(f"the file is larger than {doc_ops.MAX_DOCUMENT // 2**20} MB")
+            items = [i.strip() for i in q.get("items", "").split(",") if i.strip()]
+            result = await run_in_threadpool(
+                doc_ops.store_document, hub.project, bytes(data), q.get("filename", ""), q.get("kind", ""), items,
+                q.get("title", ""), q.get("note", ""), "owner",
+            )
+        except WorkbenchError as exc:
+            log.warning("document from the page refused: %s", exc)
+            return _error(exc.http_status, str(exc))
+        return JSONResponse(result)
+
     async def comment(request: Request) -> Response:
         if not _page_credential_ok(request, hub):
             return _error(403, OWNER_WRITE_REFUSED)
@@ -252,6 +286,8 @@ def create_app(
         Route("/api/asset/{item}/{name}", asset, methods=["GET"]),
         Route("/api/page/pair", pair, methods=["POST"]),
         Route("/api/page/comment", comment, methods=["POST"]),
+        Route("/api/document", document, methods=["GET"]),
+        Route("/api/page/document", add_document, methods=["POST"]),
         *(_op_route(e, hub) for e in endpoints),
         WebSocketRoute("/ws", ws),
         *extra_routes,

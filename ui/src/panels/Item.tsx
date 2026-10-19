@@ -137,11 +137,17 @@ function Decision({ item }: { item: Any }) {
                     </div>
                 );
             })}
-            <textarea placeholder="remarks with the answer (optional)" value={remark} onChange={(e) => setRemark(e.target.value)} />
-            <button className="primary" data-action="submit-answer" onClick={submit} disabled={busy}>
-                Submit answers
-            </button>
-            <span className="dim"> Unanswered questions stay open.</span>
+            <div className="answer-bar">
+                <textarea placeholder="remarks with the answer (optional)" value={remark} onChange={(e) => setRemark(e.target.value)} />
+                <div className="actions">
+                    <button className="primary" data-action="submit-answer" onClick={submit} disabled={busy}>
+                        Submit answers
+                    </button>
+                    <span className="dim">
+                        {questions.filter((q) => choices[q.id] || texts[q.id]?.trim()).length} of {questions.length} answered here; unanswered questions stay open.
+                    </span>
+                </div>
+            </div>
         </div>
     );
 }
@@ -255,11 +261,15 @@ export function ItemPanel() {
                     <Event key={ev.index} ev={ev} questions={data.questions ?? []} />
                 ))}
             </ul>
-            <textarea placeholder="reply to the agent" value={reply} onChange={(e) => setReply(e.target.value)} />
-            <button onClick={() => send()} disabled={!reply.trim()}>
-                Reply
-            </button>
-            <button onClick={() => send({ status: "done" })}>{reply.trim() ? "Reply and close" : "Close as done"}</button>
+            <div className="reply">
+                <textarea placeholder="reply to the agent" value={reply} onChange={(e) => setReply(e.target.value)} />
+                <div className="actions">
+                    <button onClick={() => send()} disabled={!reply.trim()}>
+                        Reply
+                    </button>
+                    <button onClick={() => send({ status: "done" })}>{reply.trim() ? "Reply and close" : "Close as done"}</button>
+                </div>
+            </div>
         </div>
     );
 }

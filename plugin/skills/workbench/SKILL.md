@@ -111,7 +111,8 @@ Say what was read on the page and what was inferred. Nothing from memory about p
   clearances, interference, compiled models), never on how a picture looks.
 - Report corrections first, in replies and in decisions.
 - Before reporting a number the owner will decide on, have it reviewed independently: delegate to
-  the `wbench-reviewer` subagent with the code and the claims, not your conclusions. Its findings
+  the `wbench-reviewer` subagent with what was asked (the owner's words or the item id), the code
+  and the claims, not your conclusions. Its findings
   arrive as items (`wbench inbox` does not show them; `wbench status` counts them, `wbench item` reads them).
 - Limits live in one place with tests; a threshold picked to sit just under the current output is
   not a requirement.

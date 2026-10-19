@@ -9,6 +9,13 @@
     --error: #a3241b;
     --info-bg: #e5eefa;
     --ok: #2b7a3d;
+    --rule: #eeeee8;
+    /* spacing: tight inside a group, generous between groups */
+    --s1: 2px;
+    --s2: 4px;
+    --s3: 8px;
+    --s4: 12px;
+    --s5: 16px;
     font: 13px/1.4 system-ui, sans-serif;
     color: var(--text);
     background: var(--bg);
@@ -102,12 +109,37 @@ body,
     min-width: 0;
 }
 .side {
-    width: 400px;
     flex: none;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     background: var(--panel);
-    border-left: 1px solid var(--line);
+}
+/* The drag handle between viewer and side panel: a 1px line with a wider grab area. */
+.divider {
+    flex: none;
+    width: 7px;
+    margin: 0 -3px;
+    z-index: 2;
+    cursor: col-resize;
+    background: linear-gradient(to right, transparent 3px, var(--line) 3px, var(--line) 4px, transparent 4px);
+}
+.divider:hover,
+.divider:focus-visible,
+body.resizing .divider {
+    background: linear-gradient(to right, transparent 2px, var(--accent) 2px, var(--accent) 5px, transparent 5px);
+    outline: none;
+}
+body.resizing {
+    cursor: col-resize;
+    user-select: none;
+}
+body.resizing .viewer {
+    pointer-events: none;
+}
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
 }
 .tabs {
     display: flex;
@@ -136,16 +168,25 @@ body,
 .panel {
     flex: 1;
     overflow: auto;
-    padding: 10px;
+    padding: var(--s4);
 }
 
 h2 {
     font-size: 15px;
     margin: 0 0 4px;
 }
-h3 {
+h3,
+.inbox summary {
     font-size: 13px;
-    margin: 12px 0 4px;
+    font-weight: 600;
+    margin: var(--s5) 0 var(--s2);
+}
+.panel > div > h3:first-child,
+.inbox > details:first-child > summary {
+    margin-top: 0;
+}
+.inbox summary {
+    cursor: pointer;
 }
 .dim {
     color: var(--dim);
@@ -156,12 +197,17 @@ ul {
     padding: 0;
 }
 .row {
-    display: flex;
-    gap: 6px;
+    display: grid;
+    grid-template-columns: 4.5rem 6rem minmax(0, 1fr) auto;
+    column-gap: var(--s3);
     align-items: baseline;
-    padding: 5px 4px;
-    border-bottom: 1px solid #eeeee8;
+    padding: var(--s2);
+    border-bottom: 1px solid var(--rule);
     cursor: pointer;
+}
+/* inbox rows lead with the unread dot; its slot stays when the dot does not, so ids line up */
+.inbox .row {
+    grid-template-columns: 7px 4.5rem 6.5rem minmax(0, 1fr) auto;
 }
 .row:hover {
     background: #f2f5fa;
@@ -173,8 +219,9 @@ ul {
 .row .kind {
     color: var(--dim);
 }
-.row .title {
-    flex: 1;
+.row .kind,
+.row > .dim {
+    white-space: nowrap;
 }
 .row.unread .title {
     font-weight: 600;
@@ -185,6 +232,9 @@ ul {
     border-radius: 50%;
     background: var(--accent);
     align-self: center;
+}
+.dot.none {
+    visibility: hidden;
 }
 .meta {
     color: var(--dim);
@@ -208,12 +258,16 @@ ul {
     padding-top: 6px;
     margin-top: 6px;
 }
+/* options side by side in equal columns, so their effects can be compared across */
 .options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    gap: var(--s2);
 }
 .option {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     border: 1px solid var(--line);
     background: white;
     border-radius: 4px;
@@ -281,15 +335,38 @@ button.link {
     padding: 0 4px;
 }
 .thread .event {
-    border-left: 3px solid var(--line);
-    padding: 2px 8px;
-    margin: 6px 0;
+    padding: var(--s2) 0;
+    border-bottom: 1px solid var(--rule);
 }
-.thread .event.owner {
-    border-left-color: var(--accent);
+.thread .event.owner > .dim:first-child {
+    color: var(--accent);
 }
-.thread .event.agent {
-    border-left-color: #9a9a90;
+.thread .event .body {
+    margin: var(--s1) 0 0;
+}
+/* the decision's answer stays in reach while the questions scroll under it */
+.answer-bar {
+    position: sticky;
+    bottom: calc(-1 * var(--s4));
+    margin: var(--s3) calc(-1 * var(--s4)) 0;
+    padding: var(--s3) var(--s4);
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.06);
+    z-index: 1;
+}
+.panel .answer-bar textarea {
+    min-height: 2.6em;
+    margin: 0 0 var(--s2);
+    resize: vertical;
+}
+.actions {
+    display: flex;
+    gap: var(--s3);
+    align-items: center;
+}
+.reply {
+    margin-top: var(--s3);
 }
 .attachments img {
     max-width: 100%;
@@ -339,6 +416,43 @@ table.bom {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.9em;
+    font-variant-numeric: tabular-nums;
+}
+.props {
+    font-variant-numeric: tabular-nums;
+}
+table.bom thead th {
+    position: sticky;
+    top: calc(-1 * var(--s4));
+    background: var(--panel);
+    z-index: 1;
+    white-space: nowrap;
+}
+/* need, have and status are short: keep each on one line so the item column gets the room */
+.materials table.bom td:nth-child(2),
+.materials table.bom td:nth-child(3),
+.materials table.bom td:nth-child(4),
+.outputs table.bom td:nth-child(2) {
+    white-space: nowrap;
+}
+/* fixed columns: every group's table lines up with the next one */
+.materials table.bom {
+    table-layout: fixed;
+}
+.materials table.bom th:nth-child(2) {
+    width: 4.5rem;
+}
+.materials table.bom th:nth-child(3) {
+    width: 4.5rem;
+}
+.materials table.bom th:nth-child(4) {
+    width: 8rem;
+}
+.materials table.bom th:nth-child(5) {
+    width: 36%;
+}
+.materials table.bom td:nth-child(4) div {
+    white-space: normal;
 }
 table.bom th,
 table.bom td {
@@ -389,4 +503,8 @@ td.out-unstamped {
 td.out-modified,
 td.out-missing {
     color: var(--bad, #c62828);
+}
+.row.error {
+    display: block;
+    cursor: default;
 }

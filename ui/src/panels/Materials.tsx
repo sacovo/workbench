@@ -98,11 +98,14 @@ function linkText(l: Link): string {
     return [l.shop, l.price !== undefined ? `${l.price} ${l.currency ?? ""}`.trim() : ""].filter(Boolean).join(", ") || new URL(l.url).hostname;
 }
 
+// Tab-separated with a header row, so it pastes into a spreadsheet one field per column; commas in
+// names and notes stay inside their cell. Tabs and line breaks inside a field become spaces.
 function shoppingList(rows: Row[]): string {
-    return rows
+    const cell = (v: unknown) => (v === undefined || v === null ? "" : String(v).replace(/[\t\r\n]+/g, " ").trim());
+    const lines = rows
         .filter((r) => r.short > 0 && r.kind === "bought" && r.action === "to order")
-        .map((r) => `${r.short} x ${r.name}${r.notes ? ` (${r.notes})` : ""}${r.source ? `: ${linkText(r.source)}, ${r.source.url}` : ""}`)
-        .join("\n");
+        .map((r) => [r.short, r.unit, r.name, r.notes, r.source?.shop, r.source?.price, r.source?.currency, r.source?.url].map(cell).join("\t"));
+    return [["Qty", "Unit", "Item", "Notes", "Shop", "Price", "Currency", "Link"].join("\t"), ...lines].join("\n");
 }
 
 const STATE_TEXT = { requested: "being checked", ok: "checked, ok", check: "check this", wrong: "not this one" };
